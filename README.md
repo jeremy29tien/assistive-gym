@@ -1,4 +1,5 @@
 # Assistive Gym v1.0
+#### NOTE: This is jeremy29tien's fork of Assistive Gym and, as such, contains his version of environments/code specifically relating to his work in Assistive Gym on learning from human preferences. 
 #### v1.0 (this branch) has been released! See the feature list below for what is new in v1.0.  
 #### Assistive Gym in also now supported in Google Colab! For example: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qFbjuq5lFxPijyw4PFUiZw2sFpXTR7ok?usp=sharing)  
 #### See the [Wiki](https://github.com/Healthcare-Robotics/assistive-gym/wiki/7.-Google-Colab) for all available Google Colab examples.
