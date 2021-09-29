@@ -10,35 +10,38 @@ import time
 # NOTE: Settings for standard data: "feedingsawyer_standard.csv_model", True, 25
 # NOTE: Settings for handmade data: "feedingsawyer_handmade.csv_model", False, 14
 
-FILE_NAME = "models/feedingsawyer_standard2.csv_model"
+FILE_NAME = "models/feedingsawyer_standard3.csv.model"
 STANDARD_DATA_MODE = True
 input_dim = 25
 VERBOSE = False
 
-# TODO: Ping Jerry (in #assistive-gym channel) about active-human environments not working
 env = gym.make('FeedingSawyer-v1')
 env.set_seed(1000)  # fixed seed for reproducibility (1000 for training, 1001 for testing)
-env.render()
+# env.render()
 
 # Load model
 model = MLP(input_dim)
 model.load_state_dict(torch.load(FILE_NAME))
 
-num_rollouts = 2
+num_rollouts = 100
 # reward_success[i, 0] contains the reward for the ith rollout
 # reward_success[i, 1] contains the 1 if success, 0 if fail for the ith rollout
 reward_success = np.zeros((num_rollouts, 2))
 
 # Define success as completing the task within timeout == 30 seconds
 # Note that timeout can be adjusted depending on whether or not we are rendering the graphics
-timeout = 20
+# EDIT: we can actually use the `done` variable to set a bound on when to call it quits
+# timeout = 10
+
 
 for i in range(num_rollouts):
     observation = env.reset()
     total_reward = 0
 
-    timeout_start = time.time()
-    while time.time() < timeout_start + timeout:
+    # timeout_start = time.time()
+    # while time.time() < timeout_start + timeout:
+    done = False
+    while not done:
         if STANDARD_DATA_MODE:
             input = observation
         else:
