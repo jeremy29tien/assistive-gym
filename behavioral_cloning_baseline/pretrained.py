@@ -35,13 +35,13 @@ algo = 'ppo'
 policy_path = '/Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trained_models/ppo/FeedingSawyer-v1/checkpoint_521/checkpoint-521'
 test_agent, _ = load_policy(env, algo, ENV_NAME, policy_path, COOP, seed=1000)
 
-env.render()
+# env.render()
 
 # Set up file for appending
 file = open(FILE_NAME, 'a+', newline='')
 write = csv.writer(file)
 
-num_demos = 3
+num_demos = 5
 for demo in range(num_demos):
     observation = env.reset()
     done = False
