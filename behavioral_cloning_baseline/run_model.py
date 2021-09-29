@@ -81,6 +81,7 @@ success_rate = np.sum(reward_success[:,1])/num_rollouts
 print("max_reward:", max_reward)
 print("min_reward:", min_reward)
 print("avg_reward:", avg_reward)
+print("std_err_reward:", std_err_reward)
 print("success_rate:", success_rate)
 
 
