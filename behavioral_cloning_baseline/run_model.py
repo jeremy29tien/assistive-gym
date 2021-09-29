@@ -76,6 +76,7 @@ print(reward_success)
 max_reward = np.amax(reward_success[:,0])
 min_reward = np.amin(reward_success[:,0])
 avg_reward = np.mean(reward_success[:,0])
+std_err_reward = np.std(reward_success[:,0]) / np.sqrt(num_rollouts)
 success_rate = np.sum(reward_success[:,1])/num_rollouts
 print("max_reward:", max_reward)
 print("min_reward:", min_reward)
