@@ -7,7 +7,7 @@ import importlib
 import multiprocessing, ray
 from assistive_gym.learn import load_policy
 
-FILE_NAME = "data/feedingsawyer_pretrained.csv"
+FILE_NAME = "data/feedingsawyer_pretrained1.csv"
 ENV_NAME = "FeedingSawyer-v1"
 COOP = False
 
@@ -32,6 +32,10 @@ env = make_env(ENV_NAME, coop=COOP, seed=1000)  # fixed seed for reproducibility
 
 # Load pretrained policy from file
 algo = 'ppo'
+
+# /Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trained_models/ppo/FeedingSawyer-v1/checkpoint_521/checkpoint-521 for local
+# /home/jtien/assistive-gym/trained_models/ppo/FeedingSawyer-v1/checkpoint_521/checkpoint-521 for server
+
 policy_path = '/Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trained_models/ppo/FeedingSawyer-v1/checkpoint_521/checkpoint-521'
 test_agent, _ = load_policy(env, algo, ENV_NAME, policy_path, COOP, seed=1000)
 
