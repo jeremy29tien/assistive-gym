@@ -43,9 +43,11 @@ test_agent, _ = load_policy(env, algo, ENV_NAME, policy_path, COOP, seed=1000)
 noise_levels = [0, 0.2, 0.4, 0.6, 0.8, 1]
 demos = []
 total_rewards = []
-for noise_level in noise_levels:
+rewards_per_noise_level = []
+for i, noise_level in enumerate(noise_levels):
+    rewards_per_noise_level.append([])
 
-    num_demos = 1
+    num_demos = 5
     for demo in range(num_demos):
         traj = []
         total_reward = 0
@@ -72,8 +74,8 @@ for noise_level in noise_levels:
                     action = test_agent.compute_action(observation)
 
                 # Collect the data
-                print("Observation:", observation)
-                print("Action:", action)
+                # print("Observation:", observation)
+                # print("Action:", action)
                 data = np.concatenate((observation, action))
 
                 # Step the simulation forward using the action from our trained policy
@@ -81,12 +83,18 @@ for noise_level in noise_levels:
 
             traj.append(data)
             total_reward += reward
-            print("Reward:", reward)
-            print("Task Success:", info['task_success'])
-            print("\n")
+            # print("Reward:", reward)
+            # print("Task Success:", info['task_success'])
+            # print("\n")
         demos.append(traj)
+        print(total_reward)
         total_rewards.append(total_reward)
+        rewards_per_noise_level[i].append(total_reward)
 
 env.disconnect()
-print(demos)
+rewards_per_noise_level = np.array(rewards_per_noise_level)
+mean_rewards_per_noise_level = np.mean(rewards_per_noise_level, axis=1)
+# print(demos)
 print(total_rewards)
+print(rewards_per_noise_level)
+print(mean_rewards_per_noise_level)
