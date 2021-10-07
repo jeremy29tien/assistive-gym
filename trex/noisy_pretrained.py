@@ -43,13 +43,14 @@ test_agent, _ = load_policy(env, algo, ENV_NAME, policy_path, COOP, seed=1000)
 
 noise_levels = [0, 0.2, 0.4, 0.6, 0.8, 1]
 demos = []
-rewards_over_time = []
+cum_rewards_over_time = []
 total_rewards = []
 rewards_per_noise_level = []
 for i, noise_level in enumerate(noise_levels):
+    cum_rewards_over_time.append([])
     rewards_per_noise_level.append([])
 
-    num_demos = 1
+    num_demos = 2
     for demo in range(num_demos):
         traj = []
         reward_over_time = []
@@ -85,13 +86,13 @@ for i, noise_level in enumerate(noise_levels):
                 observation, reward, done, info = env.step(action)
 
             traj.append(data)
-            reward_over_time.append(reward)
             total_reward += reward
+            reward_over_time.append(total_reward)
             # print("Reward:", reward)
             # print("Task Success:", info['task_success'])
             # print("\n")
         demos.append(traj)
-        rewards_over_time.append(reward_over_time)
+        cum_rewards_over_time[i].append(reward_over_time)
         print(total_reward)
         total_rewards.append(total_reward)
         rewards_per_noise_level[i].append(total_reward)
@@ -105,4 +106,32 @@ with np.printoptions(precision=3):
     print(rewards_per_noise_level)
     print(mean_rewards_per_noise_level)
 
-plt.plot(rewards_over_time[0])
+plt.figure()
+
+plt.subplot(231)
+for p in cum_rewards_over_time[0]:
+    plt.plot(p, 'b')
+
+plt.subplot(232)
+for p in cum_rewards_over_time[1]:
+    plt.plot(p, 'b')
+
+plt.subplot(233)
+for p in cum_rewards_over_time[2]:
+    plt.plot(p, 'b')
+
+plt.subplot(234)
+for p in cum_rewards_over_time[3]:
+    plt.plot(p, 'b')
+
+plt.subplot(235)
+for p in cum_rewards_over_time[4]:
+    plt.plot(p, 'b')
+
+plt.subplot(236)
+for p in cum_rewards_over_time[5]:
+    plt.plot(p, 'b')
+
+plt.savefig("rewards_over_time.png")
+plt.show()
+
