@@ -5,6 +5,7 @@ import numpy as np
 import csv
 import importlib
 import multiprocessing, ray
+from matplotlib import pyplot as plt
 from assistive_gym.learn import load_policy
 
 FILE_NAME = "data/noisy_pretrained_demos.npy"
@@ -42,14 +43,16 @@ test_agent, _ = load_policy(env, algo, ENV_NAME, policy_path, COOP, seed=1000)
 
 noise_levels = [0, 0.2, 0.4, 0.6, 0.8, 1]
 demos = []
+rewards_over_time = []
 total_rewards = []
 rewards_per_noise_level = []
 for i, noise_level in enumerate(noise_levels):
     rewards_per_noise_level.append([])
 
-    num_demos = 5
+    num_demos = 1
     for demo in range(num_demos):
         traj = []
+        reward_over_time = []
         total_reward = 0
         observation = env.reset()
         done = False
@@ -82,11 +85,13 @@ for i, noise_level in enumerate(noise_levels):
                 observation, reward, done, info = env.step(action)
 
             traj.append(data)
+            reward_over_time.append(reward)
             total_reward += reward
             # print("Reward:", reward)
             # print("Task Success:", info['task_success'])
             # print("\n")
         demos.append(traj)
+        rewards_over_time.append(reward_over_time)
         print(total_reward)
         total_rewards.append(total_reward)
         rewards_per_noise_level[i].append(total_reward)
@@ -95,7 +100,9 @@ env.disconnect()
 rewards_per_noise_level = np.array(rewards_per_noise_level)
 mean_rewards_per_noise_level = np.mean(rewards_per_noise_level, axis=1)
 # print(demos)
-with np.set_printoptions(precision=3):
-    print(total_rewards)
+print(total_rewards)
+with np.printoptions(precision=3):
     print(rewards_per_noise_level)
     print(mean_rewards_per_noise_level)
+
+plt.plot(rewards_over_time[0])
