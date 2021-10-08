@@ -8,7 +8,6 @@ import multiprocessing, ray
 from matplotlib import pyplot as plt
 from assistive_gym.learn import load_policy
 
-FILE_NAME = "data/noisy_pretrained_demos.npy"
 ENV_NAME = "FeedingSawyer-v1"
 COOP = False
 
@@ -42,17 +41,19 @@ test_agent, _ = load_policy(env, algo, ENV_NAME, policy_path, COOP, seed=1000)
 # env.render()
 
 noise_levels = [0, 0.2, 0.4, 0.6, 0.8, 1]
-demos = []
-cum_rewards_over_time = []
-total_rewards = []
-rewards_per_noise_level = []
+demos = []  # collection of trajectories
+total_rewards = []  # final reward at the end of a trajectory/demo
+rewards_over_time = []  # rewards at each timestep for each trajectory
+cum_rewards_over_time = []  # cumulative reward at each timestep for each trajectory, with a separate noise dimension
+rewards_per_noise_level = []  # final reward at the end of each trajectory, with a separate noise dimension
 for i, noise_level in enumerate(noise_levels):
     cum_rewards_over_time.append([])
     rewards_per_noise_level.append([])
 
-    num_demos = 2
+    num_demos = 20
     for demo in range(num_demos):
         traj = []
+        cum_reward_over_time = []
         reward_over_time = []
         total_reward = 0
         observation = env.reset()
@@ -87,21 +88,36 @@ for i, noise_level in enumerate(noise_levels):
 
             traj.append(data)
             total_reward += reward
-            reward_over_time.append(total_reward)
+            reward_over_time.append(reward)
+            cum_reward_over_time.append(total_reward)
             # print("Reward:", reward)
             # print("Task Success:", info['task_success'])
             # print("\n")
         demos.append(traj)
-        cum_rewards_over_time[i].append(reward_over_time)
+
+        cum_rewards_over_time[i].append(cum_reward_over_time)
+        rewards_per_noise_level[i].append(total_reward)
+
         print(total_reward)
         total_rewards.append(total_reward)
-        rewards_per_noise_level[i].append(total_reward)
+        rewards_over_time.append(reward_over_time)
+
 
 env.disconnect()
 rewards_per_noise_level = np.array(rewards_per_noise_level)
 mean_rewards_per_noise_level = np.mean(rewards_per_noise_level, axis=1)
+
+demos = np.asarray(demos)
+total_rewards = np.asarray(total_rewards)
+rewards_over_time = np.asarray(rewards_over_time)
 # print(demos)
-print(total_rewards)
+# print(total_rewards)
+
+np.save("data/demos.npy", demos)
+np.save("data/demo_rewards.npy", total_rewards)
+np.save("data/demo_reward_per_timestep.npy", rewards_over_time)
+
+
 with np.printoptions(precision=3):
     print(rewards_per_noise_level)
     print(mean_rewards_per_noise_level)
@@ -132,6 +148,6 @@ plt.subplot(236)
 for p in cum_rewards_over_time[5]:
     plt.plot(p, 'b')
 
-plt.savefig("rewards_over_time.png")
+plt.savefig("cum_rewards_over_time.png")
 plt.show()
 
