@@ -7,6 +7,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import argparse
+from sklearn.model_selection import train_test_split
 
 
 # num_trajs specifies the number of trajectories to use in our training set
@@ -237,7 +238,10 @@ if __name__ == "__main__":
     sorted_demo_rewards = sorted(demo_rewards)
     print(sorted_demo_rewards)
 
-    training_obs, training_labels = create_training_data(sorted_demos, num_trajs)
+    train_val_split_seed = 100
+    obs, labels = create_training_data(sorted_demos, num_trajs)
+    training_obs, val_obs, training_labels, val_labels = train_test_split(obs, labels, test_size=0.10, random_state=train_val_split_seed)
+
     print("num training_obs", len(training_obs))
     print("num_labels", len(training_labels))
 
@@ -258,4 +262,5 @@ if __name__ == "__main__":
     for i, p in enumerate(pred_returns):
         print(i, p, sorted_demo_rewards[i])
 
-    print("accuracy", calc_accuracy(reward_net, training_obs, training_labels))
+    print("train accuracy:", calc_accuracy(reward_net, training_obs, training_labels))
+    print("validation accuracy:", calc_accuracy(reward_net, val_obs, val_labels))
