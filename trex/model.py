@@ -6,9 +6,11 @@ import random
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import argparse
 
 
-def create_training_data(demonstrations, num_trajs, num_snippets, min_snippet_length, max_snippet_length):
+# num_trajs specifies the number of trajectories to use in our training set
+def create_training_data(demonstrations, num_trajs):
     # collect training data
     max_traj_length = 0
     training_obs = []
@@ -25,65 +27,37 @@ def create_training_data(demonstrations, num_trajs, num_snippets, min_snippet_le
             ti = np.random.randint(num_demos)
             tj = np.random.randint(num_demos)
         # create random partial trajs by finding random start frame and random skip frame
-        si = np.random.randint(6)
-        sj = np.random.randint(6)
-        step = np.random.randint(3, 7)
+        # si = np.random.randint(6)
+        # sj = np.random.randint(6)
+        # step = np.random.randint(3, 7)
 
-        traj_i = demonstrations[ti][si::step]  # slice(start,stop,step)
-        traj_j = demonstrations[tj][sj::step]
+        traj_i = demonstrations[ti]
+        traj_j = demonstrations[tj]
 
+        # In other words, label = (traj_i < traj_j)
         if ti > tj:
-            label = 0
+            label = 0  # 0 indicates that traj_i is better than traj_j
         else:
-            label = 1
+            label = 1  # 1 indicates that traj_j is better than traj_i
 
         training_obs.append((traj_i, traj_j))
         training_labels.append(label)
-        max_traj_length = max(max_traj_length, len(traj_i), len(traj_j))
 
-    # fixed size snippets with progress prior
-    for n in range(num_snippets):
-        ti = 0
-        tj = 0
-        # only add trajectories that are different returns
-        while (ti == tj):
-            # pick two random demonstrations
-            ti = np.random.randint(num_demos)
-            tj = np.random.randint(num_demos)
-        # create random snippets
-        # find min length of both demos to ensure we can pick a demo no earlier than that chosen in worse preferred demo
-        min_length = min(len(demonstrations[ti]), len(demonstrations[tj]))
-        rand_length = np.random.randint(min_snippet_length, max_snippet_length)
-        if ti < tj:  # pick tj snippet to be later than ti
-            ti_start = np.random.randint(min_length - rand_length + 1)
-            # print(ti_start, len(demonstrations[tj]))
-            tj_start = np.random.randint(ti_start, len(demonstrations[tj]) - rand_length + 1)
-        else:  # ti is better so pick later snippet in ti
-            tj_start = np.random.randint(min_length - rand_length + 1)
-            # print(tj_start, len(demonstrations[ti]))
-            ti_start = np.random.randint(tj_start, len(demonstrations[ti]) - rand_length + 1)
-        traj_i = demonstrations[ti][ti_start:ti_start + rand_length:2]  # skip everyother framestack to reduce size
-        traj_j = demonstrations[tj][tj_start:tj_start + rand_length:2]
-
+        # We shouldn't need max_traj_length, since all our trajectories our fixed at length 200.
         max_traj_length = max(max_traj_length, len(traj_i), len(traj_j))
-        if ti > tj:
-            label = 0
-        else:
-            label = 1
-        training_obs.append((traj_i, traj_j))
-        training_labels.append(label)
 
     print("maximum traj length", max_traj_length)
     return training_obs, training_labels
 
 
 observation_dim = 25
+input_dim = 32  # NOTE: the input is comprised of state-action pairs, not just states (states have dim of 25, actions have dim of 7)
 
 class Net(nn.Module):
     def __init__(self):
         super().__init__()
 
-        self.fc1 = nn.Linear(observation_dim, 128)
+        self.fc1 = nn.Linear(input_dim, 128)
         self.fc2 = nn.Linear(128, 64)  # Added a hidden layer for additional expressiveness
         self.fc3 = nn.Linear(64, 1)
 
@@ -121,20 +95,22 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
         training_obs, training_labels = zip(*training_data)
         for i in range(len(training_labels)):
             traj_i, traj_j = training_obs[i]
-            labels = np.array([training_labels[i]])
+
+            # Question: why was it called labels?
+            label = np.array([training_labels[i]])
             traj_i = np.array(traj_i)
             traj_j = np.array(traj_j)
             traj_i = torch.from_numpy(traj_i).float().to(device)
             traj_j = torch.from_numpy(traj_j).float().to(device)
-            labels = torch.from_numpy(labels).to(device)
+            label = torch.from_numpy(label).to(device)
 
             # zero out gradient
             optimizer.zero_grad()
 
             # forward + backward + optimize
-            outputs, abs_rewards = reward_network.forward(traj_i, traj_j)
+            outputs = reward_network.forward(traj_i, traj_j)
             outputs = outputs.unsqueeze(0)
-            loss = loss_criterion(outputs, labels) + l1_reg * abs_rewards
+            loss = loss_criterion(outputs, label)  # got rid of the l1_reg * abs_rewards from this line
             loss.backward()
             optimizer.step()
 
@@ -144,7 +120,6 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
             if i % 100 == 99:
                 # print(i)
                 print("epoch {}:{} loss {}".format(epoch, i, cum_loss))
-                print(abs_rewards)
                 cum_loss = 0.0
                 print("check pointing")
                 torch.save(reward_net.state_dict(), checkpoint_dir)
@@ -165,8 +140,122 @@ def calc_accuracy(reward_network, training_inputs, training_outputs):
             traj_j = torch.from_numpy(traj_j).float().to(device)
 
             #forward to get logits
-            outputs, abs_return = reward_network.forward(traj_i, traj_j)
+            outputs = reward_network.forward(traj_i, traj_j)
             _, pred_label = torch.max(outputs,0)
             if pred_label.item() == label:
                 num_correct += 1.
     return num_correct / len(training_inputs)
+
+
+def predict_reward_sequence(net, traj):
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    rewards_from_obs = []
+    with torch.no_grad():
+        for s in traj:
+            r = net.cum_return(torch.from_numpy(np.array([s])).float().to(device)).item()
+            rewards_from_obs.append(r)
+    return rewards_from_obs
+
+
+def predict_traj_return(net, traj):
+    return sum(predict_reward_sequence(net, traj))
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=None)
+    # parser.add_argument('--env_name', default='', help='Select the environment name to run, i.e. pong')
+    parser.add_argument('--reward_model_path', default='',
+                        help="name and location for learned model params, e.g. ./learned_models/breakout.params")
+    # parser.add_argument('--seed', default=0, help="random seed for experiments")
+    # parser.add_argument('--models_dir', default=".",
+    #                     help="path to directory that contains a models directory in which the checkpoint models for demos are stored")
+    parser.add_argument('--num_trajs', default=0, type=int, help="number of full trajectories")
+    # parser.add_argument('--num_snippets', default=6000, type=int, help="number of short subtrajectories to sample")
+    args = parser.parse_args()
+
+    # env_name = args.env_name
+    # if env_name == "spaceinvaders":
+    #     env_id = "SpaceInvadersNoFrameskip-v4"
+    # elif env_name == "mspacman":
+    #     env_id = "MsPacmanNoFrameskip-v4"
+    # elif env_name == "videopinball":
+    #     env_id = "VideoPinballNoFrameskip-v4"
+    # elif env_name == "beamrider":
+    #     env_id = "BeamRiderNoFrameskip-v4"
+    # else:
+    #     env_id = env_name[0].upper() + env_name[1:] + "NoFrameskip-v4"
+
+    # env_type = "atari"
+    # print(env_type)
+    # # set seeds
+    # seed = int(args.seed)
+    # torch.manual_seed(seed)
+    # np.random.seed(seed)
+    # tf.set_random_seed(seed)
+
+    # print("Training reward for", env_id)
+    num_trajs = args.num_trajs
+    # num_snippets = args.num_snippets
+    # min_snippet_length = 50  # min length of trajectory for training comparison
+    # maximum_snippet_length = 100
+    #
+    lr = 0.00005
+    weight_decay = 0.0
+    num_iter = 5  # num times through training data
+    l1_reg = 0.0
+    # stochastic = True
+    #
+    # env = make_vec_env(env_id, 'atari', 1, seed,
+    #                    wrapper_kwargs={
+    #                        'clip_rewards': False,
+    #                        'episode_life': False,
+    #                    })
+    #
+    # env = VecFrameStack(env, 4)
+    # agent = PPO2Agent(env, env_type, stochastic)
+    #
+    # demonstrations, learning_returns, learning_rewards = generate_novice_demos(env, env_name, agent, args.models_dir)
+
+    # sort the demonstrations according to ground truth reward to simulate ranked demos
+
+    demos = np.load("data/demos.npy")
+    demo_rewards = np.load("data/demo_rewards.npy")
+    demo_reward_per_timestep = np.load("data/demo_reward_per_timestep.npy")
+
+    demo_lengths = 200  # fixed horizon of 200 timesteps in assistive gym
+    print("demo lengths", demo_lengths)
+    # max_snippet_length = min(np.min(demo_lengths), maximum_snippet_length)
+    # print("max snippet length", max_snippet_length)
+
+    print("demos:", demos.shape)
+    print("demo_rewards:", demo_rewards.shape)
+
+    # sorts the demos in order of increasing reward (most negative reward to most positive reward)
+    # note that sorted_demos is now a python list, not a np array
+    sorted_demos = [x for _, x in sorted(zip(demo_rewards, demos), key=lambda pair: pair[0])]
+
+    sorted_demo_rewards = sorted(demo_rewards)
+    print(sorted_demo_rewards)
+
+    training_obs, training_labels = create_training_data(sorted_demos, num_trajs)
+    print("num training_obs", len(training_obs))
+    print("num_labels", len(training_labels))
+
+    # Now we create a reward network and optimize it using the training data.
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    reward_net = Net()
+    reward_net.to(device)
+    import torch.optim as optim
+
+    optimizer = optim.Adam(reward_net.parameters(), lr=lr, weight_decay=weight_decay)
+    learn_reward(reward_net, optimizer, training_obs, training_labels, num_iter, l1_reg, args.reward_model_path)
+    # save reward network
+    torch.save(reward_net.state_dict(), args.reward_model_path)
+
+    # print out predicted cumulative returns and actual returns
+    with torch.no_grad():
+        pred_returns = [predict_traj_return(reward_net, traj) for traj in sorted_demos]
+    for i, p in enumerate(pred_returns):
+        print(i, p, sorted_demo_rewards[i])
+
+    print("accuracy", calc_accuracy(reward_net, training_obs, training_labels))
