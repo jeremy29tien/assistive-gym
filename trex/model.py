@@ -243,7 +243,9 @@ if __name__ == "__main__":
     training_obs, val_obs, training_labels, val_labels = train_test_split(obs, labels, test_size=0.10, random_state=train_val_split_seed)
 
     print("num training_obs", len(training_obs))
-    print("num_labels", len(training_labels))
+    print("num training_labels", len(training_labels))
+    print("num val_obs", len(val_obs))
+    print("num val_labels", len(val_labels))
 
     # Now we create a reward network and optimize it using the training data.
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
