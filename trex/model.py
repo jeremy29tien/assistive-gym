@@ -11,7 +11,8 @@ from sklearn.model_selection import train_test_split
 
 
 # num_trajs specifies the number of trajectories to use in our training set
-def create_training_data(demonstrations, num_trajs):
+# pair_delta=1 recovers original (just that pairwise comps can't be the same)
+def create_training_data(demonstrations, num_trajs, pair_delta):
     # collect training data
     max_traj_length = 0
     training_obs = []
@@ -23,7 +24,7 @@ def create_training_data(demonstrations, num_trajs):
         ti = 0
         tj = 0
         # only add trajectories that are different returns
-        while (ti == tj):
+        while abs(ti - tj) < pair_delta:
             # pick two random demonstrations
             ti = np.random.randint(num_demos)
             tj = np.random.randint(num_demos)
@@ -82,7 +83,7 @@ class Net(nn.Module):
         return torch.cat((cum_r_i.unsqueeze(0), cum_r_j.unsqueeze(0)),0)
 
 
-def learn_reward(reward_network, optimizer, training_inputs, training_outputs, num_iter, l1_reg, checkpoint_dir):
+def learn_reward(reward_network, optimizer, training_inputs, training_outputs, num_iter, l1_reg, checkpoint_dir, val_obs, val_labels, patience):
     # check if gpu available
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     # Assume that we are on a CUDA machine, then this should print a CUDA device:
@@ -90,6 +91,8 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
     loss_criterion = nn.CrossEntropyLoss()
 
     cum_loss = 0.0
+    trigger_times = 0
+    prev_val_loss = 100
     training_data = list(zip(training_inputs, training_outputs))
     for epoch in range(num_iter):
         np.random.shuffle(training_data)
@@ -111,20 +114,63 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
             # forward + backward + optimize
             outputs = reward_network.forward(traj_i, traj_j)
             outputs = outputs.unsqueeze(0)
+            # print("train outputs", outputs.shape)
+            # print("train label", label.shape)
             loss = loss_criterion(outputs, label)  # got rid of the l1_reg * abs_rewards from this line
             loss.backward()
             optimizer.step()
 
+
             # print stats to see if learning
             item_loss = loss.item()
             cum_loss += item_loss
+            val_loss = calc_val_loss(reward_network, val_obs, val_labels)
             if i % 100 == 99:
                 # print(i)
-                print("epoch {}:{} loss {}".format(epoch, i, cum_loss))
+                print("epoch {}:{} loss {}, val_loss {}".format(epoch, i, cum_loss, val_loss))
                 cum_loss = 0.0
                 print("check pointing")
                 torch.save(reward_net.state_dict(), checkpoint_dir)
+
+            # Early Stopping
+            if val_loss > prev_val_loss:
+                trigger_times += 1
+                print('trigger times:', trigger_times)
+                if trigger_times >= patience:
+                    print("Early stopping.")
+                    return
+            else:
+                trigger_times = 0
+                print('trigger times:', trigger_times)
+
+            prev_val_loss = val_loss
     print("finished training")
+
+
+def calc_val_loss(reward_network, training_inputs, training_outputs):
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    loss_criterion = nn.CrossEntropyLoss()
+    losses = []
+    with torch.no_grad():
+        for i in range(len(training_inputs)):
+            label = np.array([training_outputs[i]])
+            traj_i, traj_j = training_inputs[i]
+            traj_i = np.array(traj_i)
+            traj_j = np.array(traj_j)
+            traj_i = torch.from_numpy(traj_i).float().to(device)
+            traj_j = torch.from_numpy(traj_j).float().to(device)
+            label = torch.from_numpy(label).to(device)
+
+            #forward to get logits
+            outputs = reward_network.forward(traj_i, traj_j)
+            outputs = outputs.unsqueeze(0)
+            # print("val outputs", outputs.shape)
+            # print("val label", label.shape)
+
+            loss = loss_criterion(outputs, label)
+            losses.append(loss.item())
+
+    return np.mean(losses)
 
 
 def calc_accuracy(reward_network, training_inputs, training_outputs):
@@ -174,51 +220,22 @@ if __name__ == "__main__":
     # parser.add_argument('--num_snippets', default=6000, type=int, help="number of short subtrajectories to sample")
     args = parser.parse_args()
 
-    # env_name = args.env_name
-    # if env_name == "spaceinvaders":
-    #     env_id = "SpaceInvadersNoFrameskip-v4"
-    # elif env_name == "mspacman":
-    #     env_id = "MsPacmanNoFrameskip-v4"
-    # elif env_name == "videopinball":
-    #     env_id = "VideoPinballNoFrameskip-v4"
-    # elif env_name == "beamrider":
-    #     env_id = "BeamRiderNoFrameskip-v4"
-    # else:
-    #     env_id = env_name[0].upper() + env_name[1:] + "NoFrameskip-v4"
-
-    # env_type = "atari"
-    # print(env_type)
-    # # set seeds
-    # seed = int(args.seed)
-    # torch.manual_seed(seed)
-    # np.random.seed(seed)
-    # tf.set_random_seed(seed)
-
-    # print("Training reward for", env_id)
     num_trajs = args.num_trajs
     # num_snippets = args.num_snippets
     # min_snippet_length = 50  # min length of trajectory for training comparison
     # maximum_snippet_length = 100
     #
+
+    ## HYPERPARAMS ##
     lr = 0.00005
     weight_decay = 0.0
     num_iter = 5  # num times through training data
     l1_reg = 0.0
-    # stochastic = True
-    #
-    # env = make_vec_env(env_id, 'atari', 1, seed,
-    #                    wrapper_kwargs={
-    #                        'clip_rewards': False,
-    #                        'episode_life': False,
-    #                    })
-    #
-    # env = VecFrameStack(env, 4)
-    # agent = PPO2Agent(env, env_type, stochastic)
-    #
-    # demonstrations, learning_returns, learning_rewards = generate_novice_demos(env, env_name, agent, args.models_dir)
+    patience = 5
+    pair_delta = 10
+    #################
 
     # sort the demonstrations according to ground truth reward to simulate ranked demos
-
     demos = np.load("data/demos.npy")
     demo_rewards = np.load("data/demo_rewards.npy")
     demo_reward_per_timestep = np.load("data/demo_reward_per_timestep.npy")
@@ -239,7 +256,7 @@ if __name__ == "__main__":
     print(sorted_demo_rewards)
 
     train_val_split_seed = 100
-    obs, labels = create_training_data(sorted_demos, num_trajs)
+    obs, labels = create_training_data(sorted_demos, num_trajs, pair_delta)
     training_obs, val_obs, training_labels, val_labels = train_test_split(obs, labels, test_size=0.10, random_state=train_val_split_seed)
 
     print("num training_obs", len(training_obs))
@@ -254,7 +271,7 @@ if __name__ == "__main__":
     import torch.optim as optim
 
     optimizer = optim.Adam(reward_net.parameters(), lr=lr, weight_decay=weight_decay)
-    learn_reward(reward_net, optimizer, training_obs, training_labels, num_iter, l1_reg, args.reward_model_path)
+    learn_reward(reward_net, optimizer, training_obs, training_labels, num_iter, l1_reg, args.reward_model_path, val_obs, val_labels, patience)
     # save reward network
     torch.save(reward_net.state_dict(), args.reward_model_path)
 
