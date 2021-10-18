@@ -38,27 +38,40 @@ reward_net.to(device)
 # print out predicted cumulative returns and actual returns
 with torch.no_grad():
     pred_returns = [predict_traj_return(reward_net, traj) for traj in sorted_demos]
-    pred_reward_sequence = predict_reward_sequence(reward_net, sorted_demos[-1])
+    best_pred_reward_sequence = predict_reward_sequence(reward_net, sorted_demos[-1])
+    worst_pred_reward_sequence = predict_reward_sequence(reward_net, sorted_demos[0])
 
 # for i, p in enumerate(pred_returns):
 #     print(i, p, sorted_demo_rewards[i])
 
-print(pred_reward_sequence)
-print(sorted_demo_rewards_per_timestep[-1])
+# print(best_pred_reward_sequence)
+# print(sorted_demo_rewards_per_timestep[-1])
 
-pred_cum_reward_sequence = []
+best_pred_cum_reward_sequence = []
 cum_sum = 0
-for el in pred_reward_sequence:
+for el in best_pred_reward_sequence:
     cum_sum += el
-    pred_cum_reward_sequence.append(cum_sum)
-actual_cum_reward_sequence = []
+    best_pred_cum_reward_sequence.append(cum_sum)
+best_actual_cum_reward_sequence = []
 cum_sum = 0
 for el in sorted_demo_rewards_per_timestep[-1]:
     cum_sum += el
-    actual_cum_reward_sequence.append(cum_sum)
+    best_actual_cum_reward_sequence.append(cum_sum)
+
+worst_pred_cum_reward_sequence = []
+cum_sum = 0
+for el in worst_pred_reward_sequence:
+    cum_sum += el
+    worst_pred_cum_reward_sequence.append(cum_sum)
+worst_actual_cum_reward_sequence = []
+cum_sum = 0
+for el in sorted_demo_rewards_per_timestep[0]:
+    cum_sum += el
+    worst_actual_cum_reward_sequence.append(cum_sum)
+
 
 plot1 = plt.figure(1)
-plt.plot(pred_reward_sequence, label='pred')
+plt.plot(best_pred_reward_sequence, label='pred')
 plt.plot(sorted_demo_rewards_per_timestep[-1], label='actual')
 plt.xlabel("Timestep")
 plt.ylabel("Reward")
@@ -66,14 +79,30 @@ plt.legend()
 plt.savefig("reward_sequence_best.png")
 
 plot2 = plt.figure(2)
-plt.plot(pred_cum_reward_sequence, label='pred')
-plt.plot(actual_cum_reward_sequence, label='actual')
+plt.plot(best_pred_cum_reward_sequence, label='pred')
+plt.plot(best_actual_cum_reward_sequence, label='actual')
 plt.xlabel("Timestep")
 plt.ylabel("Cumulative Reward")
 plt.legend()
 plt.savefig("cum_reward_sequence_best.png")
 
 plot3 = plt.figure(3)
+plt.plot(worst_pred_reward_sequence, label='pred')
+plt.plot(sorted_demo_rewards_per_timestep[0], label='actual')
+plt.xlabel("Timestep")
+plt.ylabel("Reward")
+plt.legend()
+plt.savefig("reward_sequence_worst.png")
+
+plot4 = plt.figure(4)
+plt.plot(worst_pred_cum_reward_sequence, label='pred')
+plt.plot(worst_actual_cum_reward_sequence, label='actual')
+plt.xlabel("Timestep")
+plt.ylabel("Cumulative Reward")
+plt.legend()
+plt.savefig("cum_reward_sequence_worst.png")
+
+plot5 = plt.figure(5)
 plt.plot(pred_returns, label='pred_returns')
 plt.plot(sorted_demo_rewards, label='actual_returns')
 plt.xlabel("Demo ranking")
