@@ -31,3 +31,10 @@ register(
     max_episode_steps=200,
 )
 
+# For our TREX reward learning
+register(
+    id='FeedingLearnedRewardSawyer-v0',
+    entry_point='assistive_gym.envs:FeedingLearnedRewardSawyerEnv',
+    max_episode_steps=200,
+)
+
