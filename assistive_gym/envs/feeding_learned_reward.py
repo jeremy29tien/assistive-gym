@@ -20,7 +20,9 @@ class FeedingLearnedRewardEnv(FeedingEnv):
         super(FeedingLearnedRewardEnv, self).__init__(robot=robot, human=human)
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.reward_net = Net()
-        self.reward_net.load_state_dict(torch.load(self.reward_net_path))
+        print("device:", self.device)
+        print("torch.cuda.is_available():", torch.cuda.is_available())
+        self.reward_net.load_state_dict(torch.load(self.reward_net_path, map_location=torch.device('cpu')))
         self.reward_net.to(self.device)
 
     def step(self, action):
