@@ -29,7 +29,7 @@ reward: [1.9270904064178467]
 difference from original: -0.030512213706970215
 set to 0:
 reward: [1.8795713186264038]
-difference from original: 0.07803130149841309
+difference from original: -0.07803130149841309
 set to -5:
 reward: [1.1649271249771118]
 difference from original: -0.7926754951477051
@@ -40,7 +40,7 @@ reward: [1.9504139423370361]
 difference from original: -0.007188677787780762
 set to 0:
 reward: [1.943519115447998]
-difference from original: 0.014083504676818848
+difference from original: -0.014083504676818848
 set to -5:
 reward: [1.3200695514678955]
 difference from original: -0.6375330686569214
@@ -51,7 +51,7 @@ reward: [1.8211305141448975]
 difference from original: -0.13647210597991943
 set to 0:
 reward: [1.9479196071624756]
-difference from original: 0.009683012962341309
+difference from original: -0.009683012962341309
 set to -5:
 reward: [1.1846568584442139]
 difference from original: -0.772945761680603
@@ -62,7 +62,7 @@ reward: [2.105111598968506]
 difference from original: 0.14750897884368896
 set to 0:
 reward: [1.8942195177078247]
-difference from original: 0.06338310241699219
+difference from original: -0.06338310241699219
 set to -5:
 reward: [1.2183266878128052]
 difference from original: -0.7392759323120117
@@ -84,7 +84,7 @@ reward: [2.1907920837402344]
 difference from original: 0.23318946361541748
 set to 0:
 reward: [1.932539463043213]
-difference from original: 0.025063157081604004
+difference from original: -0.025063157081604004
 set to -5:
 reward: [0.5022491812705994]
 difference from original: -1.4553534388542175
@@ -95,7 +95,7 @@ reward: [1.8411370515823364]
 difference from original: -0.11646556854248047
 set to 0:
 reward: [1.9002044200897217]
-difference from original: 0.057398200035095215
+difference from original: -0.057398200035095215
 set to -5:
 reward: [1.1306438446044922]
 difference from original: -0.8269587755203247
@@ -106,7 +106,7 @@ reward: [2.4085445404052734]
 difference from original: 0.45094192028045654
 set to 0:
 reward: [1.9575536251068115]
-difference from original: 4.8995018005371094e-05
+difference from original: -4.8995018005371094e-05
 set to -5:
 reward: [0.698911190032959]
 difference from original: -1.258691430091858
@@ -150,7 +150,7 @@ reward: [0.7138846516609192]
 difference from original: -1.2437179684638977
 set to 0:
 reward: [1.8857054710388184]
-difference from original: 0.07189714908599854
+difference from original: -0.07189714908599854
 set to -5:
 reward: [2.264871120452881]
 difference from original: 0.30726850032806396
@@ -161,7 +161,7 @@ reward: [1.5273828506469727]
 difference from original: -0.43021976947784424
 set to 0:
 reward: [1.9371627569198608]
-difference from original: 0.020439863204956055
+difference from original: -0.020439863204956055
 set to -5:
 reward: [1.6539454460144043]
 difference from original: -0.3036571741104126
@@ -172,7 +172,7 @@ reward: [1.7322046756744385]
 difference from original: -0.22539794445037842
 set to 0:
 reward: [1.9361653327941895]
-difference from original: 0.02143728733062744
+difference from original: -0.02143728733062744
 set to -5:
 reward: [1.7283785343170166]
 difference from original: -0.2292240858078003
@@ -183,7 +183,7 @@ reward: [1.033857822418213]
 difference from original: -0.923744797706604
 set to 0:
 reward: [1.8747687339782715]
-difference from original: 0.08283388614654541
+difference from original: -0.08283388614654541
 set to -5:
 reward: [2.1498489379882812]
 difference from original: 0.19224631786346436
@@ -205,7 +205,7 @@ reward: [1.2102595567703247]
 difference from original: -0.7473430633544922
 set to 0:
 reward: [1.8010743856430054]
-difference from original: 0.15652823448181152
+difference from original: -0.15652823448181152
 set to -5:
 reward: [1.916847586631775]
 difference from original: -0.04075503349304199
@@ -216,7 +216,7 @@ reward: [1.7976670265197754]
 difference from original: -0.1599355936050415
 set to 0:
 reward: [1.9441732168197632]
-difference from original: 0.013429403305053711
+difference from original: -0.013429403305053711
 set to -5:
 reward: [1.7800672054290771]
 difference from original: -0.17753541469573975
@@ -249,7 +249,7 @@ reward: [0.3647841811180115]
 difference from original: -1.5928184390068054
 set to 0:
 reward: [1.930260181427002]
-difference from original: 0.02734243869781494
+difference from original: -0.02734243869781494
 set to -5:
 reward: [2.2308101654052734]
 difference from original: 0.27320754528045654
@@ -260,7 +260,7 @@ reward: [1.20149564743042]
 difference from original: -0.756106972694397
 set to 0:
 reward: [1.9499925374984741]
-difference from original: 0.0076100826263427734
+difference from original: -0.0076100826263427734
 set to -5:
 reward: [1.5265116691589355]
 difference from original: -0.43109095096588135
@@ -271,7 +271,7 @@ reward: [1.5792515277862549]
 difference from original: -0.378351092338562
 set to 0:
 reward: [1.9313305616378784]
-difference from original: 0.026272058486938477
+difference from original: -0.026272058486938477
 set to -5:
 reward: [1.0246223211288452]
 difference from original: -0.9329802989959717
@@ -282,7 +282,7 @@ reward: [2.2792599201202393]
 difference from original: 0.32165729999542236
 set to 0:
 reward: [1.8002536296844482]
-difference from original: 0.15734899044036865
+difference from original: -0.15734899044036865
 set to -5:
 reward: [0.2520807385444641]
 difference from original: -1.7055218815803528
@@ -293,7 +293,7 @@ reward: [1.8175203800201416]
 difference from original: -0.1400822401046753
 set to 0:
 reward: [1.6518727540969849]
-difference from original: 0.30572986602783203
+difference from original: -0.30572986602783203
 set to -5:
 reward: [0.33373379707336426]
 difference from original: -1.6238688230514526
@@ -304,7 +304,7 @@ reward: [2.2100272178649902]
 difference from original: 0.25242459774017334
 set to 0:
 reward: [1.8714852333068848]
-difference from original: 0.08611738681793213
+difference from original: -0.08611738681793213
 set to -5:
 reward: [0.03242504596710205]
 difference from original: -1.9251775741577148
@@ -315,7 +315,7 @@ reward: [2.1024961471557617]
 difference from original: 0.14489352703094482
 set to 0:
 reward: [1.8753974437713623]
-difference from original: 0.08220517635345459
+difference from original: -0.08220517635345459
 set to -5:
 reward: [0.2735050916671753]
 difference from original: -1.6840975284576416
@@ -359,7 +359,7 @@ reward: [2.246161937713623]
 difference from original: 0.28855931758880615
 set to 0:
 reward: [1.8990087509155273]
-difference from original: 0.05859386920928955
+difference from original: -0.05859386920928955
 set to -5:
 reward: [1.0148566961288452]
 difference from original: -0.9427459239959717
@@ -370,7 +370,7 @@ reward: [-0.25544416904449463]
 difference from original: -2.2130467891693115
 set to 0:
 reward: [1.7670758962631226]
-difference from original: 0.19052672386169434
+difference from original: -0.19052672386169434
 set to -5:
 reward: [2.844832420349121]
 difference from original: 0.8872298002243042
@@ -382,7 +382,7 @@ reward: [1.7940177917480469]
 difference from original: -0.14377832412719727
 set to 0:
 reward: [1.9113446474075317]
-difference from original: 0.026451468467712402
+difference from original: -0.026451468467712402
 set to -5:
 reward: [1.2094706296920776]
 difference from original: -0.7283254861831665
@@ -393,7 +393,7 @@ reward: [2.080878973007202]
 difference from original: 0.143082857131958
 set to 0:
 reward: [1.9248721599578857]
-difference from original: 0.012923955917358398
+difference from original: -0.012923955917358398
 set to -5:
 reward: [1.2793258428573608]
 difference from original: -0.6584702730178833
@@ -404,7 +404,7 @@ reward: [1.6122139692306519]
 difference from original: -0.3255821466445923
 set to 0:
 reward: [1.9249086380004883]
-difference from original: 0.01288747787475586
+difference from original: -0.01288747787475586
 set to -5:
 reward: [1.2291879653930664]
 difference from original: -0.7086081504821777
@@ -415,7 +415,7 @@ reward: [2.1964473724365234]
 difference from original: 0.2586512565612793
 set to 0:
 reward: [1.877094030380249]
-difference from original: 0.06070208549499512
+difference from original: -0.06070208549499512
 set to -5:
 reward: [1.234359860420227]
 difference from original: -0.7034362554550171
@@ -437,7 +437,7 @@ reward: [2.2317724227905273]
 difference from original: 0.2939763069152832
 set to 0:
 reward: [1.8991737365722656]
-difference from original: 0.038622379302978516
+difference from original: -0.038622379302978516
 set to -5:
 reward: [0.3448330760002136]
 difference from original: -1.5929630398750305
@@ -503,7 +503,7 @@ reward: [0.7496376633644104]
 difference from original: -1.1881584525108337
 set to 0:
 reward: [1.8779363632202148]
-difference from original: 0.0598597526550293
+difference from original: -0.0598597526550293
 set to -5:
 reward: [2.124939441680908]
 difference from original: 0.18714332580566406
@@ -536,7 +536,7 @@ reward: [1.1984531879425049]
 difference from original: -0.7393429279327393
 set to 0:
 reward: [1.9007718563079834]
-difference from original: 0.03702425956726074
+difference from original: -0.03702425956726074
 set to -5:
 reward: [1.887498140335083]
 difference from original: -0.05029797554016113
@@ -558,7 +558,7 @@ reward: [1.2491501569747925]
 difference from original: -0.6886459589004517
 set to 0:
 reward: [1.8844623565673828]
-difference from original: 0.05333375930786133
+difference from original: -0.05333375930786133
 set to -5:
 reward: [1.679403305053711]
 difference from original: -0.2583928108215332
@@ -569,7 +569,7 @@ reward: [1.8176954984664917]
 difference from original: -0.12010061740875244
 set to 0:
 reward: [1.8991355895996094]
-difference from original: 0.038660526275634766
+difference from original: -0.038660526275634766
 set to -5:
 reward: [1.7091530561447144]
 difference from original: -0.22864305973052979
@@ -602,7 +602,7 @@ reward: [0.28434455394744873]
 difference from original: -1.6534515619277954
 set to 0:
 reward: [1.9300487041473389]
-difference from original: 0.0077474117279052734
+difference from original: -0.0077474117279052734
 set to -5:
 reward: [2.4362754821777344]
 difference from original: 0.49847936630249023
@@ -613,7 +613,7 @@ reward: [1.2603651285171509]
 difference from original: -0.6774309873580933
 set to 0:
 reward: [1.9344534873962402]
-difference from original: 0.0033426284790039062
+difference from original: -0.0033426284790039062
 set to -5:
 reward: [1.2578356266021729]
 difference from original: -0.6799604892730713
@@ -624,7 +624,7 @@ reward: [1.9196256399154663]
 difference from original: -0.018170475959777832
 set to 0:
 reward: [1.891946792602539]
-difference from original: 0.04584932327270508
+difference from original: -0.04584932327270508
 set to -5:
 reward: [0.8210229873657227]
 difference from original: -1.1167731285095215
@@ -635,7 +635,7 @@ reward: [2.1385908126831055]
 difference from original: 0.20079469680786133
 set to 0:
 reward: [1.8284151554107666]
-difference from original: 0.10938096046447754
+difference from original: -0.10938096046447754
 set to -5:
 reward: [0.545052170753479]
 difference from original: -1.3927439451217651
@@ -646,7 +646,7 @@ reward: [1.6572682857513428]
 difference from original: -0.28052783012390137
 set to 0:
 reward: [1.3551946878433228]
-difference from original: 0.5826014280319214
+difference from original: -0.5826014280319214
 set to -5:
 reward: [-0.2232722043991089]
 difference from original: -2.161068320274353
@@ -657,7 +657,7 @@ reward: [1.957952857017517]
 difference from original: 0.02015674114227295
 set to 0:
 reward: [1.9258661270141602]
-difference from original: 0.011929988861083984
+difference from original: -0.011929988861083984
 set to -5:
 reward: [0.5223122835159302]
 difference from original: -1.415483832359314
@@ -668,7 +668,7 @@ reward: [1.695336103439331]
 difference from original: -0.24246001243591309
 set to 0:
 reward: [1.8624374866485596]
-difference from original: 0.07535862922668457
+difference from original: -0.07535862922668457
 set to -5:
 reward: [0.47719717025756836]
 difference from original: -1.4605989456176758
@@ -679,7 +679,7 @@ reward: [0.7069776058197021]
 difference from original: -1.230818510055542
 set to 0:
 reward: [1.820410132408142]
-difference from original: 0.11738598346710205
+difference from original: -0.11738598346710205
 set to -5:
 reward: [2.097895383834839]
 difference from original: 0.16009926795959473
@@ -701,7 +701,7 @@ reward: [1.3275108337402344]
 difference from original: -0.6102852821350098
 set to 0:
 reward: [1.9310733079910278]
-difference from original: 0.006722807884216309
+difference from original: -0.006722807884216309
 set to -5:
 reward: [1.7918667793273926]
 difference from original: -0.14592933654785156
@@ -723,7 +723,7 @@ reward: [0.06856036186218262]
 difference from original: -1.8692357540130615
 set to 0:
 reward: [1.7513694763183594]
-difference from original: 0.18642663955688477
+difference from original: -0.18642663955688477
 set to -5:
 reward: [2.598409652709961]
 difference from original: 0.6606135368347168
@@ -757,7 +757,7 @@ reward: [0.05959784984588623]
 difference from original: -0.036154091358184814
 set to 0:
 reward: [0.07997184991836548]
-difference from original: 0.015780091285705566
+difference from original: -0.015780091285705566
 set to -5:
 reward: [-1.1183340549468994]
 difference from original: -1.2140859961509705
@@ -768,7 +768,7 @@ reward: [0.393832266330719]
 difference from original: 0.29808032512664795
 set to 0:
 reward: [0.08547890186309814]
-difference from original: 0.0102730393409729
+difference from original: -0.0102730393409729
 set to -5:
 reward: [-0.8184740543365479]
 difference from original: -0.9142259955406189
@@ -801,7 +801,7 @@ reward: [-0.031288862228393555]
 difference from original: -0.1270408034324646
 set to 0:
 reward: [0.06472885608673096]
-difference from original: 0.031023085117340088
+difference from original: -0.031023085117340088
 set to -5:
 reward: [-0.671841025352478]
 difference from original: -0.7675929665565491
@@ -856,7 +856,7 @@ reward: [-1.0885202884674072]
 difference from original: -1.1842722296714783
 set to 0:
 reward: [0.08593404293060303]
-difference from original: 0.009817898273468018
+difference from original: -0.009817898273468018
 set to -5:
 reward: [0.2845500111579895]
 difference from original: 0.18879806995391846
@@ -889,7 +889,7 @@ reward: [-0.9637587070465088]
 difference from original: -1.0595106482505798
 set to 0:
 reward: [0.055086612701416016]
-difference from original: 0.04066532850265503
+difference from original: -0.04066532850265503
 set to -5:
 reward: [-0.18455922603607178]
 difference from original: -0.2803111672401428
@@ -911,7 +911,7 @@ reward: [-1.133634328842163]
 difference from original: -1.2293862700462341
 set to 0:
 reward: [-0.07780098915100098]
-difference from original: 0.17355293035507202
+difference from original: -0.17355293035507202
 set to -5:
 reward: [0.3043423891067505]
 difference from original: 0.20859044790267944
@@ -922,7 +922,7 @@ reward: [0.05679190158843994]
 difference from original: -0.038960039615631104
 set to 0:
 reward: [0.08381021022796631]
-difference from original: 0.011941730976104736
+difference from original: -0.011941730976104736
 set to -5:
 reward: [-0.49143826961517334]
 difference from original: -0.5871902108192444
@@ -988,7 +988,7 @@ reward: [0.31203603744506836]
 difference from original: 0.21628409624099731
 set to 0:
 reward: [-0.009897947311401367]
-difference from original: 0.10564988851547241
+difference from original: -0.10564988851547241
 set to -5:
 reward: [-1.8537898063659668]
 difference from original: -1.9495417475700378
@@ -1054,7 +1054,7 @@ reward: [0.021824240684509277]
 difference from original: -0.07392770051956177
 set to 0:
 reward: [0.08543884754180908]
-difference from original: 0.010313093662261963
+difference from original: -0.010313093662261963
 set to -5:
 reward: [-0.5852687358856201]
 difference from original: -0.6810206770896912
@@ -1099,7 +1099,7 @@ reward: [-0.8405574560165405]
 difference from original: -0.9180602431297302
 set to 0:
 reward: [0.026511192321777344]
-difference from original: 0.050991594791412354
+difference from original: -0.050991594791412354
 set to -5:
 reward: [-0.015394091606140137]
 difference from original: -0.09289687871932983
@@ -1132,7 +1132,7 @@ reward: [-1.2378263473510742]
 difference from original: -1.315329134464264
 set to 0:
 reward: [0.056393980979919434]
-difference from original: 0.021108806133270264
+difference from original: -0.021108806133270264
 set to -5:
 reward: [0.2769671678543091]
 difference from original: 0.19946438074111938
@@ -1143,7 +1143,7 @@ reward: [-0.2787036895751953]
 difference from original: -0.356206476688385
 set to 0:
 reward: [0.03052496910095215]
-difference from original: 0.04697781801223755
+difference from original: -0.04697781801223755
 set to -5:
 reward: [-1.0555517673492432]
 difference from original: -1.1330545544624329
@@ -1209,7 +1209,7 @@ reward: [-1.1553173065185547]
 difference from original: -1.2328200936317444
 set to 0:
 reward: [0.07492029666900635]
-difference from original: 0.0025824904441833496
+difference from original: -0.0025824904441833496
 set to -5:
 reward: [0.09115737676620483]
 difference from original: 0.013654589653015137
@@ -1220,7 +1220,7 @@ reward: [-0.6492979526519775]
 difference from original: -0.7268007397651672
 set to 0:
 reward: [0.03879094123840332]
-difference from original: 0.03871184587478638
+difference from original: -0.03871184587478638
 set to -5:
 reward: [-0.1519629955291748]
 difference from original: -0.2294657826423645
@@ -1231,7 +1231,7 @@ reward: [0.17221510410308838]
 difference from original: 0.09471231698989868
 set to 0:
 reward: [-0.2216954231262207]
-difference from original: 0.2991982102394104
+difference from original: -0.2991982102394104
 set to -5:
 reward: [-1.937370777130127]
 difference from original: -2.0148735642433167
@@ -1242,7 +1242,7 @@ reward: [-1.4445371627807617]
 difference from original: -1.5220399498939514
 set to 0:
 reward: [-0.061115384101867676]
-difference from original: 0.13861817121505737
+difference from original: -0.13861817121505737
 set to -5:
 reward: [0.18530136346817017]
 difference from original: 0.10779857635498047
@@ -1253,7 +1253,7 @@ reward: [-0.3047354221343994]
 difference from original: -0.3822382092475891
 set to 0:
 reward: [0.07481896877288818]
-difference from original: 0.0026838183403015137
+difference from original: -0.0026838183403015137
 set to -5:
 reward: [-0.4191899299621582]
 difference from original: -0.4966927170753479
@@ -1264,7 +1264,7 @@ reward: [-1.1981275081634521]
 difference from original: -1.2756302952766418
 set to 0:
 reward: [-0.14859044551849365]
-difference from original: 0.22609323263168335
+difference from original: -0.22609323263168335
 set to -5:
 reward: [-0.00295412540435791]
 difference from original: -0.08045691251754761
@@ -1341,7 +1341,7 @@ reward: [0.27181392908096313]
 difference from original: 0.19431114196777344
 set to 0:
 reward: [-0.10584962368011475]
-difference from original: 0.18335241079330444
+difference from original: -0.18335241079330444
 set to -5:
 reward: [-1.8032739162445068]
 difference from original: -1.8807767033576965
@@ -1418,7 +1418,7 @@ reward: [0.17167508602142334]
 difference from original: 0.09417229890823364
 set to 0:
 reward: [0.06801033020019531]
-difference from original: 0.009492456912994385
+difference from original: -0.009492456912994385
 set to -5:
 reward: [-0.3552515506744385]
 difference from original: -0.4327543377876282
