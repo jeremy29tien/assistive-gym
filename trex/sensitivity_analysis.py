@@ -76,21 +76,29 @@ with np.printoptions(precision=4, suppress=True):
     print("worst_state", worst_state)
     print()
 
-print("Sensitivity analysis on the best state...")
-for i, feature in enumerate(best_state):
-    print("Feature", i)
-    best_state[i] = 5
-    print("set to 5:")
-    print("reward:", predict_reward_sequence(reward_net, [best_state]))
-    print("difference from original:", predict_reward_sequence(reward_net, [best_state])[0] - max_reward)
-    best_state[i] = 0
-    print("set to 0:")
-    print("reward:", predict_reward_sequence(reward_net, [best_state]))
-    print("difference from original:", predict_reward_sequence(reward_net, [best_state])[0] - max_reward)
-    best_state[i] = -5
-    print("set to -5:")
-    print("reward:", predict_reward_sequence(reward_net, [best_state]))
-    print("difference from original:", predict_reward_sequence(reward_net, [best_state])[0] - max_reward)
-    print()
 
-    best_state[i] = feature
+def sensitivity(name, state, reward):
+    print("Sensitivity analysis on the " + name + " state...")
+    for i, feature in enumerate(state):
+        print("Feature", i)
+        state[i] = 5
+        print("set to 5:")
+        print("reward:", predict_reward_sequence(reward_net, [state]))
+        print("difference from original:", predict_reward_sequence(reward_net, [state])[0] - reward)
+        state[i] = 0
+        print("set to 0:")
+        print("reward:", predict_reward_sequence(reward_net, [state]))
+        print("difference from original:", predict_reward_sequence(reward_net, [state])[0] - reward)
+        state[i] = -5
+        print("set to -5:")
+        print("reward:", predict_reward_sequence(reward_net, [state]))
+        print("difference from original:", predict_reward_sequence(reward_net, [state])[0] - reward)
+        print()
+
+        state[i] = feature
+
+
+sensitivity("best", best_state, max_reward)
+sensitivity("second best", second_best_state, second_max_reward)
+sensitivity("second worst", second_worst_state, second_min_reward)
+sensitivity("worst", worst_state, min_reward)
