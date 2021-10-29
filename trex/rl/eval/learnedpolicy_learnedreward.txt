@@ -1,5 +1,8 @@
 device: cuda:0
 torch.cuda.is_available(): True
+##################
+Loading directly from a specific policy path: ./trained_models_reward_learning_seed5/ppo/FeedingLearnedRewardSawyer-v0/checkpoint_53/checkpoint-53
+##################
 Reward total: 193.68, mean force: 0.00, task success: 0
 Reward total: 235.51, mean force: 0.00, task success: 0
 Reward total: 218.38, mean force: 0.00, task success: 0
