@@ -78,6 +78,8 @@ with np.printoptions(precision=4, suppress=True):
 
 
 def sensitivity(name, state, reward):
+    most_sens_feature = None
+    max_dev_from_orig_reward = 0
     print("Sensitivity analysis on the " + name + " state...")
     for i, feature in enumerate(state):
         print("Feature", i)
@@ -85,10 +87,16 @@ def sensitivity(name, state, reward):
         print("set to 5:")
         print("reward:", predict_reward_sequence(reward_net, [state]))
         print("difference from original:", predict_reward_sequence(reward_net, [state])[0] - reward)
+
         state[i] = 0
         print("set to 0:")
         print("reward:", predict_reward_sequence(reward_net, [state]))
-        print("difference from original:", predict_reward_sequence(reward_net, [state])[0] - reward)
+        delta = abs(predict_reward_sequence(reward_net, [state])[0] - reward)
+        print("difference from original:", delta)
+        if delta > max_dev_from_orig_reward:
+            max_dev_from_orig_reward = delta
+            most_sens_feature = i
+
         state[i] = -5
         print("set to -5:")
         print("reward:", predict_reward_sequence(reward_net, [state]))
@@ -96,9 +104,16 @@ def sensitivity(name, state, reward):
         print()
 
         state[i] = feature
+    return most_sens_feature
 
 
-sensitivity("best", best_state, max_reward)
-sensitivity("second best", second_best_state, second_max_reward)
-sensitivity("second worst", second_worst_state, second_min_reward)
-sensitivity("worst", worst_state, min_reward)
+s1 = sensitivity("best", best_state, max_reward)
+s2 = sensitivity("second best", second_best_state, second_max_reward)
+s3 = sensitivity("second worst", second_worst_state, second_min_reward)
+s4 = sensitivity("worst", worst_state, min_reward)
+
+print("Looking at sensitivity to zeroing out features...")
+print("Most sensitive feature for best_state:", s1)
+print("Most sensitive feature for second_best_state:", s2)
+print("Most sensitive feature for second_worst_state:", s3)
+print("Most sensitive feature for worst_state:", s4)
