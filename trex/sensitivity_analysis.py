@@ -91,8 +91,8 @@ def sensitivity(name, state, reward):
         state[i] = 0
         print("set to 0:")
         print("reward:", predict_reward_sequence(reward_net, [state]))
+        print("difference from original:", predict_reward_sequence(reward_net, [state])[0] - reward)
         delta = abs(predict_reward_sequence(reward_net, [state])[0] - reward)
-        print("difference from original:", delta)
         if delta > max_dev_from_orig_reward:
             max_dev_from_orig_reward = delta
             most_sens_feature = i
