@@ -44,6 +44,9 @@ def load_policy(env, algo, env_name, policy_path=None, coop=False, seed=0, extra
     if policy_path != '':
         if 'checkpoint' in policy_path:
             agent.restore(policy_path)
+            print("##################")
+            print("Loading directly from a specific policy path:", policy_path)
+            print("##################")
         else:
             # Find the most recent policy in the directory
             directory = os.path.join(policy_path, algo, env_name)
@@ -54,6 +57,10 @@ def load_policy(env, algo, env_name, policy_path=None, coop=False, seed=0, extra
                 checkpoint_num = files_ints.index(checkpoint_max)
                 checkpoint_path = os.path.join(directory, 'checkpoint_%s' % files[checkpoint_num], 'checkpoint-%d' % checkpoint_max)
                 agent.restore(checkpoint_path)
+                print("##################")
+                print("Inferring policy to load based on env_name:", checkpoint_path)
+                print("##################")
+
                 # return agent, checkpoint_path
             return agent, None
     return agent, None
@@ -99,6 +106,7 @@ def render_policy(env, env_name, algo, policy_path, coop=False, colab=False, see
         env = make_env(env_name, coop, seed=seed)
         if colab:
             env.setup_camera(camera_eye=[0.5, -0.75, 1.5], camera_target=[-0.2, 0, 0.75], fov=60, camera_width=1920//4, camera_height=1080//4)
+    print(policy_path)
     test_agent, _ = load_policy(env, algo, env_name, policy_path, coop, seed, extra_configs)
 
     if not colab:
