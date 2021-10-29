@@ -1,0 +1,1436 @@
+max_reward 1.957602620124817
+best_state [ 0.8598  0.5136  0.2111  0.6135  0.235   0.3582  0.6634  0.0002 -0.0313
+ -0.0081  0.3953 -0.4627 -0.4715  1.0449 -0.6473 -1.0975 -2.0691  0.8173
+  0.5934  0.137  -0.2382 -0.2181  0.4079  0.854  10.713   0.3263  0.4445
+  0.1395 -0.6829  0.0306  0.6383 -0.5733]
+
+second_max_reward 1.9377961158752441
+second_best_state [ 0.961   0.2218  0.2222  0.5933  0.3149  0.2522  0.6966 -0.0068 -0.0345
+ -0.0217  0.07   -0.3833 -0.6638  0.7147 -1.016  -1.1582 -1.5487  0.9045
+  0.342   0.2035 -0.032  -0.0566  0.3254  0.9433  8.9649  0.1286  0.798
+ -0.9566  0.1814 -0.3532 -0.3353 -0.8353]
+
+second_min_reward 0.09575194120407104
+second_worst_state [ 0.3122 -0.8718  0.072   0.433   0.0819 -0.3648  0.8202 -0.6637 -1.0895
+ -0.1685 -1.4412 -0.2036 -0.7596  0.4605 -1.2777 -1.1116 -1.968   0.9102
+  0.3032  0.2035 -0.0683  0.1023  0.2845  0.9508  0.     -0.8654 -0.5613
+  0.7047 -0.0698  0.2498 -0.8738  0.9661]
+
+min_reward 0.0775027871131897
+worst_state [ 0.1186 -0.4869 -0.1916 -0.5844 -0.1269  0.6489 -0.4704 -0.8934 -0.4205
+ -0.4478 -1.2382  0.2232 -1.171   1.4858 -0.822  -1.1848 -2.0829  0.9735
+  0.0271  0.2035 -0.1585  0.2811  0.0646  0.9443  0.     -0.739  -0.9097
+  0.4385 -0.7202  0.887   0.903   0.9621]
+
+Sensitivity analysis on the best state...
+Feature 0
+set to 5:
+reward: [1.9270904064178467]
+difference from original: -0.030512213706970215
+set to 0:
+reward: [1.8795713186264038]
+difference from original: -0.07803130149841309
+set to -5:
+reward: [1.1649271249771118]
+difference from original: -0.7926754951477051
+
+Feature 1
+set to 5:
+reward: [1.9504139423370361]
+difference from original: -0.007188677787780762
+set to 0:
+reward: [1.943519115447998]
+difference from original: -0.014083504676818848
+set to -5:
+reward: [1.3200695514678955]
+difference from original: -0.6375330686569214
+
+Feature 2
+set to 5:
+reward: [1.8211305141448975]
+difference from original: -0.13647210597991943
+set to 0:
+reward: [1.9479196071624756]
+difference from original: -0.009683012962341309
+set to -5:
+reward: [1.1846568584442139]
+difference from original: -0.772945761680603
+
+Feature 3
+set to 5:
+reward: [2.105111598968506]
+difference from original: 0.14750897884368896
+set to 0:
+reward: [1.8942195177078247]
+difference from original: -0.06338310241699219
+set to -5:
+reward: [1.2183266878128052]
+difference from original: -0.7392759323120117
+
+Feature 4
+set to 5:
+reward: [1.325111985206604]
+difference from original: -0.6324906349182129
+set to 0:
+reward: [1.9693348407745361]
+difference from original: 0.011732220649719238
+set to -5:
+reward: [1.7246298789978027]
+difference from original: -0.23297274112701416
+
+Feature 5
+set to 5:
+reward: [2.1907920837402344]
+difference from original: 0.23318946361541748
+set to 0:
+reward: [1.932539463043213]
+difference from original: -0.025063157081604004
+set to -5:
+reward: [0.5022491812705994]
+difference from original: -1.4553534388542175
+
+Feature 6
+set to 5:
+reward: [1.8411370515823364]
+difference from original: -0.11646556854248047
+set to 0:
+reward: [1.9002044200897217]
+difference from original: -0.057398200035095215
+set to -5:
+reward: [1.1306438446044922]
+difference from original: -0.8269587755203247
+
+Feature 7
+set to 5:
+reward: [2.4085445404052734]
+difference from original: 0.45094192028045654
+set to 0:
+reward: [1.9575536251068115]
+difference from original: -4.8995018005371094e-05
+set to -5:
+reward: [0.698911190032959]
+difference from original: -1.258691430091858
+
+Feature 8
+set to 5:
+reward: [1.9275212287902832]
+difference from original: -0.03008139133453369
+set to 0:
+reward: [1.9602031707763672]
+difference from original: 0.002600550651550293
+set to -5:
+reward: [1.594351887702942]
+difference from original: -0.363250732421875
+
+Feature 9
+set to 5:
+reward: [3.0517210960388184]
+difference from original: 1.0941184759140015
+set to 0:
+reward: [1.9603214263916016]
+difference from original: 0.002718806266784668
+set to -5:
+reward: [-0.43815016746520996]
+difference from original: -2.395752787590027
+
+Feature 10
+set to 5:
+reward: [1.4073973894119263]
+difference from original: -0.5502052307128906
+set to 0:
+reward: [1.9662680625915527]
+difference from original: 0.00866544246673584
+set to -5:
+reward: [1.81877863407135]
+difference from original: -0.1388239860534668
+
+Feature 11
+set to 5:
+reward: [0.7138846516609192]
+difference from original: -1.2437179684638977
+set to 0:
+reward: [1.8857054710388184]
+difference from original: -0.07189714908599854
+set to -5:
+reward: [2.264871120452881]
+difference from original: 0.30726850032806396
+
+Feature 12
+set to 5:
+reward: [1.5273828506469727]
+difference from original: -0.43021976947784424
+set to 0:
+reward: [1.9371627569198608]
+difference from original: -0.020439863204956055
+set to -5:
+reward: [1.6539454460144043]
+difference from original: -0.3036571741104126
+
+Feature 13
+set to 5:
+reward: [1.7322046756744385]
+difference from original: -0.22539794445037842
+set to 0:
+reward: [1.9361653327941895]
+difference from original: -0.02143728733062744
+set to -5:
+reward: [1.7283785343170166]
+difference from original: -0.2292240858078003
+
+Feature 14
+set to 5:
+reward: [1.033857822418213]
+difference from original: -0.923744797706604
+set to 0:
+reward: [1.8747687339782715]
+difference from original: -0.08283388614654541
+set to -5:
+reward: [2.1498489379882812]
+difference from original: 0.19224631786346436
+
+Feature 15
+set to 5:
+reward: [2.3993453979492188]
+difference from original: 0.44174277782440186
+set to 0:
+reward: [2.1011884212493896]
+difference from original: 0.14358580112457275
+set to -5:
+reward: [1.1616871356964111]
+difference from original: -0.7959154844284058
+
+Feature 16
+set to 5:
+reward: [1.2102595567703247]
+difference from original: -0.7473430633544922
+set to 0:
+reward: [1.8010743856430054]
+difference from original: -0.15652823448181152
+set to -5:
+reward: [1.916847586631775]
+difference from original: -0.04075503349304199
+
+Feature 17
+set to 5:
+reward: [1.7976670265197754]
+difference from original: -0.1599355936050415
+set to 0:
+reward: [1.9441732168197632]
+difference from original: -0.013429403305053711
+set to -5:
+reward: [1.7800672054290771]
+difference from original: -0.17753541469573975
+
+Feature 18
+set to 5:
+reward: [1.1833791732788086]
+difference from original: -0.7742234468460083
+set to 0:
+reward: [2.0558559894561768]
+difference from original: 0.09825336933135986
+set to -5:
+reward: [2.2940657138824463]
+difference from original: 0.3364630937576294
+
+Feature 19
+set to 5:
+reward: [0.8907303214073181]
+difference from original: -1.0668722987174988
+set to 0:
+reward: [1.9820770025253296]
+difference from original: 0.024474382400512695
+set to -5:
+reward: [2.0103583335876465]
+difference from original: 0.05275571346282959
+
+Feature 20
+set to 5:
+reward: [0.3647841811180115]
+difference from original: -1.5928184390068054
+set to 0:
+reward: [1.930260181427002]
+difference from original: -0.02734243869781494
+set to -5:
+reward: [2.2308101654052734]
+difference from original: 0.27320754528045654
+
+Feature 21
+set to 5:
+reward: [1.20149564743042]
+difference from original: -0.756106972694397
+set to 0:
+reward: [1.9499925374984741]
+difference from original: -0.0076100826263427734
+set to -5:
+reward: [1.5265116691589355]
+difference from original: -0.43109095096588135
+
+Feature 22
+set to 5:
+reward: [1.5792515277862549]
+difference from original: -0.378351092338562
+set to 0:
+reward: [1.9313305616378784]
+difference from original: -0.026272058486938477
+set to -5:
+reward: [1.0246223211288452]
+difference from original: -0.9329802989959717
+
+Feature 23
+set to 5:
+reward: [2.2792599201202393]
+difference from original: 0.32165729999542236
+set to 0:
+reward: [1.8002536296844482]
+difference from original: -0.15734899044036865
+set to -5:
+reward: [0.2520807385444641]
+difference from original: -1.7055218815803528
+
+Feature 24
+set to 5:
+reward: [1.8175203800201416]
+difference from original: -0.1400822401046753
+set to 0:
+reward: [1.6518727540969849]
+difference from original: -0.30572986602783203
+set to -5:
+reward: [0.33373379707336426]
+difference from original: -1.6238688230514526
+
+Feature 25
+set to 5:
+reward: [2.2100272178649902]
+difference from original: 0.25242459774017334
+set to 0:
+reward: [1.8714852333068848]
+difference from original: -0.08611738681793213
+set to -5:
+reward: [0.03242504596710205]
+difference from original: -1.9251775741577148
+
+Feature 26
+set to 5:
+reward: [2.1024961471557617]
+difference from original: 0.14489352703094482
+set to 0:
+reward: [1.8753974437713623]
+difference from original: -0.08220517635345459
+set to -5:
+reward: [0.2735050916671753]
+difference from original: -1.6840975284576416
+
+Feature 27
+set to 5:
+reward: [0.8032156825065613]
+difference from original: -1.1543869376182556
+set to 0:
+reward: [1.9752768278121948]
+difference from original: 0.01767420768737793
+set to -5:
+reward: [2.1457433700561523]
+difference from original: 0.18814074993133545
+
+Feature 28
+set to 5:
+reward: [0.524340033531189]
+difference from original: -1.433262586593628
+set to 0:
+reward: [1.9898847341537476]
+difference from original: 0.032282114028930664
+set to -5:
+reward: [1.622411847114563]
+difference from original: -0.3351907730102539
+
+Feature 29
+set to 5:
+reward: [1.098405122756958]
+difference from original: -0.8591974973678589
+set to 0:
+reward: [1.9610533714294434]
+difference from original: 0.003450751304626465
+set to -5:
+reward: [2.072589874267578]
+difference from original: 0.11498725414276123
+
+Feature 30
+set to 5:
+reward: [2.246161937713623]
+difference from original: 0.28855931758880615
+set to 0:
+reward: [1.8990087509155273]
+difference from original: -0.05859386920928955
+set to -5:
+reward: [1.0148566961288452]
+difference from original: -0.9427459239959717
+
+Feature 31
+set to 5:
+reward: [-0.25544416904449463]
+difference from original: -2.2130467891693115
+set to 0:
+reward: [1.7670758962631226]
+difference from original: -0.19052672386169434
+set to -5:
+reward: [2.844832420349121]
+difference from original: 0.8872298002243042
+
+Sensitivity analysis on the second best state...
+Feature 0
+set to 5:
+reward: [1.7940177917480469]
+difference from original: -0.14377832412719727
+set to 0:
+reward: [1.9113446474075317]
+difference from original: -0.026451468467712402
+set to -5:
+reward: [1.2094706296920776]
+difference from original: -0.7283254861831665
+
+Feature 1
+set to 5:
+reward: [2.080878973007202]
+difference from original: 0.143082857131958
+set to 0:
+reward: [1.9248721599578857]
+difference from original: -0.012923955917358398
+set to -5:
+reward: [1.2793258428573608]
+difference from original: -0.6584702730178833
+
+Feature 2
+set to 5:
+reward: [1.6122139692306519]
+difference from original: -0.3255821466445923
+set to 0:
+reward: [1.9249086380004883]
+difference from original: -0.01288747787475586
+set to -5:
+reward: [1.2291879653930664]
+difference from original: -0.7086081504821777
+
+Feature 3
+set to 5:
+reward: [2.1964473724365234]
+difference from original: 0.2586512565612793
+set to 0:
+reward: [1.877094030380249]
+difference from original: -0.06070208549499512
+set to -5:
+reward: [1.234359860420227]
+difference from original: -0.7034362554550171
+
+Feature 4
+set to 5:
+reward: [1.3731398582458496]
+difference from original: -0.5646562576293945
+set to 0:
+reward: [1.9576148986816406]
+difference from original: 0.019818782806396484
+set to -5:
+reward: [1.6031513214111328]
+difference from original: -0.33464479446411133
+
+Feature 5
+set to 5:
+reward: [2.2317724227905273]
+difference from original: 0.2939763069152832
+set to 0:
+reward: [1.8991737365722656]
+difference from original: -0.038622379302978516
+set to -5:
+reward: [0.3448330760002136]
+difference from original: -1.5929630398750305
+
+Feature 6
+set to 5:
+reward: [1.5410337448120117]
+difference from original: -0.3967623710632324
+set to 0:
+reward: [1.960038423538208]
+difference from original: 0.022242307662963867
+set to -5:
+reward: [1.359615445137024]
+difference from original: -0.5781806707382202
+
+Feature 7
+set to 5:
+reward: [2.422109603881836]
+difference from original: 0.4843134880065918
+set to 0:
+reward: [1.9390583038330078]
+difference from original: 0.0012621879577636719
+set to -5:
+reward: [0.6712973117828369]
+difference from original: -1.2664988040924072
+
+Feature 8
+set to 5:
+reward: [1.8680516481399536]
+difference from original: -0.06974446773529053
+set to 0:
+reward: [1.9401196241378784]
+difference from original: 0.0023235082626342773
+set to -5:
+reward: [1.5891892910003662]
+difference from original: -0.34860682487487793
+
+Feature 9
+set to 5:
+reward: [2.842404842376709]
+difference from original: 0.9046087265014648
+set to 0:
+reward: [1.944007396697998]
+difference from original: 0.006211280822753906
+set to -5:
+reward: [-0.1240854263305664]
+difference from original: -2.0618815422058105
+
+Feature 10
+set to 5:
+reward: [1.4099955558776855]
+difference from original: -0.5278005599975586
+set to 0:
+reward: [1.9398622512817383]
+difference from original: 0.0020661354064941406
+set to -5:
+reward: [1.8258732557296753]
+difference from original: -0.11192286014556885
+
+Feature 11
+set to 5:
+reward: [0.7496376633644104]
+difference from original: -1.1881584525108337
+set to 0:
+reward: [1.8779363632202148]
+difference from original: -0.0598597526550293
+set to -5:
+reward: [2.124939441680908]
+difference from original: 0.18714332580566406
+
+Feature 12
+set to 5:
+reward: [1.706345558166504]
+difference from original: -0.23145055770874023
+set to 0:
+reward: [1.9621307849884033]
+difference from original: 0.02433466911315918
+set to -5:
+reward: [1.388704538345337]
+difference from original: -0.5490915775299072
+
+Feature 13
+set to 5:
+reward: [1.505476951599121]
+difference from original: -0.43231916427612305
+set to 0:
+reward: [1.9872548580169678]
+difference from original: 0.04945874214172363
+set to -5:
+reward: [1.956411361694336]
+difference from original: 0.018615245819091797
+
+Feature 14
+set to 5:
+reward: [1.1984531879425049]
+difference from original: -0.7393429279327393
+set to 0:
+reward: [1.9007718563079834]
+difference from original: -0.03702425956726074
+set to -5:
+reward: [1.887498140335083]
+difference from original: -0.05029797554016113
+
+Feature 15
+set to 5:
+reward: [2.048407554626465]
+difference from original: 0.1106114387512207
+set to 0:
+reward: [2.0433058738708496]
+difference from original: 0.10550975799560547
+set to -5:
+reward: [1.2091553211212158]
+difference from original: -0.7286407947540283
+
+Feature 16
+set to 5:
+reward: [1.2491501569747925]
+difference from original: -0.6886459589004517
+set to 0:
+reward: [1.8844623565673828]
+difference from original: -0.05333375930786133
+set to -5:
+reward: [1.679403305053711]
+difference from original: -0.2583928108215332
+
+Feature 17
+set to 5:
+reward: [1.8176954984664917]
+difference from original: -0.12010061740875244
+set to 0:
+reward: [1.8991355895996094]
+difference from original: -0.038660526275634766
+set to -5:
+reward: [1.7091530561447144]
+difference from original: -0.22864305973052979
+
+Feature 18
+set to 5:
+reward: [1.2982797622680664]
+difference from original: -0.6395163536071777
+set to 0:
+reward: [1.9599002599716187]
+difference from original: 0.02210414409637451
+set to -5:
+reward: [2.166827917098999]
+difference from original: 0.22903180122375488
+
+Feature 19
+set to 5:
+reward: [1.0093671083450317]
+difference from original: -0.9284290075302124
+set to 0:
+reward: [1.948784351348877]
+difference from original: 0.010988235473632812
+set to -5:
+reward: [1.8831760883331299]
+difference from original: -0.05462002754211426
+
+Feature 20
+set to 5:
+reward: [0.28434455394744873]
+difference from original: -1.6534515619277954
+set to 0:
+reward: [1.9300487041473389]
+difference from original: -0.0077474117279052734
+set to -5:
+reward: [2.4362754821777344]
+difference from original: 0.49847936630249023
+
+Feature 21
+set to 5:
+reward: [1.2603651285171509]
+difference from original: -0.6774309873580933
+set to 0:
+reward: [1.9344534873962402]
+difference from original: -0.0033426284790039062
+set to -5:
+reward: [1.2578356266021729]
+difference from original: -0.6799604892730713
+
+Feature 22
+set to 5:
+reward: [1.9196256399154663]
+difference from original: -0.018170475959777832
+set to 0:
+reward: [1.891946792602539]
+difference from original: -0.04584932327270508
+set to -5:
+reward: [0.8210229873657227]
+difference from original: -1.1167731285095215
+
+Feature 23
+set to 5:
+reward: [2.1385908126831055]
+difference from original: 0.20079469680786133
+set to 0:
+reward: [1.8284151554107666]
+difference from original: -0.10938096046447754
+set to -5:
+reward: [0.545052170753479]
+difference from original: -1.3927439451217651
+
+Feature 24
+set to 5:
+reward: [1.6572682857513428]
+difference from original: -0.28052783012390137
+set to 0:
+reward: [1.3551946878433228]
+difference from original: -0.5826014280319214
+set to -5:
+reward: [-0.2232722043991089]
+difference from original: -2.161068320274353
+
+Feature 25
+set to 5:
+reward: [1.957952857017517]
+difference from original: 0.02015674114227295
+set to 0:
+reward: [1.9258661270141602]
+difference from original: -0.011929988861083984
+set to -5:
+reward: [0.5223122835159302]
+difference from original: -1.415483832359314
+
+Feature 26
+set to 5:
+reward: [1.695336103439331]
+difference from original: -0.24246001243591309
+set to 0:
+reward: [1.8624374866485596]
+difference from original: -0.07535862922668457
+set to -5:
+reward: [0.47719717025756836]
+difference from original: -1.4605989456176758
+
+Feature 27
+set to 5:
+reward: [0.7069776058197021]
+difference from original: -1.230818510055542
+set to 0:
+reward: [1.820410132408142]
+difference from original: -0.11738598346710205
+set to -5:
+reward: [2.097895383834839]
+difference from original: 0.16009926795959473
+
+Feature 28
+set to 5:
+reward: [0.5187364816665649]
+difference from original: -1.4190596342086792
+set to 0:
+reward: [1.9641473293304443]
+difference from original: 0.026351213455200195
+set to -5:
+reward: [1.7933924198150635]
+difference from original: -0.14440369606018066
+
+Feature 29
+set to 5:
+reward: [1.3275108337402344]
+difference from original: -0.6102852821350098
+set to 0:
+reward: [1.9310733079910278]
+difference from original: -0.006722807884216309
+set to -5:
+reward: [1.7918667793273926]
+difference from original: -0.14592933654785156
+
+Feature 30
+set to 5:
+reward: [2.4143996238708496]
+difference from original: 0.47660350799560547
+set to 0:
+reward: [1.9926414489746094]
+difference from original: 0.054845333099365234
+set to -5:
+reward: [1.0811868906021118]
+difference from original: -0.8566092252731323
+
+Feature 31
+set to 5:
+reward: [0.06856036186218262]
+difference from original: -1.8692357540130615
+set to 0:
+reward: [1.7513694763183594]
+difference from original: -0.18642663955688477
+set to -5:
+reward: [2.598409652709961]
+difference from original: 0.6606135368347168
+
+Sensitivity analysis on the second worst state...
+Feature 0
+set to 5:
+reward: [-0.31838250160217285]
+difference from original: -0.4141344428062439
+set to 0:
+reward: [0.11591261625289917]
+difference from original: 0.020160675048828125
+set to -5:
+reward: [-0.22406482696533203]
+difference from original: -0.3198167681694031
+
+Feature 1
+set to 5:
+reward: [-0.42774760723114014]
+difference from original: -0.5234995484352112
+set to 0:
+reward: [0.13011795282363892]
+difference from original: 0.03436601161956787
+set to -5:
+reward: [-0.1495504379272461]
+difference from original: -0.24530237913131714
+
+Feature 2
+set to 5:
+reward: [0.05959784984588623]
+difference from original: -0.036154091358184814
+set to 0:
+reward: [0.07997184991836548]
+difference from original: -0.015780091285705566
+set to -5:
+reward: [-1.1183340549468994]
+difference from original: -1.2140859961509705
+
+Feature 3
+set to 5:
+reward: [0.393832266330719]
+difference from original: 0.29808032512664795
+set to 0:
+reward: [0.08547890186309814]
+difference from original: -0.0102730393409729
+set to -5:
+reward: [-0.8184740543365479]
+difference from original: -0.9142259955406189
+
+Feature 4
+set to 5:
+reward: [-1.050724744796753]
+difference from original: -1.146476686000824
+set to 0:
+reward: [0.10702013969421387]
+difference from original: 0.011268198490142822
+set to -5:
+reward: [-0.15853750705718994]
+difference from original: -0.254289448261261
+
+Feature 5
+set to 5:
+reward: [-0.4307793378829956]
+difference from original: -0.5265312790870667
+set to 0:
+reward: [0.14974820613861084]
+difference from original: 0.053996264934539795
+set to -5:
+reward: [-1.1593661308288574]
+difference from original: -1.2551180720329285
+
+Feature 6
+set to 5:
+reward: [-0.031288862228393555]
+difference from original: -0.1270408034324646
+set to 0:
+reward: [0.06472885608673096]
+difference from original: -0.031023085117340088
+set to -5:
+reward: [-0.671841025352478]
+difference from original: -0.7675929665565491
+
+Feature 7
+set to 5:
+reward: [0.8753069043159485]
+difference from original: 0.7795549631118774
+set to 0:
+reward: [0.27892231941223145]
+difference from original: 0.1831703782081604
+set to -5:
+reward: [-1.0321893692016602]
+difference from original: -1.1279413104057312
+
+Feature 8
+set to 5:
+reward: [-0.1980597972869873]
+difference from original: -0.29381173849105835
+set to 0:
+reward: [0.3294549584388733]
+difference from original: 0.23370301723480225
+set to -5:
+reward: [-0.6462126970291138]
+difference from original: -0.7419646382331848
+
+Feature 9
+set to 5:
+reward: [1.6119568347930908]
+difference from original: 1.5162048935890198
+set to 0:
+reward: [0.18495023250579834]
+difference from original: 0.0891982913017273
+set to -5:
+reward: [-3.3970749378204346]
+difference from original: -3.4928268790245056
+
+Feature 10
+set to 5:
+reward: [-0.5061408281326294]
+difference from original: -0.6018927693367004
+set to 0:
+reward: [0.24397122859954834]
+difference from original: 0.1482192873954773
+set to -5:
+reward: [-0.5012874603271484]
+difference from original: -0.5970394015312195
+
+Feature 11
+set to 5:
+reward: [-1.0885202884674072]
+difference from original: -1.1842722296714783
+set to 0:
+reward: [0.08593404293060303]
+difference from original: -0.009817898273468018
+set to -5:
+reward: [0.2845500111579895]
+difference from original: 0.18879806995391846
+
+Feature 12
+set to 5:
+reward: [-0.2869710922241211]
+difference from original: -0.38272303342819214
+set to 0:
+reward: [0.17006027698516846]
+difference from original: 0.07430833578109741
+set to -5:
+reward: [-0.22178494930267334]
+difference from original: -0.3175368905067444
+
+Feature 13
+set to 5:
+reward: [0.010332942008972168]
+difference from original: -0.08541899919509888
+set to 0:
+reward: [0.10629415512084961]
+difference from original: 0.010542213916778564
+set to -5:
+reward: [-1.020496129989624]
+difference from original: -1.116248071193695
+
+Feature 14
+set to 5:
+reward: [-0.9637587070465088]
+difference from original: -1.0595106482505798
+set to 0:
+reward: [0.055086612701416016]
+difference from original: -0.04066532850265503
+set to -5:
+reward: [-0.18455922603607178]
+difference from original: -0.2803111672401428
+
+Feature 15
+set to 5:
+reward: [-0.4234273433685303]
+difference from original: -0.5191792845726013
+set to 0:
+reward: [0.1316409707069397]
+difference from original: 0.03588902950286865
+set to -5:
+reward: [-0.32320892810821533]
+difference from original: -0.4189608693122864
+
+Feature 16
+set to 5:
+reward: [-1.133634328842163]
+difference from original: -1.2293862700462341
+set to 0:
+reward: [-0.07780098915100098]
+difference from original: -0.17355293035507202
+set to -5:
+reward: [0.3043423891067505]
+difference from original: 0.20859044790267944
+
+Feature 17
+set to 5:
+reward: [0.05679190158843994]
+difference from original: -0.038960039615631104
+set to 0:
+reward: [0.08381021022796631]
+difference from original: -0.011941730976104736
+set to -5:
+reward: [-0.49143826961517334]
+difference from original: -0.5871902108192444
+
+Feature 18
+set to 5:
+reward: [-0.8050856590270996]
+difference from original: -0.9008376002311707
+set to 0:
+reward: [0.13779360055923462]
+difference from original: 0.042041659355163574
+set to -5:
+reward: [0.3375787138938904]
+difference from original: 0.24182677268981934
+
+Feature 19
+set to 5:
+reward: [-1.311481237411499]
+difference from original: -1.40723317861557
+set to 0:
+reward: [0.13165056705474854]
+difference from original: 0.03589862585067749
+set to -5:
+reward: [0.19391405582427979]
+difference from original: 0.09816211462020874
+
+Feature 20
+set to 5:
+reward: [-0.2254120111465454]
+difference from original: -0.32116395235061646
+set to 0:
+reward: [0.10593485832214355]
+difference from original: 0.01018291711807251
+set to -5:
+reward: [-1.0621638298034668]
+difference from original: -1.1579157710075378
+
+Feature 21
+set to 5:
+reward: [-0.3827275037765503]
+difference from original: -0.47847944498062134
+set to 0:
+reward: [0.09778660535812378]
+difference from original: 0.0020346641540527344
+set to -5:
+reward: [-1.1305484771728516]
+difference from original: -1.2263004183769226
+
+Feature 22
+set to 5:
+reward: [-1.5229887962341309]
+difference from original: -1.618740737438202
+set to 0:
+reward: [0.17939531803131104]
+difference from original: 0.08364337682723999
+set to -5:
+reward: [0.2146536111831665]
+difference from original: 0.11890166997909546
+
+Feature 23
+set to 5:
+reward: [0.31203603744506836]
+difference from original: 0.21628409624099731
+set to 0:
+reward: [-0.009897947311401367]
+difference from original: -0.10564988851547241
+set to -5:
+reward: [-1.8537898063659668]
+difference from original: -1.9495417475700378
+
+Feature 24
+set to 5:
+reward: [0.2998409867286682]
+difference from original: 0.20408904552459717
+set to 0:
+reward: [0.09575194120407104]
+difference from original: 0.0
+set to -5:
+reward: [-1.3067984580993652]
+difference from original: -1.4025503993034363
+
+Feature 25
+set to 5:
+reward: [0.27229565382003784]
+difference from original: 0.1765437126159668
+set to 0:
+reward: [0.266529381275177]
+difference from original: 0.17077744007110596
+set to -5:
+reward: [-1.4241328239440918]
+difference from original: -1.5198847651481628
+
+Feature 26
+set to 5:
+reward: [-0.6323932409286499]
+difference from original: -0.728145182132721
+set to 0:
+reward: [0.227100670337677]
+difference from original: 0.13134872913360596
+set to -5:
+reward: [-1.6981313228607178]
+difference from original: -1.7938832640647888
+
+Feature 27
+set to 5:
+reward: [-0.6152342557907104]
+difference from original: -0.7109861969947815
+set to 0:
+reward: [0.1725483536720276]
+difference from original: 0.07679641246795654
+set to -5:
+reward: [0.20568537712097168]
+difference from original: 0.10993343591690063
+
+Feature 28
+set to 5:
+reward: [-0.37561166286468506]
+difference from original: -0.4713636040687561
+set to 0:
+reward: [0.1022692322731018]
+difference from original: 0.006517291069030762
+set to -5:
+reward: [-0.4629244804382324]
+difference from original: -0.5586764216423035
+
+Feature 29
+set to 5:
+reward: [0.021824240684509277]
+difference from original: -0.07392770051956177
+set to 0:
+reward: [0.08543884754180908]
+difference from original: -0.010313093662261963
+set to -5:
+reward: [-0.5852687358856201]
+difference from original: -0.6810206770896912
+
+Feature 30
+set to 5:
+reward: [0.4264240264892578]
+difference from original: 0.33067208528518677
+set to 0:
+reward: [0.16645920276641846]
+difference from original: 0.07070726156234741
+set to -5:
+reward: [-0.33520305156707764]
+difference from original: -0.4309549927711487
+
+Feature 31
+set to 5:
+reward: [-1.169825553894043]
+difference from original: -1.265577495098114
+set to 0:
+reward: [0.45147913694381714]
+difference from original: 0.3557271957397461
+set to -5:
+reward: [0.835847795009613]
+difference from original: 0.740095853805542
+
+Sensitivity analysis on the worst state...
+Feature 0
+set to 5:
+reward: [-0.8971803188323975]
+difference from original: -0.9746831059455872
+set to 0:
+reward: [0.09291589260101318]
+difference from original: 0.015413105487823486
+set to -5:
+reward: [0.24499762058258057]
+difference from original: 0.16749483346939087
+
+Feature 1
+set to 5:
+reward: [-0.8405574560165405]
+difference from original: -0.9180602431297302
+set to 0:
+reward: [0.026511192321777344]
+difference from original: -0.050991594791412354
+set to -5:
+reward: [-0.015394091606140137]
+difference from original: -0.09289687871932983
+
+Feature 2
+set to 5:
+reward: [0.2195645570755005]
+difference from original: 0.1420617699623108
+set to 0:
+reward: [0.1036825180053711]
+difference from original: 0.026179730892181396
+set to -5:
+reward: [-0.9974939823150635]
+difference from original: -1.0749967694282532
+
+Feature 3
+set to 5:
+reward: [0.19913679361343384]
+difference from original: 0.12163400650024414
+set to 0:
+reward: [0.09518533945083618]
+difference from original: 0.017682552337646484
+set to -5:
+reward: [-0.6031701564788818]
+difference from original: -0.6806729435920715
+
+Feature 4
+set to 5:
+reward: [-1.2378263473510742]
+difference from original: -1.315329134464264
+set to 0:
+reward: [0.056393980979919434]
+difference from original: -0.021108806133270264
+set to -5:
+reward: [0.2769671678543091]
+difference from original: 0.19946438074111938
+
+Feature 5
+set to 5:
+reward: [-0.2787036895751953]
+difference from original: -0.356206476688385
+set to 0:
+reward: [0.03052496910095215]
+difference from original: -0.04697781801223755
+set to -5:
+reward: [-1.0555517673492432]
+difference from original: -1.1330545544624329
+
+Feature 6
+set to 5:
+reward: [0.07330715656280518]
+difference from original: -0.0041956305503845215
+set to 0:
+reward: [0.10818159580230713]
+difference from original: 0.03067880868911743
+set to -5:
+reward: [-0.7739324569702148]
+difference from original: -0.8514352440834045
+
+Feature 7
+set to 5:
+reward: [0.8320749402046204]
+difference from original: 0.7545721530914307
+set to 0:
+reward: [0.20412147045135498]
+difference from original: 0.12661868333816528
+set to -5:
+reward: [-0.967566967010498]
+difference from original: -1.0450697541236877
+
+Feature 8
+set to 5:
+reward: [-0.365805983543396]
+difference from original: -0.4433087706565857
+set to 0:
+reward: [0.11494678258895874]
+difference from original: 0.03744399547576904
+set to -5:
+reward: [-0.4335125684738159]
+difference from original: -0.5110153555870056
+
+Feature 9
+set to 5:
+reward: [2.002436637878418]
+difference from original: 1.9249338507652283
+set to 0:
+reward: [0.2976369261741638]
+difference from original: 0.22013413906097412
+set to -5:
+reward: [-3.4623382091522217]
+difference from original: -3.5398409962654114
+
+Feature 10
+set to 5:
+reward: [-0.24485182762145996]
+difference from original: -0.32235461473464966
+set to 0:
+reward: [0.1300978660583496]
+difference from original: 0.05259507894515991
+set to -5:
+reward: [-0.6483051776885986]
+difference from original: -0.7258079648017883
+
+Feature 11
+set to 5:
+reward: [-1.1553173065185547]
+difference from original: -1.2328200936317444
+set to 0:
+reward: [0.07492029666900635]
+difference from original: -0.0025824904441833496
+set to -5:
+reward: [0.09115737676620483]
+difference from original: 0.013654589653015137
+
+Feature 12
+set to 5:
+reward: [-0.6492979526519775]
+difference from original: -0.7268007397651672
+set to 0:
+reward: [0.03879094123840332]
+difference from original: -0.03871184587478638
+set to -5:
+reward: [-0.1519629955291748]
+difference from original: -0.2294657826423645
+
+Feature 13
+set to 5:
+reward: [0.17221510410308838]
+difference from original: 0.09471231698989868
+set to 0:
+reward: [-0.2216954231262207]
+difference from original: -0.2991982102394104
+set to -5:
+reward: [-1.937370777130127]
+difference from original: -2.0148735642433167
+
+Feature 14
+set to 5:
+reward: [-1.4445371627807617]
+difference from original: -1.5220399498939514
+set to 0:
+reward: [-0.061115384101867676]
+difference from original: -0.13861817121505737
+set to -5:
+reward: [0.18530136346817017]
+difference from original: 0.10779857635498047
+
+Feature 15
+set to 5:
+reward: [-0.3047354221343994]
+difference from original: -0.3822382092475891
+set to 0:
+reward: [0.07481896877288818]
+difference from original: -0.0026838183403015137
+set to -5:
+reward: [-0.4191899299621582]
+difference from original: -0.4966927170753479
+
+Feature 16
+set to 5:
+reward: [-1.1981275081634521]
+difference from original: -1.2756302952766418
+set to 0:
+reward: [-0.14859044551849365]
+difference from original: -0.22609323263168335
+set to -5:
+reward: [-0.00295412540435791]
+difference from original: -0.08045691251754761
+
+Feature 17
+set to 5:
+reward: [-0.348264217376709]
+difference from original: -0.4257670044898987
+set to 0:
+reward: [0.12769532203674316]
+difference from original: 0.05019253492355347
+set to -5:
+reward: [-0.36193835735321045]
+difference from original: -0.43944114446640015
+
+Feature 18
+set to 5:
+reward: [-0.5970689058303833]
+difference from original: -0.674571692943573
+set to 0:
+reward: [0.08086419105529785]
+difference from original: 0.0033614039421081543
+set to -5:
+reward: [0.09873753786087036]
+difference from original: 0.021234750747680664
+
+Feature 19
+set to 5:
+reward: [-1.7154781818389893]
+difference from original: -1.792980968952179
+set to 0:
+reward: [0.12334990501403809]
+difference from original: 0.04584711790084839
+set to -5:
+reward: [0.6071180105209351]
+difference from original: 0.5296152234077454
+
+Feature 20
+set to 5:
+reward: [0.06727719306945801]
+difference from original: -0.01022559404373169
+set to 0:
+reward: [0.1181296706199646]
+difference from original: 0.0406268835067749
+set to -5:
+reward: [-1.0761816501617432]
+difference from original: -1.1536844372749329
+
+Feature 21
+set to 5:
+reward: [-0.5831848382949829]
+difference from original: -0.6606876254081726
+set to 0:
+reward: [0.08421057462692261]
+difference from original: 0.00670778751373291
+set to -5:
+reward: [-0.7362216711044312]
+difference from original: -0.8137244582176208
+
+Feature 22
+set to 5:
+reward: [-1.682877540588379]
+difference from original: -1.7603803277015686
+set to 0:
+reward: [0.09120851755142212]
+difference from original: 0.013705730438232422
+set to -5:
+reward: [0.44735366106033325]
+difference from original: 0.36985087394714355
+
+Feature 23
+set to 5:
+reward: [0.27181392908096313]
+difference from original: 0.19431114196777344
+set to 0:
+reward: [-0.10584962368011475]
+difference from original: -0.18335241079330444
+set to -5:
+reward: [-1.8032739162445068]
+difference from original: -1.8807767033576965
+
+Feature 24
+set to 5:
+reward: [0.3119599223136902]
+difference from original: 0.2344571352005005
+set to 0:
+reward: [0.0775027871131897]
+difference from original: 0.0
+set to -5:
+reward: [-1.2732830047607422]
+difference from original: -1.3507857918739319
+
+Feature 25
+set to 5:
+reward: [1.0574980974197388]
+difference from original: 0.9799953103065491
+set to 0:
+reward: [0.34148359298706055]
+difference from original: 0.26398080587387085
+set to -5:
+reward: [-2.1551573276519775]
+difference from original: -2.2326601147651672
+
+Feature 26
+set to 5:
+reward: [-0.4753490686416626]
+difference from original: -0.5528518557548523
+set to 0:
+reward: [0.18900102376937866]
+difference from original: 0.11149823665618896
+set to -5:
+reward: [-1.6892549991607666]
+difference from original: -1.7667577862739563
+
+Feature 27
+set to 5:
+reward: [-1.0212948322296143]
+difference from original: -1.098797619342804
+set to 0:
+reward: [0.133894145488739]
+difference from original: 0.056391358375549316
+set to -5:
+reward: [0.20346403121948242]
+difference from original: 0.12596124410629272
+
+Feature 28
+set to 5:
+reward: [-0.37591516971588135]
+difference from original: -0.45341795682907104
+set to 0:
+reward: [0.11829859018325806]
+difference from original: 0.04079580307006836
+set to -5:
+reward: [-0.4577655792236328]
+difference from original: -0.5352683663368225
+
+Feature 29
+set to 5:
+reward: [-0.38950467109680176]
+difference from original: -0.46700745820999146
+set to 0:
+reward: [0.10155004262924194]
+difference from original: 0.024047255516052246
+set to -5:
+reward: [-0.4122854471206665]
+difference from original: -0.4897882342338562
+
+Feature 30
+set to 5:
+reward: [0.17167508602142334]
+difference from original: 0.09417229890823364
+set to 0:
+reward: [0.06801033020019531]
+difference from original: -0.009492456912994385
+set to -5:
+reward: [-0.3552515506744385]
+difference from original: -0.4327543377876282
+
+Feature 31
+set to 5:
+reward: [-1.1260738372802734]
+difference from original: -1.2035766243934631
+set to 0:
+reward: [0.320400595664978]
+difference from original: 0.24289780855178833
+set to -5:
+reward: [0.9039682149887085]
+difference from original: 0.8264654278755188
+
