@@ -1,3 +1,6 @@
+##################
+Loading directly from a specific policy path: ./trained_models/ppo/FeedingSawyer-v1/checkpoint_521/checkpoint-521
+##################
 Reward total: 106.65, mean force: 0.74, task success: 1
 Reward total: 123.75, mean force: 0.50, task success: 1
 Reward total: 106.22, mean force: 0.72, task success: 1
