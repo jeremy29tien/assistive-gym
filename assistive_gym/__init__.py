@@ -38,3 +38,9 @@ register(
     max_episode_steps=200,
 )
 
+# For testing how well a hand-crafted reward performs (RL-wise)
+register(
+    id='FeedingHandtunedRewardSawyer-v0',
+    entry_point='assistive_gym.envs:FeedingHandtunedRewardSawyerEnv',
+    max_episode_steps=200,
+)

@@ -9,3 +9,4 @@ from assistive_gym.envs.arm_manipulation_envs import ArmManipulationPR2Env, ArmM
 from assistive_gym.envs.human_testing import HumanTestingEnv
 from assistive_gym.envs.smplx_testing import SMPLXTestingEnv
 from assistive_gym.envs.feeding_learned_reward_envs import FeedingLearnedRewardSawyerEnv
+from assistive_gym.envs.feeding_handtuned_reward_envs import FeedingHandtunedRewardSawyerEnv

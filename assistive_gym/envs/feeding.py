@@ -16,7 +16,7 @@ class FeedingEnv(AssistiveEnv):
 
         obs = self._get_obs()
 
-        reward_food, food_mouth_velocities, food_hit_human_reward = self.get_food_rewards()
+        reward_food, food_mouth_velocities, food_hit_human_reward, foods_in_mouth, foods_on_ground = self.get_food_rewards()
 
         # Get human preferences
         end_effector_velocity = np.linalg.norm(self.robot.get_velocity(self.robot.right_end_effector))
@@ -33,7 +33,7 @@ class FeedingEnv(AssistiveEnv):
         if self.gui and reward_food != 0:
             print('Task success:', self.task_success, 'Food reward:', reward_food)
 
-        info = {'total_force_on_human': self.total_force_on_human, 'task_success': int(self.task_success >= self.total_food_count*self.config('task_success_threshold')), 'action_robot_len': self.action_robot_len, 'action_human_len': self.action_human_len, 'obs_robot_len': self.obs_robot_len, 'obs_human_len': self.obs_human_len}
+        info = {'total_force_on_human': self.total_force_on_human, 'task_success': int(self.task_success >= self.total_food_count*self.config('task_success_threshold')), 'action_robot_len': self.action_robot_len, 'action_human_len': self.action_human_len, 'obs_robot_len': self.obs_robot_len, 'obs_human_len': self.obs_human_len, 'foods_in_mouth': foods_in_mouth, 'foods_on_ground': foods_on_ground}
         done = self.iteration >= 200
 
         if not self.human.controllable:
@@ -50,6 +50,8 @@ class FeedingEnv(AssistiveEnv):
     def get_food_rewards(self):
         # Check all food particles to see if they have left the spoon or entered the person's mouth
         # Give the robot a reward or penalty depending on food particle status
+        foods_in_mouth = 0
+        foods_on_ground = 0
         food_reward = 0
         food_hit_human_reward = 0
         food_mouth_velocities = []
@@ -61,6 +63,7 @@ class FeedingEnv(AssistiveEnv):
             if distance_to_mouth < 0.03:
                 # Food is close to the person's mouth. Delete particle and give robot a reward
                 food_reward += 20
+                foods_in_mouth += 1
                 self.task_success += 1
                 food_velocity = np.linalg.norm(f.get_velocity(f.base))
                 food_mouth_velocities.append(food_velocity)
@@ -71,6 +74,7 @@ class FeedingEnv(AssistiveEnv):
             elif len(f.get_closest_points(self.tool, distance=0.1)[-1]) == 0:
                 # Delete particle and give robot a penalty for spilling food
                 food_reward -= 5
+                foods_on_ground += 1
                 foods_to_remove.append(f)
                 continue
         for f in self.foods_active:
@@ -80,7 +84,7 @@ class FeedingEnv(AssistiveEnv):
                 foods_active_to_remove.append(f)
         self.foods = [f for f in self.foods if f not in foods_to_remove]
         self.foods_active = [f for f in self.foods_active if f not in foods_active_to_remove]
-        return food_reward, food_mouth_velocities, food_hit_human_reward
+        return food_reward, food_mouth_velocities, food_hit_human_reward, foods_in_mouth, foods_on_ground
 
     def _get_obs(self, agent=None):
         spoon_pos, spoon_orient = self.tool.get_base_pos_orient()
@@ -96,6 +100,9 @@ class FeedingEnv(AssistiveEnv):
         target_pos_real, _ = self.robot.convert_to_realworld(self.target_pos)
         self.robot_force_on_human, self.spoon_force_on_human = self.get_total_force()
         self.total_force_on_human = self.robot_force_on_human + self.spoon_force_on_human
+        # print("spoon_pos_real", spoon_pos_real.shape)
+        # print("spoon_orient_real", spoon_orient_real.shape)
+        # print("dist from spoon to target", np.linalg.norm(spoon_pos_real - target_pos_real))
         robot_obs = np.concatenate([spoon_pos_real, spoon_orient_real, spoon_pos_real - target_pos_real, robot_joint_angles, head_pos_real, head_orient_real, [self.spoon_force_on_human]]).ravel()
         if agent == 'robot':
             return robot_obs

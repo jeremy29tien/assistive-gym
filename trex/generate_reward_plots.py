@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import argparse
 from sklearn.model_selection import train_test_split
-from model import Net, predict_traj_return, predict_reward_sequence
+from trex.model import Net, predict_traj_return, predict_reward_sequence
 import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser(description=None)
