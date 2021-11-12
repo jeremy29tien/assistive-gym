@@ -212,7 +212,7 @@ if __name__ == "__main__":
     parser.add_argument('--reward_model_path', default='',
                         help="name and location for learned model params, e.g. ./learned_models/breakout.params")
     # parser.add_argument('--seed', default=0, help="random seed for experiments")
-    parser.add_argument('--num_trajs', default=0, type=int, help="number of full trajectories")
+    parser.add_argument('--num_trajs', default=0, type=int, help="number of pairwise comparisons")
     parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
     parser.add_argument('--lr', default=0.00005, type=float, help="learning rate")
     parser.add_argument('--weight_decay', default=0.0, type=float, help="weight decay")
