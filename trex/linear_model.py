@@ -123,11 +123,12 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
             item_loss = loss.item()
             cum_loss += item_loss
             val_loss = calc_val_loss(reward_network, val_obs, val_labels)
+            val_acc = calc_accuracy(reward_network, val_obs, val_labels)
             if i % 100 == 99:
-                # print(i)
-                print("epoch {}:{} loss {}, val_loss {}".format(epoch, i, cum_loss, val_loss))
+                print("epoch {}:{} loss {}, val_loss {}, val_acc {}".format(epoch, i, cum_loss, val_loss, val_acc))
                 cum_loss = 0.0
                 print("check pointing")
+                print("Weights:", reward_net.state_dict())
                 torch.save(reward_net.state_dict(), checkpoint_dir)
 
             # Early Stopping
