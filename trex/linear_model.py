@@ -212,10 +212,11 @@ if __name__ == "__main__":
     parser.add_argument('--reward_model_path', default='',
                         help="name and location for learned model params, e.g. ./learned_models/breakout.params")
     # parser.add_argument('--seed', default=0, help="random seed for experiments")
-    # parser.add_argument('--models_dir', default=".",
-    #                     help="path to directory that contains a models directory in which the checkpoint models for demos are stored")
     parser.add_argument('--num_trajs', default=0, type=int, help="number of full trajectories")
-    # parser.add_argument('--num_snippets', default=6000, type=int, help="number of short subtrajectories to sample")
+    parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
+    parser.add_argument('--lr', default=0.00005, type=float, help="learning rate")
+    parser.add_argument('--weight_decay', default=0.0, type=float, help="weight decay")
+    parser.add_argument('--patience', default=100, type=int, help="number of iterations we wait before early stopping")
     args = parser.parse_args()
 
     num_trajs = args.num_trajs
@@ -225,11 +226,11 @@ if __name__ == "__main__":
     #
 
     ## HYPERPARAMS ##
-    lr = 0.00005
-    weight_decay = 0.0
-    num_iter = 100  # num times through training data
+    lr = args.lr
+    weight_decay = args.weight_decay
+    num_iter = args.num_epochs  # num times through training data
     l1_reg = 0.0
-    patience = 100
+    patience = args.patience
     pair_delta = 10
     #################
 
