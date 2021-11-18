@@ -44,3 +44,10 @@ register(
     entry_point='assistive_gym.envs:FeedingHandtunedRewardSawyerEnv',
     max_episode_steps=200,
 )
+
+# For testing how well a linear reward (with food info) performs (RL-wise)
+register(
+    id='FeedingLinearRewardSawyer-v0',
+    entry_point='assistive_gym.envs:FeedingLinearRewardSawyerEnv',
+    max_episode_steps=200,
+)

@@ -30,4 +30,5 @@ class FeedingHandtunedRewardEnv(FeedingEnv):
         # print("foods_on_floor", foods_on_floor)
 
         reward = self.distance_weight*distance + self.foodmouth_weight*foods_in_mouth + self.foodfloor_weight*foods_on_floor
+        # print("reward", reward)
         return obs, reward, done, info
