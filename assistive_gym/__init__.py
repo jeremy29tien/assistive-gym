@@ -45,7 +45,7 @@ register(
     max_episode_steps=200,
 )
 
-# For testing how well a linear reward (with food info) performs (RL-wise)
+# For using TREX to learn a linear reward on distance and food info
 register(
     id='FeedingLinearRewardSawyer-v0',
     entry_point='assistive_gym.envs:FeedingLinearRewardSawyerEnv',
