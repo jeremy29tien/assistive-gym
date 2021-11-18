@@ -235,9 +235,9 @@ if __name__ == "__main__":
     #################
 
     # sort the demonstrations according to ground truth reward to simulate ranked demos
-    demos = np.load("data/demos.npy")
-    demo_rewards = np.load("data/demo_rewards.npy")
-    demo_reward_per_timestep = np.load("data/demo_reward_per_timestep.npy")
+    demos = np.load("data/raw_data/demos.npy")
+    demo_rewards = np.load("data/raw_data/demo_rewards.npy")
+    demo_reward_per_timestep = np.load("data/raw_data/demo_reward_per_timestep.npy")
 
     demo_lengths = 200  # fixed horizon of 200 timesteps in assistive gym
     print("demo lengths", demo_lengths)
