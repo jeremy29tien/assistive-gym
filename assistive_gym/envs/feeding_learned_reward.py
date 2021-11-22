@@ -11,8 +11,9 @@ from trex.model import Net
 
 class FeedingLearnedRewardEnv(FeedingEnv):
     # Primus: /home/jtien/assistive-gym/trex/models/5000_trajs_early_stopping.params
+    # With weight decay: /home/jtien/assistive-gym/trex/models/5000traj_100epoch_1weightdecay_earlystopping.params
     # Local: /Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trex/models/test1.params    
-    reward_net_path = "/home/jtien/assistive-gym/trex/models/5000_trajs_early_stopping.params"
+    reward_net_path = "/home/jtien/assistive-gym/trex/models/5000traj_100epoch_1weightdecay_earlystopping.params"
     reward_net = None
     device = None
 
