@@ -1,1 +1,1 @@
-Trained with --weight_decay 1
+Trained with --weight_decay 1.0
