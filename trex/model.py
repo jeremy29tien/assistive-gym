@@ -61,7 +61,7 @@ class Net(nn.Module):
 
         self.fc1 = nn.Linear(input_dim, 128)
         self.fc2 = nn.Linear(128, 64)  # Added a hidden layer for additional expressiveness
-        self.fc3 = nn.Linear(64, 1)
+        self.fc3 = nn.Linear(64, 1, bias=with_bias)
 
 
     def cum_return(self, traj):
@@ -217,6 +217,7 @@ if __name__ == "__main__":
     parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
     parser.add_argument('--lr', default=0.00005, type=float, help="learning rate")
     parser.add_argument('--weight_decay', default=0.0, type=float, help="weight decay")
+    parser.add_argument('--with_bias', default=True, type=bool, help="whether we include a bias in the last layer")
     parser.add_argument('--patience', default=100, type=int, help="number of iterations we wait before early stopping")
     args = parser.parse_args()
 
@@ -232,6 +233,7 @@ if __name__ == "__main__":
     l1_reg = 0.0
     patience = args.patience
     pair_delta = 10
+    with_bias = args.with_bias
     #################
 
     # sort the demonstrations according to ground truth reward to simulate ranked demos
