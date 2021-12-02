@@ -56,7 +56,7 @@ observation_dim = 25
 input_dim = 32  # NOTE: the input is comprised of state-action pairs, not just states (states have dim of 25, actions have dim of 7)
 
 class Net(nn.Module):
-    def __init__(self, with_bias):
+    def __init__(self, with_bias=True):
         super().__init__()
 
         self.fc1 = nn.Linear(input_dim, 128)
