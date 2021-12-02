@@ -56,7 +56,7 @@ observation_dim = 25
 input_dim = 32  # NOTE: the input is comprised of state-action pairs, not just states (states have dim of 25, actions have dim of 7)
 
 class Net(nn.Module):
-    def __init__(self):
+    def __init__(self, with_bias):
         super().__init__()
 
         self.fc1 = nn.Linear(input_dim, 128)
@@ -267,7 +267,7 @@ if __name__ == "__main__":
 
     # Now we create a reward network and optimize it using the training data.
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    reward_net = Net()
+    reward_net = Net(with_bias=with_bias)
     reward_net.to(device)
     import torch.optim as optim
 
