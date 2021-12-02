@@ -217,7 +217,7 @@ if __name__ == "__main__":
     parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
     parser.add_argument('--lr', default=0.00005, type=float, help="learning rate")
     parser.add_argument('--weight_decay', default=0.0, type=float, help="weight decay")
-    parser.add_argument('--with_bias', default=True, type=bool, help="whether we include a bias in the last layer")
+    parser.add_argument('--no_bias', dest='no_bias', default=False, action='store_true', help="whether we include a bias in the last layer")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--patience', default=100, type=int, help="number of iterations we wait before early stopping")
     args = parser.parse_args()
 
@@ -233,7 +233,7 @@ if __name__ == "__main__":
     l1_reg = 0.0
     patience = args.patience
     pair_delta = 10
-    with_bias = args.with_bias
+    no_bias = args.no_bias
     #################
 
     # sort the demonstrations according to ground truth reward to simulate ranked demos
@@ -267,7 +267,7 @@ if __name__ == "__main__":
 
     # Now we create a reward network and optimize it using the training data.
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    reward_net = Net(with_bias=with_bias)
+    reward_net = Net(with_bias=(not no_bias))
     reward_net.to(device)
     import torch.optim as optim
 
