@@ -1,1 +1,1 @@
-Trained with --with_bias False. 
+Trained with --no_bias. 
