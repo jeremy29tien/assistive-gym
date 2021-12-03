@@ -13,9 +13,10 @@ class FeedingLinearRewardEnv(FeedingEnv):
     # Primus:
     # With weight decay: /home/jtien/assistive-gym/trex/models/handpicked/5000traj_1epoch_1weightdecay_earlystopping.params
     # Without weight decay: /home/jtien/assistive-gym/trex/models/handpicked/5000traj_1epoch_noweightdecay_earlystopping.params
+    # Local: /Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trex/models/handpicked/5000traj_1epoch_1weightdecay_earlystopping.params
     def __init__(self, robot, human):
         super(FeedingLinearRewardEnv, self).__init__(robot=robot, human=human)
-        self.reward_net_path = "/home/jtien/assistive-gym/trex/models/handpicked/5000traj_1epoch_1weightdecay_earlystopping.params"
+        self.reward_net_path = "/home/jtien/assistive-gym/trex/models/handpicked/5000traj_1epoch_noweightdecay_earlystopping.params"
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.reward_net = Net()
         print("device:", self.device)
