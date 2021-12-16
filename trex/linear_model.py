@@ -257,6 +257,7 @@ if __name__ == "__main__":
     demo_reward_per_timestep = np.load("data/handpicked_features/demo_reward_per_timestep.npy")
 
     # Subsample the demos according to num_demos
+    # Source: https://stackoverflow.com/questions/50685409/select-n-evenly-spaced-out-elements-in-array-including-first-and-last
     idx = np.round(np.linspace(0, len(demos) - 1, num_demos)).astype(int)
     demos = demos[idx]
     demo_rewards = demo_rewards[idx]
