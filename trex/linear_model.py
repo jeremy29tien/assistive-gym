@@ -160,6 +160,7 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
 
             prev_val_loss = val_loss
     print("finished training")
+    print("Trained Weights:", reward_net.state_dict())
 
 
 def calc_val_loss(reward_network, training_inputs, training_outputs):
