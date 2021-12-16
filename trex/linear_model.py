@@ -12,41 +12,57 @@ from sklearn.model_selection import train_test_split
 
 # num_trajs specifies the number of trajectories to use in our training set
 # pair_delta=1 recovers original (just that pairwise comps can't be the same)
-def create_training_data(demonstrations, num_trajs, pair_delta):
+# if all_pairs=True, rather than generating num_trajs pairwise comps with pair_delta ranking difference,
+# we simply generate all (num_demos choose 2) possible pairs from the dataset.
+def create_training_data(demonstrations, num_trajs, pair_delta, all_pairs):
     # collect training data
     max_traj_length = 0
     training_obs = []
     training_labels = []
     num_demos = len(demonstrations)
 
-    # add full trajs (for use on Enduro)
-    for n in range(num_trajs):
-        ti = 0
-        tj = 0
-        # only add trajectories that are different returns
-        while abs(ti - tj) < pair_delta:
-            # pick two random demonstrations
-            ti = np.random.randint(num_demos)
-            tj = np.random.randint(num_demos)
-        # create random partial trajs by finding random start frame and random skip frame
-        # si = np.random.randint(6)
-        # sj = np.random.randint(6)
-        # step = np.random.randint(3, 7)
+    if all_pairs:
+        for ti in range(num_demos):
+            for tj in range(ti+1, num_demos):
+                traj_i = demonstrations[ti]
+                traj_j = demonstrations[tj]
 
-        traj_i = demonstrations[ti]
-        traj_j = demonstrations[tj]
+                # In other words, label = (traj_i < traj_j)
+                if ti > tj:
+                    label = 0  # 0 indicates that traj_i is better than traj_j
+                else:
+                    label = 1  # 1 indicates that traj_j is better than traj_i
 
-        # In other words, label = (traj_i < traj_j)
-        if ti > tj:
-            label = 0  # 0 indicates that traj_i is better than traj_j
-        else:
-            label = 1  # 1 indicates that traj_j is better than traj_i
+                training_obs.append((traj_i, traj_j))
+                training_labels.append(label)
 
-        training_obs.append((traj_i, traj_j))
-        training_labels.append(label)
+                # We shouldn't need max_traj_length, since all our trajectories our fixed at length 200.
+                max_traj_length = max(max_traj_length, len(traj_i), len(traj_j))
 
-        # We shouldn't need max_traj_length, since all our trajectories our fixed at length 200.
-        max_traj_length = max(max_traj_length, len(traj_i), len(traj_j))
+    else:
+        for n in range(num_trajs):
+            ti = 0
+            tj = 0
+            # only add trajectories that are different (in sorted reward ranking) by pair_delta
+            while abs(ti - tj) < pair_delta:
+                # pick two random demonstrations
+                ti = np.random.randint(num_demos)
+                tj = np.random.randint(num_demos)
+
+            traj_i = demonstrations[ti]
+            traj_j = demonstrations[tj]
+
+            # In other words, label = (traj_i < traj_j)
+            if ti > tj:
+                label = 0  # 0 indicates that traj_i is better than traj_j
+            else:
+                label = 1  # 1 indicates that traj_j is better than traj_i
+
+            training_obs.append((traj_i, traj_j))
+            training_labels.append(label)
+
+            # We shouldn't need max_traj_length, since all our trajectories our fixed at length 200.
+            max_traj_length = max(max_traj_length, len(traj_i), len(traj_j))
 
     print("maximum traj length", max_traj_length)
     return training_obs, training_labels
@@ -214,25 +230,25 @@ if __name__ == "__main__":
                         help="name and location for learned model params, e.g. ./learned_models/breakout.params")
     # parser.add_argument('--seed', default=0, help="random seed for experiments")
     parser.add_argument('--num_trajs', default=0, type=int, help="number of pairwise comparisons")
+    parser.add_argument('--num_demos', default=120, type=int, help="the number of demos to sample pairwise comps from")
     parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
     parser.add_argument('--lr', default=0.00005, type=float, help="learning rate")
     parser.add_argument('--weight_decay', default=0.0, type=float, help="weight decay")
     parser.add_argument('--patience', default=100, type=int, help="number of iterations we wait before early stopping")
+    parser.add_argument('--pair_delta', default=10, type=int, help="min difference between trajectory rankings in our dataset")
+    parser.add_argument('--all_pairs', dest='all_pairs', default=False, action='store_true', help="whether we generate all pairs from the dataset (num_demos choose 2)")  # NOTE: type=bool doesn't work, value is still true.
     args = parser.parse_args()
 
-    num_trajs = args.num_trajs
-    # num_snippets = args.num_snippets
-    # min_snippet_length = 50  # min length of trajectory for training comparison
-    # maximum_snippet_length = 100
-    #
-
     ## HYPERPARAMS ##
+    num_trajs = args.num_trajs  # the number of pairwise comparisons we draw
+    num_demos = args.num_demos
     lr = args.lr
     weight_decay = args.weight_decay
     num_iter = args.num_epochs  # num times through training data
-    l1_reg = 0.0
     patience = args.patience
-    pair_delta = 10
+    pair_delta = args.pair_delta
+    all_pairs = args.all_pairs
+    l1_reg = 0.0
     #################
 
     # sort the demonstrations according to ground truth reward to simulate ranked demos
@@ -240,10 +256,14 @@ if __name__ == "__main__":
     demo_rewards = np.load("data/handpicked_features/demo_rewards.npy")
     demo_reward_per_timestep = np.load("data/handpicked_features/demo_reward_per_timestep.npy")
 
+    # Subsample the demos according to num_demos
+    idx = np.round(np.linspace(0, len(demos) - 1, num_demos)).astype(int)
+    demos = demos[idx]
+    demo_rewards = demo_rewards[idx]
+    demo_reward_per_timestep = demo_reward_per_timestep[idx]
+
     demo_lengths = 200  # fixed horizon of 200 timesteps in assistive gym
     print("demo lengths", demo_lengths)
-    # max_snippet_length = min(np.min(demo_lengths), maximum_snippet_length)
-    # print("max snippet length", max_snippet_length)
 
     print("demos:", demos.shape)
     print("demo_rewards:", demo_rewards.shape)
@@ -256,7 +276,7 @@ if __name__ == "__main__":
     print(sorted_demo_rewards)
 
     train_val_split_seed = 100
-    obs, labels = create_training_data(sorted_demos, num_trajs, pair_delta)
+    obs, labels = create_training_data(sorted_demos, num_trajs, pair_delta, all_pairs)
     training_obs, val_obs, training_labels, val_labels = train_test_split(obs, labels, test_size=0.10, random_state=train_val_split_seed)
 
     print("num training_obs", len(training_obs))
