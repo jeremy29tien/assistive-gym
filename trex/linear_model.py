@@ -153,6 +153,7 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
                 # print('trigger times:', trigger_times)
                 if trigger_times >= patience:
                     print("Early stopping.")
+                    print("Trained Weights:", reward_net.state_dict())
                     return
             else:
                 trigger_times = 0
