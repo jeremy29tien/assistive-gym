@@ -228,7 +228,6 @@ if __name__ == "__main__":
 
     seed = args.seed
     torch.manual_seed(seed)
-    np.random.seed(seed)
 
     ## HYPERPARAMS ##
     lr = args.lr

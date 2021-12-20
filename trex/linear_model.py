@@ -243,7 +243,6 @@ if __name__ == "__main__":
 
     seed = args.seed
     torch.manual_seed(seed)
-    np.random.seed(seed)
 
     ## HYPERPARAMS ##
     num_trajs = args.num_trajs  # the number of pairwise comparisons we draw
