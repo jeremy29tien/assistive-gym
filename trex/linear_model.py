@@ -230,7 +230,7 @@ if __name__ == "__main__":
     # parser.add_argument('--env_name', default='', help='Select the environment name to run, i.e. pong')
     parser.add_argument('--reward_model_path', default='',
                         help="name and location for learned model params, e.g. ./learned_models/breakout.params")
-    # parser.add_argument('--seed', default=0, help="random seed for experiments")
+    parser.add_argument('--seed', default=0, help="random seed for experiments")
     parser.add_argument('--num_trajs', default=0, type=int, help="number of pairwise comparisons")
     parser.add_argument('--num_demos', default=120, type=int, help="the number of demos to sample pairwise comps from")
     parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
@@ -240,6 +240,10 @@ if __name__ == "__main__":
     parser.add_argument('--pair_delta', default=10, type=int, help="min difference between trajectory rankings in our dataset")
     parser.add_argument('--all_pairs', dest='all_pairs', default=False, action='store_true', help="whether we generate all pairs from the dataset (num_demos choose 2)")  # NOTE: type=bool doesn't work, value is still true.
     args = parser.parse_args()
+
+    seed = args.seed
+    torch.manual_seed(seed)
+    np.random.seed(seed)
 
     ## HYPERPARAMS ##
     num_trajs = args.num_trajs  # the number of pairwise comparisons we draw

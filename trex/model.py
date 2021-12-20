@@ -212,7 +212,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=None)
     parser.add_argument('--reward_model_path', default='',
                         help="name and location for learned model params, e.g. ./learned_models/breakout.params")
-    # parser.add_argument('--seed', default=0, help="random seed for experiments")
+    parser.add_argument('--seed', default=0, help="random seed for experiments")
     parser.add_argument('--num_trajs', default=0, type=int, help="number of pairwise comparisons")
     parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
     parser.add_argument('--lr', default=0.00005, type=float, help="learning rate")
@@ -225,6 +225,10 @@ if __name__ == "__main__":
     # num_snippets = args.num_snippets
     # min_snippet_length = 50  # min length of trajectory for training comparison
     # maximum_snippet_length = 100
+
+    seed = args.seed
+    torch.manual_seed(seed)
+    np.random.seed(seed)
 
     ## HYPERPARAMS ##
     lr = args.lr
