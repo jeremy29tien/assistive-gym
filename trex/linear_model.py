@@ -77,7 +77,7 @@ input_dim = 3
 class Net(nn.Module):
     def __init__(self):
         super().__init__()
-        self.fc1 = nn.Linear(input_dim, 1)  # We have a single linear layer, with no nonlinearities
+        self.fc1 = nn.Linear(input_dim, 1, bias=False)  # We have a single linear layer, with no nonlinearities
 
 
     def cum_return(self, traj):
