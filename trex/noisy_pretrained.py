@@ -35,7 +35,7 @@ algo = 'ppo'
 
 # /Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trained_models/ppo/FeedingSawyer-v1/checkpoint_521/checkpoint-521 for local
 # /home/jtien/assistive-gym/trained_models/ppo/FeedingSawyer-v1/checkpoint_521/checkpoint-521 for server
-policy_path = '/Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trained_models/ppo/FeedingSawyer-v1/checkpoint_521/checkpoint-521'
+policy_path = '/home/jtien/assistive-gym/trained_models/ppo/FeedingSawyer-v1/checkpoint_521/checkpoint-521'
 test_agent, _ = load_policy(env, algo, ENV_NAME, policy_path, COOP, seed=1000)
 
 # env.render()
@@ -126,9 +126,9 @@ rewards_over_time = np.asarray(rewards_over_time)
 # print(demos)
 # print(total_rewards)
 
-np.save("data/demos.npy", demos)
-np.save("data/demo_rewards.npy", total_rewards)
-np.save("data/demo_reward_per_timestep.npy", rewards_over_time)
+np.save("data/handpicked_features/demos.npy", demos)
+np.save("data/handpicked_features/demo_rewards.npy", total_rewards)
+np.save("data/handpicked_features/demo_reward_per_timestep.npy", rewards_over_time)
 
 
 with np.printoptions(precision=3):
