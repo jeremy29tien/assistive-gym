@@ -7,9 +7,10 @@ import importlib
 import multiprocessing, ray
 from assistive_gym.learn import load_policy
 
-FILE_NAME = "data/feedingsawyer_pretrained1.csv"
+FILE_NAME = "data/pretrained_augmentedfeatures.csv"
 ENV_NAME = "FeedingSawyer-v1"
 COOP = False
+ADD_LINEAR_FEATURES = True
 
 # NOTE: Most of this is shamelessly copied from render_policy in learn.py.
 # Link: https://github.com/Healthcare-Robotics/assistive-gym/blob/fb799c377e1f144ff96044fb9096725f7f9cfc61/assistive_gym/learn.py#L96
@@ -45,7 +46,7 @@ test_agent, _ = load_policy(env, algo, ENV_NAME, policy_path, COOP, seed=1000)
 file = open(FILE_NAME, 'a+', newline='')
 write = csv.writer(file)
 
-num_demos = 5
+num_demos = 10
 for demo in range(num_demos):
     observation = env.reset()
     done = False
@@ -66,9 +67,23 @@ for demo in range(num_demos):
             action = test_agent.compute_action(observation)
 
             # Collect the data
-            print("Observation:", observation)
-            print("Action:", action)
+            # print("Observation:", observation)
+            # print("Action:", action)
+
+            # Raw observations (+ actions)
             data = np.concatenate((observation, action))
+
+            if ADD_LINEAR_FEATURES:
+                # Handtuned features: spoon-mouth distance, amount of food particles in mouth, amount of food particles on the floor
+                distance = np.linalg.norm(observation[7:10])
+                if info is None:
+                    foods_in_mouth = 0
+                    foods_on_floor = 0
+                else:
+                    foods_in_mouth = info['foods_in_mouth']
+                    foods_on_floor = info['foods_on_ground']
+                linear_data = np.array([distance, foods_in_mouth, foods_on_floor])
+                data = np.concatenate((data, linear_data))
 
             # Step the simulation forward using the action from our trained policy
             observation, reward, done, info = env.step(action)
@@ -77,9 +92,9 @@ for demo in range(num_demos):
         print("Data:", data.tolist())
         write.writerow(data.tolist())
 
-        print("Reward:", reward)
-        print("Task Success:", info['task_success'])
-        print("\n")
+        # print("Reward:", reward)
+        # print("Task Success:", info['task_success'])
+        # print("\n")
 
 env.disconnect()
 file.close()
