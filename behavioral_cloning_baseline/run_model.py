@@ -10,13 +10,13 @@ import time
 # NOTE: Settings for standard data: "feedingsawyer_standard.csv_model", True, 25
 # NOTE: Settings for handmade data: "feedingsawyer_handmade.csv_model", False, 14
 
-FILE_NAME = "models/feedingsawyer_standard3.csv.model"
+FILE_NAME = "models/feedingsawyer_standard4.csv.model"
 STANDARD_DATA_MODE = True
 input_dim = 25
 VERBOSE = False
 
 env = gym.make('FeedingSawyer-v1')
-env.set_seed(1000)  # fixed seed for reproducibility (1000 for training, 1001 for testing)
+env.set_seed(1001)  # fixed seed for reproducibility (1000 for training, 1001 for testing)
 # env.render()
 
 # Load model

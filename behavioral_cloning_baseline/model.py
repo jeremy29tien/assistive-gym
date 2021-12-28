@@ -140,7 +140,7 @@ def predict(row, model):
 
 if __name__ == "__main__":
     # prepare the data
-    path = 'data/feedingsawyer_standard3.csv'
+    path = 'data/feedingsawyer_standard4.csv'
     print('pulling data from', path)
     train_dl, test_dl = prepare_data(path)
     print(len(train_dl.dataset), len(test_dl.dataset))
