@@ -49,6 +49,7 @@ write = csv.writer(file)
 num_demos = 10
 for demo in range(num_demos):
     observation = env.reset()
+    info = None
     done = False
     while not done:
         if COOP:
