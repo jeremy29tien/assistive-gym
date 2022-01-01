@@ -71,9 +71,6 @@ for demo in range(num_demos):
             # print("Observation:", observation)
             # print("Action:", action)
 
-            # Raw observations (+ actions)
-            data = np.concatenate((observation, action))
-
             if ADD_LINEAR_FEATURES:
                 # Handtuned features: spoon-mouth distance, amount of food particles in mouth, amount of food particles on the floor
                 distance = np.linalg.norm(observation[7:10])
@@ -84,7 +81,10 @@ for demo in range(num_demos):
                     foods_in_mouth = info['foods_in_mouth']
                     foods_on_floor = info['foods_on_ground']
                 linear_data = np.array([distance, foods_in_mouth, foods_on_floor])
-                data = np.concatenate((data, linear_data))
+                data = np.concatenate((observation, linear_data, action))
+            else:
+                # Raw observations (+ actions)
+                data = np.concatenate((observation, action))
 
             # Step the simulation forward using the action from our trained policy
             observation, reward, done, info = env.step(action)
