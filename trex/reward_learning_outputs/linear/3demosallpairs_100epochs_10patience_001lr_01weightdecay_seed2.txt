@@ -1,0 +1,17 @@
+demo lengths 200
+demos: (3, 200, 3)
+demo_rewards: (3,)
+[-127.64744800282678, 44.421830425181334, 95.24073532592021]
+maximum traj length 200
+num training_obs 2
+num training_labels 2
+num val_obs 1
+num val_labels 1
+cuda:0
+finished training
+Trained Weights: OrderedDict([('fc1.weight', tensor([[-0.0374,  0.5655, -0.0698]], device='cuda:0'))])
+0 -4.247167125344276 -127.64744800282678
+1 1.1240670243278146 44.421830425181334
+2 2.6748052791226655 95.24073532592021
+train accuracy: 1.0
+validation accuracy: 1.0
