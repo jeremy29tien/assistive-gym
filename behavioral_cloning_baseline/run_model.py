@@ -10,9 +10,9 @@ import time
 # NOTE: Settings for standard data: "feedingsawyer_standard.csv_model", True, 25
 # NOTE: Settings for handmade data: "feedingsawyer_handmade.csv_model", False, 14
 
-FILE_NAME = "models/feedingsawyer_standard4.csv.model"
+FILE_NAME = "models/pretrained_augmentedfeatures.model"
 STANDARD_DATA_MODE = True
-input_dim = 25
+input_dim = 28
 VERBOSE = False
 
 env = gym.make('FeedingSawyer-v1')
@@ -40,10 +40,21 @@ for i in range(num_rollouts):
 
     # timeout_start = time.time()
     # while time.time() < timeout_start + timeout:
+    info = None
     done = False
     while not done:
         if STANDARD_DATA_MODE:
-            input = observation
+            # Handtuned features: spoon-mouth distance, amount of food particles in mouth, amount of food particles on the floor
+            distance = np.linalg.norm(observation[7:10])
+            if info is None:
+                foods_in_mouth = 0
+                foods_on_floor = 0
+            else:
+                foods_in_mouth = info['foods_in_mouth']
+                foods_on_floor = info['foods_on_ground']
+            linear_data = np.array([distance, foods_in_mouth, foods_on_floor])
+
+            input = np.concatenate((observation, linear_data))
         else:
             robot_state = np.concatenate((env.robot.get_pos_orient(env.robot.right_end_effector)[0],
                                           env.robot.get_pos_orient(env.robot.right_end_effector)[1]))
