@@ -283,7 +283,12 @@ if __name__ == "__main__":
 
     train_val_split_seed = 100
     obs, labels = create_training_data(sorted_demos, num_trajs, pair_delta, all_pairs)
-    training_obs, val_obs, training_labels, val_labels = train_test_split(obs, labels, test_size=0.10, random_state=train_val_split_seed)
+    if len(obs) > 1:
+        training_obs, val_obs, training_labels, val_labels = train_test_split(obs, labels, test_size=0.10, random_state=train_val_split_seed)
+    else:
+        print("WARNING: Since there is only one training point, the validation data is the same as the training data.")
+        training_obs = val_obs = obs
+        training_labels = val_labels = labels
 
     print("num training_obs", len(training_obs))
     print("num training_labels", len(training_labels))
