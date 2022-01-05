@@ -1,0 +1,17 @@
+demo lengths 200
+demos: (2, 200, 3)
+demo_rewards: (2,)
+[-127.64744800282678, 95.24073532592021]
+maximum traj length 200
+WARNING: Since there is only one training point, the validation data is the same as the training data.
+num training_obs 1
+num training_labels 1
+num val_obs 1
+num val_labels 1
+cuda:0
+finished training
+Trained Weights: OrderedDict([('fc1.weight', tensor([[-0.1177,  0.1109, -0.0854]], device='cuda:0'))])
+0 -13.11024620756507 -127.64744800282678
+1 -4.937528256792575 95.24073532592021
+train accuracy: 1.0
+validation accuracy: 1.0
