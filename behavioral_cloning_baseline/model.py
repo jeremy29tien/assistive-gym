@@ -142,7 +142,7 @@ if __name__ == "__main__":
     # Set the random seed for reproducibility
     torch.manual_seed(1)
     # prepare the data
-    path = 'data/10demos_pretrained_augmentedfeatures.csv'
+    path = 'data/10demos_pretrained_augmentedfeatures_seed1.csv'
     print('pulling data from', path)
     train_dl, test_dl = prepare_data(path)
     print(len(train_dl.dataset), len(test_dl.dataset))
@@ -153,7 +153,7 @@ if __name__ == "__main__":
     # evaluate the model
     mse = evaluate_model(test_dl, model)
     print('MSE: %.3f, RMSE: %.3f' % (mse, sqrt(mse)))
-    torch.save(model.state_dict(), 'models/10demos_pretrained_augmentedfeatures.model')
+    torch.save(model.state_dict(), 'models/10demos_pretrained_augmentedfeatures_seed1.model')
     print("Model's state_dict:")
     for param_tensor in model.state_dict():
         print(param_tensor, "\t", model.state_dict()[param_tensor].size())
