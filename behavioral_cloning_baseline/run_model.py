@@ -10,10 +10,10 @@ import time
 # NOTE: Settings for standard data: "feedingsawyer_standard.csv_model", True, 25
 # NOTE: Settings for handmade data: "feedingsawyer_handmade.csv_model", False, 14
 
-FILE_NAME = "models/10demos_pretrained_augmentedfeatures_seed1.model"
+FILE_NAME = "models/10demos_pretrained_rawfeatures_seed1.model"
 STANDARD_DATA_MODE = True  # ie., (observation, action). False denotes the handmade data.
-AUGMENTED = True  # Augmented denotes a (observation, linear_features, action) dataset. Input dim would be 28 if true.
-input_dim = 28
+AUGMENTED = False  # Augmented denotes a (observation, linear_features, action) dataset. Input dim would be 28 if true.
+input_dim = 25
 VERBOSE = False
 
 env = gym.make('FeedingSawyer-v1')
