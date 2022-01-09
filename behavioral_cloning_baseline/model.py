@@ -140,7 +140,7 @@ def predict(row, model):
 
 if __name__ == "__main__":
     # Set the random seed for reproducibility
-    torch.manual_seed(0)
+    torch.manual_seed(1)
     # prepare the data
     path = 'data/10demos_pretrained_augmentedfeatures.csv'
     print('pulling data from', path)
