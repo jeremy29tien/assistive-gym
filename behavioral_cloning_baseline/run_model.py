@@ -12,7 +12,7 @@ import time
 
 FILE_NAME = "models/10demos_pretrained_augmentedfeatures.model"
 STANDARD_DATA_MODE = True  # ie., (observation, action). False denotes the handmade data.
-AUGMENTED = False  # Augmented denotes a (observation, linear_features, action) dataset. Input dim would be 28 if true.
+AUGMENTED = True  # Augmented denotes a (observation, linear_features, action) dataset. Input dim would be 28 if true.
 input_dim = 28
 VERBOSE = False
 
