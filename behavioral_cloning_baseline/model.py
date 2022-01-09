@@ -142,7 +142,7 @@ if __name__ == "__main__":
     # Set the random seed for reproducibility
     torch.manual_seed(1)
     # prepare the data
-    path = 'data/10demos_pretrained_augmentedfeatures_seed1.csv'
+    path = 'data/10demos_pretrained_augmentedfeatures.csv'
     print('pulling data from', path)
     train_dl, test_dl = prepare_data(path)
     print(len(train_dl.dataset), len(test_dl.dataset))
