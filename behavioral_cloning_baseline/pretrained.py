@@ -7,7 +7,7 @@ import importlib
 import multiprocessing, ray
 from assistive_gym.learn import load_policy
 
-FILE_NAME = "data/pretrained_augmentedfeatures.csv"
+FILE_NAME = "data/500demos_pretrained_augmentedfeatures.csv"
 ENV_NAME = "FeedingSawyer-v1"
 COOP = False
 ADD_LINEAR_FEATURES = True
@@ -46,7 +46,7 @@ test_agent, _ = load_policy(env, algo, ENV_NAME, policy_path, COOP, seed=1000)
 file = open(FILE_NAME, 'a+', newline='')
 write = csv.writer(file)
 
-num_demos = 10
+num_demos = 500
 for demo in range(num_demos):
     observation = env.reset()
     info = None
