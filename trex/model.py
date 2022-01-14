@@ -145,29 +145,30 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
             val_loss = calc_val_loss(reward_network, val_obs, val_labels)
             val_acc = calc_accuracy(reward_network, val_obs, val_labels)
             if i % 100 == 99:
-                print("epoch {}:{} loss {}, val_loss {}".format(epoch, i, cum_loss, val_loss))
+                print("epoch {}:{} loss {}, val_loss {}, val_acc {}".format(epoch, i, cum_loss, val_loss, val_acc))
                 cum_loss = 0.0
                 print("check pointing")
-                print("Weights:", reward_net.state_dict())
+                # print("Weights:", reward_net.state_dict())
                 torch.save(reward_net.state_dict(), checkpoint_dir)
 
-            # Early Stopping
-            if val_loss > prev_val_loss:
-                trigger_times += 1
-                # print('trigger times:', trigger_times)
-                if trigger_times >= patience:
-                    print("Early stopping.")
-                    print("Trained Weights:", reward_net.state_dict())
-                    return
-            else:
-                trigger_times = 0
-                # print('trigger times:', trigger_times)
+        # Early Stopping
+        if val_loss > prev_val_loss:
+            trigger_times += 1
+            # print('trigger times:', trigger_times)
+            if trigger_times >= patience:
+                print("Early stopping.")
+                print("Trained Weights:", reward_net.state_dict())
+                return
+        else:
+            trigger_times = 0
+            # print('trigger times:', trigger_times)
 
-            prev_val_loss = val_loss
+        prev_val_loss = val_loss
     print("finished training")
     print("Trained Weights:", reward_net.state_dict())
 
 
+# Calculates the cross-entropy losses over the entire validation set and returns the MEAN.
 def calc_val_loss(reward_network, training_inputs, training_outputs):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     loss_criterion = nn.CrossEntropyLoss()
