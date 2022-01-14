@@ -262,7 +262,7 @@ if __name__ == "__main__":
     #################
 
     # sort the demonstrations according to ground truth reward to simulate ranked demos
-    demos = np.load("data/raw_data/demos.npy")
+    demos = np.load("data/raw_data/demos_states.npy")
     demo_rewards = np.load("data/raw_data/demo_rewards.npy")
     demo_reward_per_timestep = np.load("data/raw_data/demo_reward_per_timestep.npy")
 
