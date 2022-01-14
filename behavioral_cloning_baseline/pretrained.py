@@ -90,7 +90,7 @@ for demo in range(num_demos):
             observation, reward, done, info = env.step(action)
 
         # Write data to file
-        print("Data:", data.tolist())
+        # print("Data:", data.tolist())
         write.writerow(data.tolist())
 
         # print("Reward:", reward)
