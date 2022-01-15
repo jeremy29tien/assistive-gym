@@ -6,25 +6,51 @@ import torch
 from model import MLP
 from model import predict
 import time
+import argparse
 
 # NOTE: Settings for standard data: "feedingsawyer_standard.csv_model", True, 25
 # NOTE: Settings for handmade data: "feedingsawyer_handmade.csv_model", False, 14
 
-FILE_NAME = "models/pretrained_augmentedfeatures.model"
-STANDARD_DATA_MODE = True  # ie., (observation, action). False denotes the handmade data.
-AUGMENTED = True  # Augmented denotes a (observation, linear_features, action) dataset. Input dim would be 28 if true.
-input_dim = 28
-VERBOSE = False
+parser = argparse.ArgumentParser(description=None)
+parser.add_argument('--model_path', default='',
+                    help="name and location for learned model params, e.g. ./learned_models/breakout.params")
+parser.add_argument('--seed', default=3, help="random seed for experiments")
+parser.add_argument('--num_rollouts', default=100, type=int, help="number of rollouts")
+parser.add_argument('--augmented', dest='augmented', default=False, action='store_true', help="whether we are using augmented features")  # NOTE: type=bool doesn't work, value is still true.
+parser.add_argument('--render', dest='render', default=False, action='store_true', help="whether to render rollouts")  # NOTE: type=bool doesn't work, value is still true.
+args = parser.parse_args()
 
+## PARAMS ##
+model_path = args.model_path
+seed = args.seed
+num_rollouts = args.num_rollouts
+augmented = args.augmented
+render = args.render
+#################
+
+
+# Set the random seed for reproducibility
+torch.manual_seed(seed)
 env = gym.make('FeedingSawyer-v1')
-env.seed(3)  # fixed seed for reproducibility (1000 for training, 1001 for testing)
-env.render()
+env.seed(seed)
+
+# Augmented denotes a (observation, linear_features, action) dataset. Input dim would be 28 if true.
+if augmented:
+    input_dim = 28
+else:
+    input_dim = 25
+
+# Whether to render rollouts
+if render:
+    env.render()
+
+STANDARD_DATA_MODE = True  # ie., (observation, action). False denotes the handmade data.
+VERBOSE = False
 
 # Load model
 model = MLP(input_dim)
-model.load_state_dict(torch.load(FILE_NAME))
+model.load_state_dict(torch.load(model_path))
 
-num_rollouts = 2
 # reward_success[i, 0] contains the reward for the ith rollout
 # reward_success[i, 1] contains the 1 if success, 0 if fail for the ith rollout
 reward_success = np.zeros((num_rollouts, 2))
@@ -45,7 +71,7 @@ for i in range(num_rollouts):
     done = False
     while not done:
         if STANDARD_DATA_MODE:
-            if AUGMENTED:
+            if augmented:
                 # Handtuned features: spoon-mouth distance, amount of food particles in mouth, amount of food particles on the floor
                 distance = np.linalg.norm(observation[7:10])
                 if info is None:
