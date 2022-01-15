@@ -1,4 +1,5 @@
 # pytorch mlp for regression
+import numpy as np
 from numpy import vstack
 from numpy import sqrt
 from pandas import read_csv
@@ -15,6 +16,8 @@ from torch.optim import SGD
 from torch.nn import MSELoss
 from torch.nn.init import xavier_uniform_
 import torch
+import argparse
+
 
 input_dim = 25  # 25 for raw features, 3 for linear features
 output_dim = 7
@@ -42,12 +45,13 @@ class CSVDataset(Dataset):
         return [self.X[idx], self.y[idx]]
 
     # get indexes for train and test rows
-    def get_splits(self, n_test=0.33):
+    def get_splits(self, n_val=0.1, n_test=0.2):
         # determine sizes
         test_size = round(n_test * len(self.X))
-        train_size = len(self.X) - test_size
+        val_size = round(n_val * len(self.X))
+        train_size = len(self.X) - (val_size + test_size)
         # calculate the split
-        return random_split(self, [train_size, test_size])
+        return random_split(self, [train_size, val_size, test_size])
 
 # model definition
 class MLP(Module):
@@ -83,19 +87,25 @@ def prepare_data(path):
     # load the dataset
     dataset = CSVDataset(path)
     # calculate split
-    train, test = dataset.get_splits()
+    train, val, test = dataset.get_splits()
     # prepare data loaders
     train_dl = DataLoader(train, batch_size=32, shuffle=True)
+    val_dl = DataLoader(val, batch_size=1024, shuffle=False)
     test_dl = DataLoader(test, batch_size=1024, shuffle=False)
-    return train_dl, test_dl
+    return train_dl, val_dl, test_dl
+
 
 # train the model
-def train_model(train_dl, model):
+def train_model(train_dl, val_dl, model, num_epochs, learning_rate, patience, checkpoint_dir):
     # define the optimization
     criterion = MSELoss()
-    optimizer = SGD(model.parameters(), lr=0.01, momentum=0.9)
+    optimizer = SGD(model.parameters(), lr=learning_rate, momentum=0.9)
+
+    cum_loss = 0.0
+    trigger_times = 0
+    prev_val_loss = 100
     # enumerate epochs
-    for epoch in range(100):
+    for epoch in range(num_epochs):
         # enumerate mini batches
         for i, (inputs, targets) in enumerate(train_dl):
             # clear the gradients
@@ -108,6 +118,32 @@ def train_model(train_dl, model):
             loss.backward()
             # update model weights
             optimizer.step()
+
+            # print stats to see if learning
+            item_loss = loss.item()
+            cum_loss += item_loss
+            val_loss = evaluate_model(val_dl, model)
+            if i % 100 == 99:
+                print("epoch {}:{} loss {}, val_loss {}".format(epoch, i, cum_loss, val_loss))
+                cum_loss = 0.0
+                print("check pointing")
+                torch.save(model.state_dict(), checkpoint_dir)
+
+        # Early Stopping
+        if val_loss > prev_val_loss:
+            trigger_times += 1
+            # print('trigger times:', trigger_times)
+            if trigger_times >= patience:
+                print("Early stopping.")
+                print("Trained Weights:", model.state_dict())
+                return
+        else:
+            trigger_times = 0
+
+        prev_val_loss = val_loss
+    print("finished training")
+    print("Trained Weights:", model.state_dict())
+
 
 # evaluate the model
 def evaluate_model(test_dl, model):
@@ -139,25 +175,42 @@ def predict(row, model):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=None)
+    parser.add_argument('--data_path', default='',
+                        help="name and location for training data")
+    parser.add_argument('--model_path', default='',
+                        help="name and location for learned model params, e.g. ./learned_models/breakout.params")
+    parser.add_argument('--seed', default=0, help="random seed for experiments")
+    parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
+    parser.add_argument('--lr', default=0.01, type=float, help="learning rate")
+    parser.add_argument('--weight_decay', default=0.0, type=float, help="weight decay")
+    parser.add_argument('--patience', default=10, type=int, help="number of iterations we wait before early stopping")
+    args = parser.parse_args()
+
     # Set the random seed for reproducibility
-    torch.manual_seed(1)
+    seed = args.seed
+    torch.manual_seed(seed)
+
+    ## HYPERPARAMS ##
+    num_epochs = args.num_epochs  # num times through training data
+    lr = args.lr
+    weight_decay = args.weight_decay
+    patience = args.patience
+    #################
+
     # prepare the data
-    path = 'data/10demos_pretrained_rawfeatures.csv'
+    path = args.data_path
     print('pulling data from', path)
-    train_dl, test_dl = prepare_data(path)
-    print(len(train_dl.dataset), len(test_dl.dataset))
+    train_dl, val_dl, test_dl = prepare_data(path)
+    print("(Train, Val, Test):", len(train_dl.dataset), len(val_dl.dataset), len(test_dl.dataset))
     # define the network
     model = MLP(input_dim)
     # train the model
-    train_model(train_dl, model)
+    train_model(train_dl, val_dl, model, num_epochs, lr, patience, args.model_path)
     # evaluate the model
     mse = evaluate_model(test_dl, model)
     print('MSE: %.3f, RMSE: %.3f' % (mse, sqrt(mse)))
-    torch.save(model.state_dict(), 'models/10demos_pretrained_rawfeatures_seed1.model')
+    torch.save(model.state_dict(), args.model_path)
     print("Model's state_dict:")
     for param_tensor in model.state_dict():
         print(param_tensor, "\t", model.state_dict()[param_tensor].size())
-    # # make a single prediction (expect class=1)
-    # row = [-0.117225684,-0.625825703,1.167859912,0.500428736,0.500327528,0.500112474,0.499130368,0,0.029999999,1.111999989,0.266823739,0.154775694,0.274697572,0.910708845]
-    # yhat = predict(row, model)
-    # print('Predicted:', yhat)
