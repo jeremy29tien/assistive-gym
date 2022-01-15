@@ -10,21 +10,21 @@ import time
 # NOTE: Settings for standard data: "feedingsawyer_standard.csv_model", True, 25
 # NOTE: Settings for handmade data: "feedingsawyer_handmade.csv_model", False, 14
 
-FILE_NAME = "models/10demos_pretrained_rawfeatures_seed1.model"
+FILE_NAME = "models/pretrained_augmentedfeatures.model"
 STANDARD_DATA_MODE = True  # ie., (observation, action). False denotes the handmade data.
-AUGMENTED = False  # Augmented denotes a (observation, linear_features, action) dataset. Input dim would be 28 if true.
-input_dim = 25
+AUGMENTED = True  # Augmented denotes a (observation, linear_features, action) dataset. Input dim would be 28 if true.
+input_dim = 28
 VERBOSE = False
 
 env = gym.make('FeedingSawyer-v1')
-env.set_seed(1001)  # fixed seed for reproducibility (1000 for training, 1001 for testing)
-# env.render()
+env.seed(3)  # fixed seed for reproducibility (1000 for training, 1001 for testing)
+env.render()
 
 # Load model
 model = MLP(input_dim)
 model.load_state_dict(torch.load(FILE_NAME))
 
-num_rollouts = 100
+num_rollouts = 2
 # reward_success[i, 0] contains the reward for the ith rollout
 # reward_success[i, 1] contains the 1 if success, 0 if fail for the ith rollout
 reward_success = np.zeros((num_rollouts, 2))
