@@ -14,7 +14,7 @@ import argparse
 parser = argparse.ArgumentParser(description=None)
 parser.add_argument('--model_path', default='',
                     help="name and location for learned model params, e.g. ./learned_models/breakout.params")
-parser.add_argument('--seed', default=3, help="random seed for experiments")
+parser.add_argument('--seed', default=3, type=int, help="random seed for experiments")
 parser.add_argument('--num_rollouts', default=100, type=int, help="number of rollouts")
 parser.add_argument('--augmented', dest='augmented', default=False, action='store_true', help="whether we are using augmented features")  # NOTE: type=bool doesn't work, value is still true.
 parser.add_argument('--render', dest='render', default=False, action='store_true', help="whether to render rollouts")  # NOTE: type=bool doesn't work, value is still true.
