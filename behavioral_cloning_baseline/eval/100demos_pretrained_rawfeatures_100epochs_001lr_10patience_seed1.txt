@@ -1,0 +1,206 @@
+Rollout 0 Reward: 128.356605
+Rollout 1 Reward: 148.340538
+Rollout 2 Reward: -36.928993
+Rollout 3 Reward: -79.883725
+Rollout 4 Reward: 146.735060
+Rollout 5 Reward: 109.634269
+Rollout 6 Reward: 106.875710
+Rollout 7 Reward: 109.430679
+Rollout 8 Reward: 104.060652
+Rollout 9 Reward: 147.633208
+Rollout 10 Reward: 129.105026
+Rollout 11 Reward: -44.725968
+Rollout 12 Reward: 109.043948
+Rollout 13 Reward: 148.966063
+Rollout 14 Reward: 10.349422
+Rollout 15 Reward: 110.808360
+Rollout 16 Reward: 36.936520
+Rollout 17 Reward: 104.704450
+Rollout 18 Reward: 149.701580
+Rollout 19 Reward: -39.104305
+Rollout 20 Reward: 150.220967
+Rollout 21 Reward: 106.932501
+Rollout 22 Reward: 109.298873
+Rollout 23 Reward: 129.009634
+Rollout 24 Reward: 149.627491
+Rollout 25 Reward: 79.169989
+Rollout 26 Reward: 93.751512
+Rollout 27 Reward: 145.869545
+Rollout 28 Reward: 127.710883
+Rollout 29 Reward: 109.492387
+Rollout 30 Reward: -56.161171
+Rollout 31 Reward: 130.617297
+Rollout 32 Reward: 129.022879
+Rollout 33 Reward: 107.293510
+Rollout 34 Reward: 37.778245
+Rollout 35 Reward: -22.631401
+Rollout 36 Reward: 150.326570
+Rollout 37 Reward: 108.182614
+Rollout 38 Reward: 105.164164
+Rollout 39 Reward: 148.109366
+Rollout 40 Reward: -68.930316
+Rollout 41 Reward: 107.460362
+Rollout 42 Reward: 149.080112
+Rollout 43 Reward: 109.283462
+Rollout 44 Reward: -30.435338
+Rollout 45 Reward: 125.616390
+Rollout 46 Reward: 99.014213
+Rollout 47 Reward: 127.974641
+Rollout 48 Reward: 102.153145
+Rollout 49 Reward: 100.581213
+Rollout 50 Reward: -74.859225
+Rollout 51 Reward: -175.086011
+Rollout 52 Reward: 108.845493
+Rollout 53 Reward: 128.548928
+Rollout 54 Reward: -98.463258
+Rollout 55 Reward: 33.134374
+Rollout 56 Reward: 107.046495
+Rollout 57 Reward: 110.279175
+Rollout 58 Reward: 107.741408
+Rollout 59 Reward: 23.929330
+Rollout 60 Reward: 104.578112
+Rollout 61 Reward: 148.532443
+Rollout 62 Reward: 118.139938
+Rollout 63 Reward: 108.131519
+Rollout 64 Reward: 106.923692
+Rollout 65 Reward: 106.853198
+Rollout 66 Reward: 106.430294
+Rollout 67 Reward: 145.025069
+Rollout 68 Reward: 147.006406
+Rollout 69 Reward: 108.955992
+Rollout 70 Reward: 119.474526
+Rollout 71 Reward: 150.623288
+Rollout 72 Reward: 106.075239
+Rollout 73 Reward: 108.382945
+Rollout 74 Reward: -232.674863
+Rollout 75 Reward: 33.290821
+Rollout 76 Reward: -64.112261
+Rollout 77 Reward: -70.670525
+Rollout 78 Reward: 146.261397
+Rollout 79 Reward: 150.606274
+Rollout 80 Reward: 107.553370
+Rollout 81 Reward: -61.402083
+Rollout 82 Reward: 35.456022
+Rollout 83 Reward: 125.856932
+Rollout 84 Reward: 109.803639
+Rollout 85 Reward: 90.849725
+Rollout 86 Reward: 129.406896
+Rollout 87 Reward: -64.765969
+Rollout 88 Reward: 109.860771
+Rollout 89 Reward: 128.452295
+Rollout 90 Reward: 128.523145
+Rollout 91 Reward: 145.137007
+Rollout 92 Reward: 95.651542
+Rollout 93 Reward: -55.339599
+Rollout 94 Reward: 92.388814
+Rollout 95 Reward: 113.225817
+Rollout 96 Reward: 97.870241
+Rollout 97 Reward: -30.893272
+Rollout 98 Reward: 127.032153
+Rollout 99 Reward: 109.437139
+[[ 128.35660472    1.        ]
+ [ 148.34053827    1.        ]
+ [ -36.92899281    0.        ]
+ [ -79.88372508    0.        ]
+ [ 146.73506017    1.        ]
+ [ 109.63426935    1.        ]
+ [ 106.87571046    1.        ]
+ [ 109.43067863    1.        ]
+ [ 104.06065209    1.        ]
+ [ 147.63320819    1.        ]
+ [ 129.10502571    1.        ]
+ [ -44.72596833    0.        ]
+ [ 109.04394808    1.        ]
+ [ 148.96606273    1.        ]
+ [  10.34942163    0.        ]
+ [ 110.8083596     1.        ]
+ [  36.93651965    0.        ]
+ [ 104.70445048    1.        ]
+ [ 149.70158014    1.        ]
+ [ -39.10430474    0.        ]
+ [ 150.22096686    1.        ]
+ [ 106.93250075    1.        ]
+ [ 109.29887282    1.        ]
+ [ 129.00963372    1.        ]
+ [ 149.62749063    1.        ]
+ [  79.16998879    1.        ]
+ [  93.75151249    1.        ]
+ [ 145.8695446     1.        ]
+ [ 127.71088332    1.        ]
+ [ 109.49238717    1.        ]
+ [ -56.16117116    0.        ]
+ [ 130.6172968     1.        ]
+ [ 129.02287912    1.        ]
+ [ 107.29351037    1.        ]
+ [  37.77824518    0.        ]
+ [ -22.63140051    0.        ]
+ [ 150.32657012    1.        ]
+ [ 108.18261439    1.        ]
+ [ 105.16416398    1.        ]
+ [ 148.10936617    1.        ]
+ [ -68.93031626    0.        ]
+ [ 107.46036161    1.        ]
+ [ 149.08011176    1.        ]
+ [ 109.28346158    1.        ]
+ [ -30.43533798    0.        ]
+ [ 125.61639046    1.        ]
+ [  99.01421328    1.        ]
+ [ 127.974641      1.        ]
+ [ 102.15314451    1.        ]
+ [ 100.58121312    1.        ]
+ [ -74.85922453    0.        ]
+ [-175.08601088    0.        ]
+ [ 108.84549267    1.        ]
+ [ 128.5489281     1.        ]
+ [ -98.46325832    0.        ]
+ [  33.13437377    0.        ]
+ [ 107.04649527    1.        ]
+ [ 110.27917494    1.        ]
+ [ 107.74140754    1.        ]
+ [  23.92932962    0.        ]
+ [ 104.57811163    1.        ]
+ [ 148.53244259    1.        ]
+ [ 118.13993816    1.        ]
+ [ 108.13151919    1.        ]
+ [ 106.92369177    1.        ]
+ [ 106.85319765    1.        ]
+ [ 106.43029399    1.        ]
+ [ 145.02506863    1.        ]
+ [ 147.00640648    1.        ]
+ [ 108.9559924     1.        ]
+ [ 119.47452582    1.        ]
+ [ 150.62328818    1.        ]
+ [ 106.07523922    1.        ]
+ [ 108.38294503    1.        ]
+ [-232.67486257    0.        ]
+ [  33.29082115    0.        ]
+ [ -64.11226145    0.        ]
+ [ -70.67052476    0.        ]
+ [ 146.26139714    1.        ]
+ [ 150.60627431    1.        ]
+ [ 107.55336955    1.        ]
+ [ -61.40208291    0.        ]
+ [  35.45602247    0.        ]
+ [ 125.85693227    1.        ]
+ [ 109.80363869    1.        ]
+ [  90.84972511    1.        ]
+ [ 129.40689597    1.        ]
+ [ -64.76596864    0.        ]
+ [ 109.8607713     1.        ]
+ [ 128.45229479    1.        ]
+ [ 128.5231448     1.        ]
+ [ 145.13700719    1.        ]
+ [  95.65154226    1.        ]
+ [ -55.33959859    0.        ]
+ [  92.38881447    1.        ]
+ [ 113.22581705    1.        ]
+ [  97.87024104    1.        ]
+ [ -30.89327196    0.        ]
+ [ 127.03215342    1.        ]
+ [ 109.43713858    1.        ]]
+max_reward: 150.62328817788247
+min_reward: -232.67486257216504
+avg_reward: 79.13677637182663
+std_err_reward: 7.943996603686129
+success_rate: 0.75
+pybullet build time: Sep 28 2021 17:07:24
