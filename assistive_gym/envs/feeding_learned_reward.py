@@ -14,7 +14,7 @@ class FeedingLearnedRewardEnv(FeedingEnv):
     # With weight decay: /home/jtien/assistive-gym/trex/models/5000traj_100epoch_1weightdecay_earlystopping.params
     # With no bias: /home/jtien/assistive-gym/trex/models/5000traj_100epoch_nobias_earlystopping.params
     # Local: /Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trex/models/test1.params    
-    reward_net_path = "/home/jtien/assistive-gym/trex/models/5000traj_100epoch_nobias_earlystopping.params"
+    reward_net_path = "/home/jtien/assistive-gym/trex/models/raw_states/60demosallpairs_100epochs_10patience_001lr_01weightdecay_seed0.params"
     reward_net = None
     device = None
 
@@ -30,7 +30,12 @@ class FeedingLearnedRewardEnv(FeedingEnv):
     def step(self, action):
         obs, reward, done, info = super().step(action)
 
-        state = np.concatenate((obs, action))
+        # If features consist of state-action pairs:
+        # state = np.concatenate((obs, action))
+
+        # If features consist of just the observation:
+        state = obs
+
         # Just modify the reward
         with torch.no_grad():
             reward = self.reward_net.cum_return(torch.from_numpy(np.array([state])).float().to(self.device)).item()
