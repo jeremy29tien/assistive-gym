@@ -106,7 +106,7 @@ for i in range(num_rollouts):
             print("\n")
         if info['task_success']:
             reward_success[i, 1] = 1
-            break
+            # break
     # NOTE: If the task was successful, reward_success[i, 1] = 1 before exiting the loop.
     # Otherwise, reward_success[i, 1] = 0 (as initialized). Thus, we just have to set the reward.
     reward_success[i, 0] = total_reward
