@@ -83,7 +83,7 @@ for i, noise_level in enumerate(noise_levels):
                 # print("Observation:", observation)
                 # print("Action:", action)
 
-                # Raw state: observation + action
+                # Raw features: observation + action
                 # data = np.concatenate((observation, action))
 
                 # Handtuned features: spoon-mouth distance, amount of food particles in mouth, amount of food particles on the floor
@@ -94,7 +94,10 @@ for i, noise_level in enumerate(noise_levels):
                 else:
                     foods_in_mouth = info['foods_in_mouth']
                     foods_on_floor = info['foods_on_ground']
-                data = np.array([distance, foods_in_mouth, foods_on_floor])
+                # data = np.array([distance, foods_in_mouth, foods_on_floor])
+
+                # Augmented features: observation + handpicked
+                data = np.array([observation, distance, foods_in_mouth, foods_on_floor])
 
                 # Step the simulation forward using the action from our trained policy
                 observation, reward, done, info = env.step(action)
@@ -126,9 +129,9 @@ rewards_over_time = np.asarray(rewards_over_time)
 # print(demos)
 # print(total_rewards)
 
-np.save("data/handpicked_features/demos.npy", demos)
-np.save("data/handpicked_features/demo_rewards.npy", total_rewards)
-np.save("data/handpicked_features/demo_reward_per_timestep.npy", rewards_over_time)
+np.save("data/augmented_features/demos.npy", demos)
+np.save("data/augmented_features/demo_rewards.npy", total_rewards)
+np.save("data/augmented_features/demo_reward_per_timestep.npy", rewards_over_time)
 
 
 with np.printoptions(precision=3):
