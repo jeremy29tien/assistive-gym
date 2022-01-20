@@ -97,7 +97,7 @@ for i, noise_level in enumerate(noise_levels):
                 data = np.array([distance, foods_in_mouth, foods_on_floor])
 
                 # Augmented features: observation + handpicked
-                data = np.array([observation, data])
+                data = np.concatenate((observation, data))
 
                 # Step the simulation forward using the action from our trained policy
                 observation, reward, done, info = env.step(action)
