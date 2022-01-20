@@ -75,10 +75,12 @@ def create_training_data(demonstrations, num_trajs, pair_delta, all_pairs=False)
 
 
 class Net(nn.Module):
-    def __init__(self, with_bias=False, state_action=False):
+    def __init__(self, with_bias=False, augmented=True, state_action=False):
         super().__init__()
 
-        if state_action:
+        if augmented:
+            input_dim = 28
+        elif state_action:
             input_dim = 32
         else:
             input_dim = 25
@@ -250,6 +252,7 @@ if __name__ == "__main__":
     parser.add_argument('--pair_delta', default=10, type=int, help="min difference between trajectory rankings in our dataset")
     parser.add_argument('--all_pairs', dest='all_pairs', default=False, action='store_true', help="whether we generate all pairs from the dataset (num_demos choose 2)")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--state_action', dest='state_action', default=False, action='store_true', help="whether data consists of state-action pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
+    parser.add_argument('--augmented', dest='augmented', default=False, action='store_true', help="whether data consists of states + linear features pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
     args = parser.parse_args()
 
     seed = args.seed
@@ -266,16 +269,22 @@ if __name__ == "__main__":
     all_pairs = args.all_pairs
     with_bias = args.with_bias
     state_action = args.state_action
+    augmented = args.augmented
     l1_reg = 0.0
     #################
 
     # sort the demonstrations according to ground truth reward to simulate ranked demos
-    if state_action:
-        demos = np.load("data/raw_data/demos_stateactions.npy")
+    if augmented:
+        demos = np.load("data/augmented_features/demos.npy")
+        demo_rewards = np.load("data/augmented_features/demo_rewards.npy")
+        demo_reward_per_timestep = np.load("data/augmented_features/demo_reward_per_timestep.npy")
     else:
-        demos = np.load("data/raw_data/demos_states.npy")
-    demo_rewards = np.load("data/raw_data/demo_rewards.npy")
-    demo_reward_per_timestep = np.load("data/raw_data/demo_reward_per_timestep.npy")
+        if state_action:
+            demos = np.load("data/raw_data/demos_stateactions.npy")
+        else:
+            demos = np.load("data/raw_data/demos_states.npy")
+        demo_rewards = np.load("data/raw_data/demo_rewards.npy")
+        demo_reward_per_timestep = np.load("data/raw_data/demo_reward_per_timestep.npy")
 
     # Subsample the demos according to num_demos
     # Source: https://stackoverflow.com/questions/50685409/select-n-evenly-spaced-out-elements-in-array-including-first-and-last
@@ -313,7 +322,7 @@ if __name__ == "__main__":
 
     # Now we create a reward network and optimize it using the training data.
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    reward_net = Net(with_bias=with_bias, state_action=state_action)
+    reward_net = Net(with_bias=with_bias, augmented=augmented, state_action=state_action)
     reward_net.to(device)
     import torch.optim as optim
 
