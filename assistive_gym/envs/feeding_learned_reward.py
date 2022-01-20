@@ -14,7 +14,7 @@ class FeedingLearnedRewardEnv(FeedingEnv):
     # With weight decay: /home/jtien/assistive-gym/trex/models/5000traj_100epoch_1weightdecay_earlystopping.params
     # With no bias: /home/jtien/assistive-gym/trex/models/5000traj_100epoch_nobias_earlystopping.params
     # Local: /Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trex/models/test1.params    
-    reward_net_path = "/home/jtien/assistive-gym/trex/models/raw_features/60demosallpairs_100epochs_10patience_001lr_01weightdecay_seed2.params"
+    reward_net_path = "/home/jtien/assistive-gym/trex/models/augmented_features/60demosallpairs_100epochs_10patience_001lr_01weightdecay_seed0.params"
     reward_net = None
     device = None
 
@@ -31,10 +31,17 @@ class FeedingLearnedRewardEnv(FeedingEnv):
         obs, reward, done, info = super().step(action)
 
         # If features consist of state-action pairs:
-        state = np.concatenate((obs, action))
+        # state = np.concatenate((obs, action))
 
         # If features consist of just the observation:
-        # state = obs
+        state = obs
+
+        # If using augmented features
+        distance = np.linalg.norm(obs[7:10])  # spoon_pos_real - target_pos_real is at index 7,8,9
+        foods_in_mouth = info['foods_in_mouth']
+        foods_on_floor = info['foods_on_ground']
+        linear_features = np.array([distance, foods_in_mouth, foods_on_floor])
+        state = np.concatenate((state, linear_features))
 
         # Just modify the reward
         with torch.no_grad():
