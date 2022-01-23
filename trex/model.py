@@ -78,7 +78,9 @@ class Net(nn.Module):
     def __init__(self, with_bias=False, augmented=True, state_action=False):
         super().__init__()
 
-        if augmented:
+        if augmented and state_action:
+            input_dim = 35
+        elif augmented:
             input_dim = 28
         elif state_action:
             input_dim = 32
@@ -279,7 +281,11 @@ if __name__ == "__main__":
     #################
 
     # sort the demonstrations according to ground truth reward to simulate ranked demos
-    if augmented:
+    if augmented and state_action:
+        demos = np.load("data/augmented_stateactions/demos.npy")
+        demo_rewards = np.load("data/augmented_stateactions/demo_rewards.npy")
+        demo_reward_per_timestep = np.load("data/augmented_stateactions/demo_reward_per_timestep.npy")
+    elif augmented:
         demos = np.load("data/augmented_features/demos.npy")
         demo_rewards = np.load("data/augmented_features/demo_rewards.npy")
         demo_reward_per_timestep = np.load("data/augmented_features/demo_reward_per_timestep.npy")
