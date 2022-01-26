@@ -10,11 +10,11 @@ import argparse
 from sklearn.model_selection import train_test_split
 
 
-# num_trajs specifies the number of trajectories to use in our training set
+# num_comps specifies the number of pairwise comparisons between trajectories to use in our training set
 # pair_delta=1 recovers original (just that pairwise comps can't be the same)
-# if all_pairs=True, rather than generating num_trajs pairwise comps with pair_delta ranking difference,
+# if all_pairs=True, rather than generating num_comps pairwise comps with pair_delta ranking difference,
 # we simply generate all (num_demos choose 2) possible pairs from the dataset.
-def create_training_data(demonstrations, num_trajs, pair_delta, all_pairs=False):
+def create_training_data(demonstrations, num_comps, pair_delta, all_pairs=False):
     # collect training data
     max_traj_length = 0
     training_obs = []
@@ -40,7 +40,7 @@ def create_training_data(demonstrations, num_trajs, pair_delta, all_pairs=False)
                 max_traj_length = max(max_traj_length, len(traj_i), len(traj_j))
     else:
         # add full trajs
-        for n in range(num_trajs):
+        for n in range(num_comps):
             ti = 0
             tj = 0
             # only add trajectories that are different returns
@@ -250,7 +250,7 @@ if __name__ == "__main__":
     parser.add_argument('--reward_model_path', default='',
                         help="name and location for learned model params, e.g. ./learned_models/breakout.params")
     parser.add_argument('--seed', default=0, help="random seed for experiments")
-    parser.add_argument('--num_trajs', default=0, type=int, help="number of pairwise comparisons")
+    parser.add_argument('--num_comps', default=0, type=int, help="number of pairwise comparisons")
     parser.add_argument('--num_demos', default=120, type=int, help="the number of demos to sample pairwise comps from")
     parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
     parser.add_argument('--lr', default=0.00005, type=float, help="learning rate")
@@ -267,7 +267,7 @@ if __name__ == "__main__":
     torch.manual_seed(seed)
 
     ## HYPERPARAMS ##
-    num_trajs = args.num_trajs
+    num_comps = args.num_comps
     num_demos = args.num_demos
     lr = args.lr
     weight_decay = args.weight_decay
@@ -319,7 +319,7 @@ if __name__ == "__main__":
     print(sorted_demo_rewards)
 
     train_val_split_seed = 100
-    obs, labels = create_training_data(sorted_demos, num_trajs, pair_delta, all_pairs)
+    obs, labels = create_training_data(sorted_demos, num_comps, pair_delta, all_pairs)
     if len(obs) > 1:
         training_obs, val_obs, training_labels, val_labels = train_test_split(obs, labels, test_size=0.10, random_state=train_val_split_seed)
     else:
