@@ -169,14 +169,14 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
         # Early Stopping
         if val_loss > prev_val_loss:
             trigger_times += 1
-            # print('trigger times:', trigger_times)
+            print('trigger times:', trigger_times)
             if trigger_times >= patience:
                 print("Early stopping.")
                 print("Trained Weights:", reward_net.state_dict())
                 return
         else:
             trigger_times = 0
-            # print('trigger times:', trigger_times)
+            print('trigger times:', trigger_times)
 
         prev_val_loss = val_loss
     print("finished training")
