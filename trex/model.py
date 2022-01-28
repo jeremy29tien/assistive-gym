@@ -176,7 +176,7 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
                 return
         else:
             trigger_times = 0
-            # print('trigger times:', trigger_times)
+            print('trigger times:', trigger_times)
 
         prev_val_loss = val_loss
     print("finished training")
