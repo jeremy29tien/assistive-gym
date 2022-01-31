@@ -324,7 +324,7 @@ if __name__ == "__main__":
 
     # Now we create a reward network and optimize it using the training data.
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    reward_net = Net()
+    reward_net = Net(augmented=augmented, state_action=state_action)
     reward_net.to(device)
     import torch.optim as optim
 
