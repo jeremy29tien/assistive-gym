@@ -305,7 +305,9 @@ if __name__ == "__main__":
     # sorts the demos in order of increasing reward (most negative reward to most positive reward)
     # note that sorted_demos is now a python list, not a np array
     sorted_demos = [x for _, x in sorted(zip(demo_rewards, demos), key=lambda pair: pair[0])]
+    sorted_demos = np.array(sorted_demos)
     sorted_demo_rewards = sorted(demo_rewards)
+    sorted_demo_rewards = np.array(sorted_demo_rewards)
     print(sorted_demo_rewards)
 
     # Subsample the demos according to num_demos
