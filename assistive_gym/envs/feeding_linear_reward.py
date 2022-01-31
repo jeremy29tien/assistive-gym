@@ -20,9 +20,12 @@ class FeedingLinearRewardEnv(FeedingEnv):
     # /home/jtien/assistive-gym/trex/models/linear/5demosallpairs_10epochs_001lr_01weightdecay_seedX.params
     def __init__(self, robot, human):
         super(FeedingLinearRewardEnv, self).__init__(robot=robot, human=human)
+        self.augmented = True
+        self.state_action = False
+
         self.reward_net_path = "/home/jtien/assistive-gym/trex/models/linear/augmented_1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed0.params"
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.reward_net = Net(augmented=True, state_action=False)
+        self.reward_net = Net(augmented=self.augmented, state_action=self.state_action)
         print("device:", self.device)
         self.reward_net.load_state_dict(torch.load(self.reward_net_path, map_location=torch.device('cpu')))
         self.reward_net.to(self.device)
@@ -33,8 +36,14 @@ class FeedingLinearRewardEnv(FeedingEnv):
         distance = np.linalg.norm(obs[7:10])  # spoon_pos_real - target_pos_real is at index 7,8,9
         foods_in_mouth = info['foods_in_mouth']
         foods_on_floor = info['foods_on_ground']
+        handpicked_features = np.array([distance, foods_in_mouth, foods_on_floor])
 
-        input = np.array([distance, foods_in_mouth, foods_on_floor])
+        if self.augmented and self.state_action:
+            input = np.concatenate((obs, action, handpicked_features))
+        elif self.augmented:
+            input = np.concatenate((obs, handpicked_features))
+        else:
+            input = handpicked_features
 
         # Just modify the reward
         with torch.no_grad():
