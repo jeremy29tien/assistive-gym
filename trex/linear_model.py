@@ -10,11 +10,11 @@ import argparse
 from sklearn.model_selection import train_test_split
 
 
-# num_trajs specifies the number of trajectories to use in our training set
+# num_comps specifies the number of trajectories to use in our training set
 # pair_delta=1 recovers original (just that pairwise comps can't be the same)
-# if all_pairs=True, rather than generating num_trajs pairwise comps with pair_delta ranking difference,
+# if all_pairs=True, rather than generating num_comps pairwise comps with pair_delta ranking difference,
 # we simply generate all (num_demos choose 2) possible pairs from the dataset.
-def create_training_data(demonstrations, num_trajs, pair_delta, all_pairs):
+def create_training_data(demonstrations, num_comps, pair_delta, all_pairs):
     # collect training data
     max_traj_length = 0
     training_obs = []
@@ -40,7 +40,7 @@ def create_training_data(demonstrations, num_trajs, pair_delta, all_pairs):
                 max_traj_length = max(max_traj_length, len(traj_i), len(traj_j))
 
     else:
-        for n in range(num_trajs):
+        for n in range(num_comps):
             ti = 0
             tj = 0
             # only add trajectories that are different (in sorted reward ranking) by pair_delta
@@ -68,15 +68,23 @@ def create_training_data(demonstrations, num_trajs, pair_delta, all_pairs):
     return training_obs, training_labels
 
 
-input_dim = 3
-# NOTE: the input is comprised of
+# NOTE: the 'handpicked' features are comprised of
 # 1) spoon-mouth distance
 # 2) amount of food particles in mouth
 # 3) amount of food particles on the floor
-
 class Net(nn.Module):
-    def __init__(self):
+    def __init__(self, augmented=False, state_action=False):
         super().__init__()
+
+        if augmented and state_action:
+            input_dim = 35
+        elif augmented:
+            input_dim = 28
+        elif state_action:
+            input_dim = 32
+        else:
+            input_dim = 3
+
         self.fc1 = nn.Linear(input_dim, 1, bias=False)  # We have a single linear layer, with no nonlinearities
 
 
@@ -106,7 +114,7 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
 
     cum_loss = 0.0
     trigger_times = 0
-    prev_val_loss = 100
+    prev_min_val_loss = 100
     training_data = list(zip(training_inputs, training_outputs))
     for epoch in range(num_iter):
         np.random.shuffle(training_data)
@@ -138,28 +146,33 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
             # print stats to see if learning
             item_loss = loss.item()
             cum_loss += item_loss
-            val_loss = calc_val_loss(reward_network, val_obs, val_labels)
-            val_acc = calc_accuracy(reward_network, val_obs, val_labels)
             if i % 100 == 99:
+                val_loss = calc_val_loss(reward_network, val_obs, val_labels)
+                val_acc = calc_accuracy(reward_network, val_obs, val_labels)
                 print("epoch {}:{} loss {}, val_loss {}, val_acc {}".format(epoch, i, cum_loss, val_loss, val_acc))
                 cum_loss = 0.0
                 print("check pointing")
                 print("Weights:", reward_net.state_dict())
                 torch.save(reward_net.state_dict(), checkpoint_dir)
 
-            # Early Stopping
-            if val_loss > prev_val_loss:
-                trigger_times += 1
-                # print('trigger times:', trigger_times)
-                if trigger_times >= patience:
-                    print("Early stopping.")
-                    print("Trained Weights:", reward_net.state_dict())
-                    return
-            else:
-                trigger_times = 0
-                # print('trigger times:', trigger_times)
+        val_loss = calc_val_loss(reward_network, val_obs, val_labels)
+        val_acc = calc_accuracy(reward_network, val_obs, val_labels)
+        print("end of epoch {}: val_loss {}, val_acc {}".format(epoch, val_loss, val_acc))
+        torch.save(reward_net.state_dict(), checkpoint_dir)
 
-            prev_val_loss = val_loss
+        # Early Stopping
+        if val_loss > prev_min_val_loss:
+            trigger_times += 1
+            print('trigger times:', trigger_times)
+            if trigger_times >= patience:
+                print("Early stopping.")
+                print("Trained Weights:", reward_net.state_dict())
+                return
+        else:
+            trigger_times = 0
+            print('trigger times:', trigger_times)
+
+        prev_min_val_loss = min(prev_min_val_loss, val_loss)
     print("finished training")
     print("Trained Weights:", reward_net.state_dict())
 
@@ -231,7 +244,7 @@ if __name__ == "__main__":
     parser.add_argument('--reward_model_path', default='',
                         help="name and location for learned model params, e.g. ./learned_models/breakout.params")
     parser.add_argument('--seed', default=0, help="random seed for experiments")
-    parser.add_argument('--num_trajs', default=0, type=int, help="number of pairwise comparisons")
+    parser.add_argument('--num_comps', default=0, type=int, help="number of pairwise comparisons")
     parser.add_argument('--num_demos', default=120, type=int, help="the number of demos to sample pairwise comps from")
     parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
     parser.add_argument('--lr', default=0.00005, type=float, help="learning rate")
@@ -239,13 +252,15 @@ if __name__ == "__main__":
     parser.add_argument('--patience', default=100, type=int, help="number of iterations we wait before early stopping")
     parser.add_argument('--pair_delta', default=10, type=int, help="min difference between trajectory rankings in our dataset")
     parser.add_argument('--all_pairs', dest='all_pairs', default=False, action='store_true', help="whether we generate all pairs from the dataset (num_demos choose 2)")  # NOTE: type=bool doesn't work, value is still true.
+    parser.add_argument('--state_action', dest='state_action', default=False, action='store_true', help="whether data consists of state-action pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
+    parser.add_argument('--augmented', dest='augmented', default=False, action='store_true', help="whether data consists of states + linear features pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
     args = parser.parse_args()
 
     seed = args.seed
     torch.manual_seed(seed)
 
     ## HYPERPARAMS ##
-    num_trajs = args.num_trajs  # the number of pairwise comparisons we draw
+    num_comps = args.num_comps  # the number of pairwise comparisons we draw
     num_demos = args.num_demos
     lr = args.lr
     weight_decay = args.weight_decay
@@ -253,20 +268,23 @@ if __name__ == "__main__":
     patience = args.patience
     pair_delta = args.pair_delta
     all_pairs = args.all_pairs
+    state_action = args.state_action
+    augmented = args.augmented
     l1_reg = 0.0
     #################
 
-    # sort the demonstrations according to ground truth reward to simulate ranked demos
-    demos = np.load("data/handpicked_features/demos.npy")
-    demo_rewards = np.load("data/handpicked_features/demo_rewards.npy")
-    demo_reward_per_timestep = np.load("data/handpicked_features/demo_reward_per_timestep.npy")
-
-    # Subsample the demos according to num_demos
-    # Source: https://stackoverflow.com/questions/50685409/select-n-evenly-spaced-out-elements-in-array-including-first-and-last
-    idx = np.round(np.linspace(0, len(demos) - 1, num_demos)).astype(int)
-    demos = demos[idx]
-    demo_rewards = demo_rewards[idx]
-    demo_reward_per_timestep = demo_reward_per_timestep[idx]
+    if augmented and state_action:
+        demos = np.load("data/augmented_stateactions/demos.npy")
+        demo_rewards = np.load("data/augmented_stateactions/demo_rewards.npy")
+        demo_reward_per_timestep = np.load("data/augmented_stateactions/demo_reward_per_timestep.npy")
+    elif augmented:
+        demos = np.load("data/augmented_features/demos.npy")
+        demo_rewards = np.load("data/augmented_features/demo_rewards.npy")
+        demo_reward_per_timestep = np.load("data/augmented_features/demo_reward_per_timestep.npy")
+    else:
+        demos = np.load("data/handpicked_features/demos.npy")
+        demo_rewards = np.load("data/handpicked_features/demo_rewards.npy")
+        demo_reward_per_timestep = np.load("data/handpicked_features/demo_reward_per_timestep.npy")
 
     demo_lengths = 200  # fixed horizon of 200 timesteps in assistive gym
     print("demo lengths", demo_lengths)
@@ -274,15 +292,22 @@ if __name__ == "__main__":
     print("demos:", demos.shape)
     print("demo_rewards:", demo_rewards.shape)
 
+    # sort the demonstrations according to ground truth reward to simulate ranked demos
     # sorts the demos in order of increasing reward (most negative reward to most positive reward)
     # note that sorted_demos is now a python list, not a np array
     sorted_demos = [x for _, x in sorted(zip(demo_rewards, demos), key=lambda pair: pair[0])]
-
     sorted_demo_rewards = sorted(demo_rewards)
     print(sorted_demo_rewards)
 
-    train_val_split_seed = 100
-    obs, labels = create_training_data(sorted_demos, num_trajs, pair_delta, all_pairs)
+    # Subsample the demos according to num_demos
+    # Source: https://stackoverflow.com/questions/50685409/select-n-evenly-spaced-out-elements-in-array-including-first-and-last
+    idx = np.round(np.linspace(0, len(demos) - 1, num_demos)).astype(int)
+    sorted_demos = sorted_demos[idx]
+    sorted_demo_rewards = sorted_demo_rewards[idx]
+    demo_reward_per_timestep = demo_reward_per_timestep[idx]  # Note: not used.
+
+    train_val_split_seed = seed
+    obs, labels = create_training_data(sorted_demos, num_comps, pair_delta, all_pairs)
     if len(obs) > 1:
         training_obs, val_obs, training_labels, val_labels = train_test_split(obs, labels, test_size=0.10, random_state=train_val_split_seed)
     else:

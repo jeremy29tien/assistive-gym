@@ -72,8 +72,6 @@ def create_training_data(demonstrations, num_comps, pair_delta, all_pairs=False)
 # If input is comprised of state-action pairs, input_dim = 32
 # If input is comprised of states, input_dim = 25
 # input_dim = 25
-
-
 class Net(nn.Module):
     def __init__(self, with_bias=False, augmented=True, state_action=False):
         super().__init__()
@@ -121,7 +119,7 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
 
     cum_loss = 0.0
     trigger_times = 0
-    prev_val_loss = 100
+    prev_min_val_loss = 100
     training_data = list(zip(training_inputs, training_outputs))
     for epoch in range(num_iter):
         np.random.shuffle(training_data)
@@ -167,7 +165,7 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
         torch.save(reward_net.state_dict(), checkpoint_dir)
 
         # Early Stopping
-        if val_loss > prev_val_loss:
+        if val_loss > prev_min_val_loss:
             trigger_times += 1
             print('trigger times:', trigger_times)
             if trigger_times >= patience:
@@ -178,7 +176,7 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
             trigger_times = 0
             print('trigger times:', trigger_times)
 
-        prev_val_loss = val_loss
+        prev_min_val_loss = min(prev_min_val_loss, val_loss)
     print("finished training")
     print("Trained Weights:", reward_net.state_dict())
 
@@ -281,7 +279,6 @@ if __name__ == "__main__":
     l1_reg = 0.0
     #################
 
-    # sort the demonstrations according to ground truth reward to simulate ranked demos
     if augmented and state_action:
         demos = np.load("data/augmented_stateactions/demos.npy")
         demo_rewards = np.load("data/augmented_stateactions/demo_rewards.npy")
@@ -298,27 +295,27 @@ if __name__ == "__main__":
         demo_rewards = np.load("data/raw_data/demo_rewards.npy")
         demo_reward_per_timestep = np.load("data/raw_data/demo_reward_per_timestep.npy")
 
-    # Subsample the demos according to num_demos
-    # Source: https://stackoverflow.com/questions/50685409/select-n-evenly-spaced-out-elements-in-array-including-first-and-last
-    idx = np.round(np.linspace(0, len(demos) - 1, num_demos)).astype(int)
-    demos = demos[idx]
-    demo_rewards = demo_rewards[idx]
-    demo_reward_per_timestep = demo_reward_per_timestep[idx]
-
     demo_lengths = 200  # fixed horizon of 200 timesteps in assistive gym
     print("demo lengths", demo_lengths)
 
     print("demos:", demos.shape)
     print("demo_rewards:", demo_rewards.shape)
 
+    # sort the demonstrations according to ground truth reward to simulate ranked demos
     # sorts the demos in order of increasing reward (most negative reward to most positive reward)
     # note that sorted_demos is now a python list, not a np array
     sorted_demos = [x for _, x in sorted(zip(demo_rewards, demos), key=lambda pair: pair[0])]
-
     sorted_demo_rewards = sorted(demo_rewards)
     print(sorted_demo_rewards)
 
-    train_val_split_seed = 100
+    # Subsample the demos according to num_demos
+    # Source: https://stackoverflow.com/questions/50685409/select-n-evenly-spaced-out-elements-in-array-including-first-and-last
+    idx = np.round(np.linspace(0, len(demos) - 1, num_demos)).astype(int)
+    sorted_demos = sorted_demos[idx]
+    sorted_demo_rewards = sorted_demo_rewards[idx]
+    demo_reward_per_timestep = demo_reward_per_timestep[idx]  # Note: not used.
+
+    train_val_split_seed = seed
     obs, labels = create_training_data(sorted_demos, num_comps, pair_delta, all_pairs)
     if len(obs) > 1:
         training_obs, val_obs, training_labels, val_labels = train_test_split(obs, labels, test_size=0.10, random_state=train_val_split_seed)
