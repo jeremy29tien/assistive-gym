@@ -317,7 +317,7 @@ if __name__ == "__main__":
     sorted_demo_rewards = sorted_demo_rewards[idx]
     demo_reward_per_timestep = demo_reward_per_timestep[idx]  # Note: not used.
 
-    train_val_split_seed = seed
+    train_val_split_seed = 100
     obs, labels = create_training_data(sorted_demos, num_comps, pair_delta, all_pairs)
     if len(obs) > 1:
         training_obs, val_obs, training_labels, val_labels = train_test_split(obs, labels, test_size=0.10, random_state=train_val_split_seed)
