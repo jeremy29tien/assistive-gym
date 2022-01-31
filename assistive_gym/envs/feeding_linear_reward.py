@@ -20,9 +20,9 @@ class FeedingLinearRewardEnv(FeedingEnv):
     # /home/jtien/assistive-gym/trex/models/linear/5demosallpairs_10epochs_001lr_01weightdecay_seedX.params
     def __init__(self, robot, human):
         super(FeedingLinearRewardEnv, self).__init__(robot=robot, human=human)
-        self.reward_net_path = "/home/jtien/assistive-gym/trex/models/linear/5demosallpairs_10epochs_001lr_01weightdecay_seedX.params"
+        self.reward_net_path = "/home/jtien/assistive-gym/trex/models/linear/augmented_1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed0.params"
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.reward_net = Net()
+        self.reward_net = Net(augmented=True, state_action=False)
         print("device:", self.device)
         self.reward_net.load_state_dict(torch.load(self.reward_net_path, map_location=torch.device('cpu')))
         self.reward_net.to(self.device)
