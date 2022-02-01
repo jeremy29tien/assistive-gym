@@ -185,7 +185,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=None)
     parser.add_argument('--data_dir', default='', help="location for generated rollouts")
     parser.add_argument('--policy_path', default='', help="location for (pre)trained policy")
-    parser.add_argument('--seed', default=0, help="random seed for experiments")
+    parser.add_argument('--seed', default=0, type=int, help="random seed for experiments")
     parser.add_argument('--num_rollouts', default=20, type=int, help="number of rollouts")
     parser.add_argument('--noisy', dest='noisy', default=False, action='store_true', help="whether we add noise to rollouts")
     parser.add_argument('--state_action', dest='state_action', default=False, action='store_true', help="whether data consists of state-action pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
