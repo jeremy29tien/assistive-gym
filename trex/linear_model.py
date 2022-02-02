@@ -138,10 +138,17 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
             outputs = outputs.unsqueeze(0)
             # print("train outputs", outputs.shape)
             # print("train label", label.shape)
-            loss = loss_criterion(outputs, label)  # got rid of the l1_reg * abs_rewards from this line
-            loss.backward()
-            optimizer.step()
 
+            # Calculate loss
+            cross_entropy_loss = loss_criterion(outputs, label)  # got rid of the l1_reg * abs_rewards from this line
+            l1_loss = l1_reg * torch.linalg.vector_norm(torch.cat([param.view(-1) for param in reward_network.parameters()]), 1)
+            loss = cross_entropy_loss + l1_loss
+
+            # Backpropagate
+            loss.backward()
+
+            # Take one optimizer step
+            optimizer.step()
 
             # print stats to see if learning
             item_loss = loss.item()
@@ -249,6 +256,7 @@ if __name__ == "__main__":
     parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
     parser.add_argument('--lr', default=0.00005, type=float, help="learning rate")
     parser.add_argument('--weight_decay', default=0.0, type=float, help="weight decay")
+    parser.add_argument('--l1_reg', default=0.0, type=float, help="l1 regularization")
     parser.add_argument('--patience', default=100, type=int, help="number of iterations we wait before early stopping")
     parser.add_argument('--pair_delta', default=10, type=int, help="min difference between trajectory rankings in our dataset")
     parser.add_argument('--all_pairs', dest='all_pairs', default=False, action='store_true', help="whether we generate all pairs from the dataset (num_demos choose 2)")  # NOTE: type=bool doesn't work, value is still true.
@@ -264,13 +272,13 @@ if __name__ == "__main__":
     num_demos = args.num_demos
     lr = args.lr
     weight_decay = args.weight_decay
+    l1_reg = args.l1_reg
     num_iter = args.num_epochs  # num times through training data
     patience = args.patience
     pair_delta = args.pair_delta
     all_pairs = args.all_pairs
     state_action = args.state_action
     augmented = args.augmented
-    l1_reg = 0.0
     #################
 
     if augmented and state_action:
