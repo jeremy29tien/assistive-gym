@@ -290,9 +290,18 @@ if __name__ == "__main__":
         demo_rewards = np.load("data/augmented_features/demo_rewards.npy")
         demo_reward_per_timestep = np.load("data/augmented_features/demo_reward_per_timestep.npy")
         if active_learning:
-            al_demos = np.load("data/active_learning/1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed0/demos.npy")
-            al_demo_rewards = np.load("data/active_learning/1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed0/demo_rewards.npy")
-            al_demo_reward_per_timestep = np.load("data/active_learning/1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed0/demo_reward_per_timestep.npy")
+            if seed == 0:
+                al_demos = np.load("data/active_learning/1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed0/demos.npy")
+                al_demo_rewards = np.load("data/active_learning/1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed0/demo_rewards.npy")
+                al_demo_reward_per_timestep = np.load("data/active_learning/1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed0/demo_reward_per_timestep.npy")
+            if seed == 1:
+                al_demos = np.load("data/active_learning/1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed1/demos.npy")
+                al_demo_rewards = np.load("data/active_learning/1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed1/demo_rewards.npy")
+                al_demo_reward_per_timestep = np.load("data/active_learning/1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed1/demo_reward_per_timestep.npy")
+            if seed == 2:
+                al_demos = np.load("data/active_learning/1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed2/demos.npy")
+                al_demo_rewards = np.load("data/active_learning/1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed2/demo_rewards.npy")
+                al_demo_reward_per_timestep = np.load("data/active_learning/1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed2/demo_reward_per_timestep.npy")
 
             demos = np.concatenate((demos, al_demos), axis=0)
             demo_rewards = np.concatenate((demo_rewards, al_demo_rewards), axis=0)
