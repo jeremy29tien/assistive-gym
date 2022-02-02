@@ -1,0 +1,3436 @@
+demo lengths 200
+demos: (150, 200, 28)
+demo_rewards: (150,)
+[-207.36908327 -191.10004521 -189.05007017 -187.50220085 -180.24009179
+ -171.96137924 -169.38170168 -167.87631268 -166.37855701 -164.27567046
+ -163.76742237 -156.07868959 -155.22804552 -145.29002069 -142.8665728
+ -142.75441848 -136.98962801 -132.4813577  -130.98347157 -118.24362226
+ -117.38411415 -116.97382686 -115.06704102 -112.47832646 -104.47613837
+ -103.24187681 -102.4834941  -102.43030506  -99.84217501  -99.7422753
+  -98.18526662  -95.25894886  -94.06845033  -93.96169363  -92.27881722
+  -91.90015523  -91.87704992  -91.83255824  -90.37310119  -90.20276885
+  -88.94674758  -88.61887974  -88.29611534  -85.88346862  -84.43911003
+  -84.11407072  -84.03081224  -79.38307722  -79.25112655  -73.50697856
+  -72.69803192  -72.11986635  -71.83208241  -71.37326168  -70.68057697
+  -70.60116177  -68.27187815  -65.42298163  -65.36847933  -65.35816021
+  -57.11519326  -56.4034381   -51.2210129   -50.0315574   -49.31867416
+  -39.8375231   -17.32544162   -4.37451128   -0.4258659     9.10814675
+   17.73263018   40.64550157   41.11774839   48.64917674   52.5026004
+   52.54502853   59.52827492   63.45606317   66.31570759   67.13050508
+   72.16624272   79.16074532   84.19837606   89.30707154   90.26988507
+   90.28646232   90.32667007   91.18021498   92.38187518   92.67153902
+   93.69474939   93.8611286    95.24073533   95.36301018   96.09581961
+   97.90553231   98.07644231   98.35872828   98.5733471    98.77895391
+   99.10163704   99.47183808  101.36707045  102.70820969  103.61971442
+  104.00039884  104.94014609  105.28448326  105.60678193  106.95774051
+  107.03525723  107.05410486  107.36477417  107.72369032  107.78006758
+  107.99397436  108.08910889  108.09776529  108.24033507  109.15712102
+  109.71287331  110.25063891  110.45880856  110.48639228  111.92877272
+  112.2946742   112.73910566  112.98274531  113.8461648   114.8461224
+  115.08707834  115.41025719  115.56466246  115.87882503  116.51927592
+  116.69939038  117.18809855  117.29357602  117.43241924  119.84073496
+  122.74776107  124.10172315  124.42382576  124.4817957   125.25908938
+  125.30457668  125.43458549  129.13346806  129.67718524  131.40806577]
+maximum traj length 200
+num training_obs 1593
+num training_labels 1593
+num val_obs 177
+num val_labels 177
+device: cpu
+epoch 0:99 loss 186.7307250251638, val_loss 1.3216542401715141, val_acc 0.9491525423728814
+check pointing
+epoch 0:199 loss 186.59838226086663, val_loss 1.809501645408751, val_acc 0.8757062146892656
+check pointing
+epoch 0:299 loss 12.23166152371141, val_loss 1.0314764303002601, val_acc 0.9661016949152542
+check pointing
+epoch 0:399 loss 365.8164919850445, val_loss 0.5722390740807423, val_acc 0.9548022598870056
+check pointing
+epoch 0:499 loss 19.508805725897666, val_loss 0.03432536059917034, val_acc 0.9943502824858758
+check pointing
+epoch 0:599 loss 205.50129184646923, val_loss 0.9732073924160114, val_acc 0.9548022598870056
+check pointing
+epoch 0:699 loss 83.39652937900235, val_loss 0.2576512236135618, val_acc 0.9661016949152542
+check pointing
+epoch 0:799 loss 20.438746482245037, val_loss 0.014001087091790886, val_acc 0.9943502824858758
+check pointing
+epoch 0:899 loss 634.2917354093934, val_loss 1.9465164195346294, val_acc 0.9830508474576272
+check pointing
+epoch 0:999 loss 778.07373046875, val_loss 3.145063669668079, val_acc 0.9887005649717514
+check pointing
+epoch 0:1099 loss 0.0, val_loss 3.532800361935028, val_acc 0.9887005649717514
+check pointing
+epoch 0:1199 loss 512.8013353347778, val_loss 17.934273475297005, val_acc 0.9265536723163842
+check pointing
+epoch 0:1299 loss 206.09643685817628, val_loss 1.8152503751765536, val_acc 0.9774011299435028
+check pointing
+epoch 0:1399 loss 37.95505137741566, val_loss 3.974812480689442, val_acc 0.9774011299435028
+check pointing
+epoch 0:1499 loss 285.06768798828125, val_loss 0.05231717077348636, val_acc 0.9943502824858758
+check pointing
+end of epoch 0: val_loss 0.2020234388146697, val_acc 0.9887005649717514
+trigger times: 0
+epoch 1:99 loss 89.66555786132812, val_loss 0.4424407441737288, val_acc 0.9943502824858758
+check pointing
+epoch 1:199 loss 0.0, val_loss 0.4672161899717514, val_acc 0.9943502824858758
+check pointing
+epoch 1:299 loss 638.6224365234375, val_loss 11.857090147201625, val_acc 0.9548022598870056
+check pointing
+epoch 1:399 loss 386.7061767578125, val_loss 0.08806476485257768, val_acc 0.9943502824858758
+check pointing
+epoch 1:499 loss 0.0, val_loss 0.08184435138594633, val_acc 0.9943502824858758
+check pointing
+epoch 1:599 loss 0.0, val_loss 0.09391207075388418, val_acc 0.9943502824858758
+check pointing
+epoch 1:699 loss 48.27423095703125, val_loss 1.3469974614680963e-09, val_acc 1.0
+check pointing
+epoch 1:799 loss 0.0, val_loss 0.06351043140820864, val_acc 0.9943502824858758
+check pointing
+epoch 1:899 loss 133.80914306640625, val_loss 0.596782630446267, val_acc 0.9887005649717514
+check pointing
+epoch 1:999 loss 1.0848006468222593e-05, val_loss 0.8378830387093926, val_acc 0.9887005649717514
+check pointing
+epoch 1:1099 loss 246.19115829467773, val_loss 2.884223419588871, val_acc 0.9774011299435028
+check pointing
+epoch 1:1199 loss 6.738245964050293, val_loss 0.258861477092161, val_acc 0.9943502824858758
+check pointing
+epoch 1:1299 loss 145.14239501953125, val_loss 0.0003971302234646627, val_acc 1.0
+check pointing
+epoch 1:1399 loss 6.126088619232178, val_loss 0.1336125088276836, val_acc 0.9943502824858758
+check pointing
+epoch 1:1499 loss 0.0, val_loss 0.125158967271363, val_acc 0.9943502824858758
+check pointing
+end of epoch 1: val_loss 2.477661750410904, val_acc 0.96045197740113
+trigger times: 1
+epoch 2:99 loss 27.67588710784912, val_loss 0.09155792316341625, val_acc 0.9887005649717514
+check pointing
+epoch 2:199 loss 2.3841855067985307e-07, val_loss 0.14087284928829658, val_acc 0.9830508474576272
+check pointing
+epoch 2:299 loss 45.617574691601135, val_loss 1.271203950673673, val_acc 0.9378531073446328
+check pointing
+epoch 2:399 loss 22.865373021082462, val_loss 0.03381438702577766, val_acc 0.9943502824858758
+check pointing
+epoch 2:499 loss 3.155866861343384, val_loss 2.138216263823789e-05, val_acc 1.0
+check pointing
+epoch 2:599 loss 5.245195097813848e-06, val_loss 0.0009382141493725577, val_acc 1.0
+check pointing
+epoch 2:699 loss 4.7324978339702284e-05, val_loss 0.004711990962211124, val_acc 0.9943502824858758
+check pointing
+epoch 2:799 loss 0.0, val_loss 0.010796677377779533, val_acc 0.9943502824858758
+check pointing
+epoch 2:899 loss 0.0014504414280906985, val_loss 0.018175348138721386, val_acc 0.9943502824858758
+check pointing
+epoch 2:999 loss 3.099437407172445e-06, val_loss 0.02986821034124598, val_acc 0.9887005649717514
+check pointing
+epoch 2:1099 loss 0.26180964139939533, val_loss 1.9314401402982447e-06, val_acc 1.0
+check pointing
+epoch 2:1199 loss 21.010935635739756, val_loss 1.1916566508824547e-05, val_acc 1.0
+check pointing
+epoch 2:1299 loss 1.9788563676570448e-05, val_loss 6.880949645208301e-05, val_acc 1.0
+check pointing
+epoch 2:1399 loss 15.968816425601567, val_loss 0.00969210721666064, val_acc 0.9943502824858758
+check pointing
+epoch 2:1499 loss 44.38895492026677, val_loss 0.18706494947616045, val_acc 0.9717514124293786
+check pointing
+end of epoch 2: val_loss 3.8541049694553666, val_acc 0.96045197740113
+trigger times: 2
+epoch 3:99 loss 253.94179987538882, val_loss 0.011634285840610317, val_acc 0.9943502824858758
+check pointing
+epoch 3:199 loss 63.095558166503906, val_loss 0.5914779921709481, val_acc 0.9830508474576272
+check pointing
+epoch 3:299 loss 431.0211063622837, val_loss 1.8356381883728972, val_acc 0.9717514124293786
+check pointing
+epoch 3:399 loss 55.403835127304774, val_loss 0.4896791964600989, val_acc 0.9887005649717514
+check pointing
+epoch 3:499 loss 300.8035888671875, val_loss 5.044523054230288, val_acc 0.96045197740113
+check pointing
+epoch 3:599 loss 56.4608154296875, val_loss 0.3643178057187305, val_acc 0.9943502824858758
+check pointing
+epoch 3:699 loss 78.20130681991577, val_loss 0.2960156801730226, val_acc 0.9943502824858758
+check pointing
+epoch 3:799 loss 33.362548828125, val_loss 1.104139629730397, val_acc 0.9661016949152542
+check pointing
+epoch 3:899 loss 628.2920198440552, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 3:999 loss 31.330241645220667, val_loss 9.836923250751596, val_acc 0.9661016949152542
+check pointing
+epoch 3:1099 loss 997.1689153462648, val_loss 16.1278470095568, val_acc 0.9548022598870056
+check pointing
+epoch 3:1199 loss 1579.8642647266147, val_loss 5.758765613965395, val_acc 0.9830508474576272
+check pointing
+epoch 3:1299 loss 0.0, val_loss 5.380008331126413, val_acc 0.9830508474576272
+check pointing
+epoch 3:1399 loss 203.374267578125, val_loss 1.091941704184322, val_acc 0.9887005649717514
+check pointing
+epoch 3:1499 loss 320.633544921875, val_loss 7.172306870652289e-07, val_acc 1.0
+check pointing
+end of epoch 3: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 4:99 loss 120.8333765268294, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 4:199 loss 161.4987000224537, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 4:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 4:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 4:499 loss 133.3555908203125, val_loss 0.3848290739759887, val_acc 0.9943502824858758
+check pointing
+epoch 4:599 loss 0.0, val_loss 0.30178684366586883, val_acc 0.9943502824858758
+check pointing
+epoch 4:699 loss 0.0, val_loss 0.30555717150369893, val_acc 0.9943502824858758
+check pointing
+epoch 4:799 loss 267.28643798828125, val_loss 0.38158681071073997, val_acc 0.9830508474576272
+check pointing
+epoch 4:899 loss 10.022002220153809, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 4:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 4:1099 loss 43.29371643066406, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 4:1199 loss 17.870147705078125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 4:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 4:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 4:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 4: val_loss 0.07510302093634992, val_acc 0.9943502824858758
+trigger times: 1
+epoch 5:99 loss 107.93535052239895, val_loss 0.035748483097485906, val_acc 0.9887005649717514
+check pointing
+epoch 5:199 loss 0.0076741117518395185, val_loss 0.0002705530353261442, val_acc 1.0
+check pointing
+epoch 5:299 loss 0.0, val_loss 0.0002561319343084953, val_acc 1.0
+check pointing
+epoch 5:399 loss 11.706318213604334, val_loss 0.5466802020602729, val_acc 0.96045197740113
+check pointing
+epoch 5:499 loss 5.670289351604879, val_loss 0.1587305972378926, val_acc 0.9887005649717514
+check pointing
+epoch 5:599 loss 0.07550080865621567, val_loss 5.319498461566926e-06, val_acc 1.0
+check pointing
+epoch 5:699 loss 0.0, val_loss 1.1449469470443222e-08, val_acc 1.0
+check pointing
+epoch 5:799 loss 1.1324817933200393e-05, val_loss 7.408481782846847e-09, val_acc 1.0
+check pointing
+epoch 5:899 loss 0.0, val_loss 7.408481782846847e-09, val_acc 1.0
+check pointing
+epoch 5:999 loss 0.0, val_loss 1.212296575241417e-08, val_acc 1.0
+check pointing
+epoch 5:1099 loss 2.861018856492592e-06, val_loss 2.559289572734812e-08, val_acc 1.0
+check pointing
+epoch 5:1199 loss 0.0, val_loss 6.869646251473923e-08, val_acc 1.0
+check pointing
+epoch 5:1299 loss 0.0, val_loss 2.2022981551149596e-07, val_acc 1.0
+check pointing
+epoch 5:1399 loss 3.0874729418428615e-05, val_loss 8.828879635265403e-07, val_acc 1.0
+check pointing
+epoch 5:1499 loss 29.627726554870605, val_loss 5.347327339741806e-07, val_acc 1.0
+check pointing
+end of epoch 5: val_loss 1.2976831544748386e-06, val_acc 1.0
+trigger times: 2
+epoch 6:99 loss 3.909994358508584e-05, val_loss 3.018488812833856e-06, val_acc 1.0
+check pointing
+epoch 6:199 loss 4.541770613286644e-05, val_loss 6.2950526358885955e-06, val_acc 1.0
+check pointing
+epoch 6:299 loss 0.00039200251922011375, val_loss 1.1464125747940573e-05, val_acc 1.0
+check pointing
+epoch 6:399 loss 0.0006386386230587959, val_loss 2.0004042912902693e-05, val_acc 1.0
+check pointing
+epoch 6:499 loss 16.774203926324837, val_loss 0.145963074177154, val_acc 0.9887005649717514
+check pointing
+epoch 6:599 loss 2.3841856489070778e-07, val_loss 0.14185175697917338, val_acc 0.9887005649717514
+check pointing
+epoch 6:699 loss 0.0, val_loss 0.13648171213962382, val_acc 0.9887005649717514
+check pointing
+epoch 6:799 loss 13.948763573334375, val_loss 0.09306935356138417, val_acc 0.9774011299435028
+check pointing
+epoch 6:899 loss 0.9607639746513925, val_loss 0.2440763287344218, val_acc 0.9774011299435028
+check pointing
+epoch 6:999 loss 8.561553484009536, val_loss 0.03470761771107853, val_acc 0.9830508474576272
+check pointing
+epoch 6:1099 loss 12.890835099856332, val_loss 0.00434921779589212, val_acc 1.0
+check pointing
+epoch 6:1199 loss 1.7687268278531718, val_loss 0.021954698184694, val_acc 0.9887005649717514
+check pointing
+epoch 6:1299 loss 5.905644209314062, val_loss 0.010317543203973215, val_acc 0.9943502824858758
+check pointing
+epoch 6:1399 loss 6.9720216163034365, val_loss 0.009307373522064516, val_acc 1.0
+check pointing
+epoch 6:1499 loss 1.0015438967520964, val_loss 0.0074915813098189975, val_acc 1.0
+check pointing
+end of epoch 6: val_loss 0.01695969932772274, val_acc 0.9943502824858758
+trigger times: 3
+epoch 7:99 loss 1.6135360014017905, val_loss 0.015514536788091848, val_acc 1.0
+check pointing
+epoch 7:199 loss 3.2194893469381753, val_loss 0.012337469606438571, val_acc 1.0
+check pointing
+epoch 7:299 loss 0.8841194150693354, val_loss 0.012931010351783146, val_acc 0.9943502824858758
+check pointing
+epoch 7:399 loss 1.2468419409065774, val_loss 0.01448299913112084, val_acc 0.9943502824858758
+check pointing
+epoch 7:499 loss 2.739013119111533, val_loss 0.15134179340695633, val_acc 0.9265536723163842
+check pointing
+epoch 7:599 loss 1.880622173664328, val_loss 0.016471843036151873, val_acc 0.9943502824858758
+check pointing
+epoch 7:699 loss 43.20336107848336, val_loss 0.15980756792013412, val_acc 0.9661016949152542
+check pointing
+epoch 7:799 loss 519.3865846137919, val_loss 1.8904009931630965, val_acc 0.9491525423728814
+check pointing
+epoch 7:899 loss 3748.373977661133, val_loss 3.4100624558615817, val_acc 0.9887005649717514
+check pointing
+epoch 7:999 loss 2542.521990895106, val_loss 46.694449939511486, val_acc 0.9548022598870056
+check pointing
+epoch 7:1099 loss 204.435546875, val_loss 1.481013583598164, val_acc 0.9943502824858758
+check pointing
+epoch 7:1199 loss 226.63916015625, val_loss 3.4561374470338984, val_acc 0.9887005649717514
+check pointing
+epoch 7:1299 loss 1291.70361328125, val_loss 1.955080851323187, val_acc 0.9887005649717514
+check pointing
+epoch 7:1399 loss 80.24800109863281, val_loss 1.3577149816825564, val_acc 0.9943502824858758
+check pointing
+epoch 7:1499 loss 511.37037658691406, val_loss 0.2553097353143207, val_acc 0.9887005649717514
+check pointing
+end of epoch 7: val_loss 0.5501501223461777, val_acc 0.9943502824858758
+trigger times: 4
+epoch 8:99 loss 140.30549524002708, val_loss 4.902858409430768e-07, val_acc 1.0
+check pointing
+epoch 8:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 8:299 loss 66.99717712402344, val_loss 6.734987708777056e-10, val_acc 1.0
+check pointing
+epoch 8:399 loss 289.4205017089844, val_loss 0.3069482146009887, val_acc 0.9943502824858758
+check pointing
+epoch 8:499 loss 124.447021484375, val_loss 6.940629705870893, val_acc 0.9774011299435028
+check pointing
+epoch 8:599 loss 1119.01123046875, val_loss 1.6728482712836314, val_acc 0.9774011299435028
+check pointing
+epoch 8:699 loss 0.0, val_loss 0.7193395438195286, val_acc 0.9774011299435028
+check pointing
+epoch 8:799 loss 50.12397003173828, val_loss 0.3659267964336158, val_acc 0.9943502824858758
+check pointing
+epoch 8:899 loss 99.7713623046875, val_loss 0.009725524880791788, val_acc 0.9943502824858758
+check pointing
+epoch 8:999 loss 0.009731353260576725, val_loss 0.03164247200313935, val_acc 0.9943502824858758
+check pointing
+epoch 8:1099 loss 0.0, val_loss 0.05691431336483713, val_acc 0.9943502824858758
+check pointing
+epoch 8:1199 loss 0.0035461417865008116, val_loss 0.07504359746383409, val_acc 0.9943502824858758
+check pointing
+epoch 8:1299 loss 0.024531484581530094, val_loss 0.06898479433046223, val_acc 0.9943502824858758
+check pointing
+epoch 8:1399 loss 50.97186123066058, val_loss 0.3490407480358404, val_acc 0.9943502824858758
+check pointing
+epoch 8:1499 loss 0.0, val_loss 0.2536771095405191, val_acc 0.9943502824858758
+check pointing
+end of epoch 8: val_loss 0.1952104299081921, val_acc 0.9943502824858758
+trigger times: 5
+epoch 9:99 loss 0.0, val_loss 0.13310681359242585, val_acc 0.9943502824858758
+check pointing
+epoch 9:199 loss 0.0, val_loss 0.06874250961562335, val_acc 0.9943502824858758
+check pointing
+epoch 9:299 loss 0.17769692838191986, val_loss 9.00961458683014e-06, val_acc 1.0
+check pointing
+epoch 9:399 loss 12.169200403004652, val_loss 0.0531830407079281, val_acc 0.9943502824858758
+check pointing
+epoch 9:499 loss 2.888305546240474, val_loss 0.0018089966736342645, val_acc 1.0
+check pointing
+epoch 9:599 loss 362.1921344995492, val_loss 2.9676157202424305, val_acc 0.9830508474576272
+check pointing
+epoch 9:699 loss 1970.3515625, val_loss 10.97773630605579, val_acc 0.9661016949152542
+check pointing
+epoch 9:799 loss 1585.9264473500662, val_loss 1.0539674920550848, val_acc 0.9943502824858758
+check pointing
+epoch 9:899 loss 0.0, val_loss 1.0628448313912429, val_acc 0.9943502824858758
+check pointing
+epoch 9:999 loss 0.0, val_loss 0.6620293741172316, val_acc 0.9943502824858758
+check pointing
+epoch 9:1099 loss 4.768370445162873e-07, val_loss 0.331589865819209, val_acc 0.9943502824858758
+check pointing
+epoch 9:1199 loss 1.1920928244535389e-07, val_loss 0.03365088317353847, val_acc 0.9943502824858758
+check pointing
+epoch 9:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 9:1399 loss 670.254150390625, val_loss 28.35110456391243, val_acc 0.9661016949152542
+check pointing
+epoch 9:1499 loss 1174.50927734375, val_loss 6.917227362508828, val_acc 0.9661016949152542
+check pointing
+end of epoch 9: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 10:99 loss 1239.1376865375787, val_loss 1.21314028292726, val_acc 0.9943502824858758
+check pointing
+epoch 10:199 loss 270.14599609375, val_loss 1.6573417361846752, val_acc 0.9887005649717514
+check pointing
+epoch 10:299 loss 12.549808502197266, val_loss 0.5401907883121468, val_acc 0.9943502824858758
+check pointing
+epoch 10:399 loss 405.884765625, val_loss 2.209141753486044, val_acc 0.9887005649717514
+check pointing
+epoch 10:499 loss 0.0, val_loss 2.297902296155186, val_acc 0.9830508474576272
+check pointing
+epoch 10:599 loss 0.0, val_loss 2.3141028854133046, val_acc 0.9830508474576272
+check pointing
+epoch 10:699 loss 0.0, val_loss 2.3232732492651644, val_acc 0.9830508474576272
+check pointing
+epoch 10:799 loss 0.0, val_loss 2.349892521982139, val_acc 0.9830508474576272
+check pointing
+epoch 10:899 loss 0.0, val_loss 2.383300878233829, val_acc 0.9830508474576272
+check pointing
+epoch 10:999 loss 66.859130859375, val_loss 6.480134953213277, val_acc 0.9717514124293786
+check pointing
+epoch 10:1099 loss 0.0, val_loss 6.203897422316384, val_acc 0.9717514124293786
+check pointing
+epoch 10:1199 loss 287.180419921875, val_loss 0.4074927723340395, val_acc 0.9943502824858758
+check pointing
+epoch 10:1299 loss 0.0, val_loss 0.4575478074240819, val_acc 0.9943502824858758
+check pointing
+epoch 10:1399 loss 18.5445556640625, val_loss 0.5717138947740112, val_acc 0.9943502824858758
+check pointing
+epoch 10:1499 loss 0.0, val_loss 0.6076453257415254, val_acc 0.9943502824858758
+check pointing
+end of epoch 10: val_loss 0.6390780863788842, val_acc 0.9943502824858758
+trigger times: 1
+epoch 11:99 loss 0.0013341344892978668, val_loss 0.6633790556320247, val_acc 0.9943502824858758
+check pointing
+epoch 11:199 loss 0.0, val_loss 0.6807648369800404, val_acc 0.9943502824858758
+check pointing
+epoch 11:299 loss 0.0, val_loss 0.7140682895304783, val_acc 0.9887005649717514
+check pointing
+epoch 11:399 loss 11.120375633239746, val_loss 0.3692020049876412, val_acc 0.9887005649717514
+check pointing
+epoch 11:499 loss 4.386805812828243e-05, val_loss 0.4370786160399011, val_acc 0.9887005649717514
+check pointing
+epoch 11:599 loss 10.145913124084473, val_loss 5.568844552767479, val_acc 0.9717514124293786
+check pointing
+epoch 11:699 loss 6.542884349822998, val_loss 0.14467304170468434, val_acc 0.9887005649717514
+check pointing
+epoch 11:799 loss 691.7369384765625, val_loss 0.011762202796289476, val_acc 0.9943502824858758
+check pointing
+epoch 11:899 loss 0.0, val_loss 0.00012266067630153593, val_acc 1.0
+check pointing
+epoch 11:999 loss 0.0, val_loss 2.7842419800785302e-05, val_acc 1.0
+check pointing
+epoch 11:1099 loss 0.0, val_loss 2.421151667749141e-05, val_acc 1.0
+check pointing
+epoch 11:1199 loss 0.0, val_loss 2.1875938558477468e-05, val_acc 1.0
+check pointing
+epoch 11:1299 loss 9.059865078597795e-06, val_loss 2.711790082397434e-05, val_acc 1.0
+check pointing
+epoch 11:1399 loss 0.0, val_loss 4.537812418351739e-05, val_acc 1.0
+check pointing
+epoch 11:1499 loss 61.02177453041077, val_loss 2.087842460375116e-08, val_acc 1.0
+check pointing
+end of epoch 11: val_loss 1.3469974614680963e-09, val_acc 1.0
+trigger times: 2
+epoch 12:99 loss 1.1920928244535389e-07, val_loss 8.081979951569693e-09, val_acc 1.0
+check pointing
+epoch 12:199 loss 0.0, val_loss 3.569534642004117e-08, val_acc 1.0
+check pointing
+epoch 12:299 loss 2.4318398573086597e-05, val_loss 2.0474188379094263e-07, val_acc 1.0
+check pointing
+epoch 12:399 loss 16.095191955566406, val_loss 1.9360262930238755e-06, val_acc 1.0
+check pointing
+epoch 12:499 loss 0.0007891014620042824, val_loss 4.146656119110305e-06, val_acc 1.0
+check pointing
+epoch 12:599 loss 0.30173447727608504, val_loss 3.274443502994596e-06, val_acc 1.0
+check pointing
+epoch 12:699 loss 30.873994854275566, val_loss 0.5952748886946102, val_acc 0.9830508474576272
+check pointing
+epoch 12:799 loss 23.23440220952034, val_loss 0.5142390041028039, val_acc 0.9774011299435028
+check pointing
+epoch 12:899 loss 86.23237934731875, val_loss 0.0033404559918601934, val_acc 1.0
+check pointing
+epoch 12:999 loss 879.5179087449314, val_loss 4.8376284999207515, val_acc 0.96045197740113
+check pointing
+epoch 12:1099 loss 544.6931562423706, val_loss 11.3817414530253, val_acc 0.96045197740113
+check pointing
+epoch 12:1199 loss 1657.1246337890625, val_loss 27.18308304342271, val_acc 0.96045197740113
+check pointing
+epoch 12:1299 loss 1462.10986328125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 12:1399 loss 2.456794261932373, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 12:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 12: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 13:99 loss 37.09375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 13:199 loss 336.690673828125, val_loss 0.6266524320268362, val_acc 0.9943502824858758
+check pointing
+epoch 13:299 loss 97.60498046875, val_loss 3.6110095007944913, val_acc 0.9774011299435028
+check pointing
+epoch 13:399 loss 235.76611328125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 13:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 13:599 loss 187.992919921875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 13:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 13:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 13:899 loss 0.0, val_loss 1.3469960805262822e-08, val_acc 1.0
+check pointing
+epoch 13:999 loss 304.3172607421875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 13:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 13:1199 loss 96.30908203125, val_loss 1.110845403303787, val_acc 0.9830508474576272
+check pointing
+epoch 13:1299 loss 0.00020060948554601055, val_loss 0.9716799978944072, val_acc 0.9830508474576272
+check pointing
+epoch 13:1399 loss 0.0, val_loss 0.8788262046876858, val_acc 0.9830508474576272
+check pointing
+epoch 13:1499 loss 0.0, val_loss 0.80530151161944, val_acc 0.9830508474576272
+check pointing
+end of epoch 13: val_loss 0.7813482179943114, val_acc 0.9887005649717514
+trigger times: 1
+epoch 14:99 loss 0.07590937614349968, val_loss 0.7929692914802187, val_acc 0.9887005649717514
+check pointing
+epoch 14:199 loss 0.0, val_loss 0.8169589931682005, val_acc 0.9830508474576272
+check pointing
+epoch 14:299 loss 81.5697021484375, val_loss 0.3110544668079096, val_acc 0.9943502824858758
+check pointing
+epoch 14:399 loss 178.96677964925607, val_loss 0.1928328336295435, val_acc 0.9887005649717514
+check pointing
+epoch 14:499 loss 0.0, val_loss 0.11866028598472897, val_acc 0.9943502824858758
+check pointing
+epoch 14:599 loss 64.38319468426198, val_loss 0.9257065682977144, val_acc 0.9830508474576272
+check pointing
+epoch 14:699 loss 397.30847930908203, val_loss 18.77137885659428, val_acc 0.943502824858757
+check pointing
+epoch 14:799 loss 373.05462085522595, val_loss 6.005411783854167, val_acc 0.9717514124293786
+check pointing
+epoch 14:899 loss 1070.0820999145508, val_loss 3.7996053749558616, val_acc 0.9717514124293786
+check pointing
+epoch 14:999 loss 405.73974609375, val_loss 6.616168178407486, val_acc 0.9717514124293786
+check pointing
+epoch 14:1099 loss 516.6677570323227, val_loss 0.3352480008852889, val_acc 0.9943502824858758
+check pointing
+epoch 14:1199 loss 0.0, val_loss 0.34951132491760756, val_acc 0.9943502824858758
+check pointing
+epoch 14:1299 loss 221.59333324432373, val_loss 4.0409784786413704e-08, val_acc 1.0
+check pointing
+epoch 14:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 14:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 14: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 15:99 loss 1.7829664945602417, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 15:199 loss 153.334716796875, val_loss 0.6329511222192796, val_acc 0.9830508474576272
+check pointing
+epoch 15:299 loss 0.0, val_loss 0.9198860125353108, val_acc 0.9830508474576272
+check pointing
+epoch 15:399 loss 0.0, val_loss 1.1074591167902543, val_acc 0.9830508474576272
+check pointing
+epoch 15:499 loss 20.66064453125, val_loss 1.2517593432280822, val_acc 0.9830508474576272
+check pointing
+epoch 15:599 loss 242.89923095703125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 15:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 15:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 15:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 15:999 loss 171.84121704101562, val_loss 0.47606076290718335, val_acc 0.9887005649717514
+check pointing
+epoch 15:1099 loss 0.0, val_loss 0.5265271660298277, val_acc 0.9887005649717514
+check pointing
+epoch 15:1199 loss 70.42791748046875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 15:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 15:1399 loss 21.5235857963562, val_loss 0.1023157841741702, val_acc 0.9943502824858758
+check pointing
+epoch 15:1499 loss 0.34043294191360474, val_loss 0.06607888108592923, val_acc 0.9943502824858758
+check pointing
+end of epoch 15: val_loss 0.1399503373830332, val_acc 0.9943502824858758
+trigger times: 1
+epoch 16:99 loss 120.73762309550989, val_loss 0.17915214926509535, val_acc 0.9943502824858758
+check pointing
+epoch 16:199 loss 0.0, val_loss 0.19562234784247637, val_acc 0.9943502824858758
+check pointing
+epoch 16:299 loss 0.0, val_loss 0.21343477617549228, val_acc 0.9943502824858758
+check pointing
+epoch 16:399 loss 0.17803499102592468, val_loss 0.1723015564309675, val_acc 0.9943502824858758
+check pointing
+epoch 16:499 loss 7.0711469650268555, val_loss 0.09863534283495079, val_acc 0.9943502824858758
+check pointing
+epoch 16:599 loss 48.235288977621735, val_loss 2.182094012926422e-07, val_acc 1.0
+check pointing
+epoch 16:699 loss 27.125885009765625, val_loss 1.8395757196560452, val_acc 0.943502824858757
+check pointing
+epoch 16:799 loss 45.218570709228516, val_loss 0.0024691059090996867, val_acc 1.0
+check pointing
+epoch 16:899 loss 0.16492190957069397, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 16:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 16:1099 loss 24.209276914569273, val_loss 0.8421474243961465, val_acc 0.9717514124293786
+check pointing
+epoch 16:1199 loss 176.10086393355843, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 16:1299 loss 74.03778731414059, val_loss 1.2629612145029891, val_acc 0.9661016949152542
+check pointing
+epoch 16:1399 loss 48.073597425274784, val_loss 1.3480985231992215, val_acc 0.96045197740113
+check pointing
+epoch 16:1499 loss 100.50538131315261, val_loss 0.734127493564691, val_acc 0.9830508474576272
+check pointing
+end of epoch 16: val_loss 154.99865245819092, val_acc 0.751412429378531
+trigger times: 2
+epoch 17:99 loss 1697.6519598960876, val_loss 0.29793179506635936, val_acc 0.9887005649717514
+check pointing
+epoch 17:199 loss 1321.5887145996094, val_loss 33.49902702830101, val_acc 0.9322033898305084
+check pointing
+epoch 17:299 loss 886.2996826171875, val_loss 3.6134371461167847, val_acc 0.9830508474576272
+check pointing
+epoch 17:399 loss 1841.219482421875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 17:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 17:599 loss 36.30517578125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 17:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 17:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 17:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 17:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 17:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 17:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 17:1299 loss 396.92718505859375, val_loss 15.141328456038135, val_acc 0.9661016949152542
+check pointing
+epoch 17:1399 loss 884.963623046875, val_loss 0.6291324593926554, val_acc 0.9943502824858758
+check pointing
+epoch 17:1499 loss 78.236572265625, val_loss 14.68018129855226, val_acc 0.9774011299435028
+check pointing
+end of epoch 17: val_loss 3.7906018273305087, val_acc 0.9887005649717514
+trigger times: 3
+epoch 18:99 loss 261.731201171875, val_loss 4.053807686274311, val_acc 0.9887005649717514
+check pointing
+epoch 18:199 loss 241.30810546875, val_loss 6.654478945974576, val_acc 0.9774011299435028
+check pointing
+epoch 18:299 loss 0.0, val_loss 6.749635858050848, val_acc 0.9774011299435028
+check pointing
+epoch 18:399 loss 0.0, val_loss 6.82301184013065, val_acc 0.9774011299435028
+check pointing
+epoch 18:499 loss 1129.748779296875, val_loss 1.4828963629943503, val_acc 0.9830508474576272
+check pointing
+epoch 18:599 loss 0.0, val_loss 0.7639463607874294, val_acc 0.9943502824858758
+check pointing
+epoch 18:699 loss 0.0017816636245697737, val_loss 0.7239831611935028, val_acc 0.9943502824858758
+check pointing
+epoch 18:799 loss 0.0, val_loss 0.7403918895279121, val_acc 0.9943502824858758
+check pointing
+epoch 18:899 loss 0.0, val_loss 0.8186396905931376, val_acc 0.9887005649717514
+check pointing
+epoch 18:999 loss 11.139906883239746, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 18:1099 loss 42.185791015625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 18:1199 loss 0.0, val_loss 1.6052025401659604, val_acc 0.9830508474576272
+check pointing
+epoch 18:1299 loss 0.0, val_loss 1.8988402630649717, val_acc 0.9830508474576272
+check pointing
+epoch 18:1399 loss 0.0, val_loss 2.119281316207627, val_acc 0.9830508474576272
+check pointing
+epoch 18:1499 loss 0.0, val_loss 2.298583984375, val_acc 0.9830508474576272
+check pointing
+end of epoch 18: val_loss 2.4384338034074857, val_acc 0.9830508474576272
+trigger times: 4
+epoch 19:99 loss 0.0, val_loss 2.567712471310028, val_acc 0.9830508474576272
+check pointing
+epoch 19:199 loss 0.0, val_loss 2.68140751897952, val_acc 0.9830508474576272
+check pointing
+epoch 19:299 loss 113.9306640625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 19:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 19:499 loss 52.552734375, val_loss 7.740057131664901, val_acc 0.9717514124293786
+check pointing
+epoch 19:599 loss 418.7662353515625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 19:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 19:799 loss 0.0, val_loss 1.2976831544748386e-06, val_acc 1.0
+check pointing
+epoch 19:899 loss 0.0, val_loss 0.06456284065031062, val_acc 0.9943502824858758
+check pointing
+epoch 19:999 loss 0.0, val_loss 0.14639402917549435, val_acc 0.9943502824858758
+check pointing
+epoch 19:1099 loss 0.0, val_loss 0.2068015922934322, val_acc 0.9943502824858758
+check pointing
+epoch 19:1199 loss 0.0, val_loss 0.2538814221398305, val_acc 0.9943502824858758
+check pointing
+epoch 19:1299 loss 0.0, val_loss 0.2922570180084746, val_acc 0.9943502824858758
+check pointing
+epoch 19:1399 loss 32.632568359375, val_loss 0.1630224885240113, val_acc 0.9943502824858758
+check pointing
+epoch 19:1499 loss 0.0, val_loss 0.20955162263859464, val_acc 0.9943502824858758
+check pointing
+end of epoch 19: val_loss 0.2439913130075918, val_acc 0.9943502824858758
+trigger times: 5
+epoch 20:99 loss 0.0002739091432886198, val_loss 0.2733719820356638, val_acc 0.9943502824858758
+check pointing
+epoch 20:199 loss 0.05983298271894455, val_loss 0.2280063090351342, val_acc 0.9943502824858758
+check pointing
+epoch 20:299 loss 0.0, val_loss 0.2510675979872881, val_acc 0.9943502824858758
+check pointing
+epoch 20:399 loss 0.0076999586308375, val_loss 0.2714088569253178, val_acc 0.9943502824858758
+check pointing
+epoch 20:499 loss 44.60900902748105, val_loss 0.2527348267828277, val_acc 0.9887005649717514
+check pointing
+epoch 20:599 loss 0.0, val_loss 0.4070505610967087, val_acc 0.9830508474576272
+check pointing
+epoch 20:699 loss 0.17271411418914795, val_loss 1.1683665121680897, val_acc 0.9774011299435028
+check pointing
+epoch 20:799 loss 0.0, val_loss 1.2774300504538973, val_acc 0.9717514124293786
+check pointing
+epoch 20:899 loss 34.125396728515625, val_loss 6.869646251473923e-08, val_acc 1.0
+check pointing
+epoch 20:999 loss 52.77090668678099, val_loss 0.09236521400111868, val_acc 0.9887005649717514
+check pointing
+epoch 20:1099 loss 19.925025224661567, val_loss 0.5719944501327257, val_acc 0.9717514124293786
+check pointing
+epoch 20:1199 loss 0.0008991489303298295, val_loss 0.6568500066207628, val_acc 0.9717514124293786
+check pointing
+epoch 20:1299 loss 7.166824698448181, val_loss 0.06950406974318338, val_acc 0.9943502824858758
+check pointing
+epoch 20:1399 loss 0.06500047445297241, val_loss 0.06654663948015978, val_acc 0.9943502824858758
+check pointing
+epoch 20:1499 loss 0.0011453027836978436, val_loss 0.07131787208514025, val_acc 0.9943502824858758
+check pointing
+end of epoch 20: val_loss 0.37891359921902584, val_acc 0.9717514124293786
+trigger times: 6
+epoch 21:99 loss 153.72369253630313, val_loss 0.04321501403199885, val_acc 0.9943502824858758
+check pointing
+epoch 21:199 loss 89.70613541599596, val_loss 0.04322953919727246, val_acc 0.9887005649717514
+check pointing
+epoch 21:299 loss 430.3481189104823, val_loss 3.171767203013455, val_acc 0.9491525423728814
+check pointing
+epoch 21:399 loss 3127.8892760276794, val_loss 1.2085760946327684, val_acc 0.9943502824858758
+check pointing
+epoch 21:499 loss 3243.191650390625, val_loss 1.2122398096289337, val_acc 0.9774011299435028
+check pointing
+epoch 21:599 loss 2215.8518676757812, val_loss 4.821175957803672, val_acc 0.9774011299435028
+check pointing
+epoch 21:699 loss 1869.976318359375, val_loss 0.0017933417848274532, val_acc 1.0
+check pointing
+epoch 21:799 loss 18.214111328125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 21:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 21:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 21:1099 loss 149.41748046875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 21:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 21:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 21:1399 loss 475.681640625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 21:1499 loss 0.0, val_loss 6.734984256422521e-09, val_acc 1.0
+check pointing
+end of epoch 21: val_loss 0.00649535117176293, val_acc 0.9943502824858758
+trigger times: 7
+epoch 22:99 loss 0.0, val_loss 0.06535870611330884, val_acc 0.9943502824858758
+check pointing
+epoch 22:199 loss 0.0, val_loss 0.11188330353990113, val_acc 0.9943502824858758
+check pointing
+epoch 22:299 loss 17.7435302734375, val_loss 0.18476410774187854, val_acc 0.9943502824858758
+check pointing
+epoch 22:399 loss 0.0, val_loss 0.11223503155896893, val_acc 0.9943502824858758
+check pointing
+epoch 22:499 loss 191.5482177734375, val_loss 4.521301959194033, val_acc 0.9717514124293786
+check pointing
+epoch 22:599 loss 0.32841965556144714, val_loss 3.3414768714689265, val_acc 0.9717514124293786
+check pointing
+epoch 22:699 loss 147.61578369140625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 22:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 22:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 22:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 22:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 22:1199 loss 3.3238784074783254, val_loss 0.79614919996531, val_acc 0.9830508474576272
+check pointing
+epoch 22:1299 loss 0.0, val_loss 0.03778935017558815, val_acc 0.9943502824858758
+check pointing
+epoch 22:1399 loss 366.6075064293109, val_loss 1.0841662085662453, val_acc 0.9830508474576272
+check pointing
+epoch 22:1499 loss 0.0, val_loss 1.191402596942449, val_acc 0.9774011299435028
+check pointing
+end of epoch 22: val_loss 4.404255846799426, val_acc 0.9717514124293786
+trigger times: 8
+epoch 23:99 loss 35.981632232666016, val_loss 0.3490317824196681, val_acc 0.9887005649717514
+check pointing
+epoch 23:199 loss 65.38422918319702, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 23:299 loss 79.73728954792023, val_loss 1.8614407986570887, val_acc 0.9774011299435028
+check pointing
+epoch 23:399 loss 34.61100769042969, val_loss 1.5864895804453705, val_acc 0.9774011299435028
+check pointing
+epoch 23:499 loss 49.86376953125, val_loss 1.8422597687108182, val_acc 0.9717514124293786
+check pointing
+epoch 23:599 loss 34.94555187225342, val_loss 0.4261447022863701, val_acc 0.9943502824858758
+check pointing
+epoch 23:699 loss 467.14697265625, val_loss 0.26184769065282437, val_acc 0.9943502824858758
+check pointing
+epoch 23:799 loss 73.7440185546875, val_loss 9.577494648216808, val_acc 0.96045197740113
+check pointing
+epoch 23:899 loss 108.481689453125, val_loss 0.7782968639653954, val_acc 0.9943502824858758
+check pointing
+epoch 23:999 loss 140.12149238586426, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 23:1099 loss 19.96484375, val_loss 2.0204928361923872e-08, val_acc 1.0
+check pointing
+epoch 23:1199 loss 48.98367881774902, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 23:1299 loss 39.1480712890625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 23:1399 loss 0.0, val_loss 1.5905823788400424, val_acc 0.9830508474576272
+check pointing
+epoch 23:1499 loss 10.013106346130371, val_loss 0.2328087758209746, val_acc 0.9943502824858758
+check pointing
+end of epoch 23: val_loss 0.2434699664288332, val_acc 0.9943502824858758
+trigger times: 9
+epoch 24:99 loss 1.9335783869028091, val_loss 0.282013196056172, val_acc 0.9887005649717514
+check pointing
+epoch 24:199 loss 0.010790570639073849, val_loss 0.32242291121833067, val_acc 0.9887005649717514
+check pointing
+epoch 24:299 loss 0.00028832571115344763, val_loss 0.36045126187599313, val_acc 0.9887005649717514
+check pointing
+epoch 24:399 loss 0.0, val_loss 0.39370469050218815, val_acc 0.9887005649717514
+check pointing
+epoch 24:499 loss 0.0, val_loss 0.4224004072537067, val_acc 0.9887005649717514
+check pointing
+epoch 24:599 loss 29.4417724609375, val_loss 0.5221409784198481, val_acc 0.9830508474576272
+check pointing
+epoch 24:699 loss 26.6033992767334, val_loss 0.849992118986313, val_acc 0.9717514124293786
+check pointing
+epoch 24:799 loss 59.443603515625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 24:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 24:999 loss 36.42469373345375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 24:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 24:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 24:1299 loss 4.136679649353027, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 24:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 24:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 24: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 25:99 loss 13.11265639832709, val_loss 0.017882780166668118, val_acc 0.9943502824858758
+check pointing
+epoch 25:199 loss 0.0, val_loss 0.021445345743860204, val_acc 0.9943502824858758
+check pointing
+epoch 25:299 loss 0.03859086357988417, val_loss 0.01405735002390943, val_acc 0.9943502824858758
+check pointing
+epoch 25:399 loss 1.1920922133867862e-06, val_loss 0.019068896430131016, val_acc 0.9943502824858758
+check pointing
+epoch 25:499 loss 31.227028410881758, val_loss 0.07388385653729959, val_acc 0.9887005649717514
+check pointing
+epoch 25:599 loss 270.47938291728497, val_loss 10.182987881245586, val_acc 0.9548022598870056
+check pointing
+epoch 25:699 loss 543.238037109375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 25:799 loss 64.830322265625, val_loss 19.13671599134887, val_acc 0.9548022598870056
+check pointing
+epoch 25:899 loss 4087.503173828125, val_loss 0.2936999649651306, val_acc 0.9943502824858758
+check pointing
+epoch 25:999 loss 23.966400146484375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 25:1099 loss 2645.0087280273438, val_loss 11.91613217801024, val_acc 0.9717514124293786
+check pointing
+epoch 25:1199 loss 192.923828125, val_loss 2.0765363617805437, val_acc 0.9774011299435028
+check pointing
+epoch 25:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 25:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 25:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 25: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 26:99 loss 221.67019653320312, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 26:199 loss 554.677734375, val_loss 3.5213505804201977, val_acc 0.9830508474576272
+check pointing
+epoch 26:299 loss 31.583251953125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 26:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 26:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 26:599 loss 261.162353515625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 26:699 loss 21.9696044921875, val_loss 48.85458529197564, val_acc 0.9096045197740112
+check pointing
+epoch 26:799 loss 270.2313232421875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 26:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 26:999 loss 160.75889539718628, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 26:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 26:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 26:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 26:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 26:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 26: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 27:99 loss 26.739501953125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 27:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 27:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 27:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 27:499 loss 160.2083740234375, val_loss 0.06935389567229708, val_acc 0.9943502824858758
+check pointing
+epoch 27:599 loss 1635.5677490234375, val_loss 8.041238396475881e-06, val_acc 1.0
+check pointing
+epoch 27:699 loss 18.044189453125, val_loss 0.06182146880586269, val_acc 0.9943502824858758
+check pointing
+epoch 27:799 loss 18.4058837890625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 27:899 loss 0.0, val_loss 0.6620428225414902, val_acc 0.9887005649717514
+check pointing
+epoch 27:999 loss 10.465299606323242, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 27:1099 loss 26.1942138671875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 27:1199 loss 69.6788330078125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 27:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 27:1399 loss 191.35824584960938, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 27:1499 loss 85.11553955078125, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 27: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 28:99 loss 0.0, val_loss 6.734987708777056e-10, val_acc 1.0
+check pointing
+epoch 28:199 loss 0.0, val_loss 1.2796463278838496e-08, val_acc 1.0
+check pointing
+epoch 28:299 loss 0.0, val_loss 5.63016970968137e-07, val_acc 1.0
+check pointing
+epoch 28:399 loss 3.683499380713329e-05, val_loss 2.4120310205692625e-05, val_acc 1.0
+check pointing
+epoch 28:499 loss 0.0, val_loss 0.0008201248901712019, val_acc 1.0
+check pointing
+epoch 28:599 loss 82.13607788085938, val_loss 1.2742102671477755, val_acc 0.9830508474576272
+check pointing
+epoch 28:699 loss 0.0, val_loss 1.4838722265558317, val_acc 0.9830508474576272
+check pointing
+epoch 28:799 loss 55.066131591796875, val_loss 0.0700295011875993, val_acc 0.9943502824858758
+check pointing
+epoch 28:899 loss 0.0, val_loss 0.046996811688956565, val_acc 0.9943502824858758
+check pointing
+epoch 28:999 loss 3.576278118089249e-07, val_loss 0.06539301683673751, val_acc 0.9943502824858758
+check pointing
+epoch 28:1099 loss 44.114979550242424, val_loss 6.734987708777056e-10, val_acc 1.0
+check pointing
+epoch 28:1199 loss 0.0, val_loss 0.003798041639278237, val_acc 1.0
+check pointing
+epoch 28:1299 loss 18.976043701171875, val_loss 0.0073396488603225535, val_acc 0.9943502824858758
+check pointing
+epoch 28:1399 loss 5.5143818855285645, val_loss 0.0005454184476935413, val_acc 1.0
+check pointing
+epoch 28:1499 loss 93.00488328933704, val_loss 0.0016874575008780268, val_acc 1.0
+check pointing
+end of epoch 28: val_loss 0.002387610869219074, val_acc 1.0
+trigger times: 1
+epoch 29:99 loss 3.920931100845337, val_loss 0.001467479487596932, val_acc 1.0
+check pointing
+epoch 29:199 loss 0.0, val_loss 0.006033033974426614, val_acc 0.9943502824858758
+check pointing
+epoch 29:299 loss 4.768370445162873e-07, val_loss 0.01318870425897803, val_acc 0.9943502824858758
+check pointing
+epoch 29:399 loss 1.4305104514278355e-06, val_loss 0.020345691907203804, val_acc 0.9943502824858758
+check pointing
+epoch 29:499 loss 5.960462772236497e-07, val_loss 0.026605153487900234, val_acc 0.9943502824858758
+check pointing
+epoch 29:599 loss 9.020280016702372, val_loss 0.6236012229812828, val_acc 0.9717514124293786
+check pointing
+epoch 29:699 loss 5.828910112369044, val_loss 0.00037181006522253113, val_acc 1.0
+check pointing
+epoch 29:799 loss 0.372394770871324, val_loss 0.23425264151448205, val_acc 0.9887005649717514
+check pointing
+epoch 29:899 loss 0.14115801389289118, val_loss 0.058447378308604435, val_acc 0.9943502824858758
+check pointing
+epoch 29:999 loss 0.0004314445541240275, val_loss 0.007328381518371695, val_acc 0.9943502824858758
+check pointing
+epoch 29:1099 loss 8.856878866936313e-05, val_loss 0.0005991012048308734, val_acc 1.0
+check pointing
+epoch 29:1199 loss 16.011355756520054, val_loss 0.38765944994532986, val_acc 0.9717514124293786
+check pointing
+epoch 29:1299 loss 0.6426616786420567, val_loss 0.014908698687347609, val_acc 0.9943502824858758
+check pointing
+epoch 29:1399 loss 24.35582468108162, val_loss 0.02435896629453855, val_acc 0.9943502824858758
+check pointing
+epoch 29:1499 loss 0.7000623769050591, val_loss 0.0015335566057441824, val_acc 1.0
+check pointing
+end of epoch 29: val_loss 0.002809294702548302, val_acc 1.0
+trigger times: 2
+epoch 30:99 loss 0.02185191388365837, val_loss 0.006022453232340738, val_acc 0.9943502824858758
+check pointing
+epoch 30:199 loss 0.04519467721141268, val_loss 0.00801429572760542, val_acc 0.9943502824858758
+check pointing
+epoch 30:299 loss 0.05896406348220751, val_loss 0.008755702577237057, val_acc 0.9943502824858758
+check pointing
+epoch 30:399 loss 5.45255464694516, val_loss 0.016447678832298463, val_acc 0.9943502824858758
+check pointing
+epoch 30:499 loss 5.997651149236866, val_loss 0.04037252933199079, val_acc 0.9830508474576272
+check pointing
+epoch 30:599 loss 2.2374744471733408, val_loss 0.0056406808082957016, val_acc 1.0
+check pointing
+epoch 30:699 loss 0.5117540430321625, val_loss 0.01178136407182275, val_acc 0.9943502824858758
+check pointing
+epoch 30:799 loss 1.4066188366380175, val_loss 0.006395633077326362, val_acc 1.0
+check pointing
+epoch 30:899 loss 1.11641771606984, val_loss 0.0076493548212346815, val_acc 1.0
+check pointing
+epoch 30:999 loss 0.5841167008297603, val_loss 0.009113036520667122, val_acc 1.0
+check pointing
+epoch 30:1099 loss 0.428101364424208, val_loss 0.009045995697154209, val_acc 1.0
+check pointing
+epoch 30:1199 loss 3.5965264152986904, val_loss 0.010211023589144016, val_acc 0.9943502824858758
+check pointing
+epoch 30:1299 loss 32.2953182023585, val_loss 3.7584297968995166, val_acc 0.7344632768361582
+check pointing
+epoch 30:1399 loss 2797.7329895161092, val_loss 0.562944142831921, val_acc 0.9943502824858758
+check pointing
+epoch 30:1499 loss 231.54541015625, val_loss 10.300477798375706, val_acc 0.9717514124293786
+check pointing
+end of epoch 30: val_loss 8.416888738082626, val_acc 0.9774011299435028
+trigger times: 3
+epoch 31:99 loss 4640.850128173828, val_loss 2.38591425836423, val_acc 0.9887005649717514
+check pointing
+epoch 31:199 loss 312.2880859375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 31:299 loss 223.77490234375, val_loss 16.20316086246469, val_acc 0.9717514124293786
+check pointing
+epoch 31:399 loss 2238.66015625, val_loss 0.9871033059675142, val_acc 0.9943502824858758
+check pointing
+epoch 31:499 loss 413.26171875, val_loss 5.156503106241172, val_acc 0.9887005649717514
+check pointing
+epoch 31:599 loss 0.0, val_loss 5.778469268885036, val_acc 0.9830508474576272
+check pointing
+epoch 31:699 loss 1222.209228515625, val_loss 0.5227657684498588, val_acc 0.9943502824858758
+check pointing
+epoch 31:799 loss 296.0849609375, val_loss 1.73033840373411, val_acc 0.9887005649717514
+check pointing
+epoch 31:899 loss 0.0, val_loss 2.513739175915634, val_acc 0.9830508474576272
+check pointing
+epoch 31:999 loss 122.83437091554515, val_loss 0.3712323722192797, val_acc 0.9943502824858758
+check pointing
+epoch 31:1099 loss 22.284912109375, val_loss 0.6556982697740112, val_acc 0.9943502824858758
+check pointing
+epoch 31:1199 loss 0.0, val_loss 0.6954325013241526, val_acc 0.9943502824858758
+check pointing
+epoch 31:1299 loss 870.5261850357056, val_loss 3.1684997903425143, val_acc 0.9887005649717514
+check pointing
+epoch 31:1399 loss 1190.83203125, val_loss 6.67967370674435, val_acc 0.9830508474576272
+check pointing
+epoch 31:1499 loss 285.2841796875, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 31: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 32:99 loss 0.0, val_loss 0.1662639036016949, val_acc 0.9943502824858758
+check pointing
+epoch 32:199 loss 113.9501953125, val_loss 5.057665463894774, val_acc 0.9661016949152542
+check pointing
+epoch 32:299 loss 90.0101318359375, val_loss 0.7395695400776836, val_acc 0.9887005649717514
+check pointing
+epoch 32:399 loss 0.0, val_loss 0.44394612379666776, val_acc 0.9887005649717514
+check pointing
+epoch 32:499 loss 660.1716309785843, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 32:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 32:699 loss 139.9990234375, val_loss 7.016166054848897, val_acc 0.9717514124293786
+check pointing
+epoch 32:799 loss 0.0, val_loss 6.895825105871858, val_acc 0.9661016949152542
+check pointing
+epoch 32:899 loss 0.0, val_loss 6.447173899849929, val_acc 0.9661016949152542
+check pointing
+epoch 32:999 loss 6.523808002471924, val_loss 0.9392550742555552, val_acc 0.9887005649717514
+check pointing
+epoch 32:1099 loss 6.46018433570859, val_loss 2.18196275316726, val_acc 0.9717514124293786
+check pointing
+epoch 32:1199 loss 191.77493286132812, val_loss 5.447782872086864, val_acc 0.9661016949152542
+check pointing
+epoch 32:1299 loss 89.72540707862936, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 32:1399 loss 79.6580810546875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 32:1499 loss 30.001220703125, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 32: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 33:99 loss 284.65016174316406, val_loss 2.187778623764124, val_acc 0.9887005649717514
+check pointing
+epoch 33:199 loss 11.124526023864746, val_loss 1.1199764962923728, val_acc 0.9887005649717514
+check pointing
+epoch 33:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 33:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 33:499 loss 303.7878434658037, val_loss 27.21214786020376, val_acc 0.9491525423728814
+check pointing
+epoch 33:599 loss 560.4788818359375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 33:699 loss 142.822021484375, val_loss 8.849893363881831, val_acc 0.9661016949152542
+check pointing
+epoch 33:799 loss 165.37118530273438, val_loss 1.2813688100547145, val_acc 0.9887005649717514
+check pointing
+epoch 33:899 loss 55.61691498756409, val_loss 5.815997624801377, val_acc 0.9491525423728814
+check pointing
+epoch 33:999 loss 176.0111846923828, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 33:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 33:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 33:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 33:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 33:1499 loss 0.0, val_loss 1.3469960805262822e-08, val_acc 1.0
+check pointing
+end of epoch 33: val_loss 9.636945843612407e-07, val_acc 1.0
+trigger times: 1
+epoch 34:99 loss 0.0, val_loss 6.992057344671024e-05, val_acc 1.0
+check pointing
+epoch 34:199 loss 0.0, val_loss 0.0034038761241287833, val_acc 1.0
+check pointing
+epoch 34:299 loss 0.0, val_loss 0.02157429247926184, val_acc 0.9943502824858758
+check pointing
+epoch 34:399 loss 0.0, val_loss 0.04186629440824864, val_acc 0.9943502824858758
+check pointing
+epoch 34:499 loss 165.26470947265625, val_loss 0.2948134066694874, val_acc 0.9830508474576272
+check pointing
+epoch 34:599 loss 0.0, val_loss 0.5049368756268131, val_acc 0.9830508474576272
+check pointing
+epoch 34:699 loss 24.02923583984375, val_loss 0.03840397710854051, val_acc 0.9943502824858758
+check pointing
+epoch 34:799 loss 0.0, val_loss 0.001616692475679904, val_acc 1.0
+check pointing
+epoch 34:899 loss 503.94888520240556, val_loss 0.015122483679130253, val_acc 0.9943502824858758
+check pointing
+epoch 34:999 loss 175.52685546875, val_loss 0.08996340851325753, val_acc 0.9943502824858758
+check pointing
+epoch 34:1099 loss 77.5185546875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 34:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 34:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 34:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 34:1499 loss 53.7916259765625, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 34: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 35:99 loss 359.90119792521, val_loss 0.0009707108897677923, val_acc 1.0
+check pointing
+epoch 35:199 loss 74.3516845703125, val_loss 1.6365878659460513, val_acc 0.9774011299435028
+check pointing
+epoch 35:299 loss 23.252845453262125, val_loss 2.176732621639263, val_acc 0.96045197740113
+check pointing
+epoch 35:399 loss 142.27764892578125, val_loss 2.6238268836069913, val_acc 0.9774011299435028
+check pointing
+epoch 35:499 loss 264.80681012698915, val_loss 1.8013609329108307, val_acc 0.9830508474576272
+check pointing
+epoch 35:599 loss 90.52878260151192, val_loss 2.382674567443503, val_acc 0.96045197740113
+check pointing
+epoch 35:699 loss 86.08850204944554, val_loss 0.964839612023305, val_acc 0.9774011299435028
+check pointing
+epoch 35:799 loss 0.0, val_loss 0.5064984317553245, val_acc 0.9830508474576272
+check pointing
+epoch 35:899 loss 18.38331453335195, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 35:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 35:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 35:1199 loss 1.9073468138230965e-06, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 35:1299 loss 0.0011738798348233104, val_loss 2.693994601786934e-09, val_acc 1.0
+check pointing
+epoch 35:1399 loss 0.006075604353100061, val_loss 1.4478369684374264e-06, val_acc 1.0
+check pointing
+epoch 35:1499 loss 6.794384241104126, val_loss 1.3469974614680963e-09, val_acc 1.0
+check pointing
+end of epoch 35: val_loss 1.0837529971774675, val_acc 0.9774011299435028
+trigger times: 1
+epoch 36:99 loss 48.846885681152344, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 36:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 36:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 36:399 loss 33.778076171875, val_loss 0.2818345584969778, val_acc 0.9943502824858758
+check pointing
+epoch 36:499 loss 0.0, val_loss 0.27389828023490154, val_acc 0.9943502824858758
+check pointing
+epoch 36:599 loss 3.576278118089249e-07, val_loss 0.25836295937714143, val_acc 0.9943502824858758
+check pointing
+epoch 36:699 loss 10.303011894226074, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 36:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 36:899 loss 9.133713722229004, val_loss 1.6070290527774789, val_acc 0.96045197740113
+check pointing
+epoch 36:999 loss 20.455045312002767, val_loss 0.021120675539559233, val_acc 0.9943502824858758
+check pointing
+epoch 36:1099 loss 0.0, val_loss 1.4801565255169984e-06, val_acc 1.0
+check pointing
+epoch 36:1199 loss 0.0, val_loss 9.56287412867371e-07, val_acc 1.0
+check pointing
+epoch 36:1299 loss 9.687676787376347, val_loss 3.900353003705547e-06, val_acc 1.0
+check pointing
+epoch 36:1399 loss 2.3841855067985307e-07, val_loss 0.00021687437968102011, val_acc 1.0
+check pointing
+epoch 36:1499 loss 0.0, val_loss 4.888793276127654e-05, val_acc 1.0
+check pointing
+end of epoch 36: val_loss 4.1412654072033125e-06, val_acc 1.0
+trigger times: 2
+epoch 37:99 loss 3.1105422861874104, val_loss 6.3809252963638155e-06, val_acc 1.0
+check pointing
+epoch 37:199 loss 1.4543427823809907e-05, val_loss 1.5730639435561365e-05, val_acc 1.0
+check pointing
+epoch 37:299 loss 0.00017486521005594113, val_loss 4.052814611859914e-05, val_acc 1.0
+check pointing
+epoch 37:399 loss 0.011965731740929186, val_loss 9.929097788987187e-05, val_acc 1.0
+check pointing
+epoch 37:499 loss 7.223393440246582, val_loss 0.2877030644096782, val_acc 0.9717514124293786
+check pointing
+epoch 37:599 loss 0.0489702858030725, val_loss 0.282976018509, val_acc 0.9717514124293786
+check pointing
+epoch 37:699 loss 10.470061379225285, val_loss 0.00028923619533053956, val_acc 1.0
+check pointing
+epoch 37:799 loss 0.5894176719299864, val_loss 0.00034192227142189796, val_acc 1.0
+check pointing
+epoch 37:899 loss 0.003033880650377796, val_loss 0.0005718528606723923, val_acc 1.0
+check pointing
+epoch 37:999 loss 0.1640118861348583, val_loss 0.0011850253539154258, val_acc 1.0
+check pointing
+epoch 37:1099 loss 0.12175176948121447, val_loss 0.0020827321988054572, val_acc 1.0
+check pointing
+epoch 37:1199 loss 0.12318721591879012, val_loss 0.0025675259448996457, val_acc 1.0
+check pointing
+epoch 37:1299 loss 0.5792267286660433, val_loss 0.003917002410297324, val_acc 1.0
+check pointing
+epoch 37:1399 loss 3.579111805218119, val_loss 0.014853322856639319, val_acc 0.9887005649717514
+check pointing
+epoch 37:1499 loss 0.3410070956763036, val_loss 0.0076893233446111205, val_acc 0.9943502824858758
+check pointing
+end of epoch 37: val_loss 0.010241711679944284, val_acc 0.9943502824858758
+trigger times: 3
+epoch 38:99 loss 1.2103251530861456, val_loss 0.023562115667044407, val_acc 0.9887005649717514
+check pointing
+epoch 38:199 loss 245.63543393871743, val_loss 15.377831191369856, val_acc 0.8305084745762712
+check pointing
+epoch 38:299 loss 5232.579605102539, val_loss 6.2289583885063555, val_acc 0.9661016949152542
+check pointing
+epoch 38:399 loss 2790.494873046875, val_loss 17.39453952595339, val_acc 0.96045197740113
+check pointing
+epoch 38:499 loss 2148.617678642273, val_loss 0.20348914194915255, val_acc 0.9943502824858758
+check pointing
+epoch 38:599 loss 173.0943603515625, val_loss 0.6390553275070622, val_acc 0.9943502824858758
+check pointing
+epoch 38:699 loss 299.3818359375, val_loss 2.224407303804732, val_acc 0.9943502824858758
+check pointing
+epoch 38:799 loss 146.873779296875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 38:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 38:999 loss 0.0, val_loss 1.9936715805176963e-05, val_acc 1.0
+check pointing
+epoch 38:1099 loss 1.2912205457687378, val_loss 0.3969312764830508, val_acc 0.9943502824858758
+check pointing
+epoch 38:1199 loss 0.0, val_loss 0.3848745917196328, val_acc 0.9943502824858758
+check pointing
+epoch 38:1299 loss 1.1920928244535389e-07, val_loss 0.3699792549435028, val_acc 0.9943502824858758
+check pointing
+epoch 38:1399 loss 0.0, val_loss 0.3561266882944915, val_acc 0.9943502824858758
+check pointing
+epoch 38:1499 loss 11.129408836364746, val_loss 0.2952308439265537, val_acc 0.9943502824858758
+check pointing
+end of epoch 38: val_loss 0.2578180173022599, val_acc 0.9943502824858758
+trigger times: 4
+epoch 39:99 loss 0.0, val_loss 0.2694857322563559, val_acc 0.9943502824858758
+check pointing
+epoch 39:199 loss 70.266845703125, val_loss 8.923466741701978, val_acc 0.96045197740113
+check pointing
+epoch 39:299 loss 361.1973876953125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 39:399 loss 170.431396484375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 39:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 39:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 39:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 39:799 loss 2.3483953555114567e-05, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 39:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 39:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 39:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 39:1199 loss 104.60883140563965, val_loss 1.28302829548464, val_acc 0.9717514124293786
+check pointing
+epoch 39:1299 loss 1.0732017755508423, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 39:1399 loss 89.019287109375, val_loss 3.266198584273205e-06, val_acc 1.0
+check pointing
+epoch 39:1499 loss 2.3841855067985307e-07, val_loss 0.00044998846485116387, val_acc 1.0
+check pointing
+end of epoch 39: val_loss 0.007105368005353852, val_acc 0.9943502824858758
+trigger times: 5
+epoch 40:99 loss 15.538726806640625, val_loss 4.0745319220047353e-07, val_acc 1.0
+check pointing
+epoch 40:199 loss 53.297149658203125, val_loss 8.158931655988182e-06, val_acc 1.0
+check pointing
+epoch 40:299 loss 1.1324820633262789e-05, val_loss 0.00010640427762679129, val_acc 1.0
+check pointing
+epoch 40:399 loss 0.0, val_loss 0.0007649882725173088, val_acc 1.0
+check pointing
+epoch 40:499 loss 0.0, val_loss 0.003956893527256596, val_acc 0.9943502824858758
+check pointing
+epoch 40:599 loss 28.0871262550354, val_loss 6.734987708777056e-10, val_acc 1.0
+check pointing
+epoch 40:699 loss 1.1851091376811382, val_loss 0.062309845217310734, val_acc 0.9887005649717514
+check pointing
+epoch 40:799 loss 16.999492830145755, val_loss 0.025070683667183024, val_acc 0.9943502824858758
+check pointing
+epoch 40:899 loss 0.03241159337630961, val_loss 0.03612891932828015, val_acc 0.9943502824858758
+check pointing
+epoch 40:999 loss 4.745802756326157, val_loss 0.45495817974424196, val_acc 0.9717514124293786
+check pointing
+epoch 40:1099 loss 0.004779106471687555, val_loss 0.35510544002577027, val_acc 0.9717514124293786
+check pointing
+epoch 40:1199 loss 17.99401578077959, val_loss 0.0031115854787285274, val_acc 1.0
+check pointing
+epoch 40:1299 loss 0.007217422126885253, val_loss 0.008920636505377728, val_acc 0.9943502824858758
+check pointing
+epoch 40:1399 loss 0.007192202069234099, val_loss 0.014977088922968923, val_acc 0.9943502824858758
+check pointing
+epoch 40:1499 loss 1.1426269449175237, val_loss 0.014640887374485382, val_acc 0.9943502824858758
+check pointing
+end of epoch 40: val_loss 0.0006450264776773505, val_acc 1.0
+trigger times: 6
+epoch 41:99 loss 0.8013115209898842, val_loss 0.0018208737089145284, val_acc 1.0
+check pointing
+epoch 41:199 loss 2.225973718642237, val_loss 0.008607342708853546, val_acc 0.9943502824858758
+check pointing
+epoch 41:299 loss 0.029712031316435628, val_loss 0.01106243918069372, val_acc 0.9943502824858758
+check pointing
+epoch 41:399 loss 2.5790093166946875, val_loss 0.0006468660707821801, val_acc 1.0
+check pointing
+epoch 41:499 loss 7.283649689064923, val_loss 0.060462052793843965, val_acc 0.9830508474576272
+check pointing
+epoch 41:599 loss 3.9103796049327784, val_loss 0.12293578211480014, val_acc 0.96045197740113
+check pointing
+epoch 41:699 loss 131.57394524257523, val_loss 2.813420501604728, val_acc 0.9378531073446328
+check pointing
+epoch 41:799 loss 3495.8264198303223, val_loss 7.0641841565148304, val_acc 0.943502824858757
+check pointing
+epoch 41:899 loss 566.62744140625, val_loss 3.230792767947045, val_acc 0.9830508474576272
+check pointing
+epoch 41:999 loss 262.06494140625, val_loss 1.657518979519774, val_acc 0.9830508474576272
+check pointing
+epoch 41:1099 loss 1232.102783203125, val_loss 18.259447690457275, val_acc 0.9661016949152542
+check pointing
+epoch 41:1199 loss 2379.9244384765625, val_loss 12.101639742231638, val_acc 0.96045197740113
+check pointing
+epoch 41:1299 loss 694.6179322678363, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 41:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 41:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 41: val_loss 0.6034783832097458, val_acc 0.9887005649717514
+trigger times: 7
+epoch 42:99 loss 645.1160278320312, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 42:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 42:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 42:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 42:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 42:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 42:699 loss 104.998291015625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 42:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 42:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 42:999 loss 277.91830825805664, val_loss 0.25157673614846787, val_acc 0.9887005649717514
+check pointing
+epoch 42:1099 loss 1488.415786743164, val_loss 2.3388809807556497, val_acc 0.9774011299435028
+check pointing
+epoch 42:1199 loss 97.061279296875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 42:1299 loss 0.0, val_loss 0.6886116417787836, val_acc 0.9943502824858758
+check pointing
+epoch 42:1399 loss 69.945556640625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 42:1499 loss 370.9642821550369, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 42: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 43:99 loss 924.693114310503, val_loss 0.4942082119526836, val_acc 0.9943502824858758
+check pointing
+epoch 43:199 loss 155.74354076385498, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 43:299 loss 0.0, val_loss 2.7747468636134416e-07, val_acc 1.0
+check pointing
+epoch 43:399 loss 89.88110485672951, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 43:499 loss 0.0, val_loss 3.165435419621151e-08, val_acc 1.0
+check pointing
+epoch 43:599 loss 96.04913330078125, val_loss 0.2892876748984816, val_acc 0.9943502824858758
+check pointing
+epoch 43:699 loss 0.0, val_loss 0.1505102814927613, val_acc 0.9943502824858758
+check pointing
+epoch 43:799 loss 0.0, val_loss 0.1944245638820392, val_acc 0.9943502824858758
+check pointing
+epoch 43:899 loss 0.9920296669006348, val_loss 6.734987708777056e-10, val_acc 1.0
+check pointing
+epoch 43:999 loss 54.8809814453125, val_loss 0.0003810319102416604, val_acc 1.0
+check pointing
+epoch 43:1099 loss 0.0, val_loss 4.7144897502539865e-09, val_acc 1.0
+check pointing
+epoch 43:1199 loss 5.6390299797058105, val_loss 0.3548660393130813, val_acc 0.9943502824858758
+check pointing
+epoch 43:1299 loss 0.0, val_loss 0.36893358742449917, val_acc 0.9887005649717514
+check pointing
+epoch 43:1399 loss 0.0, val_loss 0.4072249487968488, val_acc 0.9887005649717514
+check pointing
+epoch 43:1499 loss 0.0, val_loss 0.44489494151314773, val_acc 0.9887005649717514
+check pointing
+end of epoch 43: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 44:99 loss 35.00505876541138, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 44:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 44:299 loss 86.12930297851562, val_loss 1.880413633278545, val_acc 0.9774011299435028
+check pointing
+epoch 44:399 loss 28.216995239257812, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 44:499 loss 11.24825334543948, val_loss 1.7869593416817326, val_acc 0.9830508474576272
+check pointing
+epoch 44:599 loss 109.01446723740082, val_loss 1.0304438289962603e-07, val_acc 1.0
+check pointing
+epoch 44:699 loss 0.0, val_loss 0.022073992225904667, val_acc 0.9943502824858758
+check pointing
+epoch 44:799 loss 1.668925233389018e-05, val_loss 0.044492023665520464, val_acc 0.9943502824858758
+check pointing
+epoch 44:899 loss 0.004664002041408821, val_loss 0.0656981185330258, val_acc 0.9887005649717514
+check pointing
+epoch 44:999 loss 0.012675788253545761, val_loss 0.09245586933199472, val_acc 0.9887005649717514
+check pointing
+epoch 44:1099 loss 26.743919372558594, val_loss 2.3916249068409183e-05, val_acc 1.0
+check pointing
+epoch 44:1199 loss 2.3841830625315197e-06, val_loss 1.7674240855722225e-05, val_acc 1.0
+check pointing
+epoch 44:1299 loss 33.85220658778803, val_loss 0.648892616148034, val_acc 0.9717514124293786
+check pointing
+epoch 44:1399 loss 0.0004956713369210775, val_loss 0.427469065633857, val_acc 0.9717514124293786
+check pointing
+epoch 44:1499 loss 60.819848465663654, val_loss 0.1823316795620238, val_acc 0.9887005649717514
+check pointing
+end of epoch 44: val_loss 1.6169364867874017, val_acc 0.9717514124293786
+trigger times: 1
+epoch 45:99 loss 50.74670562148094, val_loss 1.028794159996981, val_acc 0.9774011299435028
+check pointing
+epoch 45:199 loss 0.0, val_loss 1.1801301772610133, val_acc 0.9774011299435028
+check pointing
+epoch 45:299 loss 91.04166953329695, val_loss 0.1488072577071659, val_acc 0.9830508474576272
+check pointing
+epoch 45:399 loss 38.9314589500417, val_loss 1.2432140123490858, val_acc 0.9717514124293786
+check pointing
+epoch 45:499 loss 57.332802295684814, val_loss 0.006594547757122149, val_acc 0.9943502824858758
+check pointing
+epoch 45:599 loss 28.518942475255216, val_loss 0.007346272968819811, val_acc 0.9943502824858758
+check pointing
+epoch 45:699 loss 2.264974000354414e-06, val_loss 0.011839572358090137, val_acc 0.9943502824858758
+check pointing
+epoch 45:799 loss 0.17409906624921234, val_loss 0.009098580020886923, val_acc 0.9943502824858758
+check pointing
+epoch 45:899 loss 0.0679381510653343, val_loss 0.011441041358337522, val_acc 0.9943502824858758
+check pointing
+epoch 45:999 loss 0.0607617506753968, val_loss 0.011637520793064057, val_acc 0.9943502824858758
+check pointing
+epoch 45:1099 loss 2.670363306406408, val_loss 0.0006937305585237923, val_acc 1.0
+check pointing
+epoch 45:1199 loss 0.00029264567623954463, val_loss 0.0013426498030326257, val_acc 1.0
+check pointing
+epoch 45:1299 loss 0.019748879888339843, val_loss 0.002576740165736731, val_acc 1.0
+check pointing
+epoch 45:1399 loss 0.0055169781948762875, val_loss 0.004407811059547831, val_acc 0.9943502824858758
+check pointing
+epoch 45:1499 loss 6.884056193135237, val_loss 0.025543667445569383, val_acc 0.9887005649717514
+check pointing
+end of epoch 45: val_loss 0.0024414518743313914, val_acc 1.0
+trigger times: 2
+epoch 46:99 loss 2.268316281638967, val_loss 0.009792823754157976, val_acc 0.9943502824858758
+check pointing
+epoch 46:199 loss 1.9590517243966161, val_loss 0.023819534923647585, val_acc 0.9887005649717514
+check pointing
+epoch 46:299 loss 0.3053685509030828, val_loss 0.019676648888874302, val_acc 0.9887005649717514
+check pointing
+epoch 46:399 loss 2.7958122649902037, val_loss 0.007360777815898122, val_acc 0.9943502824858758
+check pointing
+epoch 46:499 loss 0.11004491024375795, val_loss 0.008676094740089856, val_acc 0.9943502824858758
+check pointing
+epoch 46:599 loss 0.9868939308017559, val_loss 0.012016800856884188, val_acc 0.9943502824858758
+check pointing
+epoch 46:699 loss 0.3831923753608635, val_loss 0.03557381041447599, val_acc 0.9887005649717514
+check pointing
+epoch 46:799 loss 3.1806897433537458, val_loss 0.10286035332667429, val_acc 0.9717514124293786
+check pointing
+epoch 46:899 loss 2.685480618864375, val_loss 0.03273239706619437, val_acc 0.9830508474576272
+check pointing
+epoch 46:999 loss 55.41192598011145, val_loss 7.511068269323349, val_acc 0.7457627118644068
+check pointing
+epoch 46:1099 loss 1646.252643197775, val_loss 57.99248409767946, val_acc 0.9152542372881356
+check pointing
+epoch 46:1199 loss 2089.653992652893, val_loss 0.002991623460909741, val_acc 1.0
+check pointing
+epoch 46:1299 loss 0.0, val_loss 1.0694793873587571, val_acc 0.9943502824858758
+check pointing
+epoch 46:1399 loss 1353.8421630859375, val_loss 12.464482366701978, val_acc 0.9774011299435028
+check pointing
+epoch 46:1499 loss 1136.5185546875, val_loss 1.4665920451536016, val_acc 0.9887005649717514
+check pointing
+end of epoch 46: val_loss 20.214545126015185, val_acc 0.96045197740113
+trigger times: 3
+epoch 47:99 loss 2525.105502769351, val_loss 4.308071847689354, val_acc 0.9887005649717514
+check pointing
+epoch 47:199 loss 0.0, val_loss 3.018789862508828, val_acc 0.9887005649717514
+check pointing
+epoch 47:299 loss 82.45486450195312, val_loss 14.004034872108933, val_acc 0.9774011299435028
+check pointing
+epoch 47:399 loss 196.950927734375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 47:499 loss 1031.899658203125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 47:599 loss 0.0, val_loss 1.2135145479371234e-06, val_acc 1.0
+check pointing
+epoch 47:699 loss 806.5216217041016, val_loss 0.5196143543652896, val_acc 0.9887005649717514
+check pointing
+epoch 47:799 loss 89.45477294921875, val_loss 0.22964770645745056, val_acc 0.9943502824858758
+check pointing
+epoch 47:899 loss 298.03185176849365, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 47:999 loss 333.2846374511719, val_loss 0.6676794364627472, val_acc 0.9887005649717514
+check pointing
+epoch 47:1099 loss 9.536738616588991e-07, val_loss 0.639596023128531, val_acc 0.9887005649717514
+check pointing
+epoch 47:1199 loss 0.0, val_loss 0.6461981649452684, val_acc 0.9887005649717514
+check pointing
+epoch 47:1299 loss 38.45538330078125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 47:1399 loss 205.12754821777344, val_loss 0.22162112273738882, val_acc 0.9887005649717514
+check pointing
+epoch 47:1499 loss 896.0151062011719, val_loss 0.445582503652842, val_acc 0.9943502824858758
+check pointing
+end of epoch 47: val_loss 0.7151673934062335, val_acc 0.9943502824858758
+trigger times: 4
+epoch 48:99 loss 63.349609375, val_loss 0.77185251753209, val_acc 0.9887005649717514
+check pointing
+epoch 48:199 loss 107.19747924804688, val_loss 1.0158316402112024, val_acc 0.9887005649717514
+check pointing
+epoch 48:299 loss 208.55819702148438, val_loss 0.06505456482623256, val_acc 0.9943502824858758
+check pointing
+epoch 48:399 loss 0.026659062132239342, val_loss 2.0808265052011004e-05, val_acc 1.0
+check pointing
+epoch 48:499 loss 42.359130859375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 48:599 loss 0.0, val_loss 0.20027861765212257, val_acc 0.9887005649717514
+check pointing
+epoch 48:699 loss 10.437895774841309, val_loss 0.07643395224533513, val_acc 0.9943502824858758
+check pointing
+epoch 48:799 loss 125.08856201171875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 48:899 loss 23.004638671875, val_loss 2.947543079486001e-05, val_acc 1.0
+check pointing
+epoch 48:999 loss 0.0, val_loss 0.27706352061471023, val_acc 0.9830508474576272
+check pointing
+epoch 48:1099 loss 0.0, val_loss 0.2637745081368139, val_acc 0.9830508474576272
+check pointing
+epoch 48:1199 loss 190.72259521484375, val_loss 2.693994601786934e-09, val_acc 1.0
+check pointing
+epoch 48:1299 loss 0.0, val_loss 4.997140021552726e-07, val_acc 1.0
+check pointing
+epoch 48:1399 loss 0.0, val_loss 0.00029954747796732153, val_acc 1.0
+check pointing
+epoch 48:1499 loss 34.460205078125, val_loss 0.18547997838359764, val_acc 0.9943502824858758
+check pointing
+end of epoch 48: val_loss 0.16021400454354148, val_acc 0.9887005649717514
+trigger times: 5
+epoch 49:99 loss 41.68401009589434, val_loss 0.2800462000114096, val_acc 0.9830508474576272
+check pointing
+epoch 49:199 loss 71.77301025390625, val_loss 11.566062167392108, val_acc 0.9378531073446328
+check pointing
+epoch 49:299 loss 257.87775707244873, val_loss 0.2960660255561441, val_acc 0.9943502824858758
+check pointing
+epoch 49:399 loss 608.6103515625, val_loss 29.151884951833953, val_acc 0.9265536723163842
+check pointing
+epoch 49:499 loss 851.899658203125, val_loss 2.5561673526083566, val_acc 0.9717514124293786
+check pointing
+epoch 49:599 loss 567.1863328204126, val_loss 2.719097590042373, val_acc 0.9830508474576272
+check pointing
+epoch 49:699 loss 1668.0341983456165, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 49:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 49:899 loss 59.740234375, val_loss 2.2350681110963984, val_acc 0.9887005649717514
+check pointing
+epoch 49:999 loss 286.515380859375, val_loss 0.7106547382591808, val_acc 0.9887005649717514
+check pointing
+epoch 49:1099 loss 450.4141845703125, val_loss 1.1769002278645833, val_acc 0.9943502824858758
+check pointing
+epoch 49:1199 loss 0.0, val_loss 0.9246208923684676, val_acc 0.9943502824858758
+check pointing
+epoch 49:1299 loss 623.018310546875, val_loss 1.1996435822740112, val_acc 0.9943502824858758
+check pointing
+epoch 49:1399 loss 38.945892572402926, val_loss 1.4427876445533192, val_acc 0.9887005649717514
+check pointing
+epoch 49:1499 loss 329.760498046875, val_loss 1.5649552089346255, val_acc 0.9943502824858758
+check pointing
+end of epoch 49: val_loss 5.186776404326919e-05, val_acc 1.0
+trigger times: 6
+epoch 50:99 loss 202.05230712890625, val_loss 0.11163864566781427, val_acc 0.9943502824858758
+check pointing
+epoch 50:199 loss 54.32061767578125, val_loss 0.3092211707163665, val_acc 0.9887005649717514
+check pointing
+epoch 50:299 loss 0.0, val_loss 0.4141413801807468, val_acc 0.9887005649717514
+check pointing
+epoch 50:399 loss 236.08575439453125, val_loss 4.431722005208333, val_acc 0.9830508474576272
+check pointing
+epoch 50:499 loss 498.56768798828125, val_loss 1.059217205828866, val_acc 0.9943502824858758
+check pointing
+epoch 50:599 loss 0.0, val_loss 0.5869357868776484, val_acc 0.9943502824858758
+check pointing
+epoch 50:699 loss 0.0, val_loss 0.3714903060999294, val_acc 0.9943502824858758
+check pointing
+epoch 50:799 loss 0.0, val_loss 0.2653977561131709, val_acc 0.9943502824858758
+check pointing
+epoch 50:899 loss 205.1480712890625, val_loss 1.6837444583593346e-08, val_acc 1.0
+check pointing
+epoch 50:999 loss 0.0, val_loss 0.22423471569341455, val_acc 0.9943502824858758
+check pointing
+epoch 50:1099 loss 0.0, val_loss 0.22503869008209745, val_acc 0.9943502824858758
+check pointing
+epoch 50:1199 loss 0.0, val_loss 0.22593973450741525, val_acc 0.9943502824858758
+check pointing
+epoch 50:1299 loss 0.0006025406182743609, val_loss 0.23244549595030015, val_acc 0.9943502824858758
+check pointing
+epoch 50:1399 loss 0.0, val_loss 0.2435382045594986, val_acc 0.9943502824858758
+check pointing
+epoch 50:1499 loss 0.0, val_loss 0.2539833198159428, val_acc 0.9943502824858758
+check pointing
+end of epoch 50: val_loss 0.2620747884114583, val_acc 0.9943502824858758
+trigger times: 7
+epoch 51:99 loss 0.0, val_loss 0.2687286549368821, val_acc 0.9943502824858758
+check pointing
+epoch 51:199 loss 0.0, val_loss 0.2727702512579449, val_acc 0.9943502824858758
+check pointing
+epoch 51:299 loss 32.499176025390625, val_loss 0.22667098752522874, val_acc 0.9943502824858758
+check pointing
+epoch 51:399 loss 1.5639486312865927, val_loss 0.3244081089052103, val_acc 0.9830508474576272
+check pointing
+epoch 51:499 loss 14.028260231018066, val_loss 5.859409339395799e-08, val_acc 1.0
+check pointing
+epoch 51:599 loss 112.63252723215919, val_loss 0.007835177166334611, val_acc 0.9943502824858758
+check pointing
+epoch 51:699 loss 0.17413387229679955, val_loss 0.011343943606985716, val_acc 0.9943502824858758
+check pointing
+epoch 51:799 loss 0.03822386103752251, val_loss 0.019968897037435557, val_acc 0.9943502824858758
+check pointing
+epoch 51:899 loss 0.0005455033750294547, val_loss 0.030241035048629013, val_acc 0.9887005649717514
+check pointing
+epoch 51:999 loss 1.6615061620754759, val_loss 0.02560837902052426, val_acc 0.9943502824858758
+check pointing
+epoch 51:1099 loss 0.04562239502981669, val_loss 0.03176805373191735, val_acc 0.9887005649717514
+check pointing
+epoch 51:1199 loss 36.50128757404291, val_loss 0.2602274303378738, val_acc 0.9774011299435028
+check pointing
+epoch 51:1299 loss 0.00023993951617740095, val_loss 0.30825309228088893, val_acc 0.9774011299435028
+check pointing
+epoch 51:1399 loss 0.010482964105896997, val_loss 0.33812052247214414, val_acc 0.9774011299435028
+check pointing
+epoch 51:1499 loss 16.038756520406423, val_loss 3.1721265768790465e-07, val_acc 1.0
+check pointing
+end of epoch 51: val_loss 3.4012318809781864e-06, val_acc 1.0
+trigger times: 8
+epoch 52:99 loss 63.788424201309304, val_loss 0.47008161086820605, val_acc 0.9830508474576272
+check pointing
+epoch 52:199 loss 0.0, val_loss 0.4009936804978232, val_acc 0.9830508474576272
+check pointing
+epoch 52:299 loss 141.95235119083554, val_loss 0.37853965431562375, val_acc 0.9717514124293786
+check pointing
+epoch 52:399 loss 11.933443684300293, val_loss 0.20176840720775355, val_acc 0.9717514124293786
+check pointing
+epoch 52:499 loss 2.994894189010658, val_loss 2.846866770124766e-05, val_acc 1.0
+check pointing
+epoch 52:599 loss 73.46125531507116, val_loss 0.429343291828873, val_acc 0.9661016949152542
+check pointing
+epoch 52:699 loss 105.54754552932354, val_loss 1.404613109713257, val_acc 0.9717514124293786
+check pointing
+epoch 52:799 loss 301.08835673304384, val_loss 1.1784503411154283, val_acc 0.9661016949152542
+check pointing
+epoch 52:899 loss 52.73031520843506, val_loss 0.9676617121292372, val_acc 0.9887005649717514
+check pointing
+epoch 52:999 loss 0.0, val_loss 0.9745427363336423, val_acc 0.9887005649717514
+check pointing
+epoch 52:1099 loss 356.9629559442401, val_loss 0.15308825579066734, val_acc 0.9887005649717514
+check pointing
+epoch 52:1199 loss 615.1864631458884, val_loss 2.8734908454162253, val_acc 0.9661016949152542
+check pointing
+epoch 52:1299 loss 129.5015869140625, val_loss 0.4593331627547741, val_acc 0.9887005649717514
+check pointing
+epoch 52:1399 loss 0.0, val_loss 0.3340036855579096, val_acc 0.9887005649717514
+check pointing
+epoch 52:1499 loss 0.0, val_loss 0.1654174152740651, val_acc 0.9887005649717514
+check pointing
+end of epoch 52: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 53:99 loss 15.0843505859375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 53:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 53:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 53:399 loss 128.9192600250244, val_loss 0.5414156294138418, val_acc 0.9830508474576272
+check pointing
+epoch 53:499 loss 0.0, val_loss 0.37272962203807014, val_acc 0.9830508474576272
+check pointing
+epoch 53:599 loss 79.87738037109375, val_loss 0.17884906035970297, val_acc 0.9887005649717514
+check pointing
+epoch 53:699 loss 0.0, val_loss 0.0003956925534343315, val_acc 1.0
+check pointing
+epoch 53:799 loss 2.622600959512056e-06, val_loss 4.545934047776216e-07, val_acc 1.0
+check pointing
+epoch 53:899 loss 0.0, val_loss 2.0204928361923872e-08, val_acc 1.0
+check pointing
+epoch 53:999 loss 3.966179370880127, val_loss 1.9013995823297798, val_acc 0.96045197740113
+check pointing
+epoch 53:1099 loss 7.35812056064605, val_loss 0.008214440953780997, val_acc 0.9943502824858758
+check pointing
+epoch 53:1199 loss 2.3841832827997678e-06, val_loss 0.011969723856953988, val_acc 0.9943502824858758
+check pointing
+epoch 53:1299 loss 153.37697100359935, val_loss 0.2759725508716358, val_acc 0.9943502824858758
+check pointing
+epoch 53:1399 loss 0.0, val_loss 0.28466512591083015, val_acc 0.9943502824858758
+check pointing
+epoch 53:1499 loss 31.494600769532553, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 53: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 54:99 loss 0.014589192140761043, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 54:199 loss 0.0010333680547773838, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 54:299 loss 60.49388670919234, val_loss 0.19495355140017925, val_acc 0.9887005649717514
+check pointing
+epoch 54:399 loss 2.328949748130981, val_loss 0.07295627577963111, val_acc 0.9887005649717514
+check pointing
+epoch 54:499 loss 0.03724958375096321, val_loss 0.004078345402212258, val_acc 0.9943502824858758
+check pointing
+epoch 54:599 loss 18.78445482254017, val_loss 0.00030836582218039, val_acc 1.0
+check pointing
+epoch 54:699 loss 2.3364747903542593e-05, val_loss 0.001014682152709729, val_acc 1.0
+check pointing
+epoch 54:799 loss 0.3181339502334595, val_loss 0.00019857292761121836, val_acc 1.0
+check pointing
+epoch 54:899 loss 0.5251476992852986, val_loss 0.0028132068908813894, val_acc 1.0
+check pointing
+epoch 54:999 loss 2.0265466673663468e-05, val_loss 0.003050199672963449, val_acc 1.0
+check pointing
+epoch 54:1099 loss 17.156670093536263, val_loss 0.06592943840419595, val_acc 0.9943502824858758
+check pointing
+epoch 54:1199 loss 10.234804668289136, val_loss 1.4749538917029673e-07, val_acc 1.0
+check pointing
+epoch 54:1299 loss 2.3841856489070778e-07, val_loss 4.613410480955394e-07, val_acc 1.0
+check pointing
+epoch 54:1399 loss 0.0006054378318296472, val_loss 1.703873670002739e-06, val_acc 1.0
+check pointing
+epoch 54:1499 loss 0.028776085004210472, val_loss 5.188554560260525e-06, val_acc 1.0
+check pointing
+end of epoch 54: val_loss 1.6313985251938795e-05, val_acc 1.0
+trigger times: 1
+epoch 55:99 loss 0.3443391826201463, val_loss 0.0004301726609550219, val_acc 1.0
+check pointing
+epoch 55:199 loss 11.251226062769973, val_loss 0.041917360112247316, val_acc 0.9717514124293786
+check pointing
+epoch 55:299 loss 843.3189830887337, val_loss 12.717246762313568, val_acc 0.903954802259887
+check pointing
+epoch 55:399 loss 783.4854785054922, val_loss 0.3035954189839336, val_acc 0.9943502824858758
+check pointing
+epoch 55:499 loss 866.0698852539062, val_loss 8.324535372567041, val_acc 0.9378531073446328
+check pointing
+epoch 55:599 loss 900.4161605834961, val_loss 16.55080056055791, val_acc 0.9491525423728814
+check pointing
+epoch 55:699 loss 1881.3173828125, val_loss 0.2883728372175141, val_acc 0.9943502824858758
+check pointing
+epoch 55:799 loss 25.618652462959282, val_loss 0.7349535910132154, val_acc 0.9887005649717514
+check pointing
+epoch 55:899 loss 451.93359375, val_loss 0.5627539984056118, val_acc 0.9887005649717514
+check pointing
+epoch 55:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 55:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 55:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 55:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 55:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 55:1499 loss 15.572265625, val_loss 0.25144786349797654, val_acc 0.9887005649717514
+check pointing
+end of epoch 55: val_loss 0.051386031053834005, val_acc 0.9943502824858758
+trigger times: 2
+epoch 56:99 loss 0.0, val_loss 2.451482438416573e-07, val_acc 1.0
+check pointing
+epoch 56:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 56:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 56:399 loss 116.835205078125, val_loss 4.037570759401483, val_acc 0.9717514124293786
+check pointing
+epoch 56:499 loss 584.6179084777832, val_loss 1.2281432070974576, val_acc 0.9830508474576272
+check pointing
+epoch 56:599 loss 374.7115035057068, val_loss 9.19044623940678, val_acc 0.9661016949152542
+check pointing
+epoch 56:699 loss 495.78448486328125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 56:799 loss 1770.5478515625, val_loss 19.120650986493644, val_acc 0.9491525423728814
+check pointing
+epoch 56:899 loss 2149.939208984375, val_loss 10.15947969081038, val_acc 0.9774011299435028
+check pointing
+epoch 56:999 loss 0.0, val_loss 1.2168317029705156, val_acc 0.9943502824858758
+check pointing
+epoch 56:1099 loss 0.0, val_loss 1.2261350814905543, val_acc 0.9943502824858758
+check pointing
+epoch 56:1199 loss 234.5909881591797, val_loss 4.803323347016243, val_acc 0.9717514124293786
+check pointing
+epoch 56:1299 loss 590.5943603515625, val_loss 0.6237508913891464, val_acc 0.9943502824858758
+check pointing
+epoch 56:1399 loss 8.77574348449707, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 56:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 56: val_loss 13.035629358668785, val_acc 0.9830508474576272
+trigger times: 3
+epoch 57:99 loss 239.62744140625, val_loss 10.62007029043079, val_acc 0.9774011299435028
+check pointing
+epoch 57:199 loss 685.0107421875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 57:299 loss 146.60009765625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 57:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 57:499 loss 212.721923828125, val_loss 18.476154219632768, val_acc 0.96045197740113
+check pointing
+epoch 57:599 loss 88.7705078125, val_loss 36.02270626348291, val_acc 0.9378531073446328
+check pointing
+epoch 57:699 loss 1540.90283203125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 57:799 loss 375.66162109375, val_loss 0.047065330763994634, val_acc 0.9943502824858758
+check pointing
+epoch 57:899 loss 0.0, val_loss 0.35552290199840136, val_acc 0.9887005649717514
+check pointing
+epoch 57:999 loss 0.0, val_loss 0.29671140444480765, val_acc 0.9887005649717514
+check pointing
+epoch 57:1099 loss 0.0, val_loss 0.24651873583174022, val_acc 0.9887005649717514
+check pointing
+epoch 57:1199 loss 328.80810546875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 57:1299 loss 0.0, val_loss 0.04231396906793454, val_acc 0.9943502824858758
+check pointing
+epoch 57:1399 loss 111.39991264150012, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 57:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 57: val_loss 1.6150219858029469, val_acc 0.9887005649717514
+trigger times: 4
+epoch 58:99 loss 11.536611080169678, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:499 loss 402.8724365234375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:1099 loss 0.0005880056996829808, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:1399 loss 110.09042525291443, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 58:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 58: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 59:99 loss 40.3825044631958, val_loss 6.015833980619557, val_acc 0.96045197740113
+check pointing
+epoch 59:199 loss 38.383544921875, val_loss 0.6076181406355173, val_acc 0.9774011299435028
+check pointing
+epoch 59:299 loss 7.974783511599526e-05, val_loss 5.6281854203865355e-05, val_acc 1.0
+check pointing
+epoch 59:399 loss 21.13739013671875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 59:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 59:599 loss 184.65533447265625, val_loss 1.267768471927966, val_acc 0.9830508474576272
+check pointing
+epoch 59:699 loss 68.6043701171875, val_loss 0.5544626835712605, val_acc 0.9887005649717514
+check pointing
+epoch 59:799 loss 17.63360595703125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 59:899 loss 3.611976353568025e-05, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 59:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 59:1099 loss 0.0, val_loss 6.734987708777056e-10, val_acc 1.0
+check pointing
+epoch 59:1199 loss 17.11279296875, val_loss 0.3186007158062552, val_acc 0.9830508474576272
+check pointing
+epoch 59:1299 loss 0.0, val_loss 0.31985799454699804, val_acc 0.9830508474576272
+check pointing
+epoch 59:1399 loss 30.26749902963627, val_loss 0.06598039977898687, val_acc 0.9943502824858758
+check pointing
+epoch 59:1499 loss 0.018826251849532127, val_loss 0.08130980647789936, val_acc 0.9887005649717514
+check pointing
+end of epoch 59: val_loss 0.08291490300621644, val_acc 0.9887005649717514
+trigger times: 1
+epoch 60:99 loss 0.00020120854787819553, val_loss 0.08815804722722677, val_acc 0.9887005649717514
+check pointing
+epoch 60:199 loss 0.00013159839727450162, val_loss 0.09413232134081592, val_acc 0.9887005649717514
+check pointing
+epoch 60:299 loss 3.55005907730083, val_loss 0.07652200613595746, val_acc 0.9887005649717514
+check pointing
+epoch 60:399 loss 0.0, val_loss 0.08846643436594871, val_acc 0.9887005649717514
+check pointing
+epoch 60:499 loss 40.5963424348333, val_loss 1.0661255486926349, val_acc 0.9661016949152542
+check pointing
+epoch 60:599 loss 30.44531273841858, val_loss 0.6399930964755474, val_acc 0.9774011299435028
+check pointing
+epoch 60:699 loss 127.72148157143965, val_loss 0.39117997379626257, val_acc 0.9774011299435028
+check pointing
+epoch 60:799 loss 268.0752002000809, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 60:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 60:999 loss 0.0002208704245276749, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 60:1099 loss 5.960462772236497e-07, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 60:1199 loss 6.6756979322235566e-06, val_loss 1.953143212009658e-08, val_acc 1.0
+check pointing
+epoch 60:1299 loss 0.004796783905476332, val_loss 9.895802217688263e-06, val_acc 1.0
+check pointing
+epoch 60:1399 loss 0.0, val_loss 0.00102648080068793, val_acc 1.0
+check pointing
+epoch 60:1499 loss 0.0, val_loss 0.013678129109959145, val_acc 0.9943502824858758
+check pointing
+end of epoch 60: val_loss 0.029810910844533457, val_acc 0.9943502824858758
+trigger times: 2
+epoch 61:99 loss 0.009036595933139324, val_loss 0.032842956693832484, val_acc 0.9943502824858758
+check pointing
+epoch 61:199 loss 0.00039307496626861393, val_loss 0.04621682665389418, val_acc 0.9943502824858758
+check pointing
+epoch 61:299 loss 1.1920922133867862e-06, val_loss 0.05584437891940506, val_acc 0.9943502824858758
+check pointing
+epoch 61:399 loss 92.35966504365206, val_loss 3.185505056788381e-05, val_acc 1.0
+check pointing
+epoch 61:499 loss 136.89181518554688, val_loss 4.4691260630464824e-05, val_acc 1.0
+check pointing
+epoch 61:599 loss 176.86519992015363, val_loss 10.460213097113765, val_acc 0.9209039548022598
+check pointing
+epoch 61:699 loss 2194.271325777401, val_loss 3.0369362211496815, val_acc 0.9717514124293786
+check pointing
+epoch 61:799 loss 4159.96826171875, val_loss 1.0879678672316384, val_acc 0.9943502824858758
+check pointing
+epoch 61:899 loss 0.0, val_loss 0.06660491598527984, val_acc 0.9943502824858758
+check pointing
+epoch 61:999 loss 21.777099609375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 61:1099 loss 234.59765625, val_loss 15.133157331391242, val_acc 0.9548022598870056
+check pointing
+epoch 61:1199 loss 90.529296875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 61:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 61:1399 loss 258.8855990841985, val_loss 9.182535807291666, val_acc 0.9717514124293786
+check pointing
+epoch 61:1499 loss 1059.412353515625, val_loss 0.5387893935381356, val_acc 0.9943502824858758
+check pointing
+end of epoch 61: val_loss 0.4900798905367232, val_acc 0.9943502824858758
+trigger times: 3
+epoch 62:99 loss 352.9169921875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 62:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 62:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 62:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 62:499 loss 5.602820692729438e-06, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 62:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 62:699 loss 19.954833984375, val_loss 0.06385870572537353, val_acc 0.9943502824858758
+check pointing
+epoch 62:799 loss 342.805908203125, val_loss 1.029438945533192, val_acc 0.9830508474576272
+check pointing
+epoch 62:899 loss 142.63041669130325, val_loss 2.266448457362288, val_acc 0.9717514124293786
+check pointing
+epoch 62:999 loss 45.90869140625, val_loss 1.3275210763101466, val_acc 0.9774011299435028
+check pointing
+epoch 62:1099 loss 11.25098991394043, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 62:1199 loss 115.838134765625, val_loss 0.482837741657839, val_acc 0.9887005649717514
+check pointing
+epoch 62:1299 loss 0.0, val_loss 0.5224754204184322, val_acc 0.9887005649717514
+check pointing
+epoch 62:1399 loss 0.0031572754960507154, val_loss 0.5626220703125, val_acc 0.9887005649717514
+check pointing
+epoch 62:1499 loss 269.4012451171875, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 62: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 63:99 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 63:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 63:299 loss 31.9124755859375, val_loss 0.025039239118328203, val_acc 0.9943502824858758
+check pointing
+epoch 63:399 loss 82.30535888671875, val_loss 0.0006661143595889463, val_acc 1.0
+check pointing
+epoch 63:499 loss 1.1920928244535389e-07, val_loss 0.020145044488421943, val_acc 0.9943502824858758
+check pointing
+epoch 63:599 loss 0.0, val_loss 0.05072816751771054, val_acc 0.9943502824858758
+check pointing
+epoch 63:699 loss 87.4320068359375, val_loss 6.734987708777056e-10, val_acc 1.0
+check pointing
+epoch 63:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 63:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 63:999 loss 12.582157135009766, val_loss 2.460381829654693, val_acc 0.9717514124293786
+check pointing
+epoch 63:1099 loss 78.891357421875, val_loss 2.6548230877030368, val_acc 0.9717514124293786
+check pointing
+epoch 63:1199 loss 18.09344482421875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 63:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 63:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 63:1499 loss 121.27592313289642, val_loss 13.045931824977341, val_acc 0.8305084745762712
+check pointing
+end of epoch 63: val_loss 2.1669998384464932, val_acc 0.9774011299435028
+trigger times: 1
+epoch 64:99 loss 356.84745226702944, val_loss 2.018408478990113, val_acc 0.9774011299435028
+check pointing
+epoch 64:199 loss 0.01098089199513197, val_loss 1.7171761895303672, val_acc 0.9774011299435028
+check pointing
+epoch 64:299 loss 0.0, val_loss 1.868695102842514, val_acc 0.9774011299435028
+check pointing
+epoch 64:399 loss 126.46183125674725, val_loss 4.3868973726606635, val_acc 0.96045197740113
+check pointing
+epoch 64:499 loss 26.52704632282257, val_loss 1.5724445924920551, val_acc 0.9774011299435028
+check pointing
+epoch 64:599 loss 0.718515932559967, val_loss 0.2742230259092514, val_acc 0.9943502824858758
+check pointing
+epoch 64:699 loss 0.0, val_loss 0.03993532377937124, val_acc 0.9943502824858758
+check pointing
+epoch 64:799 loss 0.8563482165336609, val_loss 0.160207528847664, val_acc 0.9887005649717514
+check pointing
+epoch 64:899 loss 0.0001284993631998077, val_loss 0.3338643985953035, val_acc 0.9830508474576272
+check pointing
+epoch 64:999 loss 107.32361292838004, val_loss 1.3305019349028162, val_acc 0.9774011299435028
+check pointing
+epoch 64:1099 loss 70.14559566974435, val_loss 1.9796828792593573, val_acc 0.9717514124293786
+check pointing
+epoch 64:1199 loss 0.0004390706308186054, val_loss 1.466266062520418, val_acc 0.9774011299435028
+check pointing
+epoch 64:1299 loss 96.7401123046875, val_loss 1.6966700580833995, val_acc 0.9717514124293786
+check pointing
+epoch 64:1399 loss 98.88305151451459, val_loss 5.357072221609832, val_acc 0.943502824858757
+check pointing
+epoch 64:1499 loss 17.135986328125, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 64: val_loss 2.110483635616841, val_acc 0.9830508474576272
+trigger times: 2
+epoch 65:99 loss 170.68325377814472, val_loss 0.05539747550662628, val_acc 0.9943502824858758
+check pointing
+epoch 65:199 loss 26.80908203125, val_loss 0.40660850156498496, val_acc 0.9887005649717514
+check pointing
+epoch 65:299 loss 27.049530029296875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 65:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 65:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 65:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 65:699 loss 2.4821170568466115, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 65:799 loss 0.0, val_loss 6.734987708777056e-10, val_acc 1.0
+check pointing
+epoch 65:899 loss 0.0, val_loss 1.7510942110017674e-08, val_acc 1.0
+check pointing
+epoch 65:999 loss 0.0, val_loss 1.8722956587749898e-07, val_acc 1.0
+check pointing
+epoch 65:1099 loss 0.0, val_loss 1.4815031942821997e-06, val_acc 1.0
+check pointing
+epoch 65:1199 loss 0.0, val_loss 9.00692453786815e-06, val_acc 1.0
+check pointing
+epoch 65:1299 loss 0.7689463496208191, val_loss 0.1788700472163615, val_acc 0.9830508474576272
+check pointing
+epoch 65:1399 loss 2.3841855067985307e-07, val_loss 0.2886322892411075, val_acc 0.9830508474576272
+check pointing
+epoch 65:1499 loss 29.743376708589494, val_loss 0.0007490471930832633, val_acc 1.0
+check pointing
+end of epoch 65: val_loss 0.00133857871848658, val_acc 1.0
+trigger times: 3
+epoch 66:99 loss 0.06308064795927493, val_loss 0.0034871185565384234, val_acc 1.0
+check pointing
+epoch 66:199 loss 9.154860867965908e-05, val_loss 0.0067715853617091, val_acc 0.9943502824858758
+check pointing
+epoch 66:299 loss 7.867782187531702e-06, val_loss 0.010196074252671522, val_acc 0.9943502824858758
+check pointing
+epoch 66:399 loss 0.7324316874145325, val_loss 0.0638024393299073, val_acc 0.9887005649717514
+check pointing
+epoch 66:499 loss 1.5678975545087823, val_loss 0.004752815331100611, val_acc 0.9943502824858758
+check pointing
+epoch 66:599 loss 10.42925049351399, val_loss 0.10532094499541807, val_acc 0.9774011299435028
+check pointing
+epoch 66:699 loss 1.001629911956158, val_loss 0.02432813126870644, val_acc 0.9943502824858758
+check pointing
+epoch 66:799 loss 4.243816718471109, val_loss 0.030839305482317902, val_acc 0.9830508474576272
+check pointing
+epoch 66:899 loss 3.1997963471946917, val_loss 0.0009783975071805213, val_acc 1.0
+check pointing
+epoch 66:999 loss 0.03464072871997104, val_loss 0.022383889653497937, val_acc 0.9887005649717514
+check pointing
+epoch 66:1099 loss 1.1992712436061623, val_loss 0.005408791581050344, val_acc 1.0
+check pointing
+epoch 66:1199 loss 0.6258390585119145, val_loss 0.005488286060494299, val_acc 1.0
+check pointing
+epoch 66:1299 loss 2.4775636155764147, val_loss 0.009616027749817464, val_acc 0.9943502824858758
+check pointing
+epoch 66:1399 loss 0.7632192148421311, val_loss 0.010079214093321076, val_acc 0.9943502824858758
+check pointing
+epoch 66:1499 loss 4.5071893901611375, val_loss 0.024030154354826867, val_acc 0.9943502824858758
+check pointing
+end of epoch 66: val_loss 0.02426064067818966, val_acc 0.9943502824858758
+trigger times: 4
+epoch 67:99 loss 6.05970260019383, val_loss 0.019154434204320094, val_acc 0.9943502824858758
+check pointing
+epoch 67:199 loss 5696.592596997969, val_loss 131.62027167196328, val_acc 0.9322033898305084
+check pointing
+epoch 67:299 loss 2795.06005859375, val_loss 6.814513815324859, val_acc 0.9830508474576272
+check pointing
+epoch 67:399 loss 182.8154296875, val_loss 9.250526967021704, val_acc 0.9830508474576272
+check pointing
+epoch 67:499 loss 783.3583984375, val_loss 21.459998179290253, val_acc 0.96045197740113
+check pointing
+epoch 67:599 loss 2157.79150390625, val_loss 6.860807429599223, val_acc 0.9830508474576272
+check pointing
+epoch 67:699 loss 0.0, val_loss 5.275603041137006, val_acc 0.9830508474576272
+check pointing
+epoch 67:799 loss 2940.478515625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 67:899 loss 0.00034874555421993136, val_loss 0.12044270833333333, val_acc 0.9943502824858758
+check pointing
+epoch 67:999 loss 0.0, val_loss 0.2642429157838983, val_acc 0.9943502824858758
+check pointing
+epoch 67:1099 loss 0.19543783366680145, val_loss 0.3375264830508475, val_acc 0.9943502824858758
+check pointing
+epoch 67:1199 loss 0.0, val_loss 0.4639692575918079, val_acc 0.9943502824858758
+check pointing
+epoch 67:1299 loss 2502.010528564453, val_loss 0.0006170337230472241, val_acc 1.0
+check pointing
+epoch 67:1399 loss 14.472610473632812, val_loss 2.9976432505300488, val_acc 0.9774011299435028
+check pointing
+epoch 67:1499 loss 130.27340698242188, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 67: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 68:99 loss 132.60855102539062, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 68:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 68:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 68:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 68:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 68:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 68:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 68:799 loss 150.8388671875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 68:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 68:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 68:1099 loss 90.37950086593628, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 68:1199 loss 0.0, val_loss 2.626639196917541e-08, val_acc 1.0
+check pointing
+epoch 68:1299 loss 70.1064453125, val_loss 0.0015488359550971768, val_acc 1.0
+check pointing
+epoch 68:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 68:1499 loss 1007.2482604980469, val_loss 0.20059807556497175, val_acc 0.9943502824858758
+check pointing
+end of epoch 68: val_loss 4.3150200640077644e-05, val_acc 1.0
+trigger times: 1
+epoch 69:99 loss 1667.7607421875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 69:199 loss 103.64688277244568, val_loss 0.6938214490642656, val_acc 0.9943502824858758
+check pointing
+epoch 69:299 loss 83.1650390625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 69:399 loss 135.800537109375, val_loss 0.05465199314268295, val_acc 0.9943502824858758
+check pointing
+epoch 69:499 loss 0.0, val_loss 0.16735495012358756, val_acc 0.9943502824858758
+check pointing
+epoch 69:599 loss 6.136442184448242, val_loss 1.3669209614985407, val_acc 0.9887005649717514
+check pointing
+epoch 69:699 loss 877.6048278808594, val_loss 0.4902850652145127, val_acc 0.9887005649717514
+check pointing
+epoch 69:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 69:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 69:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 69:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 69:1199 loss 292.64501953125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 69:1299 loss 199.92169189453125, val_loss 0.0003854529248119074, val_acc 1.0
+check pointing
+epoch 69:1399 loss 0.0, val_loss 0.08418653779110666, val_acc 0.9887005649717514
+check pointing
+epoch 69:1499 loss 309.786865234375, val_loss 7.225991459216102, val_acc 0.9661016949152542
+check pointing
+end of epoch 69: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 70:99 loss 231.75, val_loss 1.0816805264623152e-05, val_acc 1.0
+check pointing
+epoch 70:199 loss 251.9178466796875, val_loss 3.0832781603107344, val_acc 0.9717514124293786
+check pointing
+epoch 70:299 loss 165.6470947265625, val_loss 12.458455748477224, val_acc 0.96045197740113
+check pointing
+epoch 70:399 loss 467.639892578125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 70:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 70:599 loss 111.20458984375, val_loss 2.7891390737498676, val_acc 0.9774011299435028
+check pointing
+epoch 70:699 loss 0.0, val_loss 2.067506537935828, val_acc 0.9774011299435028
+check pointing
+epoch 70:799 loss 27.091552734375, val_loss 0.3220221740377825, val_acc 0.9943502824858758
+check pointing
+epoch 70:899 loss 0.0, val_loss 0.3268891242937853, val_acc 0.9943502824858758
+check pointing
+epoch 70:999 loss 0.0, val_loss 0.327903618246822, val_acc 0.9943502824858758
+check pointing
+epoch 70:1099 loss 0.0, val_loss 0.3200635317355226, val_acc 0.9943502824858758
+check pointing
+epoch 70:1199 loss 0.0, val_loss 0.3058006157309322, val_acc 0.9943502824858758
+check pointing
+epoch 70:1299 loss 0.0, val_loss 0.2880507646980932, val_acc 0.9943502824858758
+check pointing
+epoch 70:1399 loss 0.0, val_loss 0.2666905289989407, val_acc 0.9943502824858758
+check pointing
+epoch 70:1499 loss 0.0, val_loss 0.244823391154661, val_acc 0.9943502824858758
+check pointing
+end of epoch 70: val_loss 0.640400859595692, val_acc 0.9830508474576272
+trigger times: 1
+epoch 71:99 loss 14.46014404296875, val_loss 0.1668910828687377, val_acc 0.9943502824858758
+check pointing
+epoch 71:199 loss 0.006073234602808952, val_loss 0.135388735323976, val_acc 0.9943502824858758
+check pointing
+epoch 71:299 loss 0.0, val_loss 0.11145916092867232, val_acc 0.9943502824858758
+check pointing
+epoch 71:399 loss 0.0, val_loss 0.09316585562323447, val_acc 0.9943502824858758
+check pointing
+epoch 71:499 loss 0.0, val_loss 0.08005847499868964, val_acc 0.9943502824858758
+check pointing
+epoch 71:599 loss 0.008598802611231804, val_loss 0.06988941343490687, val_acc 0.9943502824858758
+check pointing
+epoch 71:699 loss 0.0, val_loss 0.06285698130979377, val_acc 0.9943502824858758
+check pointing
+epoch 71:799 loss 0.1719604730606079, val_loss 0.048924106662556276, val_acc 0.9943502824858758
+check pointing
+epoch 71:899 loss 0.0, val_loss 0.0471737532965881, val_acc 0.9943502824858758
+check pointing
+epoch 71:999 loss 0.0010794533882290125, val_loss 0.043939060410537245, val_acc 0.9943502824858758
+check pointing
+epoch 71:1099 loss 3.576278118089249e-07, val_loss 0.04154735837278858, val_acc 0.9943502824858758
+check pointing
+epoch 71:1199 loss 67.28181061986834, val_loss 0.40990527990237235, val_acc 0.9717514124293786
+check pointing
+epoch 71:1299 loss 15.814624786376953, val_loss 2.693994601786934e-09, val_acc 1.0
+check pointing
+epoch 71:1399 loss 14.877349853515625, val_loss 0.14586836082735763, val_acc 0.9830508474576272
+check pointing
+epoch 71:1499 loss 6.605869649741173, val_loss 0.2383453810440742, val_acc 0.9774011299435028
+check pointing
+end of epoch 71: val_loss 0.028686987123179835, val_acc 0.9943502824858758
+trigger times: 2
+epoch 72:99 loss 7.650800937772885, val_loss 0.00047137658360449066, val_acc 1.0
+check pointing
+epoch 72:199 loss 0.19155731226782535, val_loss 0.0013906717527951056, val_acc 1.0
+check pointing
+epoch 72:299 loss 0.0027361670508412317, val_loss 0.0024114281836206215, val_acc 1.0
+check pointing
+epoch 72:399 loss 0.0015925814373076719, val_loss 0.003111120784666676, val_acc 1.0
+check pointing
+epoch 72:499 loss 1.7883402109138657, val_loss 0.002396660584062057, val_acc 1.0
+check pointing
+epoch 72:599 loss 0.3168356418608269, val_loss 0.0026117696572277326, val_acc 1.0
+check pointing
+epoch 72:699 loss 0.000877737233942355, val_loss 0.0029930611791220154, val_acc 1.0
+check pointing
+epoch 72:799 loss 0.9230214252228208, val_loss 0.001582262753330463, val_acc 1.0
+check pointing
+epoch 72:899 loss 10.648635880087262, val_loss 0.039057775265924265, val_acc 0.9887005649717514
+check pointing
+epoch 72:999 loss 0.4230444656914045, val_loss 0.009496808797396105, val_acc 0.9943502824858758
+check pointing
+epoch 72:1099 loss 0.09006798731921606, val_loss 0.010797006711066733, val_acc 0.9943502824858758
+check pointing
+epoch 72:1199 loss 7.206180244882404, val_loss 0.02388697275555485, val_acc 0.9887005649717514
+check pointing
+epoch 72:1299 loss 3.7266043839005007, val_loss 0.001520045155883153, val_acc 1.0
+check pointing
+epoch 72:1399 loss 0.058679449407854634, val_loss 0.004372330329031656, val_acc 1.0
+check pointing
+epoch 72:1499 loss 2.56110833993354, val_loss 0.0052098088249736135, val_acc 1.0
+check pointing
+end of epoch 72: val_loss 0.009411105978542288, val_acc 1.0
+trigger times: 3
+epoch 73:99 loss 2.036883340643506, val_loss 0.007437461534999501, val_acc 1.0
+check pointing
+epoch 73:199 loss 1.793486028082242, val_loss 0.19042731118638698, val_acc 0.96045197740113
+check pointing
+epoch 73:299 loss 950.8619927573466, val_loss 50.0545771539548, val_acc 0.9322033898305084
+check pointing
+epoch 73:399 loss 2720.6005859375, val_loss 23.86183295815678, val_acc 0.9491525423728814
+check pointing
+epoch 73:499 loss 3017.491943359375, val_loss 2.006990899197694e-07, val_acc 1.0
+check pointing
+epoch 73:599 loss 208.44580078125, val_loss 0.03146881437571035, val_acc 0.9943502824858758
+check pointing
+epoch 73:699 loss 418.94384765625, val_loss 0.4562422757768362, val_acc 0.9943502824858758
+check pointing
+epoch 73:799 loss 0.0, val_loss 0.10537909383827683, val_acc 0.9943502824858758
+check pointing
+epoch 73:899 loss 1525.3173828125, val_loss 2.4143811242055087, val_acc 0.9887005649717514
+check pointing
+epoch 73:999 loss 542.3484497070312, val_loss 2.8004212460275424, val_acc 0.9943502824858758
+check pointing
+epoch 73:1099 loss 1703.5579223632812, val_loss 4.2064353813559325, val_acc 0.9887005649717514
+check pointing
+epoch 73:1199 loss 616.1044921875, val_loss 55.96151129943503, val_acc 0.9548022598870056
+check pointing
+epoch 73:1299 loss 491.6030807495117, val_loss 20.598911781095516, val_acc 0.9661016949152542
+check pointing
+epoch 73:1399 loss 0.0, val_loss 16.60231974973517, val_acc 0.9717514124293786
+check pointing
+epoch 73:1499 loss 503.7373046875, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 73: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 74:99 loss 45.50439453125, val_loss 44.19444076624294, val_acc 0.9548022598870056
+check pointing
+epoch 74:199 loss 191.49031412283512, val_loss 13.23731296345339, val_acc 0.9717514124293786
+check pointing
+epoch 74:299 loss 28.98681640625, val_loss 1.66137143582274, val_acc 0.9887005649717514
+check pointing
+epoch 74:399 loss 26.80690288543701, val_loss 0.14019585518460093, val_acc 0.9943502824858758
+check pointing
+epoch 74:499 loss 0.0, val_loss 0.3237294822636634, val_acc 0.9943502824858758
+check pointing
+epoch 74:599 loss 0.0, val_loss 0.4839813681672055, val_acc 0.9943502824858758
+check pointing
+epoch 74:699 loss 10.486844062805176, val_loss 1.1222432774414655, val_acc 0.9943502824858758
+check pointing
+epoch 74:799 loss 639.60888671875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 74:899 loss 53.91015625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 74:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 74:1099 loss 198.21875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 74:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 74:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 74:1399 loss 264.86962890625, val_loss 1.9943089673748124, val_acc 0.9774011299435028
+check pointing
+epoch 74:1499 loss 0.0, val_loss 1.8949994409199025, val_acc 0.9830508474576272
+check pointing
+end of epoch 74: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 75:99 loss 790.9603958129883, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 75:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 75:299 loss 34.285888671875, val_loss 7.622478592867232, val_acc 0.9717514124293786
+check pointing
+epoch 75:399 loss 383.2078886628151, val_loss 3.3861615024717513, val_acc 0.9717514124293786
+check pointing
+epoch 75:499 loss 95.230224609375, val_loss 0.5980431508209746, val_acc 0.9943502824858758
+check pointing
+epoch 75:599 loss 0.0, val_loss 0.6592907232079802, val_acc 0.9943502824858758
+check pointing
+epoch 75:699 loss 0.0, val_loss 0.6850006620762712, val_acc 0.9943502824858758
+check pointing
+epoch 75:799 loss 0.0, val_loss 0.6894593333120398, val_acc 0.9943502824858758
+check pointing
+epoch 75:899 loss 14.406861305236816, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 75:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 75:1099 loss 8.804715156555176, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 75:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 75:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 75:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 75:1499 loss 220.8914794921875, val_loss 0.15092649298199154, val_acc 0.9943502824858758
+check pointing
+end of epoch 75: val_loss 0.13189593816207626, val_acc 0.9943502824858758
+trigger times: 1
+epoch 76:99 loss 21.3187255859375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 76:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 76:299 loss 34.72332763671875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 76:399 loss 39.400174617767334, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 76:499 loss 0.0, val_loss 1.481695457351444e-08, val_acc 1.0
+check pointing
+epoch 76:599 loss 0.0, val_loss 0.008784670614253169, val_acc 0.9943502824858758
+check pointing
+epoch 76:699 loss 29.704864501953125, val_loss 0.5124530684476518, val_acc 0.9943502824858758
+check pointing
+epoch 76:799 loss 70.81427073478676, val_loss 0.01946567134324285, val_acc 0.9943502824858758
+check pointing
+epoch 76:899 loss 0.0, val_loss 0.0007140357741888184, val_acc 1.0
+check pointing
+epoch 76:999 loss 0.11356746777892113, val_loss 0.054935945629400046, val_acc 0.9943502824858758
+check pointing
+epoch 76:1099 loss 225.30416870117188, val_loss 5.3064169567394054e-05, val_acc 1.0
+check pointing
+epoch 76:1199 loss 29.214590072631836, val_loss 1.3149735206937572, val_acc 0.9717514124293786
+check pointing
+epoch 76:1299 loss 2.3841855067985307e-07, val_loss 1.3712877365027565, val_acc 0.9717514124293786
+check pointing
+epoch 76:1399 loss 353.3437659716201, val_loss 0.8242625401253872, val_acc 0.9830508474576272
+check pointing
+epoch 76:1499 loss 30.072766959667206, val_loss 1.287255264103076, val_acc 0.9830508474576272
+check pointing
+end of epoch 76: val_loss 6.849174887447034, val_acc 0.9717514124293786
+trigger times: 2
+epoch 77:99 loss 5730.237682834268, val_loss 62.688880704890536, val_acc 0.943502824858757
+check pointing
+epoch 77:199 loss 4744.623206710268, val_loss 7.274312682070975, val_acc 0.9661016949152542
+check pointing
+epoch 77:299 loss 657.0312328636646, val_loss 0.9807536289474722, val_acc 0.9774011299435028
+check pointing
+epoch 77:399 loss 0.0, val_loss 0.7033505412818348, val_acc 0.9774011299435028
+check pointing
+epoch 77:499 loss 1.6093124941107817e-05, val_loss 1.3528235483977755, val_acc 0.9830508474576272
+check pointing
+epoch 77:599 loss 6.556489552167477e-06, val_loss 1.9680313713806497, val_acc 0.9830508474576272
+check pointing
+epoch 77:699 loss 25.67633056640625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 77:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 77:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 77:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 77:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 77:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 77:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 77:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 77:1499 loss 471.4031677246094, val_loss 17.256852316991083, val_acc 0.96045197740113
+check pointing
+end of epoch 77: val_loss 3.796341718253443, val_acc 0.9830508474576272
+trigger times: 3
+epoch 78:99 loss 1452.5447247028344, val_loss 3.8507562842072742, val_acc 0.9830508474576272
+check pointing
+epoch 78:199 loss 0.0, val_loss 3.406678280587924, val_acc 0.9830508474576272
+check pointing
+epoch 78:299 loss 411.27371327299625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 78:399 loss 204.733642578125, val_loss 1.045310844809322, val_acc 0.9943502824858758
+check pointing
+epoch 78:499 loss 139.54046630859375, val_loss 0.10587530621027542, val_acc 0.9943502824858758
+check pointing
+epoch 78:599 loss 29.7333984375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 78:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 78:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 78:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 78:999 loss 0.0, val_loss 6.734987708777056e-10, val_acc 1.0
+check pointing
+epoch 78:1099 loss 0.0, val_loss 6.667598663522772e-08, val_acc 1.0
+check pointing
+epoch 78:1199 loss 531.5125732421875, val_loss 10.913891118798553, val_acc 0.96045197740113
+check pointing
+epoch 78:1299 loss 515.7623901367188, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 78:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 78:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 78: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 79:99 loss 0.0, val_loss 0.003097345600020414, val_acc 1.0
+check pointing
+epoch 79:199 loss 0.0, val_loss 0.08809476518361582, val_acc 0.9943502824858758
+check pointing
+epoch 79:299 loss 415.712890625, val_loss 3.4361597427540578, val_acc 0.9717514124293786
+check pointing
+epoch 79:399 loss 118.032470703125, val_loss 3.707518151924435, val_acc 0.9830508474576272
+check pointing
+epoch 79:499 loss 140.6680908203125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 79:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 79:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 79:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 79:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 79:999 loss 192.106689453125, val_loss 4.329638120144774, val_acc 0.9717514124293786
+check pointing
+epoch 79:1099 loss 593.4039306640625, val_loss 0.009177151372877218, val_acc 0.9943502824858758
+check pointing
+epoch 79:1199 loss 0.0, val_loss 0.00699413698271843, val_acc 0.9943502824858758
+check pointing
+epoch 79:1299 loss 0.0, val_loss 0.0015215553806326484, val_acc 1.0
+check pointing
+epoch 79:1399 loss 0.0, val_loss 0.0019106991210226286, val_acc 1.0
+check pointing
+epoch 79:1499 loss 0.0, val_loss 0.005648177222343488, val_acc 0.9943502824858758
+check pointing
+end of epoch 79: val_loss 0.01585895328198449, val_acc 0.9943502824858758
+trigger times: 1
+epoch 80:99 loss 0.0, val_loss 0.030721516258972514, val_acc 0.9943502824858758
+check pointing
+epoch 80:199 loss 0.0, val_loss 0.04626621634273206, val_acc 0.9943502824858758
+check pointing
+epoch 80:299 loss 0.0, val_loss 0.061695955567440744, val_acc 0.9943502824858758
+check pointing
+epoch 80:399 loss 0.0, val_loss 0.07737810059455828, val_acc 0.9943502824858758
+check pointing
+epoch 80:499 loss 0.0, val_loss 0.09208480921168785, val_acc 0.9943502824858758
+check pointing
+epoch 80:599 loss 0.0, val_loss 0.10535426597810735, val_acc 0.9943502824858758
+check pointing
+epoch 80:699 loss 7.791795253753662, val_loss 2.676218151372705, val_acc 0.9717514124293786
+check pointing
+epoch 80:799 loss 13.17517340183241, val_loss 0.5827497153111805, val_acc 0.9887005649717514
+check pointing
+epoch 80:899 loss 399.2601013183594, val_loss 7.434600751952263, val_acc 0.9378531073446328
+check pointing
+epoch 80:999 loss 90.91015625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 80:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 80:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 80:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 80:1399 loss 30.37457275390625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 80:1499 loss 0.04406760632991791, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 80: val_loss 0.2000173808491161, val_acc 0.9943502824858758
+trigger times: 2
+epoch 81:99 loss 501.7237854003906, val_loss 27.85072918935011, val_acc 0.9209039548022598
+check pointing
+epoch 81:199 loss 128.53390502929688, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 81:299 loss 570.911376953125, val_loss 1.8588674081920904, val_acc 0.9830508474576272
+check pointing
+epoch 81:399 loss 19.970947265625, val_loss 4.898532697036441, val_acc 0.9717514124293786
+check pointing
+epoch 81:499 loss 86.524658203125, val_loss 0.39252704482966866, val_acc 0.9887005649717514
+check pointing
+epoch 81:599 loss 0.0, val_loss 0.8351830089159604, val_acc 0.9830508474576272
+check pointing
+epoch 81:699 loss 0.0, val_loss 0.8449910595660535, val_acc 0.9830508474576272
+check pointing
+epoch 81:799 loss 0.0, val_loss 0.7853634128462796, val_acc 0.9774011299435028
+check pointing
+epoch 81:899 loss 0.0, val_loss 0.7605599171484821, val_acc 0.9830508474576272
+check pointing
+epoch 81:999 loss 0.0, val_loss 0.7342425847457628, val_acc 0.9830508474576272
+check pointing
+epoch 81:1099 loss 0.0, val_loss 0.7059705493140356, val_acc 0.9830508474576272
+check pointing
+epoch 81:1199 loss 23.127197265625, val_loss 8.620127067390808e-07, val_acc 1.0
+check pointing
+epoch 81:1299 loss 0.0, val_loss 0.05624157964846509, val_acc 0.9943502824858758
+check pointing
+epoch 81:1399 loss 0.0, val_loss 0.08422127483928267, val_acc 0.9943502824858758
+check pointing
+epoch 81:1499 loss 0.0, val_loss 0.10333805097696694, val_acc 0.9943502824858758
+check pointing
+end of epoch 81: val_loss 2.0144912949447518, val_acc 0.9717514124293786
+trigger times: 3
+epoch 82:99 loss 1022.1919250488281, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 82:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 82:299 loss 1764.030287027359, val_loss 13.28095896230579, val_acc 0.96045197740113
+check pointing
+epoch 82:399 loss 1039.5907818302512, val_loss 0.5158953478107344, val_acc 0.9943502824858758
+check pointing
+epoch 82:499 loss 738.9360656738281, val_loss 0.5856899110610876, val_acc 0.9943502824858758
+check pointing
+epoch 82:599 loss 0.0, val_loss 0.3679792328742938, val_acc 0.9943502824858758
+check pointing
+epoch 82:699 loss 0.0, val_loss 0.4171563272422316, val_acc 0.9943502824858758
+check pointing
+epoch 82:799 loss 0.0, val_loss 0.4258867684057203, val_acc 0.9943502824858758
+check pointing
+epoch 82:899 loss 1271.5928955078125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 82:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 82:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 82:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 82:1299 loss 8.344646857949556e-07, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 82:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 82:1499 loss 6.175543785095215, val_loss 1.7712443723516949, val_acc 0.9830508474576272
+check pointing
+end of epoch 82: val_loss 0.820682171374391, val_acc 0.9830508474576272
+trigger times: 4
+epoch 83:99 loss 215.01885175704956, val_loss 36.61194012172015, val_acc 0.9209039548022598
+check pointing
+epoch 83:199 loss 423.088134765625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 83:299 loss 58.78369140625, val_loss 0.000777044454536869, val_acc 1.0
+check pointing
+epoch 83:399 loss 0.0, val_loss 0.017473571044577044, val_acc 0.9943502824858758
+check pointing
+epoch 83:499 loss 0.0, val_loss 0.03802441203661558, val_acc 0.9943502824858758
+check pointing
+epoch 83:599 loss 0.0, val_loss 0.05929943127820721, val_acc 0.9943502824858758
+check pointing
+epoch 83:699 loss 0.0, val_loss 0.08295677745409605, val_acc 0.9943502824858758
+check pointing
+epoch 83:799 loss 0.0, val_loss 0.10727911480402542, val_acc 0.9943502824858758
+check pointing
+epoch 83:899 loss 0.0, val_loss 0.1309566174523305, val_acc 0.9943502824858758
+check pointing
+epoch 83:999 loss 0.0, val_loss 0.1532334149894068, val_acc 0.9943502824858758
+check pointing
+epoch 83:1099 loss 0.0, val_loss 0.17046171028593207, val_acc 0.9943502824858758
+check pointing
+epoch 83:1199 loss 72.039306640625, val_loss 4.370014082914018, val_acc 0.9717514124293786
+check pointing
+epoch 83:1299 loss 0.0, val_loss 3.897489558505473, val_acc 0.9717514124293786
+check pointing
+epoch 83:1399 loss 585.3767395019531, val_loss 1.7317905787189127, val_acc 0.9774011299435028
+check pointing
+epoch 83:1499 loss 138.9912109375, val_loss 0.11775905803098517, val_acc 0.9943502824858758
+check pointing
+end of epoch 83: val_loss 2.121586169226695, val_acc 0.9830508474576272
+trigger times: 5
+epoch 84:99 loss 673.7335205078125, val_loss 1.4414959061617232, val_acc 0.9830508474576272
+check pointing
+epoch 84:199 loss 0.0, val_loss 1.10864533677613, val_acc 0.9830508474576272
+check pointing
+epoch 84:299 loss 0.0005079409456811845, val_loss 0.6217960442526865, val_acc 0.9830508474576272
+check pointing
+epoch 84:399 loss 174.7501220703125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 84:499 loss 174.603759765625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 84:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 84:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 84:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 84:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 84:999 loss 16.79220647760667, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 84:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 84:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 84:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 84:1399 loss 4.122777462005615, val_loss 0.03505801076942918, val_acc 0.9943502824858758
+check pointing
+epoch 84:1499 loss 0.0, val_loss 0.08087193225063173, val_acc 0.9943502824858758
+check pointing
+end of epoch 84: val_loss 1.3350361107432909, val_acc 0.9887005649717514
+trigger times: 6
+epoch 85:99 loss 249.26136207580566, val_loss 0.3799328130517302, val_acc 0.9943502824858758
+check pointing
+epoch 85:199 loss 24.40496826171875, val_loss 0.13908360368114406, val_acc 0.9943502824858758
+check pointing
+epoch 85:299 loss 0.0, val_loss 0.27972895344771714, val_acc 0.9943502824858758
+check pointing
+epoch 85:399 loss 0.0, val_loss 0.34979196456866046, val_acc 0.9887005649717514
+check pointing
+epoch 85:499 loss 0.0, val_loss 0.44300730153326323, val_acc 0.9887005649717514
+check pointing
+epoch 85:599 loss 17.74639892578125, val_loss 1.7606104619085452, val_acc 0.9661016949152542
+check pointing
+epoch 85:699 loss 127.63739013671875, val_loss 0.07313714593143786, val_acc 0.9943502824858758
+check pointing
+epoch 85:799 loss 94.6341552734375, val_loss 0.6287621532877287, val_acc 0.9774011299435028
+check pointing
+epoch 85:899 loss 21.91373062133789, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 85:999 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 85:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 85:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 85:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 85:1399 loss 143.67537617683408, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 85:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 85: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 86:99 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 86:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 86:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 86:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 86:499 loss 0.017326201632378968, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 86:599 loss 6.12716976320371e-05, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 86:699 loss 0.0, val_loss 2.693994601786934e-09, val_acc 1.0
+check pointing
+epoch 86:799 loss 0.0, val_loss 8.553381396504744e-08, val_acc 1.0
+check pointing
+epoch 86:899 loss 0.0, val_loss 2.3434803433351693e-06, val_acc 1.0
+check pointing
+epoch 86:999 loss 3.936332702616255, val_loss 0.3135118383472216, val_acc 0.9774011299435028
+check pointing
+epoch 86:1099 loss 43.28974401931006, val_loss 0.1881007103309937, val_acc 0.9830508474576272
+check pointing
+epoch 86:1199 loss 724.8680076599121, val_loss 14.51477905585941, val_acc 0.903954802259887
+check pointing
+epoch 86:1299 loss 2700.6771955490112, val_loss 10.839770391161867, val_acc 0.96045197740113
+check pointing
+epoch 86:1399 loss 1045.7766418457031, val_loss 4.653605143229167, val_acc 0.9774011299435028
+check pointing
+epoch 86:1499 loss 532.7218952178955, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 86: val_loss 0.4702341543079096, val_acc 0.9943502824858758
+trigger times: 1
+epoch 87:99 loss 38.58339749707375, val_loss 0.4711734750176554, val_acc 0.9943502824858758
+check pointing
+epoch 87:199 loss 454.86328125, val_loss 7.327882242068058, val_acc 0.9717514124293786
+check pointing
+epoch 87:299 loss 243.0926513671875, val_loss 1.3876684156514831, val_acc 0.9830508474576272
+check pointing
+epoch 87:399 loss 717.6071808338118, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 87:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 87:599 loss 0.0, val_loss 6.566836372396703e-06, val_acc 1.0
+check pointing
+epoch 87:699 loss 0.0, val_loss 0.10516874668961865, val_acc 0.9943502824858758
+check pointing
+epoch 87:799 loss 12.69787883758545, val_loss 1.067050572169027, val_acc 0.9943502824858758
+check pointing
+epoch 87:899 loss 0.0, val_loss 1.1342879639843764, val_acc 0.9943502824858758
+check pointing
+epoch 87:999 loss 0.0, val_loss 1.0993045440501412, val_acc 0.9943502824858758
+check pointing
+epoch 87:1099 loss 98.19152927398682, val_loss 1.4826777560562738, val_acc 0.9774011299435028
+check pointing
+epoch 87:1199 loss 210.1612548828125, val_loss 4.522400936837924, val_acc 0.9830508474576272
+check pointing
+epoch 87:1299 loss 19.43994140625, val_loss 0.627070414144289, val_acc 0.9943502824858758
+check pointing
+epoch 87:1399 loss 219.9425048828125, val_loss 1.446423891573976, val_acc 0.9887005649717514
+check pointing
+epoch 87:1499 loss 0.6992692947387695, val_loss 0.4757969770054353, val_acc 0.9887005649717514
+check pointing
+end of epoch 87: val_loss 0.6659491587493379, val_acc 0.9830508474576272
+trigger times: 2
+epoch 88:99 loss 0.0, val_loss 0.5734677664977682, val_acc 0.9830508474576272
+check pointing
+epoch 88:199 loss 0.0, val_loss 0.5023396455046147, val_acc 0.9887005649717514
+check pointing
+epoch 88:299 loss 0.0, val_loss 0.4690345426558354, val_acc 0.9887005649717514
+check pointing
+epoch 88:399 loss 0.0, val_loss 0.46294244605058665, val_acc 0.9887005649717514
+check pointing
+epoch 88:499 loss 160.4870676994069, val_loss 0.4441973152807203, val_acc 0.9943502824858758
+check pointing
+epoch 88:599 loss 0.0, val_loss 0.4726169392213983, val_acc 0.9943502824858758
+check pointing
+epoch 88:699 loss 0.0, val_loss 0.4927633684233757, val_acc 0.9943502824858758
+check pointing
+epoch 88:799 loss 0.0, val_loss 0.5106435657221046, val_acc 0.9943502824858758
+check pointing
+epoch 88:899 loss 43.090832233428955, val_loss 3.3753663550662445, val_acc 0.9717514124293786
+check pointing
+epoch 88:999 loss 4.048007011413574, val_loss 0.4077224300406073, val_acc 0.9943502824858758
+check pointing
+epoch 88:1099 loss 0.0, val_loss 0.24660892809851695, val_acc 0.9943502824858758
+check pointing
+epoch 88:1199 loss 218.7611083984375, val_loss 1.2306228153786417e-05, val_acc 1.0
+check pointing
+epoch 88:1299 loss 104.80126953125, val_loss 2.5991302331288657, val_acc 0.9717514124293786
+check pointing
+epoch 88:1399 loss 136.1784853336867, val_loss 0.5825068260926195, val_acc 0.9887005649717514
+check pointing
+epoch 88:1499 loss 12.976603984832764, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 88: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 89:99 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 89:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 89:299 loss 152.63923406600952, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 89:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 89:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 89:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 89:699 loss 36.48687744140625, val_loss 1.1691777288576977, val_acc 0.9830508474576272
+check pointing
+epoch 89:799 loss 62.27984619140625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 89:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 89:999 loss 7.271740287251305e-06, val_loss 6.734987708777056e-10, val_acc 1.0
+check pointing
+epoch 89:1099 loss 0.0, val_loss 2.693994601786934e-09, val_acc 1.0
+check pointing
+epoch 89:1199 loss 2.522420883178711, val_loss 7.408481782846847e-09, val_acc 1.0
+check pointing
+epoch 89:1299 loss 5.8412379075889476e-06, val_loss 3.441474101200994e-07, val_acc 1.0
+check pointing
+epoch 89:1399 loss 0.0, val_loss 1.267382613972545e-06, val_acc 1.0
+check pointing
+epoch 89:1499 loss 38.195862770080566, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 89: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 90:99 loss 0.00016962074550974648, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 90:199 loss 0.010096784681081772, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 90:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 90:399 loss 14.6334228515625, val_loss 0.13405187049154407, val_acc 0.9830508474576272
+check pointing
+epoch 90:499 loss 7.612204074859619, val_loss 8.85489350397126e-05, val_acc 1.0
+check pointing
+epoch 90:599 loss 1.6689286894688848e-06, val_loss 0.0009363722794549659, val_acc 1.0
+check pointing
+epoch 90:699 loss 0.0, val_loss 0.005389453420582349, val_acc 0.9943502824858758
+check pointing
+epoch 90:799 loss 0.0, val_loss 0.01422796104104174, val_acc 0.9943502824858758
+check pointing
+epoch 90:899 loss 0.9647924859309569, val_loss 0.0031508044825294115, val_acc 1.0
+check pointing
+epoch 90:999 loss 0.0, val_loss 0.0049150494248510895, val_acc 0.9943502824858758
+check pointing
+epoch 90:1099 loss 2.7242207527160645, val_loss 0.034025370042436, val_acc 0.9943502824858758
+check pointing
+epoch 90:1199 loss 0.2742018736389582, val_loss 0.035524462879172124, val_acc 0.9943502824858758
+check pointing
+epoch 90:1299 loss 2.3841855067985307e-07, val_loss 0.035751686745846965, val_acc 0.9943502824858758
+check pointing
+epoch 90:1399 loss 0.03507731446426732, val_loss 0.03218552889153035, val_acc 0.9943502824858758
+check pointing
+epoch 90:1499 loss 5.929698225502214, val_loss 0.19561610832916548, val_acc 0.9717514124293786
+check pointing
+end of epoch 90: val_loss 0.9204873297870925, val_acc 0.9322033898305084
+trigger times: 1
+epoch 91:99 loss 5401.654658668116, val_loss 525.7282790706656, val_acc 0.8248587570621468
+check pointing
+epoch 91:199 loss 10162.00244140625, val_loss 3.121623411016949, val_acc 0.9887005649717514
+check pointing
+epoch 91:299 loss 248.318359375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 91:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 91:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 91:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 91:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 91:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 91:899 loss 216.31397151947021, val_loss 1.1197284870902025, val_acc 0.9887005649717514
+check pointing
+epoch 91:999 loss 0.0, val_loss 2.3258918719103105, val_acc 0.9887005649717514
+check pointing
+epoch 91:1099 loss 2260.7697310447693, val_loss 6.9758052502648304, val_acc 0.9830508474576272
+check pointing
+epoch 91:1199 loss 564.675537109375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 91:1299 loss 627.7147789001465, val_loss 8.867521296786723, val_acc 0.9774011299435028
+check pointing
+epoch 91:1399 loss 597.33056640625, val_loss 7.445014565677966, val_acc 0.9830508474576272
+check pointing
+epoch 91:1499 loss 0.0, val_loss 10.89741955773305, val_acc 0.9774011299435028
+check pointing
+end of epoch 91: val_loss 10.500537936970339, val_acc 0.9774011299435028
+trigger times: 2
+epoch 92:99 loss 17.1552734375, val_loss 8.760635979431497, val_acc 0.9830508474576272
+check pointing
+epoch 92:199 loss 0.0, val_loss 8.418865311617232, val_acc 0.9830508474576272
+check pointing
+epoch 92:299 loss 0.0, val_loss 8.09221894862288, val_acc 0.9830508474576272
+check pointing
+epoch 92:399 loss 0.0, val_loss 7.76467050670904, val_acc 0.9830508474576272
+check pointing
+epoch 92:499 loss 0.0, val_loss 7.4428862663312145, val_acc 0.9830508474576272
+check pointing
+epoch 92:599 loss 514.2802734375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 92:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 92:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 92:899 loss 124.89208984375, val_loss 5.265216719632768, val_acc 0.9830508474576272
+check pointing
+epoch 92:999 loss 245.099609375, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 92:1099 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 92:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 92:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 92:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 92:1499 loss 35.58626829832792, val_loss 0.9827749823446328, val_acc 0.9943502824858758
+check pointing
+end of epoch 92: val_loss 3.2790706656073447, val_acc 0.9887005649717514
+trigger times: 3
+epoch 93:99 loss 164.977783203125, val_loss 0.05250179161459713, val_acc 0.9943502824858758
+check pointing
+epoch 93:199 loss 0.0, val_loss 0.06029182908225194, val_acc 0.9943502824858758
+check pointing
+epoch 93:299 loss 33.930419921875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 93:399 loss 197.132568359375, val_loss 2.878030395103713, val_acc 0.9830508474576272
+check pointing
+epoch 93:499 loss 246.71728515625, val_loss 0.00410322584001358, val_acc 0.9943502824858758
+check pointing
+epoch 93:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 93:699 loss 20.4381103515625, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 93:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 93:899 loss 52.32534432411194, val_loss 0.674024418333156, val_acc 0.9887005649717514
+check pointing
+epoch 93:999 loss 19.8516845703125, val_loss 0.14756990421963276, val_acc 0.9943502824858758
+check pointing
+epoch 93:1099 loss 0.0, val_loss 0.14850232830155366, val_acc 0.9943502824858758
+check pointing
+epoch 93:1199 loss 0.0, val_loss 0.1495706159516243, val_acc 0.9943502824858758
+check pointing
+epoch 93:1299 loss 0.0, val_loss 0.1515333962305791, val_acc 0.9943502824858758
+check pointing
+epoch 93:1399 loss 0.0, val_loss 0.15300030896892655, val_acc 0.9943502824858758
+check pointing
+epoch 93:1499 loss 0.0, val_loss 0.15394721596927965, val_acc 0.9943502824858758
+check pointing
+end of epoch 93: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 94:99 loss 74.45878138393164, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 94:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 94:299 loss 10.53261947631836, val_loss 0.4496463409251412, val_acc 0.9887005649717514
+check pointing
+epoch 94:399 loss 0.0, val_loss 0.4848946609066031, val_acc 0.9887005649717514
+check pointing
+epoch 94:499 loss 0.0, val_loss 0.4705465715483757, val_acc 0.9887005649717514
+check pointing
+epoch 94:599 loss 13.058320999145508, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 94:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 94:799 loss 9.684998512268066, val_loss 6.650965450342093e-05, val_acc 1.0
+check pointing
+epoch 94:899 loss 0.0, val_loss 0.0003796177311132183, val_acc 1.0
+check pointing
+epoch 94:999 loss 0.12793941795825958, val_loss 0.012203138426872297, val_acc 0.9943502824858758
+check pointing
+epoch 94:1099 loss 10.893939468076383, val_loss 2.0605306427841636e-06, val_acc 1.0
+check pointing
+epoch 94:1199 loss 0.0, val_loss 2.081401377790055e-06, val_acc 1.0
+check pointing
+epoch 94:1299 loss 1.1627485752105713, val_loss 2.505360082407498e-07, val_acc 1.0
+check pointing
+epoch 94:1399 loss 0.0, val_loss 1.849125679734762e-06, val_acc 1.0
+check pointing
+epoch 94:1499 loss 0.0, val_loss 1.1105876987295043e-05, val_acc 1.0
+check pointing
+end of epoch 94: val_loss 2.0200568095310316e-05, val_acc 1.0
+trigger times: 1
+epoch 95:99 loss 0.8579402201576158, val_loss 8.35333882045398e-05, val_acc 1.0
+check pointing
+epoch 95:199 loss 0.25320279598236084, val_loss 0.000855798247912383, val_acc 1.0
+check pointing
+epoch 95:299 loss 0.07649576663953894, val_loss 0.006211779251336843, val_acc 0.9943502824858758
+check pointing
+epoch 95:399 loss 0.00018821375851985067, val_loss 0.004431583505562959, val_acc 0.9943502824858758
+check pointing
+epoch 95:499 loss 4.709737135083628, val_loss 0.10356960721831714, val_acc 0.9830508474576272
+check pointing
+epoch 95:599 loss 0.47890931204892695, val_loss 0.00039568079854830277, val_acc 1.0
+check pointing
+epoch 95:699 loss 0.5603877899452527, val_loss 0.00031100035230913767, val_acc 1.0
+check pointing
+epoch 95:799 loss 0.0016776565458798132, val_loss 0.00030386854402188494, val_acc 1.0
+check pointing
+epoch 95:899 loss 0.06901590050152606, val_loss 0.0005018866421704085, val_acc 1.0
+check pointing
+epoch 95:999 loss 4.7381215417618066, val_loss 0.028617997197969723, val_acc 0.9943502824858758
+check pointing
+epoch 95:1099 loss 0.446492255240841, val_loss 0.00817403853934214, val_acc 0.9943502824858758
+check pointing
+epoch 95:1199 loss 0.001026201835259144, val_loss 0.00821628215924298, val_acc 0.9943502824858758
+check pointing
+epoch 95:1299 loss 2.1794304816379793, val_loss 0.006918139650778779, val_acc 0.9943502824858758
+check pointing
+epoch 95:1399 loss 1.631975315554449, val_loss 0.007491869332584129, val_acc 0.9943502824858758
+check pointing
+epoch 95:1499 loss 0.3881893406948578, val_loss 0.006363250551773598, val_acc 0.9943502824858758
+check pointing
+end of epoch 95: val_loss 0.005921045631139965, val_acc 1.0
+trigger times: 2
+epoch 96:99 loss 1.9381971410075778, val_loss 0.015377572951694373, val_acc 0.9943502824858758
+check pointing
+epoch 96:199 loss 0.4146090375728946, val_loss 0.005358871510331934, val_acc 1.0
+check pointing
+epoch 96:299 loss 1.9433750606565567, val_loss 0.0070304623591378864, val_acc 1.0
+check pointing
+epoch 96:399 loss 3.312126365064117, val_loss 0.11933249806289613, val_acc 0.9717514124293786
+check pointing
+epoch 96:499 loss 3.445204978211308, val_loss 0.004473634929889891, val_acc 1.0
+check pointing
+epoch 96:599 loss 687.7581548642474, val_loss 2.957550566075212, val_acc 0.9887005649717514
+check pointing
+epoch 96:699 loss 4676.576904296875, val_loss 1.2847203831214689, val_acc 0.9887005649717514
+check pointing
+epoch 96:799 loss 203.70752239227295, val_loss 4.955513991878531, val_acc 0.9830508474576272
+check pointing
+epoch 96:899 loss 292.9833984375, val_loss 0.6988822518092581, val_acc 0.9943502824858758
+check pointing
+epoch 96:999 loss 8.392316818237305, val_loss 0.06452215054614396, val_acc 0.9943502824858758
+check pointing
+epoch 96:1099 loss 530.3828125, val_loss 0.5721773481638418, val_acc 0.9943502824858758
+check pointing
+epoch 96:1199 loss 358.7314453125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 96:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 96:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 96:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 96: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 97:99 loss 3.2186455882765586e-06, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 97:199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 97:299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 97:399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 97:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 97:599 loss 126.1397705078125, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 97:699 loss 5.316567420959473, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 97:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 97:899 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 97:999 loss 0.0002324311062693596, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 97:1099 loss 0.0, val_loss 3.3674930916590375e-09, val_acc 1.0
+check pointing
+epoch 97:1199 loss 267.13697147369385, val_loss 0.2811782750706215, val_acc 0.9943502824858758
+check pointing
+epoch 97:1299 loss 504.68988037109375, val_loss 0.46950074701996175, val_acc 0.9943502824858758
+check pointing
+epoch 97:1399 loss 520.6951293945312, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 97:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 97: val_loss 6.258667681850283, val_acc 0.9717514124293786
+trigger times: 1
+epoch 98:99 loss 421.61328125, val_loss 6.036698335981638, val_acc 0.9717514124293786
+check pointing
+epoch 98:199 loss 516.0400390625, val_loss 6.608758050843147, val_acc 0.9830508474576272
+check pointing
+epoch 98:299 loss 0.4496980309486389, val_loss 7.022574042196328, val_acc 0.9830508474576272
+check pointing
+epoch 98:399 loss 204.24560546875, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 98:499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 98:599 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 98:699 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 98:799 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 98:899 loss 70.472900390625, val_loss 0.6769467801024012, val_acc 0.9943502824858758
+check pointing
+epoch 98:999 loss 210.9095553159268, val_loss 0.07755534392965716, val_acc 0.9943502824858758
+check pointing
+epoch 98:1099 loss 189.30078220367432, val_loss 1.5204940192443503, val_acc 0.9887005649717514
+check pointing
+epoch 98:1199 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 98:1299 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 98:1399 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+epoch 98:1499 loss 0.0, val_loss 0.0, val_acc 1.0
+check pointing
+end of epoch 98: val_loss 0.0, val_acc 1.0
+trigger times: 0
+epoch 99:99 loss 28.2176513671875, val_loss 0.37276079425704006, val_acc 0.9830508474576272
+check pointing
+epoch 99:199 loss 27.3482666015625, val_loss 2.559289572734812e-08, val_acc 1.0
+check pointing
+epoch 99:299 loss 58.7808837890625, val_loss 0.8235838021212804, val_acc 0.9830508474576272
+check pointing
+epoch 99:399 loss 30.810747027272555, val_loss 0.02123141612878627, val_acc 0.9943502824858758
+check pointing
+epoch 99:499 loss 2.676508903503418, val_loss 1.7941671744578302, val_acc 0.9661016949152542
+check pointing
+epoch 99:599 loss 184.910969555287, val_loss 0.6310794094188065, val_acc 0.9774011299435028
+check pointing
+epoch 99:699 loss 14.836821734905243, val_loss 0.29958884056005103, val_acc 0.9774011299435028
+check pointing
+epoch 99:799 loss 49.607330322265625, val_loss 0.018905204746774845, val_acc 0.9943502824858758
+check pointing
+epoch 99:899 loss 14.5205078125, val_loss 1.7305287548293503e-05, val_acc 1.0
+check pointing
+epoch 99:999 loss 57.0818194150886, val_loss 0.6530803960595427, val_acc 0.9830508474576272
+check pointing
+epoch 99:1099 loss 105.98449039311527, val_loss 1.5288216446981486e-07, val_acc 1.0
+check pointing
+epoch 99:1199 loss 0.0, val_loss 2.216844224912972e-05, val_acc 1.0
+check pointing
+epoch 99:1299 loss 0.0, val_loss 0.0008633649450227433, val_acc 1.0
+check pointing
+epoch 99:1399 loss 0.0, val_loss 0.008768569260070563, val_acc 0.9943502824858758
+check pointing
+epoch 99:1499 loss 3.5762783312520696e-07, val_loss 0.022730648533392767, val_acc 0.9943502824858758
+check pointing
+end of epoch 99: val_loss 0.03702132066982453, val_acc 0.9943502824858758
+trigger times: 1
+finished training
+Trained Weights: OrderedDict([('fc1.weight', tensor([[-2.2362e-07,  5.9461e-05,  3.0109e-11,  ...,  1.1266e-10,
+         -9.2889e-11,  8.9600e-11],
+        [-4.4826e-05,  3.2264e-07, -8.7535e-11,  ...,  3.3188e-12,
+         -3.3138e-12,  6.1404e-12],
+        [-1.1762e-08, -2.7453e-14,  1.8649e-10,  ..., -2.0668e-10,
+         -1.8498e-14,  9.4831e-15],
+        ...,
+        [-1.6157e-05, -3.9761e-07, -2.8836e-11,  ..., -3.1637e-12,
+          3.0972e-12, -5.3080e-12],
+        [ 7.9722e-20, -1.3563e-19,  2.4711e-19,  ...,  1.8621e-19,
+          4.9397e-20, -8.4643e-20],
+        [-1.7516e-43, -4.7364e-43, -3.5313e-43,  ...,  2.4102e-43,
+         -3.4892e-42, -2.0179e-43]])), ('fc1.bias', tensor([-1.8112e-09, -7.9342e-05, -6.2755e-08, -9.8866e-27,  1.2133e-12,
+        -1.9291e-31, -1.6534e-02,  2.9444e-20, -1.3302e-05, -6.3272e-03,
+        -4.9009e-25, -9.3049e-04,  1.2971e-16,  2.1182e-15, -4.3902e-30,
+        -9.9411e-04, -2.8712e-12, -1.1274e-03, -4.9386e-25, -7.0073e-05,
+        -5.3403e-02, -5.5809e-02,  4.0416e-07, -1.1900e-03,  3.3547e-17,
+         5.1535e-07, -8.8716e-04, -1.4952e-17, -6.2274e-03, -4.1559e-15,
+        -3.9464e-10, -3.2277e-02, -2.5863e-15, -2.3361e-07, -1.1103e-03,
+        -2.8100e-08, -1.7524e-07, -1.6422e-03, -4.7000e-05,  2.0286e-02,
+        -1.2131e-05,  3.7123e-26, -1.0180e-05, -2.6582e-27, -4.1776e-19,
+         5.0201e-03, -1.2813e-02, -3.5745e-14, -3.5932e-05, -2.5858e-05,
+         1.2710e-07, -1.7723e-07, -4.0209e-03, -8.1129e-03, -6.2859e-28,
+         2.6232e-06, -1.6868e-02, -1.1576e-14, -1.9361e-03, -3.9627e-06,
+        -2.3581e-05, -4.3336e-30,  6.9354e-15, -3.6950e-08, -2.2414e-16,
+        -2.0517e-15, -1.0498e-02, -6.0538e-02,  1.3076e-14, -6.2571e-27,
+        -1.4162e-12, -1.5717e-13,  1.3550e-18,  2.2205e-17, -5.8053e-03,
+        -5.5105e-04, -1.1987e-07,  1.7895e-19, -2.7346e-33,  4.2037e-05,
+        -1.8211e-05, -9.3249e-02, -3.4301e-10, -9.3136e-06, -2.0183e-02,
+        -1.1658e-03, -2.4650e-01,  2.4434e-01, -6.8917e-03, -1.4041e-04,
+        -1.1958e-02,  2.2821e-15, -1.1860e-02, -2.5472e-04,  1.5300e-14,
+        -2.0868e-09,  3.1961e-11, -3.4787e-35,  2.9257e-12, -4.8503e-12,
+         1.1400e-01, -2.1497e-14, -2.3740e-12,  5.8678e-05, -6.9539e-03,
+        -9.2759e-05, -1.4594e-07,  3.0333e-03,  3.3876e-09, -6.8955e-02,
+         4.1824e-27, -4.7080e-04,  8.4887e-20,  1.2452e-24, -6.5735e-13,
+        -1.5574e-24, -4.0804e-04, -2.2507e-28, -1.3193e-08, -1.7087e-10,
+        -4.7360e-03, -1.3795e-03, -2.2782e-10, -1.8737e-26,  1.1045e-06,
+        -2.6873e-05,  2.7029e-19,  7.4269e-44])), ('fc2.weight', tensor([[ 1.5130e-09,  2.4712e-11,  4.3055e-14,  ..., -2.6517e-11,
+         -6.3684e-23, -1.5414e-43],
+        [ 4.1901e-14,  1.2505e-08, -3.2129e-14,  ...,  5.5688e-09,
+          9.3626e-23,  1.5414e-43],
+        [-2.4091e-15, -2.7915e-15, -8.7089e-16,  ..., -2.6059e-15,
+         -1.7939e-24,  5.3670e-43],
+        ...,
+        [-4.8196e-18,  1.6654e-16,  4.4852e-17,  ...,  5.6698e-17,
+         -7.1907e-23,  6.8523e-43],
+        [ 4.1585e-21, -7.2631e-21,  5.9999e-21,  ..., -4.2231e-21,
+          3.2835e-25,  6.4039e-43],
+        [-7.9014e-07, -2.8212e-14, -3.7570e-14,  ..., -1.6700e-14,
+          1.5412e-21,  9.8091e-44]])), ('fc2.bias', tensor([-1.6661e-08,  1.2069e-10, -2.8093e-05,  4.7629e-04,  2.3412e-16,
+        -1.4814e-08, -2.7235e-11, -1.1047e-02, -8.9942e-04, -2.5648e-03,
+         2.7039e-04, -3.1074e-18,  1.3435e-07, -8.8121e-08, -2.6292e-02,
+        -4.9476e-10, -2.3567e-21, -1.7306e-10, -2.2082e-04,  8.5817e-10,
+         7.7480e-13, -9.6248e-04,  1.7866e-02,  1.7760e-11, -4.7753e-02,
+        -8.6578e-12,  2.5883e-02,  2.1463e-16,  1.2288e-07, -1.0840e-10,
+         8.2922e-04,  2.3785e-03, -1.2767e-01, -1.9478e-05, -3.3177e-13,
+        -1.6928e-03,  9.4614e-11, -1.1816e-08, -6.8785e-05,  8.0280e-18,
+         7.6091e-03,  1.1380e-01, -1.2171e-11,  1.0094e-10,  2.2221e-06,
+        -2.5259e-07, -5.1858e-02, -1.5589e-02,  7.7057e-03, -3.4907e-09,
+        -6.0222e-06, -2.7243e-09, -4.3812e-05, -2.3989e-01, -6.0818e-05,
+         1.9396e-05, -1.6458e-10, -1.1640e-03,  1.7177e-09, -3.2324e-10,
+        -1.0733e-07,  6.2433e-13,  6.0672e-18, -1.3997e-04])), ('fc3.weight', tensor([[-6.4841e-02,  3.2263e-02, -8.2440e-04, -1.1389e-01, -1.6604e-11,
+          1.0484e-01, -5.7591e-03,  9.5622e-02,  3.8606e-02,  4.3877e-02,
+         -2.0839e-03, -2.9036e-12,  1.9013e-01, -1.0030e-03, -1.5726e-01,
+          5.3615e-03, -2.7580e-13, -5.6981e-02,  1.4010e-02,  9.1668e-02,
+          3.5028e-08,  5.7249e-02,  6.9131e-02,  4.0667e-03,  1.5316e-02,
+         -8.3585e-07,  2.0062e-02,  4.2670e-08,  1.2795e-02, -1.3388e-04,
+         -5.1982e-02, -1.6672e-02, -1.2098e-01,  1.0149e-01, -2.7975e-08,
+         -1.8896e-01,  1.0778e-05, -1.3891e-01, -2.1697e-01,  1.9399e-12,
+         -6.6058e-02,  5.4238e-01, -2.2592e-06,  1.9944e-02, -9.8158e-02,
+          1.3990e-02,  5.4250e-02,  5.8941e-02, -3.8854e-02, -6.3568e-03,
+          2.5167e-02, -1.4769e-02, -3.5399e-02, -1.2350e-01, -1.3656e-01,
+         -6.3466e-03, -3.3741e-03,  3.2261e-02,  6.6377e-03, -5.4909e-02,
+         -8.9147e-02,  1.1194e-06,  1.2536e-09,  2.2706e-02]]))])
+0 62.556051425635815 -207.36908327006034
+1 224.09296613931656 -191.10004520678868
+2 101.01824796199799 -187.50220085194994
+3 109.03793949633837 -180.24009179391223
+4 133.74446773529053 -171.9613792356186
+5 221.9255787730217 -169.3817016847894
+6 166.58218596875668 -166.37855700708454
+7 127.29591965675354 -164.27567046290412
+8 111.86819916591048 -163.76742236654098
+9 177.16381734609604 -156.0786895876365
+10 138.439658254385 -145.29002069283715
+11 213.57707408070564 -142.86657280197298
+12 282.70382595062256 -142.75441848091938
+13 278.47099286317825 -136.98962801176134
+14 256.0114429593086 -130.98347157271724
+15 177.44279170036316 -118.2436222554584
+16 238.44913911819458 -117.38411415155902
+17 183.05040964484215 -116.97382686219106
+18 278.5235884785652 -112.47832645551227
+19 147.72178656421602 -104.47613836856029
+20 238.5044391155243 -103.24187681049156
+21 89.84794103167951 -102.48349409542669
+22 163.4667932037264 -99.84217500544165
+23 234.57483449578285 -99.7422752992134
+24 304.28077697753906 -98.18526661663928
+25 80.35483780130744 -95.25894885554159
+26 157.66462215408683 -93.96169362545317
+27 187.5073101464659 -92.27881721993799
+28 178.32792848162353 -91.90015522693264
+29 98.53477685153484 -91.87704992403908
+30 133.90103104896843 -90.37310118540903
+31 119.61909898370504 -90.20276884550383
+32 305.908616065979 -88.94674758091466
+33 185.69380035623908 -88.61887973599335
+34 339.5551235675812 -85.88346861832474
+35 166.66836876049638 -84.43911002949417
+36 143.02575399540365 -84.11407072263222
+37 137.6337962411344 -84.03081224232012
+38 317.57134000211954 -79.25112655387144
+39 289.28290247917175 -73.50697855948762
+40 325.7462908029556 -72.69803191552006
+41 197.0998152308166 -72.11986635051818
+42 359.02920520305634 -71.37326168319514
+43 164.98856691271067 -70.6805769685005
+44 198.34312802925706 -70.60116177242598
+45 334.7288097143173 -68.27187815304366
+46 177.860537994653 -65.36847933022577
+47 314.4992840066552 -65.35816021006309
+48 255.25988791137934 -57.11519325608548
+49 205.95940992608666 -56.40343810315472
+50 221.8188532385975 -50.03155739577978
+51 393.27430856227875 -49.3186741604369
+52 192.02448791265488 -39.83752310053071
+53 284.0937752723694 -17.325441617065966
+54 311.5170241445303 -0.4258658969524013
+55 277.98389729857445 9.108146753357724
+56 264.3415336459875 17.732630180500013
+57 385.51292856782675 40.64550156746333
+58 348.8216822743416 48.64917674484657
+59 363.21784633398056 52.50260039838799
+60 347.26300172507763 52.54502852695255
+61 346.0854970961809 59.52827491841281
+62 323.96370355784893 66.31570758515764
+63 349.42993372678757 67.13050507695384
+64 409.80332401394844 72.16624272108386
+65 334.75931514799595 79.16074531670823
+66 319.9008768647909 89.30707154325768
+67 305.1376304291189 90.2698850730257
+68 289.6761395186186 90.28646231697512
+69 389.00460264086723 90.32667007477052
+70 376.50473629310727 92.38187517969644
+71 319.3211770057678 92.67153902025292
+72 335.5170428156853 93.69474938898811
+73 404.3181344270706 93.86112859581364
+74 331.17311961203814 95.3630101766082
+75 384.4898639470339 96.09581961281374
+76 320.08148366212845 97.90553231413178
+77 355.84674026817083 98.07644230926206
+78 312.95920084416866 98.57334710000995
+79 340.20993718504906 98.77895390936838
+80 296.80157931149006 99.10163703819775
+81 353.4063242673874 99.47183807834362
+82 341.5997949913144 102.70820969163083
+83 363.4851483255625 103.61971441966246
+84 328.21837800741196 104.00039883786899
+85 368.8978076726198 104.94014608739957
+86 376.07279278710485 105.60678192821229
+87 342.27705827727914 106.95774051225432
+88 314.70469403266907 107.03525723063939
+89 369.61099949479103 107.05410485829283
+90 340.41564869880676 107.72369032284489
+91 349.14939460530877 107.78006757763964
+92 373.8611586242914 107.99397435655325
+93 384.81880740076303 108.08910889221833
+94 361.3542951345444 108.24033506535473
+95 327.6541100665927 109.15712102315346
+96 347.23068164289 109.71287331230647
+97 366.63409948349 110.25063890779474
+98 322.88647581636906 110.48639228144049
+99 384.6034136265516 111.92877271779909
+100 347.667639747262 112.29467419620224
+101 388.1050098538399 112.73910566375015
+102 329.9071110859513 113.84616479719523
+103 328.11675848066807 114.84612239587612
+104 376.3725749105215 115.08707834021696
+105 326.9057779684663 115.41025719446112
+106 405.9454401433468 115.87882502857741
+107 353.03958535194397 116.51927592390606
+108 384.25716453790665 116.69939038222442
+109 374.999824821949 117.18809854794453
+110 347.36223681271076 117.43241923864416
+111 403.10441637039185 119.84073495876005
+112 371.7609949186444 122.74776106687673
+113 398.2462368682027 124.10172315382671
+114 387.0857978016138 124.48179570258212
+115 350.36250618845224 125.2590893824027
+116 406.21374033391476 125.30457667780085
+117 365.14987060427666 125.43458549438884
+118 374.6256049796939 129.67718524437547
+119 386.1048000231385 131.40806576766226
+train accuracy: 0.9918392969240427
+validation accuracy: 0.9943502824858758
