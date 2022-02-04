@@ -262,6 +262,7 @@ if __name__ == "__main__":
     parser.add_argument('--all_pairs', dest='all_pairs', default=False, action='store_true', help="whether we generate all pairs from the dataset (num_demos choose 2)")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--state_action', dest='state_action', default=False, action='store_true', help="whether data consists of state-action pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--augmented', dest='augmented', default=False, action='store_true', help="whether data consists of states + linear features pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
+    parser.add_argument('--handtuned_preferences', dest='handtuned_preferences', default=False, action='store_true', help="option to use preferences derived from the handtuned reward")  # NOTE: type=bool doesn't work, value is still true.
     args = parser.parse_args()
 
     seed = args.seed
@@ -279,6 +280,7 @@ if __name__ == "__main__":
     all_pairs = args.all_pairs
     state_action = args.state_action
     augmented = args.augmented
+    handtuned_preferences = args.handtuned_preferences
     #################
 
     if augmented and state_action:
@@ -287,7 +289,10 @@ if __name__ == "__main__":
         demo_reward_per_timestep = np.load("data/augmented_stateactions/demo_reward_per_timestep.npy")
     elif augmented:
         demos = np.load("data/augmented_features/demos.npy")
-        demo_rewards = np.load("data/augmented_features/demo_rewards.npy")
+        if handtuned_preferences:
+            demo_rewards = np.load("data/augmented_features/demo_handtunedrewards.npy")
+        else:
+            demo_rewards = np.load("data/augmented_features/demo_rewards.npy")
         demo_reward_per_timestep = np.load("data/augmented_features/demo_reward_per_timestep.npy")
     else:
         demos = np.load("data/handpicked_features/demos.npy")
