@@ -27,6 +27,7 @@ def viewer(env_name):
             print('Observation size:', np.shape(observation), 'Action size:', np.shape(action))
 
         while not done:
+            env.render()  # This env.render() is necessary to render each frame in MuJoCo
             observation, reward, done, info = env.step(sample_action(env, coop))
             if coop:
                 done = done['__all__']
