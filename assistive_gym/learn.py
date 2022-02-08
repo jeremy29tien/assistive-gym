@@ -75,7 +75,7 @@ def make_env(env_name, coop=False, seed=1001):
     env.seed(seed)
     return env
 
-def train(env_name, algo, timesteps_total=1000000, save_dir='./trained_models/', load_policy_path='', coop=False, seed=0, extra_configs={}):
+def train(env_name, algo, timesteps_total=1000000, save_dir='./trained_models/', load_policy_path='', coop=False, seed=0, save_checkpoints=False, extra_configs={}):
     ray.init(num_cpus=multiprocessing.cpu_count(), ignore_reinit_error=True, log_to_driver=False)
     env = make_env(env_name, coop)
     agent, checkpoint_path = load_policy(env, algo, env_name, load_policy_path, coop, seed, extra_configs)
@@ -93,9 +93,11 @@ def train(env_name, algo, timesteps_total=1000000, save_dir='./trained_models/',
         print(f"Iteration: {result['training_iteration']}, total timesteps: {result['timesteps_total']}, total time: {result['time_total_s']:.1f}, FPS: {result['timesteps_total']/result['time_total_s']:.1f}, mean reward: {result['episode_reward_mean']:.1f}, min/max reward: {result['episode_reward_min']:.1f}/{result['episode_reward_max']:.1f}")
         sys.stdout.flush()
 
-        # Delete the old saved policy
-        if checkpoint_path is not None:
-            shutil.rmtree(os.path.dirname(checkpoint_path), ignore_errors=True)
+        if not (save_checkpoints and result['training_iteration'] % 10 == 1):
+            # Delete the old saved policy
+            if checkpoint_path is not None:
+                shutil.rmtree(os.path.dirname(checkpoint_path), ignore_errors=True)
+
         # Save the recently trained policy
         checkpoint_path = agent.save(os.path.join(save_dir, algo, env_name))
     return checkpoint_path
@@ -220,13 +222,15 @@ if __name__ == '__main__':
                         help='Whether rendering should generate an animated png rather than open a window (e.g. when using Google Colab)')
     parser.add_argument('--verbose', action='store_true', default=False,
                         help='Whether to output more verbose prints')
+    parser.add_argument('--save-checkpoints', action='store_true', default=False,
+                        help='Whether to save multiple checkpoints of trained policy')
     args = parser.parse_args()
 
     coop = ('Human' in args.env)
     checkpoint_path = None
 
     if args.train:
-        checkpoint_path = train(args.env, args.algo, timesteps_total=args.train_timesteps, save_dir=args.save_dir, load_policy_path=args.load_policy_path, coop=coop, seed=args.seed)
+        checkpoint_path = train(args.env, args.algo, timesteps_total=args.train_timesteps, save_dir=args.save_dir, load_policy_path=args.load_policy_path, coop=coop, seed=args.seed, save_checkpoints=args.save_checkpoints)
     if args.render:
         render_policy(None, args.env, args.algo, checkpoint_path if checkpoint_path is not None else args.load_policy_path, coop=coop, colab=args.colab, seed=args.seed, n_episodes=args.render_episodes)
     if args.evaluate:
