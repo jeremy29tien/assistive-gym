@@ -38,9 +38,9 @@ def setup_config(env, algo, coop=False, seed=0, extra_configs={}):
 
 def load_policy(env, algo, env_name, policy_path=None, coop=False, seed=0, extra_configs={}):
     if algo == 'ppo':
-        agent = ppo.PPOTrainer(setup_config(env, algo, coop, seed, extra_configs), 'assistive_gym:'+env_name)
+        agent = ppo.PPOTrainer(setup_config(env, algo, coop, seed, extra_configs), env_name)  # 'assistive_gym:'+env_name
     elif algo == 'sac':
-        agent = sac.SACTrainer(setup_config(env, algo, coop, seed, extra_configs), 'assistive_gym:'+env_name)
+        agent = sac.SACTrainer(setup_config(env, algo, coop, seed, extra_configs), env_name)  # 'assistive_gym:'+env_name
     if policy_path != '':
         if 'checkpoint' in policy_path:
             agent.restore(policy_path)
@@ -67,7 +67,7 @@ def load_policy(env, algo, env_name, policy_path=None, coop=False, seed=0, extra
 
 def make_env(env_name, coop=False, seed=1001):
     if not coop:
-        env = gym.make('assistive_gym:'+env_name)
+        env = gym.make(env_name)  # 'assistive_gym:'+env_name
     else:
         module = importlib.import_module('assistive_gym.envs')
         env_class = getattr(module, env_name.split('-')[0] + 'Env')
