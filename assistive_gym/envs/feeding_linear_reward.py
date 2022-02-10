@@ -24,7 +24,7 @@ class FeedingLinearRewardEnv(FeedingEnv):
         self.state_action = False
         self.num_rawfeatures = 1
 
-        self.reward_net_path = "/home/jtien/assistive-gym/trex/models/linear/augmented_1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed0.params"
+        self.reward_net_path = "/home/jtien/assistive-gym/trex/models/linear/ablation_1rawfeatures_10demosallpairs_10epochs_10patience_001lr_01l1reg_seed0.params"
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.reward_net = Net(augmented=self.augmented, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action)
         print("device:", self.device)
