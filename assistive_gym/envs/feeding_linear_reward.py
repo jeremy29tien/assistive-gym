@@ -22,10 +22,11 @@ class FeedingLinearRewardEnv(FeedingEnv):
         super(FeedingLinearRewardEnv, self).__init__(robot=robot, human=human)
         self.augmented = True
         self.state_action = False
+        self.num_rawfeatures = 1
 
         self.reward_net_path = "/home/jtien/assistive-gym/trex/models/linear/augmented_1770comps_60pairdelta_100epochs_10patience_001lr_01weightdecay_seed0.params"
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.reward_net = Net(augmented=self.augmented, state_action=self.state_action)
+        self.reward_net = Net(augmented=self.augmented, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action)
         print("device:", self.device)
         self.reward_net.load_state_dict(torch.load(self.reward_net_path, map_location=torch.device('cpu')))
         self.reward_net.to(self.device)
@@ -41,7 +42,7 @@ class FeedingLinearRewardEnv(FeedingEnv):
         if self.augmented and self.state_action:
             input = np.concatenate((obs, action, handpicked_features))
         elif self.augmented:
-            input = np.concatenate((obs, handpicked_features))
+            input = np.concatenate((obs[0:self.num_rawfeatures], handpicked_features))
         else:
             input = handpicked_features
 
