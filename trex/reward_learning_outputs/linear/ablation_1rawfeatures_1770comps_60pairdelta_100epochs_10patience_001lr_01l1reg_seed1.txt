@@ -1,0 +1,674 @@
+demo lengths 200
+demos: (120, 200, 4)
+demo_rewards: (120,)
+[-191.10004521 -189.05007017 -187.50220085 -180.24009179 -171.96137924
+ -169.38170168 -167.87631268 -164.27567046 -163.76742237 -156.07868959
+ -155.22804552 -145.29002069 -142.8665728  -142.75441848 -136.98962801
+ -132.4813577  -130.98347157 -118.24362226 -117.38411415 -116.97382686
+ -115.06704102 -112.47832646 -103.24187681  -99.7422753   -98.18526662
+  -88.94674758  -85.88346862  -79.38307722  -79.25112655  -73.50697856
+  -72.69803192  -71.37326168  -68.27187815  -65.42298163  -65.35816021
+  -49.31867416  -17.32544162   -4.37451128   -0.4258659     9.10814675
+   17.73263018   40.64550157   41.11774839   48.64917674   52.5026004
+   52.54502853   59.52827492   63.45606317   66.31570759   67.13050508
+   72.16624272   79.16074532   84.19837606   89.30707154   90.26988507
+   90.28646232   90.32667007   91.18021498   92.38187518   92.67153902
+   93.69474939   93.8611286    95.24073533   95.36301018   96.09581961
+   97.90553231   98.07644231   98.35872828   98.5733471    98.77895391
+   99.10163704   99.47183808  101.36707045  102.70820969  103.61971442
+  104.00039884  104.94014609  105.28448326  105.60678193  106.95774051
+  107.03525723  107.05410486  107.36477417  107.72369032  107.78006758
+  107.99397436  108.08910889  108.09776529  108.24033507  109.15712102
+  109.71287331  110.25063891  110.45880856  110.48639228  111.92877272
+  112.2946742   112.73910566  112.98274531  113.8461648   114.8461224
+  115.08707834  115.41025719  115.56466246  115.87882503  116.51927592
+  116.69939038  117.18809855  117.29357602  117.43241924  119.84073496
+  122.74776107  124.10172315  124.42382576  124.4817957   125.25908938
+  125.30457668  125.43458549  129.13346806  129.67718524  131.40806577]
+maximum traj length 200
+num training_obs 1593
+num training_labels 1593
+num val_obs 177
+num val_labels 177
+cpu
+epoch 0:99 loss 6.431369399651885, val_loss 0.026030821396410844, val_acc 0.9887005649717514
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0053, -0.2429,  0.0522, -0.0265]]))])
+epoch 0:199 loss 6.382539998739958, val_loss 0.023296286718823042, val_acc 0.9887005649717514
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0067, -0.2802,  0.0730, -0.0132]]))])
+epoch 0:299 loss 4.567655371502042, val_loss 0.014492814273418272, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.1114, -0.2166,  0.0066, -0.0066]]))])
+epoch 0:399 loss 6.080942885950208, val_loss 0.01871645756780911, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0161, -0.2733,  0.0629, -0.0613]]))])
+epoch 0:499 loss 7.103901874274015, val_loss 0.019243274732865086, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0057, -0.2525,  0.1498, -0.0369]]))])
+epoch 0:599 loss 6.009309334680438, val_loss 0.021140033852894646, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0146, -0.2061,  0.1051, -0.0356]]))])
+epoch 0:699 loss 5.540775841102004, val_loss 0.015081933164597118, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0376, -0.2478,  0.0742, -0.0312]]))])
+epoch 0:799 loss 8.720137894153595, val_loss 0.017506992141034013, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0027, -0.2026,  0.2004, -0.1212]]))])
+epoch 0:899 loss 5.343557110056281, val_loss 0.02775669682847757, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0044, -0.1880,  0.1025, -0.0111]]))])
+epoch 0:999 loss 4.70131835155189, val_loss 0.021772732674275794, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0290, -0.2388,  0.0253,  0.0028]]))])
+epoch 0:1099 loss 5.753926934674382, val_loss 0.02078612619442118, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0084, -0.2484,  0.0789, -0.0679]]))])
+epoch 0:1199 loss 5.6644029170274734, val_loss 0.02546210818576576, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0296, -0.1871,  0.0414,  0.0039]]))])
+epoch 0:1299 loss 5.048075525090098, val_loss 0.03161854679398633, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 8.9597e-04, -2.6799e-01,  9.0153e-03, -7.2586e-05]]))])
+epoch 0:1399 loss 5.517161153256893, val_loss 0.013931869068821903, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0234, -0.2653,  0.1079, -0.0954]]))])
+epoch 0:1499 loss 7.066754350438714, val_loss 0.04014732451190037, val_acc 0.9774011299435028
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0480, -0.2346,  0.1714, -0.0811]]))])
+end of epoch 0: val_loss 0.009823288742866934, val_acc 1.0
+trigger times: 0
+epoch 1:99 loss 13.831936987116933, val_loss 0.024144336841040517, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0005, -0.1992,  0.1553, -0.0212]]))])
+epoch 1:199 loss 6.071174956858158, val_loss 0.019574879530647748, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0255, -0.2278,  0.0838, -0.0030]]))])
+epoch 1:299 loss 3.970783192664385, val_loss 0.03890503966604042, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0025, -0.2242, -0.0056,  0.0009]]))])
+epoch 1:399 loss 6.669321935623884, val_loss 0.01294611239908987, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0474, -0.2720,  0.0854, -0.0027]]))])
+epoch 1:499 loss 7.93578664213419, val_loss 0.012240627727068989, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0720, -0.1727,  0.1179, -0.0980]]))])
+epoch 1:599 loss 6.179541256278753, val_loss 0.015206128549207585, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0328, -0.2358,  0.1123, -0.0238]]))])
+epoch 1:699 loss 5.517589382827282, val_loss 0.04607815004997945, val_acc 0.9774011299435028
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0280, -0.2100,  0.0775, -0.0021]]))])
+epoch 1:799 loss 5.485851727426052, val_loss 0.014361815205915812, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0892, -0.2206,  0.0143, -0.0033]]))])
+epoch 1:899 loss 6.405914394184947, val_loss 0.022890083691711367, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0235, -0.1885,  0.0941,  0.0040]]))])
+epoch 1:999 loss 5.536011045798659, val_loss 0.027365063690469097, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0008, -0.2779,  0.0566, -0.0136]]))])
+epoch 1:1099 loss 5.816909655928612, val_loss 0.017871736195257674, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0536, -0.1810,  0.0720, -0.0188]]))])
+epoch 1:1199 loss 5.843274150043726, val_loss 0.015697902981107768, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0241, -0.3036,  0.0531, -0.0770]]))])
+epoch 1:1299 loss 5.415594391524792, val_loss 0.026557831982014637, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0071, -0.2896,  0.0271,  0.0018]]))])
+epoch 1:1399 loss 6.52987302467227, val_loss 0.018723221437811476, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0397, -0.2228,  0.0231, -0.0297]]))])
+epoch 1:1499 loss 5.17675830796361, val_loss 0.037984005422026575, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0123, -0.1670,  0.0878, -0.0343]]))])
+end of epoch 1: val_loss 0.014491552457002841, val_acc 1.0
+trigger times: 1
+epoch 2:99 loss 10.887923445552588, val_loss 0.023216358263913824, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0590, -0.1803,  0.0024,  0.0005]]))])
+epoch 2:199 loss 7.384711183607578, val_loss 0.02440072989401336, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0009, -0.2896,  0.0904, -0.0236]]))])
+epoch 2:299 loss 4.630758557468653, val_loss 0.032752395621339685, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0034, -0.2878,  0.0029, -0.0050]]))])
+epoch 2:399 loss 4.935087816789746, val_loss 0.030489744169899524, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0047, -0.2618,  0.0013, -0.0059]]))])
+epoch 2:499 loss 7.277558781206608, val_loss 0.011592885862772594, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0554, -0.2932,  0.0559, -0.0181]]))])
+epoch 2:599 loss 6.135162115097046, val_loss 0.009897614268809555, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0979, -0.2488,  0.0671, -0.0071]]))])
+epoch 2:699 loss 4.623819520696998, val_loss 0.0349609089084401, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0021, -0.2552, -0.0005,  0.0009]]))])
+epoch 2:799 loss 5.67026006244123, val_loss 0.035704625429986064, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0066, -0.1698,  0.0957, -0.0104]]))])
+epoch 2:899 loss 5.633533272892237, val_loss 0.1004788599297981, val_acc 0.9491525423728814
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0892, -0.2200,  0.0768, -0.0442]]))])
+epoch 2:999 loss 5.560037950053811, val_loss 0.022426349255887643, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0267, -0.2693, -0.0045,  0.0006]]))])
+epoch 2:1099 loss 6.095691964030266, val_loss 0.01890901896588266, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0042, -0.2640,  0.1301, -0.0711]]))])
+epoch 2:1199 loss 6.0502939615398645, val_loss 0.00954141031450305, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0552, -0.2269,  0.1482, -0.0857]]))])
+epoch 2:1299 loss 6.602829335257411, val_loss 0.04302355043014124, val_acc 0.9774011299435028
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0465, -0.2234,  0.1494, -0.0684]]))])
+epoch 2:1399 loss 5.361736690625548, val_loss 0.013672246078255892, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0436, -0.2611,  0.0999,  0.0046]]))])
+epoch 2:1499 loss 6.639530135318637, val_loss 0.01489503543760262, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0452, -0.1795,  0.1125, -0.0719]]))])
+end of epoch 2: val_loss 0.01747092397000477, val_acc 1.0
+trigger times: 2
+epoch 3:99 loss 10.442207274958491, val_loss 0.029562746880505725, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0118, -0.2044,  0.0400,  0.0028]]))])
+epoch 3:199 loss 6.550557075068355, val_loss 0.010662940654068667, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0393, -0.2392,  0.1447, -0.0980]]))])
+epoch 3:299 loss 5.39341757260263, val_loss 0.015966673662609204, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0288, -0.2411,  0.0907, -0.0449]]))])
+epoch 3:399 loss 6.713393922895193, val_loss 0.014210373038338556, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0405, -0.2203,  0.1357, -0.0061]]))])
+epoch 3:499 loss 4.2528230138123035, val_loss 0.029271701268733474, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0115, -0.2032,  0.0363, -0.0097]]))])
+epoch 3:599 loss 7.265602964907885, val_loss 0.025314607525625865, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0143, -0.2424,  0.1705, -0.0417]]))])
+epoch 3:699 loss 5.605012746527791, val_loss 0.0266915803512686, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0120, -0.2083,  0.0668,  0.0017]]))])
+epoch 3:799 loss 7.624284211546183, val_loss 0.01537499181928007, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0565, -0.1503,  0.1517, -0.0534]]))])
+epoch 3:899 loss 6.057396737858653, val_loss 0.02362020417551351, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0285, -0.1932,  0.0527, -0.0038]]))])
+epoch 3:999 loss 5.4845588356256485, val_loss 0.019388132438306015, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0355, -0.1985,  0.0687, -0.0198]]))])
+epoch 3:1099 loss 5.3777969647198915, val_loss 0.017973553104420815, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0388, -0.2847, -0.0011, -0.0015]]))])
+epoch 3:1199 loss 5.500272070989013, val_loss 0.025650905539193584, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0120, -0.3282, -0.0035,  0.0053]]))])
+epoch 3:1299 loss 5.960368974134326, val_loss 0.0163169552147584, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0798, -0.2183, -0.0010,  0.0053]]))])
+epoch 3:1399 loss 4.238271215930581, val_loss 0.018679544646951284, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0273, -0.2349,  0.0613, -0.0301]]))])
+epoch 3:1499 loss 7.075711997225881, val_loss 0.02653241242266035, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0289, -0.2314,  0.1857, -0.1235]]))])
+end of epoch 3: val_loss 0.07421402727993825, val_acc 0.9717514124293786
+trigger times: 3
+epoch 4:99 loss 11.775286540389061, val_loss 0.023259293517926074, val_acc 0.9887005649717514
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0023, -0.2294,  0.1311, -0.0475]]))])
+epoch 4:199 loss 4.7097802218049765, val_loss 0.01662658061207462, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0605, -0.2187,  0.0114, -0.0185]]))])
+epoch 4:299 loss 7.075425062328577, val_loss 0.00889858329088382, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0417, -0.3495,  0.1537, -0.0798]]))])
+epoch 4:399 loss 6.233129303902388, val_loss 0.009118785163167371, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0657, -0.2866,  0.0972, -0.0305]]))])
+epoch 4:499 loss 6.14398805052042, val_loss 0.020485410633450045, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0227, -0.2661,  0.0461, -0.0041]]))])
+epoch 4:599 loss 5.882679484784603, val_loss 0.02466046394170481, val_acc 0.9887005649717514
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0149, -0.2750,  0.0199,  0.0022]]))])
+epoch 4:699 loss 6.40869415178895, val_loss 0.02071913152951954, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0280, -0.2075,  0.0751, -0.0057]]))])
+epoch 4:799 loss 6.275347456336021, val_loss 0.017940402372498263, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0204, -0.2906,  0.0739, -0.0272]]))])
+epoch 4:899 loss 6.411689251661301, val_loss 0.02477731936483446, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0133, -0.2149,  0.0638, -0.0159]]))])
+epoch 4:999 loss 4.574473271146417, val_loss 0.017754849574378864, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0267, -0.2942,  0.0450, -0.0202]]))])
+epoch 4:1099 loss 7.171260450035334, val_loss 0.015128617811791867, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0620, -0.1736,  0.1052, -0.0406]]))])
+epoch 4:1199 loss 6.264784241095185, val_loss 0.013366497986592856, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0404, -0.1911,  0.1441, -0.0725]]))])
+epoch 4:1299 loss 5.241284038871527, val_loss 0.04023127191404424, val_acc 0.9774011299435028
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0251, -0.2058,  0.1164, -0.0007]]))])
+epoch 4:1399 loss 5.246800730004907, val_loss 0.018150935954109628, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0751, -0.1875,  0.0136, -0.0251]]))])
+epoch 4:1499 loss 4.767300868406892, val_loss 0.03204390874518046, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0584, -0.1283,  0.0347,  0.0022]]))])
+end of epoch 4: val_loss 0.038381789324826554, val_acc 0.9830508474576272
+trigger times: 4
+epoch 5:99 loss 9.490189695730805, val_loss 0.03772030584426929, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0007, -0.2127,  0.0003, -0.0010]]))])
+epoch 5:199 loss 6.2921188194304705, val_loss 0.02765014445812744, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0053, -0.2302,  0.0834, -0.0460]]))])
+epoch 5:299 loss 6.536847196519375, val_loss 0.05261410993727712, val_acc 0.9774011299435028
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0656, -0.2148,  0.1723, -0.0961]]))])
+epoch 5:399 loss 6.777616947889328, val_loss 0.014089536097135707, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0414, -0.2363,  0.1215,  0.0008]]))])
+epoch 5:499 loss 5.562795270234346, val_loss 0.028501468941616356, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0291, -0.1784,  0.0184, -0.0036]]))])
+epoch 5:599 loss 5.563301691785455, val_loss 0.015377223504669425, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0320, -0.2367,  0.0728, -0.0687]]))])
+epoch 5:699 loss 6.096267433837056, val_loss 0.01435648812284333, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0574, -0.2009,  0.0645, -0.0581]]))])
+epoch 5:799 loss 6.112311534583569, val_loss 0.011391315173886345, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0842, -0.2530,  0.0398,  0.0029]]))])
+epoch 5:899 loss 5.193903287872672, val_loss 0.016612218130157414, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0493, -0.2522,  0.0089, -0.0060]]))])
+epoch 5:999 loss 7.062579549849033, val_loss 0.024028363825298854, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 3.0046e-02, -1.9408e-01,  4.3660e-02,  7.6073e-06]]))])
+epoch 5:1099 loss 6.771006489172578, val_loss 0.029032177356966598, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0084, -0.2208,  0.1201, -0.0113]]))])
+epoch 5:1199 loss 5.259494137018919, val_loss 0.01853124032745725, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0133, -0.2448,  0.0854, -0.0804]]))])
+epoch 5:1299 loss 6.915581461042166, val_loss 0.02395616025414258, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0008, -0.1869,  0.1650, -0.0304]]))])
+epoch 5:1399 loss 6.021705949679017, val_loss 0.017235999041965003, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0183, -0.2477,  0.1492, -0.0039]]))])
+epoch 5:1499 loss 5.418578863143921, val_loss 0.021000611141505015, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0153, -0.2136,  0.1153, -0.0124]]))])
+end of epoch 5: val_loss 0.020794515911700347, val_acc 0.9943502824858758
+trigger times: 5
+epoch 6:99 loss 10.02175590582192, val_loss 0.01818037800861693, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0177, -0.2898,  0.0631, -0.0527]]))])
+epoch 6:199 loss 5.119113236665726, val_loss 0.027307455381296045, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0048, -0.2227,  0.1103, -0.0237]]))])
+epoch 6:299 loss 6.001857889816165, val_loss 0.034521405832344254, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0223, -0.2368,  0.0748, -0.0703]]))])
+epoch 6:399 loss 4.420735759660602, val_loss 0.02062141453932464, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0292, -0.2559,  0.0206, -0.0034]]))])
+epoch 6:499 loss 6.114353584125638, val_loss 0.008751257176612506, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0948, -0.2537,  0.0638, -0.0567]]))])
+epoch 6:599 loss 4.64063335955143, val_loss 0.020084959124030573, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0538, -0.1917,  0.0139, -0.0232]]))])
+epoch 6:699 loss 6.157758869230747, val_loss 0.02904905644243445, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0088, -0.2738,  0.0947, -0.0025]]))])
+epoch 6:799 loss 5.611424254253507, val_loss 0.030414929650766698, val_acc 0.9887005649717514
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0112, -0.2304,  0.0005, -0.0028]]))])
+epoch 6:899 loss 9.185686737298965, val_loss 0.008747625192535288, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0416, -0.2605,  0.1696, -0.1199]]))])
+epoch 6:999 loss 5.312862915918231, val_loss 0.015010064151964785, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0626, -0.2166,  0.0408, -0.0196]]))])
+epoch 6:1099 loss 3.9986614026129246, val_loss 0.024607450215298587, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 3.0017e-02, -2.2182e-01, -4.2095e-04,  8.6296e-05]]))])
+epoch 6:1199 loss 7.666750468313694, val_loss 0.016228567886579164, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0449, -0.2025,  0.0956, -0.0106]]))])
+epoch 6:1299 loss 7.355108682066202, val_loss 0.008311972000853865, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0715, -0.1920,  0.2078, -0.1065]]))])
+epoch 6:1399 loss 5.835203722119331, val_loss 0.015920402715483582, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0796, -0.1755,  0.0925, -0.0010]]))])
+epoch 6:1499 loss 5.826525893062353, val_loss 0.013983061661726949, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0820, -0.2104,  0.0577,  0.0039]]))])
+end of epoch 6: val_loss 0.025034981767593445, val_acc 0.9830508474576272
+trigger times: 6
+epoch 7:99 loss 11.977782456204295, val_loss 0.021995178094817314, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0229, -0.2109,  0.0794,  0.0027]]))])
+epoch 7:199 loss 3.8861778546124697, val_loss 0.035657496576773536, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0014, -0.2315,  0.0068, -0.0032]]))])
+epoch 7:299 loss 5.506836460903287, val_loss 0.018297810630920893, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0413, -0.1962,  0.0538, -0.0417]]))])
+epoch 7:399 loss 3.0496125668287277, val_loss 0.03030576037541836, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0090, -0.2354,  0.0042, -0.0063]]))])
+epoch 7:499 loss 5.865623913705349, val_loss 0.019668307049397357, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0128, -0.2510,  0.0957, -0.0410]]))])
+epoch 7:599 loss 5.753287980332971, val_loss 0.017039072410153833, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0620, -0.2275,  0.0046,  0.0050]]))])
+epoch 7:699 loss 5.083593441173434, val_loss 0.02119036827726211, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0197, -0.2325,  0.0342, -0.0573]]))])
+epoch 7:799 loss 7.649882420897484, val_loss 0.013279167268151997, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0728, -0.2538,  0.0181,  0.0090]]))])
+epoch 7:899 loss 4.907351512461901, val_loss 0.02783057148847098, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0048, -0.2879,  0.0207, -0.0021]]))])
+epoch 7:999 loss 4.26363380253315, val_loss 0.022080598858867803, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0184, -0.2424,  0.0552, -0.0111]]))])
+epoch 7:1099 loss 4.898465592414141, val_loss 0.03897622684232638, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0023, -0.2152, -0.0019, -0.0041]]))])
+epoch 7:1199 loss 7.165787337347865, val_loss 0.0153944953438342, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0395, -0.2284,  0.0873, -0.0231]]))])
+epoch 7:1299 loss 9.887577161192894, val_loss 0.010296673158214692, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0311, -0.2929,  0.2145, -0.0439]]))])
+epoch 7:1399 loss 7.56059306114912, val_loss 0.01071896506955016, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0596, -0.1942,  0.2181, -0.0037]]))])
+epoch 7:1499 loss 7.590803567320108, val_loss 0.02103056617894684, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0025, -0.2017,  0.2396,  0.0052]]))])
+end of epoch 7: val_loss 0.01714711981258159, val_acc 1.0
+trigger times: 7
+epoch 8:99 loss 10.851032767444849, val_loss 0.025397146977785886, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0112, -0.2223,  0.0663, -0.0059]]))])
+epoch 8:199 loss 5.521936118602753, val_loss 0.009723279144000974, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0816, -0.2704,  0.0392, -0.0355]]))])
+epoch 8:299 loss 4.670444818213582, val_loss 0.02463568399574274, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0146, -0.2387,  0.0214, -0.0331]]))])
+epoch 8:399 loss 4.597176007926464, val_loss 0.021701401653109558, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0247, -0.2667,  0.0137, -0.0057]]))])
+epoch 8:499 loss 6.708283530548215, val_loss 0.0165495965565811, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0161, -0.2417,  0.1115, -0.0834]]))])
+epoch 8:599 loss 6.7395880445837975, val_loss 0.017887778489576688, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0388, -0.1861,  0.1072, -0.0137]]))])
+epoch 8:699 loss 7.889986630529165, val_loss 0.013273526646365897, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0481, -0.1942,  0.1662, -0.0120]]))])
+epoch 8:799 loss 7.050152212381363, val_loss 0.011813491186364796, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0515, -0.1809,  0.1685, -0.0761]]))])
+epoch 8:899 loss 5.782841615378857, val_loss 0.019508670753311357, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0564, -0.1488,  0.0978, -0.0319]]))])
+epoch 8:999 loss 6.0611215978860855, val_loss 0.017191528525515632, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0283, -0.2551,  0.0842, -0.0096]]))])
+epoch 8:1099 loss 5.6607006303966045, val_loss 0.03418469005108698, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0238, -0.2166,  0.1044, -0.0689]]))])
+epoch 8:1199 loss 5.813277903944254, val_loss 0.013998449942202066, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0518, -0.2285,  0.0880, -0.0061]]))])
+epoch 8:1299 loss 5.056612463667989, val_loss 0.02827550568604889, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0071, -0.2007,  0.0790,  0.0013]]))])
+epoch 8:1399 loss 4.363854672759771, val_loss 0.0156467634196209, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0543, -0.2578,  0.0043, -0.0053]]))])
+epoch 8:1499 loss 7.829086469486356, val_loss 0.027284296976094875, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0029, -0.1458,  0.1554, -0.0669]]))])
+end of epoch 8: val_loss 0.01720139720847574, val_acc 1.0
+trigger times: 8
+epoch 9:99 loss 11.185695080086589, val_loss 0.02975124111681037, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0041, -0.2672,  0.0602, -0.0016]]))])
+epoch 9:199 loss 5.477389046922326, val_loss 0.018024170991382663, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0391, -0.2807, -0.0020, -0.0033]]))])
+epoch 9:299 loss 9.381780922412872, val_loss 0.0070553113444768185, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0496, -0.4050,  0.1710, -0.1030]]))])
+epoch 9:399 loss 6.687844842672348, val_loss 0.0133848155251449, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0605, -0.2137,  0.1050,  0.0005]]))])
+epoch 9:499 loss 7.534455817192793, val_loss 0.017548419083063038, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0267, -0.2164,  0.0918, -0.0466]]))])
+epoch 9:599 loss 5.482937328517437, val_loss 0.03584283893935385, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0028, -0.1872,  0.0379, -0.0003]]))])
+epoch 9:699 loss 5.696586828678846, val_loss 0.0257943948886582, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0048, -0.2343,  0.1001, -0.0503]]))])
+epoch 9:799 loss 5.975286692380905, val_loss 0.015216206179444872, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0552, -0.1693,  0.1531, -0.0055]]))])
+epoch 9:899 loss 4.9197559133172035, val_loss 0.025069772017486943, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0092, -0.2075,  0.0976, -0.0038]]))])
+epoch 9:999 loss 5.901060588657856, val_loss 0.025788332669677623, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0109, -0.2252,  0.0573, -0.0088]]))])
+epoch 9:1099 loss 5.235206885263324, val_loss 0.01540889313153691, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0623, -0.2376,  0.0111, -0.0052]]))])
+epoch 9:1199 loss 4.5458420645445585, val_loss 0.014529249336847978, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0952, -0.2161,  0.0114, -0.0083]]))])
+epoch 9:1299 loss 6.002914246171713, val_loss 0.024952401036930257, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0305, -0.3598,  0.2065, -0.1321]]))])
+epoch 9:1399 loss 6.637491915374994, val_loss 0.010752608966988368, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0997, -0.2127,  0.1065, -0.0188]]))])
+epoch 9:1499 loss 5.993640433996916, val_loss 0.029690716379975612, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 1.1912e-04, -2.4383e-01,  6.1254e-02,  7.9648e-03]]))])
+end of epoch 9: val_loss 0.03462906437054945, val_acc 0.9830508474576272
+trigger times: 9
+epoch 10:99 loss 10.748610941693187, val_loss 0.019695710337966667, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0417, -0.1667,  0.0980, -0.0190]]))])
+epoch 10:199 loss 4.156532119959593, val_loss 0.03414578993210254, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0149, -0.1937, -0.0038,  0.0004]]))])
+epoch 10:299 loss 6.698335072025657, val_loss 0.013438711784227826, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0331, -0.2830,  0.0959, -0.0485]]))])
+epoch 10:399 loss 6.644079778343439, val_loss 0.01776125994494094, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0161, -0.2362,  0.1390, -0.0269]]))])
+epoch 10:499 loss 6.4361052215099335, val_loss 0.010690430145891184, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0634, -0.2392,  0.1329, -0.0023]]))])
+epoch 10:599 loss 4.611282495781779, val_loss 0.01581826466174506, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0467, -0.2406,  0.0346, -0.0235]]))])
+epoch 10:699 loss 4.009397434070706, val_loss 0.032011095655849114, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0015, -0.2527,  0.0128, -0.0004]]))])
+epoch 10:799 loss 7.062568319961429, val_loss 0.011873443330536304, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 6.0141e-02, -3.0759e-01,  2.8956e-02, -5.4426e-05]]))])
+epoch 10:899 loss 4.712540790438652, val_loss 0.01668879634825764, val_acc 0.9943502824858758
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0360, -0.2803,  0.0299, -0.0163]]))])
+epoch 10:999 loss 6.34628046117723, val_loss 0.021905187959250498, val_acc 0.9887005649717514
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0088, -0.2773,  0.0909, -0.0077]]))])
+epoch 10:1099 loss 6.722858466207981, val_loss 0.0334544542470318, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0238, -0.2468,  0.1091, -0.0480]]))])
+epoch 10:1199 loss 5.673585683107376, val_loss 0.013391067363934637, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0436, -0.2480,  0.0692, -0.0552]]))])
+epoch 10:1299 loss 6.9290904477238655, val_loss 0.02753459504041541, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[-0.0100, -0.1954,  0.1730, -0.0105]]))])
+epoch 10:1399 loss 6.26298507116735, val_loss 0.014012058603155764, val_acc 1.0
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0543, -0.2066,  0.1178, -0.0004]]))])
+epoch 10:1499 loss 6.159680213779211, val_loss 0.02826406772151473, val_acc 0.9830508474576272
+check pointing
+Weights: OrderedDict([('fc1.weight', tensor([[ 0.0005, -0.2370,  0.0753, -0.0009]]))])
+end of epoch 10: val_loss 0.020336359571339474, val_acc 1.0
+trigger times: 10
+Early stopping.
+Trained Weights: OrderedDict([('fc1.weight', tensor([[ 0.0494, -0.2183, -0.0020,  0.0023]]))])
+0 -27.03905050456524 -191.10004520678868
+1 -22.77523946017027 -189.05007017278314
+2 -21.45846153050661 -187.50220085194994
+3 -22.850313402712345 -180.24009179391223
+4 -19.270104087889194 -171.9613792356186
+5 -17.45332358404994 -169.3817016847894
+6 -18.25951597467065 -167.87631268052303
+7 -23.84994012117386 -164.27567046290412
+8 -20.729835137724876 -163.76742236654098
+9 -14.450195359997451 -156.0786895876365
+10 -17.319463726133108 -155.22804551507866
+11 -17.804135877639055 -145.29002069283715
+12 -18.832270678132772 -142.86657280197298
+13 -9.594973605126143 -142.75441848091938
+14 -13.020916108042002 -136.98962801176134
+15 -15.81437461450696 -132.4813576990395
+16 -9.789875810965896 -130.98347157271724
+17 -15.591687213629484 -118.2436222554584
+18 -8.739302895963192 -117.38411415155902
+19 -16.197619944810867 -116.97382686219106
+20 -11.233668688684702 -115.06704102317899
+21 -4.020168953575194 -112.47832645551227
+22 -11.818788480013609 -103.24187681049156
+23 -5.111232941970229 -99.7422752992134
+24 -0.7633544693235308 -98.18526661663928
+25 -5.536912905052304 -88.94674758091466
+26 -2.327085849829018 -85.88346861832474
+27 1.6913860416971147 -79.38307722218848
+28 -1.149086300516501 -79.25112655387144
+29 -5.758010815829039 -73.50697855948762
+30 -5.992490893229842 -72.69803191552006
+31 -0.3047724417410791 -71.37326168319514
+32 -3.441334563307464 -68.27187815304366
+33 -1.9265915658324957 -65.42298162776466
+34 -1.0332794599235058 -65.35816021006309
+35 0.004067851230502129 -49.3186741604369
+36 -10.007592839188874 -17.325441617065966
+37 -1.2269888520240784 -4.374511275254108
+38 -0.5800324697047472 -0.4258658969524013
+39 -4.881267612800002 9.108146753357724
+40 -2.955797351896763 17.732630180500013
+41 2.0448464918881655 40.64550156746333
+42 1.1724564731121063 41.11774838972275
+43 -2.0094067454338074 48.64917674484657
+44 0.7037259824573994 52.50260039838799
+45 0.6958355344831944 52.54502852695255
+46 1.6391167119145393 59.52827491841281
+47 1.9957923532929271 63.45606316769021
+48 1.8943463452160358 66.31570758515764
+49 -4.444591974839568 67.13050507695384
+50 4.140115670859814 72.16624272108386
+51 -5.2164399195462465 79.16074531670823
+52 -1.8639172110706568 84.19837606184075
+53 -2.821060249581933 89.30707154325768
+54 -2.2714751940220594 90.2698850730257
+55 -2.333626765757799 90.28646231697512
+56 1.8537556808441877 90.32667007477052
+57 3.561876770108938 91.18021498086692
+58 2.5429746098816395 92.38187517969644
+59 -2.0382836014032364 92.67153902025292
+60 -2.5580860022455454 93.69474938898811
+61 2.2941881492733955 93.86112859581364
+62 -2.281703108921647 95.24073532592021
+63 -1.63334484025836 95.3630101766082
+64 -1.8733216617256403 96.09581961281374
+65 -1.0376805141568184 97.90553231413178
+66 -1.3893511146306992 98.07644230926206
+67 -1.0570921879261732 98.35872828331676
+68 -1.277722666040063 98.57334710000995
+69 -1.26478411257267 98.77895390936838
+70 -2.0091917514801025 99.10163703819775
+71 -0.4690835680812597 99.47183807834362
+72 -1.0182658284902573 101.36707045382526
+73 -0.0820432286709547 102.70820969163083
+74 -0.5859167966991663 103.61971441966246
+75 -0.24179796315729618 104.00039883786899
+76 0.4432566612958908 104.94014608739957
+77 -0.1210363581776619 105.28448326377394
+78 0.8358190506696701 105.60678192821229
+79 0.8217895608395338 106.95774051225432
+80 -0.617973392829299 107.03525723063939
+81 0.6890959702432156 107.05410485829283
+82 0.5422415044158697 107.36477417456501
+83 0.3525364175438881 107.72369032284489
+84 -0.15095097199082375 107.78006757763964
+85 -0.12808995507657528 107.99397435655325
+86 0.3245926480740309 108.08910889221833
+87 -0.12063550762832165 108.09776529440465
+88 1.3535589650273323 108.24033506535473
+89 0.8736411426216364 109.15712102315346
+90 1.5634144991636276 109.71287331230647
+91 0.10127770341932774 110.25063890779474
+92 1.2714293170720339 110.45880856467717
+93 0.9437208101153374 110.48639228144049
+94 1.183694077655673 111.92877271779909
+95 0.5754847768694162 112.29467419620224
+96 0.383120771497488 112.73910566375015
+97 1.610712805762887 112.98274531176438
+98 1.70147511549294 113.84616479719523
+99 2.4437233433127403 114.84612239587612
+100 1.4436140451580286 115.08707834021696
+101 2.7655686251819134 115.41025719446112
+102 3.471817499026656 115.5646624637931
+103 2.906490832567215 115.87882502857741
+104 1.6616792157292366 116.51927592390606
+105 2.405638499185443 116.69939038222442
+106 2.3466999027878046 117.18809854794453
+107 2.7478132601827383 117.29357601720739
+108 2.9486971646547318 117.43241923864416
+109 2.75116160325706 119.84073495876005
+110 3.469741949811578 122.74776106687673
+111 3.8505381792783737 124.10172315382671
+112 4.01102345995605 124.42382576156477
+113 4.3751942832022905 124.48179570258212
+114 3.9924117159098387 125.2590893824027
+115 4.2224845346063375 125.30457667780085
+116 3.883525740355253 125.43458549438884
+117 5.019738852977753 129.13346806288703
+118 4.777219733223319 129.67718524437547
+119 5.931336594745517 131.40806576766226
+train accuracy: 0.9905838041431262
+validation accuracy: 1.0
