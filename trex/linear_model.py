@@ -262,6 +262,7 @@ if __name__ == "__main__":
     parser.add_argument('--all_pairs', dest='all_pairs', default=False, action='store_true', help="whether we generate all pairs from the dataset (num_demos choose 2)")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--state_action', dest='state_action', default=False, action='store_true', help="whether data consists of state-action pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--augmented', dest='augmented', default=False, action='store_true', help="whether data consists of states + linear features pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
+    parser.add_argument('--num_rawfeatures', default=25, type=int, help="the number of raw features to keep in the augmented space")
     parser.add_argument('--handtuned_preferences', dest='handtuned_preferences', default=False, action='store_true', help="option to use preferences derived from the handtuned reward")  # NOTE: type=bool doesn't work, value is still true.
     args = parser.parse_args()
 
@@ -280,6 +281,7 @@ if __name__ == "__main__":
     all_pairs = args.all_pairs
     state_action = args.state_action
     augmented = args.augmented
+    num_rawfeatures = args.num_rawfeatures
     handtuned_preferences = args.handtuned_preferences
     #################
 
@@ -294,6 +296,10 @@ if __name__ == "__main__":
         else:
             demo_rewards = np.load("data/augmented_features/demo_rewards.npy")
         demo_reward_per_timestep = np.load("data/augmented_features/demo_reward_per_timestep.npy")
+
+        raw_features = demos[:, :, 0:num_rawfeatures]  # how many raw features to keep in the observation
+        handpicked_features = demos[:, :, 25:28]  # handpicked features are the last 3
+        demos = np.concatenate((raw_features, handpicked_features), axis=-1)  # assign the result back to demos
     else:
         demos = np.load("data/handpicked_features/demos.npy")
         demo_rewards = np.load("data/handpicked_features/demo_rewards.npy")
