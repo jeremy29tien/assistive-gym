@@ -73,13 +73,13 @@ def create_training_data(demonstrations, num_comps, pair_delta, all_pairs):
 # 2) amount of food particles in mouth
 # 3) amount of food particles on the floor
 class Net(nn.Module):
-    def __init__(self, augmented=False, state_action=False):
+    def __init__(self, augmented=False, num_rawfeatures=25, state_action=False):
         super().__init__()
 
         if augmented and state_action:
             input_dim = 35
         elif augmented:
-            input_dim = 28
+            input_dim = num_rawfeatures + 3
         elif state_action:
             input_dim = 32
         else:
@@ -343,7 +343,7 @@ if __name__ == "__main__":
 
     # Now we create a reward network and optimize it using the training data.
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    reward_net = Net(augmented=augmented, state_action=state_action)
+    reward_net = Net(augmented=augmented, num_rawfeatures=num_rawfeatures, state_action=state_action)
     reward_net.to(device)
     import torch.optim as optim
 
