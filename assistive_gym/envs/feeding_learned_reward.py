@@ -22,7 +22,7 @@ class FeedingLearnedRewardEnv(FeedingEnv):
 
         self.reward_net_path = "/home/jtien/assistive-gym/trex/models/augmented_features/ablation_0rawfeatures_10demosallpairs_10epochs_10patience_001lr_01weightdecay_seed0.params"
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.reward_net = Net(with_bias=False, augmented=True, state_action=False)
+        self.reward_net = Net(with_bias=False, augmented=True, num_rawfeatures=self.num_rawfeatures, state_action=False)
         print("device:", self.device)
         print("torch.cuda.is_available():", torch.cuda.is_available())
         self.reward_net.load_state_dict(torch.load(self.reward_net_path, map_location=torch.device('cpu')))
