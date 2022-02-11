@@ -117,7 +117,6 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
     # Note that a sigmoid is implicitly applied in the CrossEntropyLoss
     loss_criterion = nn.CrossEntropyLoss()
 
-    cum_loss = 0.0
     trigger_times = 0
     prev_min_val_loss = 100
     training_data = list(zip(training_inputs, training_outputs))
@@ -146,23 +145,9 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
             loss.backward()
             optimizer.step()
 
-
-            # print stats to see if learning
-            item_loss = loss.item()
-            cum_loss += item_loss
-            if i % 100 == 99:
-                val_loss = calc_val_loss(reward_network, val_obs, val_labels)
-                val_acc = calc_accuracy(reward_network, val_obs, val_labels)
-                print("epoch {}:{} loss {}, val_loss {}, val_acc {}".format(epoch, i, cum_loss, val_loss, val_acc))
-                cum_loss = 0.0
-                print("check pointing")
-                # print("Weights:", reward_net.state_dict())
-                torch.save(reward_net.state_dict(), checkpoint_dir)
-
         val_loss = calc_val_loss(reward_network, val_obs, val_labels)
         val_acc = calc_accuracy(reward_network, val_obs, val_labels)
         print("end of epoch {}: val_loss {}, val_acc {}".format(epoch, val_loss, val_acc))
-        torch.save(reward_net.state_dict(), checkpoint_dir)
 
         # Early Stopping
         if val_loss > prev_min_val_loss:
@@ -170,15 +155,16 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
             print('trigger times:', trigger_times)
             if trigger_times >= patience:
                 print("Early stopping.")
-                print("Trained Weights:", reward_net.state_dict())
                 return
         else:
             trigger_times = 0
             print('trigger times:', trigger_times)
+            print("saving model weights...")
+            torch.save(reward_net.state_dict(), checkpoint_dir)
+            print("Weights:", reward_net.state_dict())
 
         prev_min_val_loss = min(prev_min_val_loss, val_loss)
-    print("finished training")
-    print("Trained Weights:", reward_net.state_dict())
+    print("Finished training.")
 
 
 # Calculates the cross-entropy losses over the entire validation set and returns the MEAN.
@@ -358,8 +344,6 @@ if __name__ == "__main__":
 
     optimizer = optim.Adam(reward_net.parameters(), lr=lr, weight_decay=weight_decay)
     learn_reward(reward_net, optimizer, training_obs, training_labels, num_iter, l1_reg, args.reward_model_path, val_obs, val_labels, patience)
-    # save reward network
-    torch.save(reward_net.state_dict(), args.reward_model_path)
 
     # print out predicted cumulative returns and actual returns
     with torch.no_grad():
