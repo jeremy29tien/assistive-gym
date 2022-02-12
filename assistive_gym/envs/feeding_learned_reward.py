@@ -16,7 +16,7 @@ class FeedingLearnedRewardEnv(FeedingEnv):
     # Local: /Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trex/models/test1.params
     def __init__(self, robot, human):
         super(FeedingLearnedRewardEnv, self).__init__(robot=robot, human=human)
-        self.augmented = True
+        self.augmented = False
         self.state_action = False
         self.num_rawfeatures = 25
 
@@ -41,7 +41,7 @@ class FeedingLearnedRewardEnv(FeedingEnv):
         elif self.augmented:
             input = np.concatenate((obs[0:self.num_rawfeatures], handpicked_features))
         else:
-            input = handpicked_features
+            input = obs
 
         # Just modify the reward
         with torch.no_grad():
