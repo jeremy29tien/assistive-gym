@@ -18,9 +18,9 @@ class FeedingLearnedRewardEnv(FeedingEnv):
         super(FeedingLearnedRewardEnv, self).__init__(robot=robot, human=human)
         self.augmented = True
         self.state_action = False
-        self.num_rawfeatures = 0
+        self.num_rawfeatures = 25
 
-        self.reward_net_path = "/home/jtien/assistive-gym/trex/models/augmented_features/ablation_0rawfeatures_10demosallpairs_10epochs_10patience_001lr_01weightdecay_seed0.params"
+        self.reward_net_path = "/home/jtien/assistive-gym/trex/models/raw_states/100prefs_0pairdelta_100epochs_10patience_001lr_01weightdecay_seed0.params"
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.reward_net = Net(with_bias=False, augmented=self.augmented, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action)
         print("device:", self.device)
