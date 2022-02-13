@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 # pair_delta=1 recovers original (just that pairwise comps can't be the same)
 # if all_pairs=True, rather than generating num_comps pairwise comps with pair_delta ranking difference,
 # we simply generate all (num_demos choose 2) possible pairs from the dataset.
-def create_training_data(demonstrations, num_comps, pair_delta, all_pairs=False):
+def create_training_data(demonstrations, num_comps=0, pair_delta=1, all_pairs=False):
     # collect training data
     max_traj_length = 0
     training_obs = []
@@ -241,7 +241,7 @@ if __name__ == "__main__":
     parser.add_argument('--weight_decay', default=0.0, type=float, help="weight decay")
     parser.add_argument('--with_bias', dest='with_bias', default=False, action='store_true', help="whether we include a bias in the last layer")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--patience', default=100, type=int, help="number of iterations we wait before early stopping")
-    parser.add_argument('--pair_delta', default=10, type=int, help="min difference between trajectory rankings in our dataset")
+    parser.add_argument('--pair_delta', default=1, type=int, help="min difference between trajectory rankings in our dataset")
     parser.add_argument('--all_pairs', dest='all_pairs', default=False, action='store_true', help="whether we generate all pairs from the dataset (num_demos choose 2)")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--state_action', dest='state_action', default=False, action='store_true', help="whether data consists of state-action pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--augmented', dest='augmented', default=False, action='store_true', help="whether data consists of states + linear features pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
@@ -346,7 +346,7 @@ if __name__ == "__main__":
     train_val_split_seed = 100
     obs, labels = create_training_data(sorted_demos, num_comps, pair_delta, all_pairs)
     if test:
-        test_obs, test_labels = create_training_data(sorted_test_demos, 0, 0, all_pairs=True)
+        test_obs, test_labels = create_training_data(sorted_test_demos, all_pairs=True)
     if len(obs) > 1:
         training_obs, val_obs, training_labels, val_labels = train_test_split(obs, labels, test_size=0.10, random_state=train_val_split_seed)
     else:
