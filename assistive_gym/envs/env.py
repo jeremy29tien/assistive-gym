@@ -5,7 +5,7 @@ from gym import spaces
 from gym.utils import seeding
 from screeninfo import get_monitors
 import pybullet as p
-from keras.models import load_model
+from tensorflow.keras.models import load_model  # keras.models
 
 from .util import Util
 from .human_creation import HumanCreation
