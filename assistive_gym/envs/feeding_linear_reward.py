@@ -22,7 +22,7 @@ class FeedingLinearRewardEnv(FeedingEnv):
         super(FeedingLinearRewardEnv, self).__init__(robot=robot, human=human)
         self.augmented = True
         self.state_action = False
-        self.num_rawfeatures = 1
+        self.num_rawfeatures = 0
 
         print("reward_net_path:", reward_net_path)
         self.reward_net_path = reward_net_path
