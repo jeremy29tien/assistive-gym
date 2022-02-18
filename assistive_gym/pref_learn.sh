@@ -7,7 +7,7 @@ for seed in 0 1 2; do
 
   #Reward-learning
   config="capacity_experiment/linear_privileged_2000prefs_60pairdelta_100epochs_10patience_001lr_001weightdecay_001l1reg"
-  reward_model_path="models/${config}_seed${seed}.params"
+  reward_model_path="/home/jeremy/assistive-gym/trex/models/${config}_seed${seed}.params"
   reward_output_path="reward_learning_outputs/${config}_seed${seed}.txt"
 
   cd trex/
