@@ -18,13 +18,15 @@ class FeedingLinearRewardEnv(FeedingEnv):
     # Stress test:
     # /home/jtien/assistive-gym/trex/models/linear/6demosallpairs_100epochs_1weightdecay.params
     # /home/jtien/assistive-gym/trex/models/linear/5demosallpairs_10epochs_001lr_01weightdecay_seedX.params
-    def __init__(self, robot, human):
+    def __init__(self, robot, human, reward_net_path):
         super(FeedingLinearRewardEnv, self).__init__(robot=robot, human=human)
         self.augmented = True
         self.state_action = False
         self.num_rawfeatures = 1
 
-        self.reward_net_path = "/home/jtien/assistive-gym/trex/models/linear/ablation_1rawfeatures_10demosallpairs_10epochs_10patience_001lr_01l1reg_seed0.params"
+        print("reward_net_path:", reward_net_path)
+        self.reward_net_path = reward_net_path
+
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.reward_net = Net(augmented=self.augmented, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action)
         print("device:", self.device)
