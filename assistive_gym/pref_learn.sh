@@ -10,7 +10,7 @@ for seed in 0 1 2; do
   reward_model_path="trex/models/${config}_seed${seed}.params"
   reward_output_path="trex/reward_learning_outputs/${config}_seed${seed}.txt"
 
-  python3 trex/linear_model.py --augmented --num_rawfeatures 0 --num_comps 2000 --pair_delta 60 --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --l1_reg 0.01 --seed $seed --test --reward_model_path $reward_model_path > $reward_output_path
+  python3 trex/linear_model.py --augmented --num_rawfeatures 0 --num_comps 2000 --pair_delta 60 --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --l1_reg 0.01 --seed $seed --reward_model_path $reward_model_path > $reward_output_path
 
   #RL
   policy_save_dir="./trained_models_reward_learning/${config}_seed${seed}"
