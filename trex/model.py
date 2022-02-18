@@ -141,8 +141,16 @@ def learn_reward(reward_network, optimizer, training_inputs, training_outputs, n
             outputs = outputs.unsqueeze(0)
             # print("train outputs", outputs.shape)
             # print("train label", label.shape)
-            loss = loss_criterion(outputs, label)  # got rid of the l1_reg * abs_rewards from this line
+
+            # Calculate loss
+            cross_entropy_loss = loss_criterion(outputs, label)
+            l1_loss = l1_reg * torch.linalg.vector_norm(torch.cat([param.view(-1) for param in reward_network.parameters()]), 1)
+            loss = cross_entropy_loss + l1_loss
+
+            # Backpropagate
             loss.backward()
+
+            # Take one optimizer step
             optimizer.step()
 
         val_loss = calc_val_loss(reward_network, val_obs, val_labels)
@@ -239,6 +247,7 @@ if __name__ == "__main__":
     parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
     parser.add_argument('--lr', default=0.00005, type=float, help="learning rate")
     parser.add_argument('--weight_decay', default=0.0, type=float, help="weight decay")
+    parser.add_argument('--l1_reg', default=0.0, type=float, help="l1 regularization")
     parser.add_argument('--with_bias', dest='with_bias', default=False, action='store_true', help="whether we include a bias in the last layer")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--patience', default=100, type=int, help="number of iterations we wait before early stopping")
     parser.add_argument('--pair_delta', default=1, type=int, help="min difference between trajectory rankings in our dataset")
@@ -258,6 +267,7 @@ if __name__ == "__main__":
     num_demos = args.num_demos
     lr = args.lr
     weight_decay = args.weight_decay
+    l1_reg = args.l1_reg
     num_iter = args.num_epochs  # num times through training data
     patience = args.patience
     pair_delta = args.pair_delta
@@ -268,7 +278,6 @@ if __name__ == "__main__":
     num_rawfeatures = args.num_rawfeatures
     active_learning = args.active_learning
     test = args.test
-    l1_reg = 0.0
     #################
 
     if augmented and state_action:
