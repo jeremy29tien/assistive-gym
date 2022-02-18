@@ -14,13 +14,15 @@ class FeedingLearnedRewardEnv(FeedingEnv):
     # With weight decay: /home/jtien/assistive-gym/trex/models/5000traj_100epoch_1weightdecay_earlystopping.params
     # With no bias: /home/jtien/assistive-gym/trex/models/5000traj_100epoch_nobias_earlystopping.params
     # Local: /Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trex/models/test1.params
-    def __init__(self, robot, human):
+    def __init__(self, robot, human, reward_net_path):
         super(FeedingLearnedRewardEnv, self).__init__(robot=robot, human=human)
         self.augmented = False
         self.state_action = False
         self.num_rawfeatures = 25
 
-        self.reward_net_path = "/home/jtien/assistive-gym/trex/models/raw_states/100prefs_100epochs_10patience_001lr_01weightdecay_seed0.params"
+        print("reward_net_path:", reward_net_path)
+        self.reward_net_path = reward_net_path
+
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.reward_net = Net(with_bias=False, augmented=self.augmented, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action)
         print("device:", self.device)
