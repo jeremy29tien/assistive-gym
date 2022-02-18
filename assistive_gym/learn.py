@@ -36,11 +36,19 @@ def setup_config(env, algo, coop=False, seed=0, extra_configs={}):
         config['env_config'] = {'num_agents': 2}
     return {**config, **extra_configs}
 
-def load_policy(env, algo, env_name, policy_path=None, coop=False, seed=0, extra_configs={}):
+def load_policy(env, algo, env_name, policy_path=None, coop=False, seed=0, reward_net_path=None, extra_configs={}):
     if algo == 'ppo':
-        agent = ppo.PPOTrainer(setup_config(env, algo, coop, seed, extra_configs), 'assistive_gym:'+env_name)  # 'assistive_gym:'+env_name
+        if reward_net_path is not None:
+            agent = ppo.PPOTrainer(setup_config(env, algo, coop, seed, extra_configs), 'assistive_gym:' + env_name,
+                                   reward_net_path=reward_net_path)  # 'assistive_gym:'+env_name
+        else:
+            agent = ppo.PPOTrainer(setup_config(env, algo, coop, seed, extra_configs), 'assistive_gym:'+env_name)  # 'assistive_gym:'+env_name
     elif algo == 'sac':
-        agent = sac.SACTrainer(setup_config(env, algo, coop, seed, extra_configs), 'assistive_gym:'+env_name)  # 'assistive_gym:'+env_name
+        if reward_net_path is not None:
+            agent = sac.SACTrainer(setup_config(env, algo, coop, seed, extra_configs), 'assistive_gym:' + env_name,
+                                   reward_net_path=reward_net_path)  # 'assistive_gym:'+env_name
+        else:
+            agent = sac.SACTrainer(setup_config(env, algo, coop, seed, extra_configs), 'assistive_gym:'+env_name)  # 'assistive_gym:'+env_name
     if policy_path != '':
         if 'checkpoint' in policy_path:
             agent.restore(policy_path)
@@ -80,7 +88,7 @@ def make_env(env_name, coop=False, seed=1001, reward_net_path=None):
 def train(env_name, algo, timesteps_total=1000000, save_dir='./trained_models/', load_policy_path='', coop=False, seed=0, save_checkpoints=False, reward_net_path=None, extra_configs={}):
     ray.init(num_cpus=multiprocessing.cpu_count(), ignore_reinit_error=True, log_to_driver=False)
     env = make_env(env_name, coop, reward_net_path=reward_net_path)
-    agent, checkpoint_path = load_policy(env, algo, env_name, load_policy_path, coop, seed, extra_configs)
+    agent, checkpoint_path = load_policy(env, algo, env_name, load_policy_path, coop, seed, reward_net_path, extra_configs)
     env.disconnect()
 
     timesteps = 0
