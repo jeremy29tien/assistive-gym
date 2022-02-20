@@ -80,7 +80,7 @@ def make_env(env_name, coop=False, seed=1001, reward_net_path=None):
 def train(env_name, algo, timesteps_total=1000000, save_dir='./trained_models/', load_policy_path='', coop=False, seed=0, save_checkpoints=False, reward_net_path=None, extra_configs={}):
     ray.init(num_cpus=multiprocessing.cpu_count(), ignore_reinit_error=True, log_to_driver=False)
     env = make_env(env_name, coop, reward_net_path=reward_net_path)
-    agent, checkpoint_path = load_policy(env, algo, env_name, load_policy_path, coop, seed, reward_net_path, extra_configs={"env_config": {"reward_net_path": reward_net_path}})
+    agent, checkpoint_path = load_policy(env, algo, env_name, load_policy_path, coop, seed, extra_configs={"env_config": {"reward_net_path": reward_net_path}})
     env.disconnect()
 
     timesteps = 0
