@@ -73,7 +73,7 @@ def create_training_data(demonstrations, num_comps=0, pair_delta=1, all_pairs=Fa
 # If input is comprised of states, input_dim = 25
 # input_dim = 25
 class Net(nn.Module):
-    def __init__(self, with_bias=False, augmented=True, num_rawfeatures=25, state_action=False):
+    def __init__(self, hidden_dims=(128,64), with_bias=False, augmented=True, num_rawfeatures=25, state_action=False):
         super().__init__()
 
         if augmented and state_action:
@@ -85,18 +85,37 @@ class Net(nn.Module):
         else:
             input_dim = 25
 
-        self.fc1 = nn.Linear(input_dim, 128)
-        self.fc2 = nn.Linear(128, 64)  # Added a hidden layer for additional expressiveness
-        self.fc3 = nn.Linear(64, 1, bias=with_bias)
+        self.num_layers = len(hidden_dims) + 1
+
+        self.fcs = nn.ModuleList([None for _ in range(self.num_layers)])
+        if len(hidden_dims) == 0:
+            self.fcs[0] = nn.Linear(input_dim, 1, bias=with_bias)
+        else:
+            self.fcs[0] = nn.Linear(input_dim, hidden_dims[0])
+            for l in range(len(hidden_dims)-1):
+                self.fcs[l+1] = nn.Linear(hidden_dims[l], hidden_dims[l+1])
+            self.fcs[len(hidden_dims)] = nn.Linear(hidden_dims[-1], 1, bias=with_bias)
+
+        print(self.fcs)
+
+        # self.fc1 = nn.Linear(input_dim, 128)
+        # self.fc2 = nn.Linear(128, 64)  # Added a hidden layer for additional expressiveness
+        # self.fc3 = nn.Linear(64, 1, bias=with_bias)
 
 
     def cum_return(self, traj):
         '''calculate cumulative return of trajectory'''
         sum_rewards = 0
         #compute forward pass of reward network (we parallelize across frames so batch size is length of full trajectory)
-        x = F.leaky_relu(self.fc1(traj))
-        x = F.leaky_relu(self.fc2(x))
-        r = self.fc3(x)
+        x = traj
+
+        for l in range(self.num_layers - 1):
+            x = F.leaky_relu(self.fcs[l](x))
+        r = self.fcs[-1](x)
+
+        # x = F.leaky_relu(self.fc1(traj))
+        # x = F.leaky_relu(self.fc2(x))
+        # r = self.fc3(x)
         sum_rewards += torch.sum(r)
         return sum_rewards
 
@@ -245,6 +264,7 @@ if __name__ == "__main__":
     parser.add_argument('--num_comps', default=0, type=int, help="number of pairwise comparisons")
     parser.add_argument('--num_demos', default=120, type=int, help="the number of demos to sample pairwise comps from")
     parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
+    parser.add_argument('--hidden_dims', default=0, nargs='+', type=int, help="dimensions of hidden layers")
     parser.add_argument('--lr', default=0.00005, type=float, help="learning rate")
     parser.add_argument('--weight_decay', default=0.0, type=float, help="weight decay")
     parser.add_argument('--l1_reg', default=0.0, type=float, help="l1 regularization")
@@ -265,6 +285,7 @@ if __name__ == "__main__":
     ## HYPERPARAMS ##
     num_comps = args.num_comps
     num_demos = args.num_demos
+    hidden_dims = tuple(args.hidden_dims)
     lr = args.lr
     weight_decay = args.weight_decay
     l1_reg = args.l1_reg
@@ -373,7 +394,7 @@ if __name__ == "__main__":
 
     # Now we create a reward network and optimize it using the training data.
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    reward_net = Net(with_bias=with_bias, augmented=augmented, num_rawfeatures=num_rawfeatures, state_action=state_action)
+    reward_net = Net(hidden_dims=hidden_dims, with_bias=with_bias, augmented=augmented, num_rawfeatures=num_rawfeatures, state_action=state_action)
     reward_net.to(device)
     import torch.optim as optim
 
