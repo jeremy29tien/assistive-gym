@@ -8,7 +8,7 @@ for seed in 0 1 2; do
 
   #Reward-learning
   echo "Reward learning..."
-  config="capacity_experiment/hdim64_privileged_2000prefs_60pairdelta_100epochs_10patience_001lr_001weightdecay_001l1reg"
+  config="capacity_experiment/hdim${var1}-${var2}_privileged_2000prefs_60pairdelta_100epochs_10patience_001lr_001weightdecay_001l1reg"
   reward_model_path="/home/jeremy/assistive-gym/trex/models/${config}_seed${seed}.params"
   reward_output_path="reward_learning_outputs/${config}_seed${seed}.txt"
 
