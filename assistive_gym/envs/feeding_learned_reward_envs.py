@@ -21,8 +21,8 @@ class FeedingLearnedRewardBaxterEnv(FeedingLearnedRewardEnv):
         super(FeedingLearnedRewardBaxterEnv, self).__init__(robot=Baxter(robot_arm), human=Human(human_controllable_joint_indices, controllable=False))
 
 class FeedingLearnedRewardSawyerEnv(FeedingLearnedRewardEnv):
-    def __init__(self, reward_net_path):
-        super(FeedingLearnedRewardSawyerEnv, self).__init__(robot=Sawyer(robot_arm), human=Human(human_controllable_joint_indices, controllable=False), reward_net_path=reward_net_path)
+    def __init__(self, reward_net_path, indvar):
+        super(FeedingLearnedRewardSawyerEnv, self).__init__(robot=Sawyer(robot_arm), human=Human(human_controllable_joint_indices, controllable=False), reward_net_path=reward_net_path, indvar=indvar)
 
 class FeedingLearnedRewardJacoEnv(FeedingLearnedRewardEnv):
     def __init__(self):
