@@ -18,7 +18,7 @@ class FeedingLearnedRewardEnv(FeedingEnv):
         super(FeedingLearnedRewardEnv, self).__init__(robot=robot, human=human)
         self.augmented = True
         self.state_action = False
-        self.num_rawfeatures = 0
+        self.num_rawfeatures = 10
         self.hidden_dims = indvar
 
         print("reward_net_path:", reward_net_path)

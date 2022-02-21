@@ -8,12 +8,12 @@ for seed in 0 1 2; do
 
   #Reward-learning
   echo "Reward learning..."
-  config="capacity_experiment/hdim${var1}-${var2}_privileged_2000prefs_60pairdelta_100epochs_10patience_001lr_001weightdecay_001l1reg"
+  config="capacity_experiment/hdim${var1}-${var2}_augmented_2000prefs_60pairdelta_100epochs_10patience_001lr_001weightdecay_001l1reg"
   reward_model_path="/home/jeremy/assistive-gym/trex/models/${config}_seed${seed}.params"
   reward_output_path="reward_learning_outputs/${config}_seed${seed}.txt"
 
   cd trex/
-  python3 model.py --hidden_dims $var1 $var2 --augmented --num_rawfeatures 0 --num_comps 2000 --pair_delta 60 --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --l1_reg 0.01 --seed $seed --reward_model_path $reward_model_path > $reward_output_path
+  python3 model.py --hidden_dims $var1 $var2 --augmented --num_rawfeatures 10 --num_comps 2000 --pair_delta 60 --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --l1_reg 0.01 --seed $seed --reward_model_path $reward_model_path > $reward_output_path
 
   #RL
   echo "Performing RL..."
