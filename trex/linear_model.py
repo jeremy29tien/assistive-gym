@@ -332,8 +332,12 @@ if __name__ == "__main__":
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     reward_net = Net(augmented=augmented, num_rawfeatures=num_rawfeatures, state_action=state_action)
     reward_net.to(device)
-    import torch.optim as optim
+    num_total_params = sum(p.numel() for p in reward_net.parameters())
+    num_trainable_params = sum(p.numel() for p in reward_net.parameters() if p.requires_grad)
+    print("Total number of parameters:", num_total_params)
+    print("Number of trainable paramters:", num_trainable_params)
 
+    import torch.optim as optim
     optimizer = optim.Adam(reward_net.parameters(), lr=lr, weight_decay=weight_decay)
     learn_reward(reward_net, optimizer, training_obs, training_labels, num_iter, l1_reg, args.reward_model_path, val_obs, val_labels, patience)
 
