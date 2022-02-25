@@ -286,7 +286,7 @@ if __name__ == "__main__":
     ## HYPERPARAMS ##
     num_comps = args.num_comps
     num_demos = args.num_demos
-    hidden_dims = tuple(args.hidden_dims)
+    hidden_dims = tuple(args.hidden_dims) if args.hidden_dims != 0 else tuple()
     lr = args.lr
     weight_decay = args.weight_decay
     l1_reg = args.l1_reg
