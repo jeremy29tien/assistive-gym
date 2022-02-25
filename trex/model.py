@@ -348,10 +348,10 @@ if __name__ == "__main__":
             demo_rewards = np.load("data/raw_data/demo_rewards.npy")
             demo_reward_per_timestep = np.load("data/raw_data/demo_reward_per_timestep.npy")
 
-            if test:
-                # Test Data for Vanilla Model
-                test_demos = np.load("data/raw_data/test_data/demos.npy")
-                test_demo_rewards = np.load("data/raw_data/test_data/demo_rewards.npy")
+        if test:
+            # Test Data for Vanilla Model
+            test_demos = np.load("data/raw_data/test_data/demos.npy")
+            test_demo_rewards = np.load("data/raw_data/test_data/demo_rewards.npy")
 
     demo_lengths = 200  # fixed horizon of 200 timesteps in assistive gym
     print("demo lengths", demo_lengths)

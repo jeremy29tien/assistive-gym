@@ -8,12 +8,17 @@ for seed in 0 1 2; do
 
   #Reward-learning
   echo "Reward learning..."
-  config="raw_states/${var1}prefs_100epochs_10patience_001lr_001weightdecay"
+  if [ "$var1" = "--teleop" ]; then
+      mode="teleop"
+    else
+      mode="rlnoise"
+  fi
+  config="data_experiment/${mode}_10demosallpairs_100epochs_10patience_001lr_001weightdecay_001l1reg"
   reward_model_path="/home/jtien/assistive-gym/trex/models/${config}_seed${seed}.params"
   reward_output_path="reward_learning_outputs/${config}_seed${seed}.txt"
 
   cd trex/
-  python3 model.py --hidden_dims 128 64 --num_comps ${var1} --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --seed $seed --test --reward_model_path $reward_model_path > $reward_output_path
+  python3 model.py ${var1} --hidden_dims 128 64 --num_demos 10 --all_pairs --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --l1_reg 0.01 --seed $seed --test --reward_model_path $reward_model_path > $reward_output_path
 
   #RL
   echo "Performing RL..."
