@@ -14,7 +14,7 @@ for seed in 0 1 2; do
       mode="rlnoise"
   fi
   config="data_experiment/${mode}_10demosallpairs_100epochs_10patience_001lr_001weightdecay_001l1reg"
-  reward_model_path="/home/jtien/assistive-gym/trex/models/${config}_seed${seed}.params"
+  reward_model_path="/home/jeremy/assistive-gym/trex/models/${config}_seed${seed}.params"
   reward_output_path="reward_learning_outputs/${config}_seed${seed}.txt"
 
   cd trex/
