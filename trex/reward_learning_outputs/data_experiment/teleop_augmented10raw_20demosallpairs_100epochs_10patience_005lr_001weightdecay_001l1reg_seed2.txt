@@ -1,0 +1,120 @@
+demo lengths 200
+demos: (20, 200, 13)
+demo_rewards: (20,)
+[-164.60939173 -110.4021119   -90.34107021  -83.54538651  -77.71993871
+  -70.18614344  -64.50817745  -50.24769537  -48.34145065  -38.70229081
+   -8.71818574   20.55458422   94.64456082   97.77206132  101.87890933
+  116.73865694  121.19361924  124.02158228  127.42190046  127.79372169]
+maximum traj length 200
+num training_obs 171
+num training_labels 171
+num val_obs 19
+num val_labels 19
+ModuleList(
+  (0): Linear(in_features=13, out_features=1, bias=False)
+)
+Total number of parameters: 13
+Number of trainable paramters: 13
+device: cuda:0
+end of epoch 0: val_loss 0.18214785344526369, val_acc 0.9473684210526315
+trigger times: 0
+saving model weights...
+Weights: OrderedDict([('fcs.0.weight', tensor([[ 1.5600e-01, -5.4286e-02, -1.7514e-01,  2.2090e-01,  3.2877e-01,
+         -1.6722e-01, -3.9442e-01, -6.0354e-01, -2.5216e-04, -1.0018e-01,
+         -6.0009e-01,  1.3868e+00, -1.3284e+00]], device='cuda:0'))])
+end of epoch 1: val_loss 1.80667416299969, val_acc 0.7894736842105263
+trigger times: 1
+end of epoch 2: val_loss 0.3904635157208232, val_acc 0.9473684210526315
+trigger times: 2
+end of epoch 3: val_loss 0.026914537894802044, val_acc 1.0
+trigger times: 0
+saving model weights...
+Weights: OrderedDict([('fcs.0.weight', tensor([[ 0.0381, -0.0857,  0.0124, -0.1774,  0.5603, -0.2657, -0.0701, -0.4535,
+         -0.9711,  0.0350, -1.4757,  4.3273, -1.1528]], device='cuda:0'))])
+end of epoch 4: val_loss 0.0004387796059171179, val_acc 1.0
+trigger times: 0
+saving model weights...
+Weights: OrderedDict([('fcs.0.weight', tensor([[ 0.3389,  0.1372, -0.0613, -0.0520,  0.3444, -0.5605, -0.1738, -0.4665,
+         -0.7638, -0.3273, -1.5495,  4.2410, -2.0430]], device='cuda:0'))])
+end of epoch 5: val_loss 1.1230650239954947e-06, val_acc 1.0
+trigger times: 0
+saving model weights...
+Weights: OrderedDict([('fcs.0.weight', tensor([[ 0.4290,  0.0892, -0.0377, -0.0810,  0.1100, -0.7545, -0.2490, -0.2826,
+         -0.9270, -0.1355, -1.8093,  5.0302, -2.0588]], device='cuda:0'))])
+end of epoch 6: val_loss 0.005280733500656329, val_acc 1.0
+trigger times: 1
+end of epoch 7: val_loss 0.0006783420318051389, val_acc 1.0
+trigger times: 2
+end of epoch 8: val_loss 8.162120497888137e-06, val_acc 1.0
+trigger times: 3
+end of epoch 9: val_loss 1.1293499674617411e-07, val_acc 1.0
+trigger times: 0
+saving model weights...
+Weights: OrderedDict([('fcs.0.weight', tensor([[ 0.5011,  0.1185, -0.5746,  0.3270,  0.2059, -0.8228, -0.0334, -0.4271,
+         -1.0980, -0.3894, -2.1069,  4.8799, -1.6346]], device='cuda:0'))])
+end of epoch 10: val_loss 5.539828515266938e-06, val_acc 1.0
+trigger times: 1
+end of epoch 11: val_loss 0.811233332939752, val_acc 0.8947368421052632
+trigger times: 2
+end of epoch 12: val_loss 2.103986243558833e-05, val_acc 1.0
+trigger times: 3
+end of epoch 13: val_loss 2.2245667682080263, val_acc 0.8421052631578947
+trigger times: 4
+end of epoch 14: val_loss 0.0017003530489259184, val_acc 1.0
+trigger times: 5
+end of epoch 15: val_loss 0.6776066234237239, val_acc 0.8421052631578947
+trigger times: 6
+end of epoch 16: val_loss 0.2692947042615607, val_acc 0.9473684210526315
+trigger times: 7
+end of epoch 17: val_loss 0.6189369214096491, val_acc 0.8947368421052632
+trigger times: 8
+end of epoch 18: val_loss 0.6480653511519473, val_acc 0.9473684210526315
+trigger times: 9
+end of epoch 19: val_loss 0.0, val_acc 1.0
+trigger times: 0
+saving model weights...
+Weights: OrderedDict([('fcs.0.weight', tensor([[ 0.4004,  0.0389, -0.4281,  0.3394,  0.2367, -0.7268, -0.2319, -0.3796,
+         -1.3060, -0.7003, -2.8315,  5.3606, -1.1727]], device='cuda:0'))])
+end of epoch 20: val_loss 0.00273133264832531, val_acc 1.0
+trigger times: 1
+end of epoch 21: val_loss 3.946307467192343e-06, val_acc 1.0
+trigger times: 2
+end of epoch 22: val_loss 4.2828198179210486e-05, val_acc 1.0
+trigger times: 3
+end of epoch 23: val_loss 0.0022022537887096405, val_acc 1.0
+trigger times: 4
+end of epoch 24: val_loss 0.27660645936664485, val_acc 0.9473684210526315
+trigger times: 5
+end of epoch 25: val_loss 0.005226793248623021, val_acc 1.0
+trigger times: 6
+end of epoch 26: val_loss 0.03737283993732295, val_acc 0.9473684210526315
+trigger times: 7
+end of epoch 27: val_loss 1.107629249753293, val_acc 0.8947368421052632
+trigger times: 8
+end of epoch 28: val_loss 4.3919201468605406e-08, val_acc 1.0
+trigger times: 9
+end of epoch 29: val_loss 2.0014465343066196e-06, val_acc 1.0
+trigger times: 10
+Early stopping.
+0 -93.06196469068527 -164.60939172667727
+1 -47.459581822156906 -110.40211189959727
+2 -12.275663405656815 -90.3410702099161
+3 -8.508602887392044 -83.54538650927852
+4 9.884630963206291 -77.71993870914932
+5 12.88868172466755 -70.18614343970475
+6 12.6331577450037 -64.50817744738329
+7 33.7712796330452 -50.24769537498815
+8 41.421948954463005 -48.34145065013472
+9 52.639729499816895 -38.702290812442186
+10 55.30514781177044 -8.718185737683392
+11 53.418046191334724 20.554584219954464
+12 81.8888991177082 94.64456081709041
+13 91.36013945937157 97.77206131759269
+14 83.03692921996117 101.87890933152616
+15 92.79753190279007 116.73865693628218
+16 103.6690076738596 121.19361924060846
+17 108.29747135937214 124.02158228281696
+18 107.12775388360023 127.42190046347255
+19 107.85593284666538 127.79372168925553
+train accuracy: 0.9707602339181286
+validation accuracy: 1.0
