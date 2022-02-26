@@ -9,7 +9,7 @@ from matplotlib import pyplot as plt
 from assistive_gym.learn import load_policy
 import argparse
 
-ENV_NAME = "FeedingSawyer-v1"
+ENV_NAME = "ScratchItchJaco-v1"
 COOP = False
 
 # NOTE: Most of this is shamelessly copied from render_policy in learn.py.
@@ -92,15 +92,25 @@ def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augm
                     # print("Observation:", observation)
                     # print("Action:", action)
 
-                    # Handtuned features: spoon-mouth distance, amount of food particles in mouth, amount of food particles on the floor
-                    distance = np.linalg.norm(observation[7:10])
-                    if info is None:
-                        foods_in_mouth = 0
-                        foods_on_floor = 0
-                    else:
-                        foods_in_mouth = info['foods_in_mouth']
-                        foods_on_floor = info['foods_on_ground']
-                    handpicked_features = np.array([distance, foods_in_mouth, foods_on_floor])
+                    # FeedingSawyer privileged features: spoon-mouth distance, amount of food particles in mouth, amount of food particles on the floor
+                    if ENV_NAME == "FeedingSawyer-v1":
+                        distance = np.linalg.norm(observation[7:10])
+                        if info is None:
+                            foods_in_mouth = 0
+                            foods_on_floor = 0
+                        else:
+                            foods_in_mouth = info['foods_in_mouth']
+                            foods_on_floor = info['foods_on_ground']
+                        handpicked_features = np.array([distance, foods_in_mouth, foods_on_floor])
+
+                    # ScratchItchJaco privileged features: end effector - target distance, total force at target
+                    if ENV_NAME == "ScratchItchJaco-v1":
+                        distance = np.linalg.norm(observation[7:10])
+                        if info is None:
+                            tool_force_at_target = 0.0
+                        else:
+                            tool_force_at_target = info['tool_force_at_target']
+                        handpicked_features = np.array([distance, tool_force_at_target])
 
                     if augmented and state_action:
                         data = np.concatenate((observation, action, handpicked_features))

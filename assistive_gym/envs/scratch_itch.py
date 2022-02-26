@@ -34,7 +34,7 @@ class ScratchItchEnv(AssistiveEnv):
         if self.gui and self.tool_force_at_target > 0:
             print('Task success:', self.task_success, 'Tool force at target:', self.tool_force_at_target, reward_force_scratch)
 
-        info = {'total_force_on_human': self.total_force_on_human, 'task_success': int(self.task_success >= self.config('task_success_threshold')), 'action_robot_len': self.action_robot_len, 'action_human_len': self.action_human_len, 'obs_robot_len': self.obs_robot_len, 'obs_human_len': self.obs_human_len}
+        info = {'total_force_on_human': self.total_force_on_human, 'task_success': int(self.task_success >= self.config('task_success_threshold')), 'action_robot_len': self.action_robot_len, 'action_human_len': self.action_human_len, 'obs_robot_len': self.obs_robot_len, 'obs_human_len': self.obs_human_len, 'tool_force_at_target': self.tool_force_at_target}
         done = self.iteration >= 200
 
         if not self.human.controllable:
@@ -73,6 +73,9 @@ class ScratchItchEnv(AssistiveEnv):
         wrist_pos_real, _ = self.robot.convert_to_realworld(wrist_pos)
         target_pos_real, _ = self.robot.convert_to_realworld(self.target_pos)
         self.total_force_on_human, self.tool_force, self.tool_force_at_target, self.target_contact_pos = self.get_total_force()
+        # print("tool_pos_real", tool_pos_real.shape)
+        # print("tool_orient_real", tool_orient_real.shape)
+        # print("dist from end effector to target", np.linalg.norm(tool_pos_real - target_pos_real))
         robot_obs = np.concatenate([tool_pos_real, tool_orient_real, tool_pos_real - target_pos_real, target_pos_real, robot_joint_angles, shoulder_pos_real, elbow_pos_real, wrist_pos_real, [self.tool_force]]).ravel()
         if agent == 'robot':
             return robot_obs
