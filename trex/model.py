@@ -309,8 +309,8 @@ if __name__ == "__main__":
         demo_reward_per_timestep = np.load("data/augmented_stateactions/demo_reward_per_timestep.npy")
     elif augmented:
         if teleop:
-            demos = np.load("data/teleop/augmented/demos.npy")
-            demo_rewards = np.load("data/teleop/augmented/demo_rewards.npy")
+            demos = np.load("data/teleop/augmented/demos20.npy")
+            demo_rewards = np.load("data/teleop/augmented/demo_rewards20.npy")
         else:
             demos = np.load("data/augmented_features/demos.npy")
             demo_rewards = np.load("data/augmented_features/demo_rewards.npy")
