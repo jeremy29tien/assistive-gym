@@ -13,12 +13,12 @@ for seed in 0 1 2; do
     else
       mode="rlnoise"
   fi
-  config="data_experiment/${mode}_augmented10raw_10demosallpairs_100epochs_10patience_001lr_001weightdecay_001l1reg"
+  config="data_experiment/${mode}_augmented10raw_20demosallpairs_100epochs_10patience_001lr_001weightdecay_001l1reg"
   reward_model_path="/home/jeremy/assistive-gym/trex/models/${config}_seed${seed}.params"
   reward_output_path="reward_learning_outputs/${config}_seed${seed}.txt"
 
   cd trex/
-  python3 model.py ${var1} --augmented --num_rawfeatures 10 --num_demos 10 --all_pairs --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --l1_reg 0.01 --seed $seed --reward_model_path $reward_model_path > $reward_output_path
+  python3 model.py ${var1} --augmented --num_rawfeatures 10 --num_demos 20 --all_pairs --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --l1_reg 0.01 --seed $seed --reward_model_path $reward_model_path > $reward_output_path
 
   #RL
   echo "Performing RL..."
