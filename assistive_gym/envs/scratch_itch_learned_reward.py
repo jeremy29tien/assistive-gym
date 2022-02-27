@@ -14,7 +14,7 @@ class ScratchItchLearnedRewardEnv(ScratchItchEnv):
         super(ScratchItchLearnedRewardEnv, self).__init__(robot=robot, human=human)
         self.augmented = True
         self.state_action = False
-        self.num_rawfeatures = 10
+        self.num_rawfeatures = indvar[0]  # ScratchItchJaco has 30 raw features total
         self.hidden_dims = tuple()
 
         print("reward_net_path:", reward_net_path)
