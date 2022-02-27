@@ -1,0 +1,113 @@
+##################
+Loading directly from a specific policy path: ./trained_models_reward_learning/scratch_itch/feature_sensitivity/30raw_augmented_linear_2000prefs_60pairdelta_100epochs_10patience_001lr_01l1reg_seed0/ppo/ScratchItchLearnedRewardJaco-v0/checkpoint_000053/checkpoint-53
+##################
+Reward total: -113.34, mean force: 25.89, task success: 0
+Reward total: -102.03, mean force: 16.94, task success: 0
+Reward total: -150.05, mean force: 37.47, task success: 0
+Reward total: -108.97, mean force: 18.65, task success: 0
+Reward total: -102.25, mean force: 19.79, task success: 0
+Reward total: -116.20, mean force: 24.64, task success: 0
+Reward total: -91.96, mean force: 19.39, task success: 0
+Reward total: -114.79, mean force: 21.60, task success: 0
+Reward total: -89.06, mean force: 16.20, task success: 0
+Reward total: -113.24, mean force: 27.68, task success: 0
+Reward total: -107.64, mean force: 25.82, task success: 0
+Reward total: -101.17, mean force: 17.65, task success: 0
+Reward total: -99.61, mean force: 22.81, task success: 0
+Reward total: -75.59, mean force: 12.69, task success: 0
+Reward total: -120.53, mean force: 25.54, task success: 0
+Reward total: -94.07, mean force: 15.41, task success: 0
+Reward total: -109.02, mean force: 17.88, task success: 0
+Reward total: -94.93, mean force: 12.27, task success: 0
+Reward total: -108.46, mean force: 19.57, task success: 0
+Reward total: -134.56, mean force: 25.79, task success: 0
+Reward total: -92.66, mean force: 16.94, task success: 0
+Reward total: -103.45, mean force: 17.34, task success: 0
+Reward total: -93.28, mean force: 19.24, task success: 0
+Reward total: -69.28, mean force: 1.36, task success: 0
+Reward total: -117.11, mean force: 21.87, task success: 0
+Reward total: -124.68, mean force: 29.83, task success: 0
+Reward total: -98.31, mean force: 21.66, task success: 0
+Reward total: -106.19, mean force: 24.02, task success: 0
+Reward total: -93.37, mean force: 14.08, task success: 0
+Reward total: -105.14, mean force: 25.33, task success: 0
+Reward total: -85.21, mean force: 5.57, task success: 0
+Reward total: -105.98, mean force: 21.41, task success: 0
+Reward total: -80.71, mean force: 12.24, task success: 0
+Reward total: -71.38, mean force: 2.73, task success: 0
+Reward total: -111.76, mean force: 18.66, task success: 0
+Reward total: -127.55, mean force: 27.40, task success: 0
+Reward total: -117.93, mean force: 27.13, task success: 0
+Reward total: -101.28, mean force: 20.36, task success: 0
+Reward total: -99.89, mean force: 18.61, task success: 0
+Reward total: -95.73, mean force: 19.53, task success: 0
+Reward total: -107.06, mean force: 15.06, task success: 0
+Reward total: -98.95, mean force: 17.77, task success: 0
+Reward total: -115.90, mean force: 25.86, task success: 0
+Reward total: -106.49, mean force: 22.48, task success: 0
+Reward total: -96.31, mean force: 20.59, task success: 0
+Reward total: -114.72, mean force: 25.94, task success: 0
+Reward total: -110.44, mean force: 27.41, task success: 0
+Reward total: -94.02, mean force: 16.72, task success: 0
+Reward total: -112.67, mean force: 17.47, task success: 0
+Reward total: -88.25, mean force: 14.39, task success: 0
+Reward total: -111.59, mean force: 22.36, task success: 0
+Reward total: -105.78, mean force: 25.03, task success: 0
+Reward total: -110.18, mean force: 22.34, task success: 0
+Reward total: -110.32, mean force: 20.04, task success: 0
+Reward total: -86.65, mean force: 13.55, task success: 0
+Reward total: -98.57, mean force: 24.03, task success: 0
+Reward total: -108.57, mean force: 21.05, task success: 0
+Reward total: -120.96, mean force: 24.34, task success: 0
+Reward total: -108.94, mean force: 20.39, task success: 0
+Reward total: -130.20, mean force: 30.36, task success: 0
+Reward total: -144.26, mean force: 29.56, task success: 0
+Reward total: -99.47, mean force: 17.19, task success: 0
+Reward total: -77.22, mean force: 14.86, task success: 0
+Reward total: -117.15, mean force: 21.04, task success: 0
+Reward total: -98.08, mean force: 22.10, task success: 0
+Reward total: -92.43, mean force: 20.09, task success: 0
+Reward total: -133.36, mean force: 35.94, task success: 0
+Reward total: -108.50, mean force: 27.24, task success: 0
+Reward total: -121.65, mean force: 22.92, task success: 0
+Reward total: -107.49, mean force: 23.77, task success: 0
+Reward total: -37.62, mean force: 7.65, task success: 0
+Reward total: -114.75, mean force: 22.28, task success: 0
+Reward total: -69.79, mean force: 0.63, task success: 0
+Reward total: -128.62, mean force: 30.01, task success: 0
+Reward total: -98.33, mean force: 17.49, task success: 0
+Reward total: -109.92, mean force: 26.30, task success: 0
+Reward total: -102.75, mean force: 18.59, task success: 0
+Reward total: -129.27, mean force: 28.09, task success: 0
+Reward total: -77.71, mean force: 9.14, task success: 0
+Reward total: -138.96, mean force: 27.45, task success: 0
+Reward total: -94.23, mean force: 20.01, task success: 0
+Reward total: -108.20, mean force: 24.92, task success: 0
+Reward total: -114.17, mean force: 21.92, task success: 0
+Reward total: -92.06, mean force: 20.01, task success: 0
+Reward total: -112.07, mean force: 20.73, task success: 0
+Reward total: -116.20, mean force: 25.30, task success: 0
+Reward total: -117.60, mean force: 19.10, task success: 0
+Reward total: -124.83, mean force: 23.17, task success: 0
+Reward total: -106.09, mean force: 18.50, task success: 0
+Reward total: -139.61, mean force: 34.09, task success: 0
+Reward total: -88.79, mean force: 17.09, task success: 0
+Reward total: -77.84, mean force: 11.59, task success: 0
+Reward total: -125.10, mean force: 22.51, task success: 0
+Reward total: -94.45, mean force: 10.90, task success: 0
+Reward total: -74.77, mean force: 11.34, task success: 0
+Reward total: -97.97, mean force: 21.48, task success: 0
+Reward total: -124.51, mean force: 23.46, task success: 0
+Reward total: -126.35, mean force: 24.17, task success: 0
+Reward total: -92.62, mean force: 10.57, task success: 0
+Reward total: -131.02, mean force: 26.93, task success: 0
+
+ -------------------------------------------------- 
+
+Reward Mean: -105.50702083504495
+Reward Std: 17.832295292103495
+Force Mean: 20.46275712983352
+Force Std: 6.629426010922458
+Task Success Mean: 0.0
+Task Success Std: 0.0
+pybullet build time: Feb 12 2022 16:46:55
