@@ -340,7 +340,10 @@ if __name__ == "__main__":
             demo_reward_per_timestep = np.concatenate((demo_reward_per_timestep, al_demo_reward_per_timestep), axis=0)
 
         raw_features = demos[:, :, 0:num_rawfeatures]  # how many raw features to keep in the observation
-        handpicked_features = demos[:, :, 25:28]  # handpicked features are the last 3
+        if scratch_itch:
+            handpicked_features = demos[:, :, 30:32]  # handpicked features are the last 2
+        else:
+            handpicked_features = demos[:, :, 25:28]  # handpicked features are the last 3
         demos = np.concatenate((raw_features, handpicked_features), axis=-1)  # assign the result back to demos
     else:
         if teleop:
