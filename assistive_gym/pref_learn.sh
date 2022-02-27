@@ -13,7 +13,7 @@ for seed in 0 1 2; do
   reward_output_path="reward_learning_outputs/${config}_seed${seed}.txt"
 
   cd trex/
-  python3 model.py --augmented --num_rawfeatures ${var1} --num_comps 2000 --pair_delta 60 --num_epochs 100 --patience 10 --lr 0.01 --l1_reg 0.1 --seed $seed --reward_model_path $reward_model_path > $reward_output_path
+  python3 model.py --scratch_itch --augmented --num_rawfeatures ${var1} --num_comps 2000 --pair_delta 60 --num_epochs 100 --patience 10 --lr 0.01 --l1_reg 0.1 --seed $seed --reward_model_path $reward_model_path > $reward_output_path
 
   #RL
   echo "Performing RL..."
