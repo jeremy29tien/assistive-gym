@@ -73,17 +73,25 @@ def create_training_data(demonstrations, num_comps=0, pair_delta=1, all_pairs=Fa
 # If input is comprised of states, input_dim = 25
 # input_dim = 25
 class Net(nn.Module):
-    def __init__(self, hidden_dims=(128,64), with_bias=False, augmented=True, num_rawfeatures=25, state_action=False):
+    def __init__(self, env, hidden_dims=(128,64), with_bias=False, augmented=True, num_rawfeatures=25, state_action=False):
         super().__init__()
 
         if augmented and state_action:
+            # Feeding only
             input_dim = 35
         elif augmented:
-            input_dim = num_rawfeatures + 3
+            if env == "feeding":
+                input_dim = num_rawfeatures + 3
+            elif env == "scratch_itch":
+                input_dim = num_rawfeatures + 2
         elif state_action:
+            # Feeding only
             input_dim = 32
         else:
-            input_dim = 25
+            if env == "feeding":
+                input_dim = 25
+            elif env == "scratch_itch":
+                input_dim = 30
 
         self.num_layers = len(hidden_dims) + 1
 
@@ -413,7 +421,7 @@ if __name__ == "__main__":
 
     # Now we create a reward network and optimize it using the training data.
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    reward_net = Net(hidden_dims=hidden_dims, with_bias=with_bias, augmented=augmented, num_rawfeatures=num_rawfeatures, state_action=state_action)
+    reward_net = Net("scratch_itch" if scratch_itch else "feeding", hidden_dims=hidden_dims, with_bias=with_bias, augmented=augmented, num_rawfeatures=num_rawfeatures, state_action=state_action)
     reward_net.to(device)
     num_total_params = sum(p.numel() for p in reward_net.parameters())
     num_trainable_params = sum(p.numel() for p in reward_net.parameters() if p.requires_grad)

@@ -25,7 +25,7 @@ class FeedingLearnedRewardEnv(FeedingEnv):
         self.reward_net_path = reward_net_path
 
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.reward_net = Net(hidden_dims=self.hidden_dims, with_bias=False, augmented=self.augmented, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action)
+        self.reward_net = Net("feeding", hidden_dims=self.hidden_dims, with_bias=False, augmented=self.augmented, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action)
         print("device:", self.device)
         print("torch.cuda.is_available():", torch.cuda.is_available())
         self.reward_net.load_state_dict(torch.load(self.reward_net_path, map_location=torch.device('cpu')))
