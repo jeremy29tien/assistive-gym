@@ -51,3 +51,10 @@ register(
     entry_point='assistive_gym.envs:FeedingLinearRewardSawyerEnv',
     max_episode_steps=200,
 )
+
+# For pref learning on ScratchItch
+register(
+    id='ScratchItchLearnedRewardJaco-v0',
+    entry_point='assistive_gym.envs:ScratchItchLearnedRewardJacoEnv',
+    max_episode_steps=200,
+)
