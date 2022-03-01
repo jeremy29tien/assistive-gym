@@ -12,10 +12,10 @@ from trex.model import Net
 class ScratchItchLearnedRewardEnv(ScratchItchEnv):
     def __init__(self, robot, human, reward_net_path, indvar):
         super(ScratchItchLearnedRewardEnv, self).__init__(robot=robot, human=human)
-        self.augmented = True
+        self.augmented = False
         self.state_action = False
-        self.num_rawfeatures = indvar[0]  # ScratchItchJaco has 30 raw features total
-        self.hidden_dims = tuple()
+        self.num_rawfeatures = 30  # ScratchItchJaco has 30 raw features total
+        self.hidden_dims = (128, 64)
 
         print("reward_net_path:", reward_net_path)
         self.reward_net_path = reward_net_path

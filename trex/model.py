@@ -357,6 +357,10 @@ if __name__ == "__main__":
         if teleop:
             demos = np.load("data/teleop/raw_states/demos.npy")
             demo_rewards = np.load("data/teleop/raw_states/demo_rewards.npy")
+        elif scratch_itch:
+            demos = np.load("data/scratchitch/raw/demos.npy")
+            demo_rewards = np.load("data/scratchitch/raw/demo_rewards.npy")
+            demo_reward_per_timestep = np.load("data/scratchitch/raw/demo_reward_per_timestep.npy")
         else:
             if state_action:
                 demos = np.load("data/raw_data/demos_stateactions.npy")
