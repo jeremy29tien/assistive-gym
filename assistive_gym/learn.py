@@ -148,10 +148,14 @@ def render_policy(env, env_name, algo, policy_path, coop=False, colab=False, see
         write_apng(filename, frames, delay=100)
         return filename
 
-def evaluate_policy(env_name, algo, policy_path, n_episodes=100, coop=False, seed=0, verbose=False, extra_configs={}):
+def evaluate_policy(env_name, algo, policy_path, n_episodes=100, coop=False, seed=0, verbose=False, reward_net_path=None, extra_configs={}):
     ray.init(num_cpus=multiprocessing.cpu_count(), ignore_reinit_error=True, log_to_driver=False)
     env = make_env(env_name, coop, seed=seed)
-    test_agent, _ = load_policy(env, algo, env_name, policy_path, coop, seed, extra_configs)
+    if reward_net_path is not None:
+        test_agent, _ = load_policy(env, algo, env_name, policy_path, coop, seed, extra_configs={
+            "env_config": {"reward_net_path": reward_net_path}})
+    else:
+        test_agent, _ = load_policy(env, algo, env_name, policy_path, coop, seed, extra_configs)
 
     rewards = []
     forces = []
