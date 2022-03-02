@@ -16,10 +16,10 @@ class FeedingLearnedRewardEnv(FeedingEnv):
     # Local: /Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trex/models/test1.params
     def __init__(self, robot, human, reward_net_path, indvar):
         super(FeedingLearnedRewardEnv, self).__init__(robot=robot, human=human)
-        self.augmented = True
+        self.augmented = False
         self.state_action = False
-        self.num_rawfeatures = 10
-        self.hidden_dims = tuple()
+        self.num_rawfeatures = 25
+        self.hidden_dims = (128, 64)
 
         print("reward_net_path:", reward_net_path)
         self.reward_net_path = reward_net_path
