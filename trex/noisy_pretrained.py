@@ -151,9 +151,10 @@ def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augm
     # print(demos)
     # print(total_rewards)
 
-    np.save(data_dir+"/demos.npy", demos)
-    np.save(data_dir+"/demo_rewards.npy", total_rewards)
-    np.save(data_dir+"/demo_reward_per_timestep.npy", rewards_over_time)
+    if data_dir != '':
+        np.save(data_dir+"/demos.npy", demos)
+        np.save(data_dir+"/demo_rewards.npy", total_rewards)
+        np.save(data_dir+"/demo_reward_per_timestep.npy", rewards_over_time)
 
 
     with np.printoptions(precision=3):
