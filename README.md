@@ -58,108 +58,51 @@ demos = np.load("##[DEMOS.NPY PATH]##")
 demo_rewards = np.load("##[DEMO_REWARDS.NPY PATH]##")
 demo_reward_per_timestep = np.load("##[DEMO_REWARD_PER_TIMESTEP.NPY PATH]##")
 ```
-within a Python script. 
+(where `##[DEMOS.NPY PATH]##` is a path to a `demos.npy` file listed above) within a Python script. 
 
 
 ## Reward Learning from Preferences
 We provide `trex/model.py`, a convenient script that loads the trajectory data, creates the pairwise preferences based on the ground truth reward, and performs reward learning on the pairwise preferences. 
 To perform reward learning for each of the benchmark environments, run the following in the `assistive-gym/` directory:
 - Feeding
-    ```python
+    ```bash
     python3 trex/model.py --hidden_dims 128 64 --num_comps 2000 --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --seed 0 --reward_model_path ./reward_models/model.params
     ```
 - Itch Scratching
-    ```python
+    ```bash
     python3 trex/model.py --scratch_itch --hidden_dims 128 64 --num_comps 2000 --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --seed $seed --reward_model_path ./reward_models/model.params
     ```
 The trained parameters of the reward network will be saved in `assistive-gym/reward_models/model.params`.
 
 
-
 ## Training the RL Policy
-We provide pretrained control policies for each robot and assistive task.  
-See [Running Pretrained Policies](https://github.com/Healthcare-Robotics/assistive-gym/wiki/4.-Running-Pretrained-Policies) for details on how to run a pretrained policy.
+Once the reward network is trained, we can perform reinforcement learning using the preference-learned reward. 
+To train, run:
+- Feeding
+    ```bash
+    python3 -m assistive_gym.learn --env "FeedingLearnedRewardSawyer-v0" --algo ppo --seed $seed --train --train-timesteps 1000000 --reward-net-path ./reward_models/model.params --save-dir ./trained_policies/
+    ```
+- Itch Scratching
+    ```bash
+    python3 -m assistive_gym.learn --env "ScratchItchLearnedRewardJaco-v0" --algo ppo --seed $seed --train --train-timesteps 1000000 --reward-net-path $reward_model_path --save-dir ./trained_policies/
+    ```
+ 
+To evaluate the trained policy on 100 rollouts using the ground truth reward:
+- Feeding
+    ```bash
+      python3 -m assistive_gym.learn --env "FeedingSawyer-v1" --algo ppo --evaluate --eval-episodes 100 --seed 3 --verbose --load-policy-path ./trained_policies/ppo/FeedingLearnedRewardSawyer-v0/checkpoint_000053/checkpoint-53
+    ```
+- Itch Scratching
+    ```bash
+      python3 -m assistive_gym.learn --env "ScratchItchJaco-v1" --algo ppo --evaluate --eval-episodes 100 --seed 3 --verbose --load-policy-path ./trained_policies/ppo/ScratchItchLearnedRewardJaco-v0/checkpoint_000053/checkpoint-53
+    ```
 
-See [Training New Policies](https://github.com/Healthcare-Robotics/assistive-gym/wiki/5.-Training-New-Policies) for documentation on how to train new control policies for Assistive Gym environments.
-
-Finally, [Creating a New Assistive Environment](https://github.com/Healthcare-Robotics/assistive-gym/wiki/6.-Creating-a-New-Assistive-Environment) discusses the process of creating an Assistive Gym environment for your own human-robot interaction tasks.
-
-#### See a list of [common commands available in Assistive Gym ![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/17Rybu4d2UHIC9D0UA1Au8WSDExX2mMgb?usp=sharing)
-
-## New Features in v1.0
-### Clean code syntax
-#### v1.0 example (getting robot left end effector velocity)
-```python
-end_effector_velocity = self.robot.get_velocity(self.robot.left_end_effector)
-```
-#### Old v0.1 (using default PyBullet syntax)
-```python
-end_effector_velocity = p.getLinkState(self.robot, 76 if self.robot_type=='pr2' else 19 if self.robot_type=='sawyer' 
-                                       else 48 if self.robot_type=='baxter' else 8, computeForwardKinematics=True, 
-                                       computeLinkVelocity=True, physicsClientId=self.id)[6]
-```
-
-### Google Colab Support
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1PAY5HnLKRB-TBsPaevRr6myMfpVt_yzF?usp=sharing)  
-Assistive Gym is now supported in Google Colab! Tons of new examples are now available for developing and learning with Assistive Gym in Google Colab. See the [Wiki-Google Colab](https://github.com/Healthcare-Robotics/assistive-gym/wiki/7.-Google-Colab) for a list of all the available example notebooks.
-
-### Support for mobile bases (mobile manipulation)
-For robots with mobile bases, locomotion control is now supported. Ground frictions and slip can be dynamically changed for domain randomization.
-
-Reference this [Google Colab notebook ![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1pfYvTcHK1LF8M9p4Gp31S8SziWIiN0Sq?usp=sharing) for an example of mobile base control.  
-&nbsp;  
-![Mobile bases](images/v1_mobile.gif "Mobile bases")
-
-### Support for the Stretch and PANDA robots
-![Stretch](images/v1_stretch.jpg "Stretch")
-![PANDA](images/v1_panda.jpg "PANDA")
-
-### Multi-robot control support
-Assitive Gym now provides an interface for simulating and controlling multiple robots and people, all through the OpenAI Gym framework. See this example of [multi-robot control ![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1NPWZNFpB9NCgTQpbwM78jVHJAC7q_0oR?usp=sharing).  
-&nbsp;  
-![Multi-robot](images/v1_multi_robot.gif "Multi-robot")
-
-### Integration with iGibson
-Assistive Gym can now be used with [iGibson](http://svl.stanford.edu/igibson/) to simulate human-robot interaction in a visually realistic interactive home environment.  
-An example of using iGibson with Assistive Gym is available in [this Google Colab notebook ![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qFbjuq5lFxPijyw4PFUiZw2sFpXTR7ok?usp=sharing).  
-&nbsp;  
-![AG iGibson](images/v1_ag_igibson.gif "AG iGibson")
-
-### Static human mesh models (with SMPL-X)
-SMPL-X human mesh models are now supported in Assistive Gym. See this [wiki page](https://github.com/Healthcare-Robotics/assistive-gym/wiki/8.-Human-Mesh-Models-with-SMPL-X) for details of how to use these human mesh models.
-
-A Google Colab example of building a simple robot-assisted feeding environment with SMPL-X human meshes is also available: [Assistive Gym with SMPL-X in Colab ![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1gz2mQmkTf9g1Jvo6_-WgSQ60cgGHmGOt?usp=sharing)  
-&nbsp;  
-![SMPL-X human meshes 1](images/v1_smplx_1.jpg "SMPL-X human meshes 1")
-![SMPL-X human meshes 2](images/v1_smplx_2.jpg "SMPL-X human meshes 2")
-
-***
-
-## Base Features
-### Human and robot models 
-Customizable female and male human models (default body sizes and weights matching 50th percentile humans).  
-40 actuated human joints (head, torso, arms, waist, and legs)  
-&nbsp;  
-![Human models](images/human_models.gif "Human models")  
-&nbsp;  
-Four collaborative robots (PR2, Jaco, Baxter, Sawyer).  
-&nbsp;  
-![Robot models](images/robot_models.gif "Robot models")
-### Realistic human joint limits
-Building off of prior research, Assistive Gym provides a model for realistic pose-dependent human joint limits.  
-&nbsp;  
-![Realistic human joint limits](images/realistic_human_joint_limits.gif "Realistic human joint limits")
-### Robot base pose optimization
-A robot's base pose can greatly impact the robot’s ability to physically assist people.  
-We provide a baseline method using joint-limit-weighted kinematic isotopy (JLWKI) to select good base poses near a person.  
-With JLWKI, the robot chooses base poses (position and yaw orientation) with high manipulability near end effector goals.  
-&nbsp;  
-![Robot base pose optimization](images/robot_base_pose_optimization.gif "Robot base pose optimization")
-### Human preferences
-During assistance, a person will typically prefer for the robot not to spill water on them, or apply large forces to their body.  
-Assistive Gym provides a baseline set of human preferences unified across all tasks, which are incorporated directly into the reward function.
-This allows robots to learn to provide assistance that is consist with a person's preferences.  
-&nbsp;  
-![Human preferences](images/human_preferences.gif "Human preferences")
-
-Refer to [the paper](https://arxiv.org/abs/1910.04700) for details on features in Assistive Gym.
+And to render rollouts of the trained policy:
+- Feeding
+    ```bash
+      python3 -m assistive_gym.learn --env "FeedingSawyer-v1" --algo ppo --render --render-episodes 3 --seed 3 --load-policy-path ./trained_policies/ppo/FeedingLearnedRewardSawyer-v0/checkpoint_000053/checkpoint-53
+    ```
+- Itch Scratching
+    ```bash
+      python3 -m assistive_gym.learn --env "ScratchItchJaco-v1" --algo ppo --render --render-episodes 3 --seed 3 --load-policy-path ./trained_policies/ppo/ScratchItchLearnedRewardJaco-v0/checkpoint_000053/checkpoint-53
+    ```
