@@ -1,7 +1,7 @@
 # A Study of Causal Confusion in Preference-Based Reward Learning
 Jeremy Tien, Jerry Zhi-Yang He, Zackory Erickson, Anca D. Dragan, and Daniel Brown
 
-This repository contains the code and data for the Feeding and Itch Scratching preference learning benchmarks proposed in the paper. 
+This repository contains the code and data for the **Feeding** and **Itch Scratching** preference learning benchmarks proposed in the paper. 
 
 See the [project website](https://sites.google.com/view/causal-reward-confusion) for supplemental results and videos.
 ***
@@ -11,10 +11,19 @@ We encourage installing in a python virtualenv or conda environment with Python 
 To install, run the following commands in a terminal window: 
 ```bash
 pip3 install --upgrade pip
-git clone https://github.com/Healthcare-Robotics/assistive-gym.git
+git clone https://github.com/jeremy29tien/assistive-gym.git
 cd assistive-gym
 pip3 install -e .
 ```
+
+You can visualize the various Assistive Gym environments using the environment viewer.  
+```bash
+python3 -m assistive_gym --env "FeedingSawyer-v1"
+```
+```bash
+python3 -m assistive_gym --env "ScratchItchJaco-v1"
+```
+
 
 ## Demonstrations and Pairwise Preference Data
 We provide a variety of trajectories and their corresponding rewards for use as demonstrations in preference learning.
@@ -43,16 +52,31 @@ The locations of the demonstration data for each environment are:
         - `assistive-gym/trex/data/scratchitch/augmented/demos_rewards.npy`
         - `assistive-gym/trex/data/scratchitch/augmented/demo_reward_per_timestep.npy`
         
-
-
-We provide a [10 Minute Getting Started Guide](https://github.com/Healthcare-Robotics/assistive-gym/wiki/3.-Getting-Started) to help you get familiar with using Assistive Gym for assistive robotics research.
-
-You can visualize the various Assistive Gym environments using the environment viewer.  
-A full list of available environment can be found [Here (Environments)](https://github.com/Healthcare-Robotics/assistive-gym/wiki/2.-Environments).
-```bash
-python3 -m assistive_gym --env "FeedingJaco-v1"
+To load the data into numpy arrays, one can simply run
+```python
+demos = np.load("##[DEMOS.NPY PATH]##")
+demo_rewards = np.load("##[DEMO_REWARDS.NPY PATH]##")
+demo_reward_per_timestep = np.load("##[DEMO_REWARD_PER_TIMESTEP.NPY PATH]##")
 ```
+within a Python script. 
 
+
+## Reward Learning from Preferences
+We provide `trex/model.py`, a convenient script that loads the trajectory data, creates the pairwise preferences based on the ground truth reward, and performs reward learning on the pairwise preferences. 
+To perform reward learning for each of the benchmark environments, run the following in the `assistive-gym/` directory:
+- Feeding
+    ```python
+    python3 trex/model.py --hidden_dims 128 64 --num_comps 2000 --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --seed 0 --reward_model_path ./reward_models/model.params
+    ```
+- Itch Scratching
+    ```python
+    python3 trex/model.py --scratch_itch --hidden_dims 128 64 --num_comps 2000 --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --seed $seed --reward_model_path ./reward_models/model.params
+    ```
+The trained parameters of the reward network will be saved in `assistive-gym/reward_models/model.params`.
+
+
+
+## Training the RL Policy
 We provide pretrained control policies for each robot and assistive task.  
 See [Running Pretrained Policies](https://github.com/Healthcare-Robotics/assistive-gym/wiki/4.-Running-Pretrained-Policies) for details on how to run a pretrained policy.
 
