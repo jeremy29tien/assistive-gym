@@ -1,58 +1,50 @@
-# Assistive Gym v1.0
-#### NOTE: This is jeremy29tien's fork of Assistive Gym and, as such, contains his version of environments/code specifically relating to his work in Assistive Gym on learning from human preferences. 
-#### v1.0 (this branch) has been released! See the feature list below for what is new in v1.0.  
-#### Assistive Gym in also now supported in Google Colab! For example: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qFbjuq5lFxPijyw4PFUiZw2sFpXTR7ok?usp=sharing)  
-#### See the [Wiki](https://github.com/Healthcare-Robotics/assistive-gym/wiki/7.-Google-Colab) for all available Google Colab examples.
+# A Study of Causal Confusion in Preference-Based Reward Learning
+Jeremy Tien, Jerry Zhi-Yang He, Zackory Erickson, Anca D. Dragan, and Daniel Brown
+
+This repository contains the code and data for the Feeding and Itch Scratching preference learning benchmarks proposed in the paper. 
+
+See the [project website](https://sites.google.com/view/causal-reward-confusion) for supplemental results and videos.
 ***
 
-Assistive Gym is a physics-based simulation framework for physical human-robot interaction and robotic assistance.
-
-Assistive Gym is integrated into the OpenAI Gym interface, enabling the use of existing reinforcement learning and control algorithms to teach robots how to interact with people. 
-
-![Assistive Gym](images/assistive_gym.jpg "Assistive Gym")
-
-### Paper
-A paper on Assistive Gym can be found at https://arxiv.org/pdf/1910.04700.pdf
-
-Z. Erickson, V. Gangaram, A. Kapusta, C. K. Liu, and C. C. Kemp, “Assistive Gym: A Physics Simulation Framework for Assistive Robotics”, IEEE International Conference on Robotics and Automation (ICRA), 2020.
-```
-@article{erickson2020assistivegym,
-  title={Assistive Gym: A Physics Simulation Framework for Assistive Robotics},
-  author={Erickson, Zackory and Gangaram, Vamsee and Kapusta, Ariel and Liu, C. Karen and Kemp, Charles C.},
-  journal={IEEE International Conference on Robotics and Automation (ICRA)},
-  year={2020}
-}
-```
-
-## Install
-### Google Colab
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1PAY5HnLKRB-TBsPaevRr6myMfpVt_yzF?usp=sharing)  
-[Try out Assistive Gym in Google Colab.](https://colab.research.google.com/drive/1PAY5HnLKRB-TBsPaevRr6myMfpVt_yzF?usp=sharing) Assistive Gym is fully supported in Google Colab (online Python Jupyter notebook). Click on the link above for an example. Everything runs online, so you won't need to install anything on your local machine!
-
-All of the available Google Colab examples are listed on the [Wiki-Google Colab](https://github.com/Healthcare-Robotics/assistive-gym/wiki/7.-Google-Colab)
-
-### Basic install (if you just want to use existing environments without changing them)
+## Installing Assistive Gym
+We encourage installing in a python virtualenv or conda environment with Python 3.6 or 3.7.
+To install, run the following commands in a terminal window: 
 ```bash
-pip3 install --upgrade pip
-pip3 install git+https://github.com/Healthcare-Robotics/assistive-gym.git
-```
-
-We recommend using Python 3.6 or 3.7 (although other Python 3.x versions may still work). You can either download [Python 3.6 here](https://www.python.org/downloads/), or use [pyenv](https://github.com/pyenv/pyenv) to install Python 3.6 in a local directory, e.g. `pyenv install 3.6.5; pyenv local 3.6.5`. Both Python 3.6.5 and 3.7.10 have been tested working.
-
-### Full installation (to edit/create environments) using a python virtual environment
-We encourage installing Assistive Gym and its dependencies in a python virtualenv.  
-Installation instructions for Windows can also be found in the [Install Guide](https://github.com/Healthcare-Robotics/assistive-gym/wiki/1.-Install#installing-on-windows).
-```bash
-python3 -m pip install --user virtualenv
-python3 -m venv env
-source env/bin/activate
 pip3 install --upgrade pip
 git clone https://github.com/Healthcare-Robotics/assistive-gym.git
 cd assistive-gym
 pip3 install -e .
 ```
 
-## Getting Started
+## Demonstrations and Pairwise Preference Data
+We provide a variety of trajectories and their corresponding rewards for use as demonstrations in preference learning.
+Namely, for each environment, we provide:
+1. `demos.npy` -- the trajectory data, with shape `(num_trajectories, trajectory_length, observation_dimension)`. (Note: `trajectory_length` is 200 for both Feeding and Itch Scratching.) 
+2. `demo_rewards.npy` -- the final cumulative ground truth reward achieved by the corresponding demonstration in `demos.py`. Has shape `(num_trajectories, )`. 
+3. `demo_reward_per_timestep.npy` -- the ground truth reward earned by the agent at each timestep in the corresponding demonstration in `demos.npy`. Has shape `(num_trajectories, trajectory_length)`.
+
+The locations of the demonstration data for each environment are:
+- Feeding
+    - **Raw** Feature-space: 
+        - `assistive-gym/trex/data/raw_data/demos_states.npy`
+        - `assistive-gym/trex/data/raw_data/demo_rewards.npy`
+        - `assistive-gym/trex/data/raw_data/demo_reward_per_timestep.npy`
+    - **Augmented** Feature-space: 
+        - `assistive-gym/trex/data/augmented_features/demos.npy`
+        - `assistive-gym/trex/data/augmented_features/demos_rewards.npy`
+        - `assistive-gym/trex/data/augmented_features/demo_reward_per_timestep.npy`
+- Itch Scratching
+    - **Raw** Feature-space: 
+        - `assistive-gym/trex/data/raw_data/demos_states.npy`
+        - `assistive-gym/trex/data/raw_data/demo_rewards.npy`
+        - `assistive-gym/trex/data/raw_data/demo_reward_per_timestep.npy`
+    - **Augmented** Feature-space: 
+        - `assistive-gym/trex/data/scratchitch/augmented/demos.npy`
+        - `assistive-gym/trex/data/scratchitch/augmented/demos_rewards.npy`
+        - `assistive-gym/trex/data/scratchitch/augmented/demo_reward_per_timestep.npy`
+        
+
+
 We provide a [10 Minute Getting Started Guide](https://github.com/Healthcare-Robotics/assistive-gym/wiki/3.-Getting-Started) to help you get familiar with using Assistive Gym for assistive robotics research.
 
 You can visualize the various Assistive Gym environments using the environment viewer.  
