@@ -6,6 +6,7 @@ from .env import AssistiveEnv
 class ScratchItchEnv(AssistiveEnv):
     def __init__(self, robot, human):
         super(ScratchItchEnv, self).__init__(robot=robot, human=human, task='scratch_itch', obs_robot_len=(23 + len(robot.controllable_joint_indices) - (len(robot.wheel_joint_indices) if robot.mobile else 0)), obs_human_len=(24 + len(human.controllable_joint_indices)))
+        self.replaceItemUniqueId = None
 
     def step(self, action):
         if self.human.controllable:
@@ -37,6 +38,10 @@ class ScratchItchEnv(AssistiveEnv):
         info = {'total_force_on_human': self.total_force_on_human, 'task_success': int(self.task_success >= self.config('task_success_threshold')), 'action_robot_len': self.action_robot_len, 'action_human_len': self.action_human_len, 'obs_robot_len': self.obs_robot_len, 'obs_human_len': self.obs_human_len, 'tool_force_at_target': self.tool_force_at_target}
         done = self.iteration >= 200
 
+        if self.replaceItemUniqueId is None:
+            self.replaceItemUniqueId = p.addUserDebugText("reward: "+str(reward), [-3.0, 3.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0)
+        else:
+            self.replaceItemUniqueId = p.addUserDebugText("reward: "+str(reward), [-3.0, 3.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0, replaceItemUniqueId=self.replaceItemUniqueId)
         if not self.human.controllable:
             return obs, reward, done, info
         else:
