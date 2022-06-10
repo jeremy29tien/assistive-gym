@@ -197,6 +197,7 @@ if __name__ == "__main__":
     parser.add_argument('--noisy', dest='noisy', default=False, action='store_true', help="whether we add noise to rollouts")
     parser.add_argument('--state_action', dest='state_action', default=False, action='store_true', help="whether data consists of state-action pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--augmented', dest='augmented', default=False, action='store_true', help="whether data consists of states + linear features pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
+    parser.add_argument('--fully_observable', dest='fully_observable', default=False, action='store_true', help="")
     parser.add_argument('--render', dest='render', default=False, action='store_true', help="whether to render rollouts")  # NOTE: type=bool doesn't work, value is still true.
     args = parser.parse_args()
 
@@ -208,6 +209,7 @@ if __name__ == "__main__":
     noisy = args.noisy
     state_action = args.state_action
     augmented = args.augmented
+    fully_observable = args.fully_observable
     render = args.render
 
     if env == "feeding":
@@ -215,4 +217,4 @@ if __name__ == "__main__":
     elif env == "scratching":
         ENV_NAME = "ScratchItchJaco-v1"
 
-    generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, state_action, render)
+    generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, state_action, render)
