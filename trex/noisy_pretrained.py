@@ -9,38 +9,26 @@ from matplotlib import pyplot as plt
 from assistive_gym.learn import load_policy
 import argparse
 
-ENV_NAME = "ScratchItchJaco-v1"
-COOP = False
-
 # NOTE: Most of this is shamelessly copied from render_policy in learn.py.
 # Link: https://github.com/Healthcare-Robotics/assistive-gym/blob/fb799c377e1f144ff96044fb9096725f7f9cfc61/assistive_gym/learn.py#L96
 
 
-def make_env(env_name, coop=False, seed=1001):
-    if not coop:
-        env = gym.make('assistive_gym:'+env_name)
-    else:
-        module = importlib.import_module('assistive_gym.envs')
-        env_class = getattr(module, env_name.split('-')[0] + 'Env')
-        env = env_class()
+def make_env(env_name, seed=1001):
+    env = gym.make('assistive_gym:'+env_name)
     env.seed(seed)
     return env
 
 
-def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, state_action, render):
+def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, state_action, render):
     ray.init(num_cpus=multiprocessing.cpu_count(), ignore_reinit_error=True, log_to_driver=False)
 
     # Set up the environment
-    env = make_env(ENV_NAME, coop=COOP, seed=seed)  # fixed seed for reproducibility (1000 for training, 1001 for testing)
+    env = make_env(ENV_NAME, seed=seed)  # fixed seed for reproducibility (1000 for training, 1001 for testing)
 
     # Load pretrained policy from file
     algo = 'ppo'
 
-    # Pretrained policy locations:
-    # /Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trained_models/ppo/FeedingSawyer-v1/checkpoint_521/checkpoint-521 for local
-    # /home/jtien/assistive-gym/trained_models/ppo/FeedingSawyer-v1/checkpoint_521/checkpoint-521 for server
-
-    test_agent, _ = load_policy(env, algo, ENV_NAME, policy_path, COOP, seed=seed)
+    test_agent, _ = load_policy(env, algo, ENV_NAME, policy_path, coop=False, seed=seed)
 
     if render:
         env.render()
@@ -69,60 +57,50 @@ def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augm
             info = None
             done = False
             while not done:
-                if COOP:
-                    # Compute the next action for the robot/human using the trained policies
-                    action_robot = test_agent.compute_action(observation['robot'], policy_id='robot')
-                    action_human = test_agent.compute_action(observation['human'], policy_id='human')
-
-                    # Collect the data
-                    data = np.concatenate((observation['robot'], observation['human'], action_robot, action_human))
-
-                    # Step the simulation forward using the actions from our trained policies
-                    observation, reward, done, info = env.step({'robot': action_robot, 'human': action_human})
-                    done = done['__all__']
+                # Take random action with probability noise_level
+                if np.random.rand() < noise_level:
+                    action = env.action_space.sample()
                 else:
-                    # Take random action with probability noise_level
-                    if np.random.rand() < noise_level:
-                        action = env.action_space.sample()
+                    # Compute the next action using the trained policy
+                    action = test_agent.compute_action(observation)
+
+                # Collect the data
+                # print("Observation:", observation)
+                # print("Action:", action)
+
+                # FeedingSawyer
+                # augmented (privileged) features: spoon-mouth distance, amount of food particles in mouth, amount of food particles on the floor
+                # fully-observable: add previous end effector position, robot force on human, food information
+                if ENV_NAME == "FeedingSawyer-v1":
+                    distance = np.linalg.norm(observation[7:10])
+                    if info is None:
+                        foods_in_mouth = 0
+                        foods_on_floor = 0
                     else:
-                        # Compute the next action using the trained policy
-                        action = test_agent.compute_action(observation)
+                        foods_in_mouth = info['foods_in_mouth']
+                        foods_on_floor = info['foods_on_ground']
+                    handpicked_features = np.array([distance, foods_in_mouth, foods_on_floor])
 
-                    # Collect the data
-                    # print("Observation:", observation)
-                    # print("Action:", action)
-
-                    # FeedingSawyer privileged features: spoon-mouth distance, amount of food particles in mouth, amount of food particles on the floor
-                    if ENV_NAME == "FeedingSawyer-v1":
-                        distance = np.linalg.norm(observation[7:10])
-                        if info is None:
-                            foods_in_mouth = 0
-                            foods_on_floor = 0
-                        else:
-                            foods_in_mouth = info['foods_in_mouth']
-                            foods_on_floor = info['foods_on_ground']
-                        handpicked_features = np.array([distance, foods_in_mouth, foods_on_floor])
-
-                    # ScratchItchJaco privileged features: end effector - target distance, total force at target
-                    if ENV_NAME == "ScratchItchJaco-v1":
-                        distance = np.linalg.norm(observation[7:10])
-                        if info is None:
-                            tool_force_at_target = 0.0
-                        else:
-                            tool_force_at_target = info['tool_force_at_target']
-                        handpicked_features = np.array([distance, tool_force_at_target])
-
-                    if augmented and state_action:
-                        data = np.concatenate((observation, action, handpicked_features))
-                    elif augmented:
-                        data = np.concatenate((observation, handpicked_features))
-                    elif state_action:
-                        data = np.concatenate((observation, action))
+                # ScratchItchJaco privileged features: end effector - target distance, total force at target
+                if ENV_NAME == "ScratchItchJaco-v1":
+                    distance = np.linalg.norm(observation[7:10])
+                    if info is None:
+                        tool_force_at_target = 0.0
                     else:
-                        data = observation
+                        tool_force_at_target = info['tool_force_at_target']
+                    handpicked_features = np.array([distance, tool_force_at_target])
 
-                    # Step the simulation forward using the action from our trained policy
-                    observation, reward, done, info = env.step(action)
+                if augmented and state_action:
+                    data = np.concatenate((observation, action, handpicked_features))
+                elif augmented:
+                    data = np.concatenate((observation, handpicked_features))
+                elif state_action:
+                    data = np.concatenate((observation, action))
+                else:
+                    data = observation
+
+                # Step the simulation forward using the action from our trained policy
+                observation, reward, done, info = env.step(action)
 
                 traj.append(data)
                 total_reward += reward
@@ -204,6 +182,7 @@ if __name__ == "__main__":
     parser.add_argument('--render', dest='render', default=False, action='store_true', help="whether to render rollouts")  # NOTE: type=bool doesn't work, value is still true.
     args = parser.parse_args()
 
+    env = args.env
     data_dir = args.data_dir
     policy_path = args.policy_path
     seed = args.seed
@@ -212,5 +191,10 @@ if __name__ == "__main__":
     state_action = args.state_action
     augmented = args.augmented
     render = args.render
+
+    if env == "feeding":
+        ENV_NAME = "FeedingSawyer-v1"
+    elif env == "scratching":
+        ENV_NAME = "ScratchItchJaco-v1"
 
     generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, state_action, render)

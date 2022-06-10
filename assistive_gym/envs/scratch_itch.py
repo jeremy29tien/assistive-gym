@@ -35,7 +35,13 @@ class ScratchItchEnv(AssistiveEnv):
         if self.gui and self.tool_force_at_target > 0:
             print('Task success:', self.task_success, 'Tool force at target:', self.tool_force_at_target, reward_force_scratch)
 
-        info = {'total_force_on_human': self.total_force_on_human, 'task_success': int(self.task_success >= self.config('task_success_threshold')), 'action_robot_len': self.action_robot_len, 'action_human_len': self.action_human_len, 'obs_robot_len': self.obs_robot_len, 'obs_human_len': self.obs_human_len, 'tool_force_at_target': self.tool_force_at_target}
+        info = {'total_force_on_human': self.total_force_on_human, 'task_success': int(self.task_success >= self.config('task_success_threshold')),
+                'action_robot_len': self.action_robot_len, 'action_human_len': self.action_human_len,
+                'obs_robot_len': self.obs_robot_len, 'obs_human_len': self.obs_human_len,
+                'tool_force_at_target': self.tool_force_at_target, 'prev_spoon_pos_real': self.prev_spoon_pos_real,
+                'robot_force_on_human': self.robot_force_on_human, 'prev_tool_force': self.prev_tool_force}
+        self.prev_spoon_pos_real = obs[0:3]
+        self.prev_tool_force = obs[-1]
         done = self.iteration >= 200
 
         if self.replaceItemUniqueId is None:
@@ -50,6 +56,7 @@ class ScratchItchEnv(AssistiveEnv):
 
     def get_total_force(self):
         total_force_on_human = np.sum(self.robot.get_contact_points(self.human)[-1])
+        self.robot_force_on_human = total_force_on_human
         tool_force = np.sum(self.tool.get_contact_points()[-1])
         tool_force_at_target = 0
         target_contact_pos = None
@@ -102,6 +109,8 @@ class ScratchItchEnv(AssistiveEnv):
         super(ScratchItchEnv, self).reset()
         self.build_assistive_env('wheelchair')
         self.prev_target_contact_pos = np.zeros(3)
+        self.prev_spoon_pos_real = np.zeros(3)
+        self.prev_tool_force = 0
         if self.robot.wheelchair_mounted:
             wheelchair_pos, wheelchair_orient = self.furniture.get_base_pos_orient()
             self.robot.set_base_pos_orient(wheelchair_pos + np.array(self.robot.toc_base_pos_offset[self.task]), [0, 0, -np.pi/2.0])

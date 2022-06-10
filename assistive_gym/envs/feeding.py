@@ -34,7 +34,13 @@ class FeedingEnv(AssistiveEnv):
         if self.gui and reward_food != 0:
             print('Task success:', self.task_success, 'Food reward:', reward_food)
 
-        info = {'total_force_on_human': self.total_force_on_human, 'task_success': int(self.task_success >= self.total_food_count*self.config('task_success_threshold')), 'action_robot_len': self.action_robot_len, 'action_human_len': self.action_human_len, 'obs_robot_len': self.obs_robot_len, 'obs_human_len': self.obs_human_len, 'foods_in_mouth': foods_in_mouth, 'foods_on_ground': foods_on_ground}
+        info = {'total_force_on_human': self.total_force_on_human, 'task_success': int(self.task_success >= self.total_food_count*self.config('task_success_threshold')),
+                'action_robot_len': self.action_robot_len, 'action_human_len': self.action_human_len,
+                'obs_robot_len': self.obs_robot_len, 'obs_human_len': self.obs_human_len,
+                'foods_in_mouth': foods_in_mouth, 'foods_on_ground': foods_on_ground,
+                'foods_hit_human': -1*food_hit_human_reward, 'sum_food_mouth_velocities': np.sum(food_mouth_velocities),
+                'prev_spoon_pos_real': self.prev_spoon_pos_real, 'robot_force_on_human': self.robot_force_on_human}
+        self.prev_spoon_pos_real = obs[0:3]
         done = self.iteration >= 200
 
         if self.replaceItemUniqueId is None:
@@ -126,6 +132,7 @@ class FeedingEnv(AssistiveEnv):
     def reset(self):
         super(FeedingEnv, self).reset()
         self.build_assistive_env('wheelchair')
+        self.prev_spoon_pos_real = np.zeros(3)
         if self.robot.wheelchair_mounted:
             wheelchair_pos, wheelchair_orient = self.furniture.get_base_pos_orient()
             self.robot.set_base_pos_orient(wheelchair_pos + np.array(self.robot.toc_base_pos_offset[self.task]), [0, 0, -np.pi/2.0])
