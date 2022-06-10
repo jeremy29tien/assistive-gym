@@ -76,24 +76,42 @@ def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augm
                     if info is None:
                         foods_in_mouth = 0
                         foods_on_floor = 0
+                        foods_hit_human = 0
+                        sum_food_mouth_velocities = 0
+                        prev_spoon_pos_real = np.zeros(3)
+                        robot_force_on_human = 0
                     else:
                         foods_in_mouth = info['foods_in_mouth']
                         foods_on_floor = info['foods_on_ground']
-                    handpicked_features = np.array([distance, foods_in_mouth, foods_on_floor])
+                        foods_hit_human = info['foods_hit_human']
+                        sum_food_mouth_velocities = info['sum_food_mouth_velocities']
+                        prev_spoon_pos_real = info['prev_spoon_pos_real']
+                        robot_force_on_human = info['robot_force_on_human']
+                    privileged_features = np.array([distance, foods_in_mouth, foods_on_floor])
+                    fo_features = np.concatenate(([foods_in_mouth, foods_on_floor, foods_hit_human, sum_food_mouth_velocities], prev_spoon_pos_real, [robot_force_on_human]))
 
                 # ScratchItchJaco privileged features: end effector - target distance, total force at target
                 if ENV_NAME == "ScratchItchJaco-v1":
                     distance = np.linalg.norm(observation[7:10])
                     if info is None:
                         tool_force_at_target = 0.0
+                        prev_tool_pos_real = np.zeros(3)
+                        robot_force_on_human = 0
+                        prev_tool_force = 0
                     else:
                         tool_force_at_target = info['tool_force_at_target']
-                    handpicked_features = np.array([distance, tool_force_at_target])
+                        prev_tool_pos_real = info['prev_tool_pos_real']
+                        robot_force_on_human = info['robot_force_on_human']
+                        prev_tool_force = info['prev_tool_force']
+                    privileged_features = np.array([distance, tool_force_at_target])
+                    fo_features = np.concatenate((prev_tool_pos_real, [robot_force_on_human, prev_tool_force]))
 
-                if augmented and state_action:
-                    data = np.concatenate((observation, action, handpicked_features))
+                if fully_observable:
+                    data = np.concatenate((observation, action, fo_features))
+                elif augmented and state_action:
+                    data = np.concatenate((observation, action, privileged_features))
                 elif augmented:
-                    data = np.concatenate((observation, handpicked_features))
+                    data = np.concatenate((observation, privileged_features))
                 elif state_action:
                     data = np.concatenate((observation, action))
                 else:
