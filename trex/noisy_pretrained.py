@@ -190,7 +190,7 @@ def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augm
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=None)
-    parser.add_argument('--env', default='', help="env name (feeding or scratching)")
+    parser.add_argument('--env', default='', help="env name (feeding or scratchitch)")
     parser.add_argument('--data_dir', default='', help="location for generated rollouts")
     parser.add_argument('--policy_path', default='', help="location for (pre)trained policy")
     parser.add_argument('--seed', default=0, type=int, help="random seed for experiments")
@@ -215,7 +215,7 @@ if __name__ == "__main__":
 
     if env == "feeding":
         ENV_NAME = "FeedingSawyer-v1"
-    elif env == "scratching":
+    elif env == "scratchitch":
         ENV_NAME = "ScratchItchJaco-v1"
 
     generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, state_action, render)
