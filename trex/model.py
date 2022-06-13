@@ -81,13 +81,15 @@ def create_training_data(sorted_demonstrations, sorted_rewards, num_comps=0, del
 # If input is comprised of states, input_dim = 25
 # input_dim = 25
 class Net(nn.Module):
-    def __init__(self, env, hidden_dims=(128,64), augmented=False, augmented_full=False, num_rawfeatures=25, state_action=False, norm=False):
+    def __init__(self, env, hidden_dims=(128,64), augmented=False, fully_observable=False, num_rawfeatures=25, state_action=False, norm=False):
         super().__init__()
 
-        if augmented_full:
-            # TODO: correct this.
-            input_dim = num_rawfeatures + 2
-        if augmented and state_action:
+        if fully_observable:
+            if env == "feeding":
+                input_dim = 40
+            elif env == "scratch_itch":
+                input_dim = 42
+        elif augmented and state_action:
             # Feeding only
             input_dim = 35
         elif augmented:
@@ -277,7 +279,7 @@ def predict_traj_return(device, net, traj):
 
 
 def run(reward_model_path, seed, feeding=True, scratch_itch=False, num_comps=0, num_demos=120, hidden_dims=tuple(), lr=0.00005, weight_decay=0.0, l1_reg=0.0,
-        num_epochs=100, patience=100, delta_rank=1, delta_reward=0, all_pairs=False, augmented=False, augmented_full=False,
+        num_epochs=100, patience=100, delta_rank=1, delta_reward=0, all_pairs=False, augmented=False, fully_observable=False,
         num_rawfeatures=11, state_action=False, normalize_features=False, teleop=False, test=False,
         al_data=tuple(), load_weights=False, return_weights=False):
     np.random.seed(seed)
@@ -286,10 +288,15 @@ def run(reward_model_path, seed, feeding=True, scratch_itch=False, num_comps=0, 
         demos = al_data[0]
         demo_rewards = al_data[1]
     else:
-        if augmented_full:
-            # TODO: Fill with augmented full data
-            pass
-
+        if fully_observable:
+            if feeding:
+                dems = np.load("data/feeding/fully_observable/demos.npy")
+                demo_rewards = np.load("data/feeding/fully_observable/demo_rewards.npy")
+                demo_reward_per_timestep = np.load("data/feeding/fully_observable/demo_reward_per_timestep.npy")
+            elif scratch_itch:
+                dems = np.load("data/scratchitch/fully_observable/demos.npy")
+                demo_rewards = np.load("data/scratchitch/fully_observable/demo_rewards.npy")
+                demo_reward_per_timestep = np.load("data/scratchitch/fully_observable/demo_reward_per_timestep.npy")
         elif augmented and state_action:
             demos = np.load("data/augmented_stateactions/demos.npy")
             demo_rewards = np.load("data/augmented_stateactions/demo_rewards.npy")
@@ -409,7 +416,7 @@ def run(reward_model_path, seed, feeding=True, scratch_itch=False, num_comps=0, 
     # Now we create a reward network and optimize it using the training data.
     device = torch.device(determine_default_torch_device(not torch.cuda.is_available()))
 
-    reward_net = Net("scratch_itch" if scratch_itch else "feeding", hidden_dims=hidden_dims, augmented=augmented, augmented_full=augmented_full, num_rawfeatures=num_rawfeatures, state_action=state_action, norm=normalize_features)
+    reward_net = Net("scratch_itch" if scratch_itch else "feeding", hidden_dims=hidden_dims, augmented=augmented, fully_observable=fully_observable, num_rawfeatures=num_rawfeatures, state_action=state_action, norm=normalize_features)
 
     # Check if we already trained this model before. If so, load the saved weights.
     if load_weights:
@@ -467,7 +474,7 @@ if __name__ == "__main__":
     parser.add_argument('--all_pairs', dest='all_pairs', default=False, action='store_true', help="whether we generate all pairs from the dataset (num_demos choose 2)")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--state_action', dest='state_action', default=False, action='store_true', help="whether data consists of state-action pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--augmented', dest='augmented', default=False, action='store_true', help="whether data consists of states + linear features pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
-    parser.add_argument('--augmented_full', dest='augmented_full', default=False, action='store_true', help="whether data consists of states + (distance, action norm) rather that just states")  # NOTE: type=bool doesn't work, value is still true.
+    parser.add_argument('--fully_observable', dest='fully_observable', default=False, action='store_true', help="whether data consists of states + (distance, action norm) rather that just states")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--num_rawfeatures', default=-1, type=int, help="the number of raw features to keep in the augmented space")
     parser.add_argument('--normalize_features', dest='normalize_features', default=False, action='store_true', help="whether to normalize features")  # NOTE: type=bool doesn't work, value is still true.
     # parser.add_argument('--active_learning', dest='active_learning', default=False, action='store_true', help="whether we use data generated by RL policy's rollouts")  # NOTE: type=bool doesn't work, value is still true.
@@ -493,7 +500,7 @@ if __name__ == "__main__":
     all_pairs = args.all_pairs
     state_action = args.state_action
     augmented = args.augmented
-    augmented_full = args.augmented_full
+    fully_observable = args.fully_observable
     num_rawfeatures = args.num_rawfeatures
     if num_rawfeatures == -1:
         if feeding:
@@ -510,6 +517,6 @@ if __name__ == "__main__":
 
     run(args.reward_model_path, seed, num_comps=num_comps, num_demos=num_demos, hidden_dims=hidden_dims, lr=lr,
         weight_decay=weight_decay, l1_reg=l1_reg, num_epochs=num_epochs, patience=patience, delta_rank=delta_rank, delta_reward=delta_reward,
-        all_pairs=all_pairs, augmented=augmented, augmented_full=augmented_full, num_rawfeatures=num_rawfeatures,
+        all_pairs=all_pairs, augmented=augmented, fully_observable=fully_observable, num_rawfeatures=num_rawfeatures,
         state_action=state_action, normalize_features=normalize_features, teleop=teleop, test=test)
 

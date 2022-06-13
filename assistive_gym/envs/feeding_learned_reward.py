@@ -7,25 +7,26 @@ from .feeding import FeedingEnv
 from .agents import furniture
 from .agents.furniture import Furniture
 from trex.model import Net
+from gpu_utils import determine_default_torch_device
 
 
 class FeedingLearnedRewardEnv(FeedingEnv):
-    # Primus: /home/jtien/assistive-gym/trex/models/5000_trajs_early_stopping.params
-    # With weight decay: /home/jtien/assistive-gym/trex/models/5000traj_100epoch_1weightdecay_earlystopping.params
-    # With no bias: /home/jtien/assistive-gym/trex/models/5000traj_100epoch_nobias_earlystopping.params
-    # Local: /Users/jeremytien/Documents/3rd-Year/Research/Anca Dragan/assistive-gym/trex/models/test1.params
     def __init__(self, robot, human, reward_net_path, indvar):
         super(FeedingLearnedRewardEnv, self).__init__(robot=robot, human=human)
+
+        # Reward Model Specifications
+        self.fully_observable = True
         self.augmented = False
         self.state_action = False
-        self.num_rawfeatures = 25  # Feeding has 30 raw features total
+        self.num_rawfeatures = 25  # Feeding has 25 raw features total
         self.hidden_dims = (128, 64)
+        self.normalize = False
 
         print("reward_net_path:", reward_net_path)
         self.reward_net_path = reward_net_path
 
-        self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.reward_net = Net("feeding", hidden_dims=self.hidden_dims, with_bias=False, augmented=self.augmented, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action)
+        self.device = torch.device(determine_default_torch_device(not torch.cuda.is_available()))
+        self.reward_net = Net("feeding", hidden_dims=self.hidden_dims, augmented=self.augmented, fully_observable=self.fully_observable, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action, norm=self.normalize)
         print("device:", self.device)
         print("torch.cuda.is_available():", torch.cuda.is_available())
         self.reward_net.load_state_dict(torch.load(self.reward_net_path, map_location=torch.device('cpu')))
@@ -34,12 +35,24 @@ class FeedingLearnedRewardEnv(FeedingEnv):
     def step(self, action):
         obs, reward, done, info = super().step(action)
 
+        # Store the ground-truth reward for downstream use (but not training).
+        info['gt_reward'] = reward
+
         distance = np.linalg.norm(obs[7:10])  # spoon_pos_real - target_pos_real is at index 7,8,9
         foods_in_mouth = info['foods_in_mouth']
         foods_on_floor = info['foods_on_ground']
-        handpicked_features = np.array([distance, foods_in_mouth, foods_on_floor])
+        foods_hit_human = info['foods_hit_human']
+        sum_food_mouth_velocities = info['sum_food_mouth_velocities']
+        prev_spoon_pos_real = info['prev_spoon_pos_real']
+        robot_force_on_human = info['robot_force_on_human']
 
-        if self.augmented and self.state_action:
+        handpicked_features = np.array([distance, foods_in_mouth, foods_on_floor])
+        fo_features = np.concatenate(([foods_in_mouth, foods_on_floor, foods_hit_human, sum_food_mouth_velocities],
+                                      prev_spoon_pos_real, [robot_force_on_human]))
+
+        if self.fully_observable:
+            input = np.concatenate((obs, action, fo_features))
+        elif self.augmented and self.state_action:
             input = np.concatenate((obs, action, handpicked_features))
         elif self.augmented:
             input = np.concatenate((obs[0:self.num_rawfeatures], handpicked_features))
