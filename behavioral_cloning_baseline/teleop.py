@@ -5,8 +5,8 @@ import numpy as np
 import csv
 import importlib
 
-FILE_NAME = "data/feedingsawyer_standard.csv"
-ENV_NAME = "FeedingSawyer-v1"
+# FILE_NAME = "data/feedingsawyer_standard3.csv"
+ENV_NAME = "FeedingBaxter-v1"
 ACTIVE_HUMAN = False
 
 def make_env(env_name, coop=False, seed=1001):
@@ -21,7 +21,6 @@ def make_env(env_name, coop=False, seed=1001):
 
 
 env = make_env(ENV_NAME, coop=ACTIVE_HUMAN, seed=1000)
-# env = gym.make('DrinkingSawyer-v1')
 env.set_seed(1000)  # fixed seed for reproducibility (1000 for training, 1001 for testing)
 env.render()
 

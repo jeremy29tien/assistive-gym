@@ -17,9 +17,9 @@ args = parser.parse_args()
 
 reward_net_path = args.reward_net_path
 
-demos = np.load("data/demos.npy")
-demo_rewards = np.load("data/demo_rewards.npy")
-demo_reward_per_timestep = np.load("data/demo_reward_per_timestep.npy")
+demos = np.load("data/raw_data/demos.npy")
+demo_rewards = np.load("data/raw_data/demo_rewards.npy")
+demo_reward_per_timestep = np.load("data/raw_data/demo_reward_per_timestep.npy")
 
 # sorts the demos in order of increasing reward (most negative reward to most positive reward)
 # note that sorted_demos is now a python list, not a np array
@@ -31,8 +31,8 @@ sorted_demo_rewards = sorted(demo_rewards)
 
 # Now we create a reward network and optimize it using the training data.
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-reward_net = Net()
-reward_net.load_state_dict(torch.load(reward_net_path))
+reward_net = Net(with_bias=False)
+reward_net.load_state_dict(torch.load(reward_net_path, map_location=torch.device('cpu')))
 reward_net.to(device)
 
 # print out predicted cumulative returns and actual returns
