@@ -2,9 +2,61 @@ import os, sys, multiprocessing, gym, ray, shutil, argparse, importlib, glob
 import numpy as np
 # from ray.rllib.agents.ppo import PPOTrainer, DEFAULT_CONFIG
 from ray.rllib.agents import ppo, sac
+from ray.rllib.utils.typing import PolicyID
 from ray.tune.logger import pretty_print
 from numpngw import write_apng
 from tensorboardX import SummaryWriter
+from ray.rllib.agents.callbacks import DefaultCallbacks
+from typing import Dict, Optional
+from ray.rllib.env import BaseEnv
+from ray.rllib.policy import Policy
+from ray.rllib.policy.sample_batch import SampleBatch
+from ray.rllib.evaluation import MultiAgentEpisode, RolloutWorker
+from ray.rllib.agents.callbacks import DefaultCallbacks
+
+
+class CustomCallbacks(DefaultCallbacks):
+
+    def on_episode_start(self,
+                         *,
+                         worker: "RolloutWorker",
+                         base_env: BaseEnv,
+                         policies: Dict[PolicyID, Policy],
+                         episode: MultiAgentEpisode,
+                         env_index: Optional[int] = None,
+                         **kwargs) -> None:
+        print("episode {} started".format(episode.episode_id))
+        episode.user_data['gt_rewards'] = []
+        episode.hist_data['gt_rewards'] = []
+
+    def on_episode_step(self,
+                        *,
+                        worker: "RolloutWorker",
+                        base_env: BaseEnv,
+                        episode: MultiAgentEpisode,
+                        env_index: Optional[int] = None,
+                        **kwargs) -> None:
+        info = episode.last_info_for(0)
+        r = info['gt_reward']
+        episode.user_data['gt_rewards'].append(r)
+
+    def on_episode_end(self,
+                       *,
+                       worker: "RolloutWorker",
+                       base_env: BaseEnv,
+                       policies: Dict[PolicyID, Policy],
+                       episode: MultiAgentEpisode,
+                       env_index: Optional[int] = None,
+                       **kwargs) -> None:
+        gt_reward = np.sum(episode.user_data["gt_rewards"])
+        print("episode {} ended with length {} and gt reward {}".format(
+            episode.episode_id, episode.length, gt_reward))
+        episode.custom_metrics["gt_reward"] = gt_reward
+        episode.hist_data["gt_reward"] = episode.user_data["gt_reward"]
+
+    # def on_train_result(self, *, trainer, result: dict, **kwargs) -> None:
+    #     result['gt_reward'] = None
+
 
 def setup_config(env, algo, coop=False, seed=0, extra_configs={}):
     num_processes = multiprocessing.cpu_count()
@@ -27,6 +79,7 @@ def setup_config(env, algo, coop=False, seed=0, extra_configs={}):
     config['num_cpus_per_worker'] = 0
     config['seed'] = seed
     config['log_level'] = 'ERROR'
+    config['callbacks'] = CustomCallbacks
     # if algo == 'sac':
     #     config['num_workers'] = 1
     if coop:
@@ -35,6 +88,7 @@ def setup_config(env, algo, coop=False, seed=0, extra_configs={}):
         config['multiagent'] = {'policies': policies, 'policy_mapping_fn': lambda a: a}
         config['env_config'] = {'num_agents': 2}
     return {**config, **extra_configs}
+
 
 def load_policy(env, algo, env_name, policy_path=None, coop=False, seed=0, extra_configs={}):
     if algo == 'ppo':
@@ -99,6 +153,7 @@ def train(env_name, algo, evalonly_env_name='', timesteps_total=1000000, save_di
             result['episode_reward_min'] /= 2
             result['episode_reward_max'] /= 2
         print(f"Iteration: {result['training_iteration']}, total timesteps: {result['timesteps_total']}, total time: {result['time_total_s']:.1f}, FPS: {result['timesteps_total']/result['time_total_s']:.1f}, mean reward: {result['episode_reward_mean']:.1f}, min/max reward: {result['episode_reward_min']:.1f}/{result['episode_reward_max']:.1f}")
+        print("Custom metrics:", result['custom_metrics'])
         sys.stdout.flush()
         if tb:
             writer.add_scalar('scalar/' + env_name + '_reward', result['episode_reward_mean'], timesteps)
