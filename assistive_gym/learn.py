@@ -161,7 +161,7 @@ def train(env_name, algo, evalonly_env_name='', timesteps_total=1000000, save_di
         sys.stdout.flush()
         if tb:
             writer.add_scalar('scalar/' + env_name + '_reward', result['episode_reward_mean'], timesteps)
-            writer.add_scalar('scalar/GT_reward', result['custom_metrics']['gt_reward_mean'], timesteps)
+            writer.add_scalar('scalar/' + env_name + '_GTreward', result['custom_metrics']['gt_reward_mean'], timesteps)
 
         if not (save_checkpoints and result['training_iteration'] % 10 == 1):
             # Delete the old saved policy
