@@ -37,7 +37,7 @@ class CustomCallbacks(DefaultCallbacks):
                         env_index: Optional[int] = None,
                         **kwargs) -> None:
         info = episode.last_info_for()
-        if info:
+        if info and 'gt_reward' in info:
             r = info['gt_reward']
             episode.user_data['gt_rewards'].append(r)
 
@@ -161,6 +161,7 @@ def train(env_name, algo, evalonly_env_name='', timesteps_total=1000000, save_di
         sys.stdout.flush()
         if tb:
             writer.add_scalar('scalar/' + env_name + '_reward', result['episode_reward_mean'], timesteps)
+            writer.add_scalar('scalar/GT_reward', result['custom_metrics']['gt_reward_mean'], timesteps)
 
         if not (save_checkpoints and result['training_iteration'] % 10 == 1):
             # Delete the old saved policy
@@ -169,9 +170,9 @@ def train(env_name, algo, evalonly_env_name='', timesteps_total=1000000, save_di
 
         # Save the recently trained policy
         checkpoint_path = agent.save(os.path.join(save_dir, algo, env_name))
-        if tb:
-            aux_reward, _ = evaluate_policy(evalonly_env_name, algo, checkpoint_path, n_episodes=1, seed=seed, verbose=False, reward_net_path=evalonly_reward_net_path)
-            writer.add_scalar('scalar/'+evalonly_env_name+'_reward', aux_reward, timesteps)
+        # if tb:
+        #     aux_reward, _ = evaluate_policy(evalonly_env_name, algo, checkpoint_path, n_episodes=1, seed=seed, verbose=False, reward_net_path=evalonly_reward_net_path)
+        #     writer.add_scalar('scalar/'+evalonly_env_name+'_reward', aux_reward, timesteps)
 
     return checkpoint_path
 
@@ -269,6 +270,8 @@ def evaluate_policy(env_name, algo, policy_path, n_episodes=100, coop=False, see
     print('Task Success Mean:', np.mean(task_successes))
     print('Task Success Std:', np.std(task_successes))
     sys.stdout.flush()
+
+    return np.mean(rewards), np.std(rewards), np.mean(task_successes), np.std(task_successes)
 
 
 if __name__ == '__main__':
