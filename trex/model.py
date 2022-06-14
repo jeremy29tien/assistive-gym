@@ -397,7 +397,7 @@ def run(reward_model_path, seed, feeding=True, scratch_itch=False, num_comps=0, 
 
     # Subsample the demos according to num_demos
     # Source: https://stackoverflow.com/questions/50685409/select-n-evenly-spaced-out-elements-in-array-including-first-and-last
-    idx = np.round(np.linspace(0, len(demos) - 1, num_demos)).astype(int)
+    idx = np.round(np.linspace(0, len(sorted_train_demos) - 1, num_demos)).astype(int)
     sorted_train_demos = sorted_train_demos[idx]
     sorted_train_rewards = sorted_train_rewards[idx]
     # demo_reward_per_timestep = demo_reward_per_timestep[idx]  # Note: not used.
