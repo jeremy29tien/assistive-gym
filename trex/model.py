@@ -290,11 +290,11 @@ def run(reward_model_path, seed, feeding=True, scratch_itch=False, num_comps=0, 
     else:
         if fully_observable:
             if feeding:
-                dems = np.load("data/feeding/fully_observable/demos.npy")
+                demos = np.load("data/feeding/fully_observable/demos.npy")
                 demo_rewards = np.load("data/feeding/fully_observable/demo_rewards.npy")
                 demo_reward_per_timestep = np.load("data/feeding/fully_observable/demo_reward_per_timestep.npy")
             elif scratch_itch:
-                dems = np.load("data/scratchitch/fully_observable/demos.npy")
+                demos = np.load("data/scratchitch/fully_observable/demos.npy")
                 demo_rewards = np.load("data/scratchitch/fully_observable/demo_rewards.npy")
                 demo_reward_per_timestep = np.load("data/scratchitch/fully_observable/demo_reward_per_timestep.npy")
         elif augmented and state_action:
