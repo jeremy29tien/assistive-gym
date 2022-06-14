@@ -442,7 +442,7 @@ def run(reward_model_path, seed, feeding=True, scratch_itch=False, num_comps=0, 
 
     # print out predicted cumulative returns and actual returns
     with torch.no_grad():
-        pred_returns = [predict_traj_return(reward_net, traj) for traj in sorted_val_demos]
+        pred_returns = [predict_traj_return(device, reward_net, traj) for traj in sorted_val_demos]
     for i, p in enumerate(pred_returns):
         print(i, p, sorted_val_rewards[i])
 
