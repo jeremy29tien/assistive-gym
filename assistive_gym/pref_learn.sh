@@ -19,7 +19,7 @@ for seed in 0 1 2; do
   echo "Performing RL..."
   cd ..
   policy_save_dir="./trained_models_reward_learning/${config}_seed${seed}"
-  python3 -m assistive_gym.learn --env "FeedingLearnedRewardSawyer-v0" --algo ppo --seed $seed --train --train-timesteps 1000000 --reward-net-path $reward_model_path --save-dir $policy_save_dir --tb
+  python3 -m assistive_gym.learn --env "FeedingLearnedRewardSawyer-v0" --algo ppo --seed $seed --train --train-timesteps 1000000 --reward-net-path $reward_model_path --save-dir $policy_save_dir --load-policy-path $policy_save_dir --tb
 
   #Eval
   echo "Evaluating RL..."
