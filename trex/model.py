@@ -515,8 +515,8 @@ if __name__ == "__main__":
     test = args.test
     #################
 
-    run(args.reward_model_path, seed, num_comps=num_comps, num_demos=num_demos, hidden_dims=hidden_dims, lr=lr,
-        weight_decay=weight_decay, l1_reg=l1_reg, num_epochs=num_epochs, patience=patience, delta_rank=delta_rank, delta_reward=delta_reward,
-        all_pairs=all_pairs, augmented=augmented, fully_observable=fully_observable, num_rawfeatures=num_rawfeatures,
-        state_action=state_action, normalize_features=normalize_features, teleop=teleop, test=test)
+    run(args.reward_model_path, seed, feeding=feeding, scratch_itch=scratch_itch, num_comps=num_comps, num_demos=num_demos,
+        hidden_dims=hidden_dims, lr=lr, weight_decay=weight_decay, l1_reg=l1_reg, num_epochs=num_epochs, patience=patience,
+        delta_rank=delta_rank, delta_reward=delta_reward, all_pairs=all_pairs, augmented=augmented, fully_observable=fully_observable,
+        num_rawfeatures=num_rawfeatures, state_action=state_action, normalize_features=normalize_features, teleop=teleop, test=test)
 
