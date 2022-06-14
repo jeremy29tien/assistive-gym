@@ -36,9 +36,10 @@ class CustomCallbacks(DefaultCallbacks):
                         episode: MultiAgentEpisode,
                         env_index: Optional[int] = None,
                         **kwargs) -> None:
-        info = episode.last_info_for(0)
-        r = info['gt_reward']
-        episode.user_data['gt_rewards'].append(r)
+        info = episode.last_info_for()
+        if info:
+            r = info['gt_reward']
+            episode.user_data['gt_rewards'].append(r)
 
     def on_episode_end(self,
                        *,
@@ -52,7 +53,7 @@ class CustomCallbacks(DefaultCallbacks):
         print("episode {} ended with length {} and gt reward {}".format(
             episode.episode_id, episode.length, gt_reward))
         episode.custom_metrics["gt_reward"] = gt_reward
-        episode.hist_data["gt_reward"] = episode.user_data["gt_reward"]
+        episode.hist_data["gt_rewards"] = episode.user_data["gt_rewards"]
 
     # def on_train_result(self, *, trainer, result: dict, **kwargs) -> None:
     #     result['gt_reward'] = None
