@@ -142,7 +142,7 @@ def train(env_name, algo, evalonly_env_name='', timesteps_total=1000000, save_di
         agent, checkpoint_path = load_policy(env, algo, env_name, load_policy_path, coop, seed, extra_configs={
             "env_config": {"reward_net_path": reward_net_path}})
     else:
-        agent, checkpoint_path = load_policy(env, algo, env_name, load_policy_path, seed)
+        agent, checkpoint_path = load_policy(env, algo, env_name, load_policy_path, coop, seed)
 
     env.disconnect()
 
