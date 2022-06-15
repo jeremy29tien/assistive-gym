@@ -3,7 +3,7 @@
 
 var1=$1  # This is the variable that will hold our independent variable in our experiments
 var2=$2
-for seed in 0 1 2; do
+for seed in ${var1}; do
   echo Seed $seed
 
   #Reward-learning
@@ -23,7 +23,7 @@ for seed in 0 1 2; do
 
   #Eval
   echo "Evaluating RL..."
-  load_policy_path="${policy_save_dir}/ppo/ScratchItchLearnedRewardJaco-v0/checkpoint_000053/checkpoint-53"
+  load_policy_path="${policy_save_dir}/ppo/ScratchItchLearnedRewardJaco-v0/checkpoint_40/checkpoint-40"
   eval_path="trex/rl/eval/${config}_seed${seed}.txt"
   python3 -m assistive_gym.learn --env "ScratchItchJaco-v1" --algo ppo --evaluate --eval-episodes 100 --seed 3 --verbose --load-policy-path $load_policy_path > $eval_path
 done
