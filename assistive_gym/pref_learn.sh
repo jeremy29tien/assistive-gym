@@ -24,8 +24,10 @@ for seed in ${var1}; do
   #Eval
   echo "Evaluating RL..."
   load_policy_path="${policy_save_dir}/ppo/ScratchItchLearnedRewardJaco-v0/checkpoint_40/checkpoint-40"
-  eval_path="trex/rl/eval/${config}_seed${seed}.txt"
+  gt_eval_path="trex/rl/eval/${config}_seed${seed}.txt"
+  learned_eval_path="trex/rl/eval/${config}_seed${seed}_learnedreward.txt"
   python3 -m assistive_gym.learn --env "ScratchItchJaco-v1" --algo ppo --evaluate --eval-episodes 100 --seed 3 --verbose --load-policy-path $load_policy_path > $eval_path
+  python3 -m assistive_gym.learn --env "ScratchItchLearnedRewardJaco-v0" --reward-net-path $reward_model_path --algo ppo --evaluate --eval-episodes 100 --seed 3 --verbose --load-policy-path $load_policy_path > $learned_eval_path
 done
 
 
