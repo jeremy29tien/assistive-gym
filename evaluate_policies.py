@@ -21,7 +21,7 @@ def evaluate_policies(infile, outdir):
     for policy_path in policy_paths:
         if policy_path:
             # 1. Evaluate on the GT reward.
-            reward_mean, reward_std, success_mean, success_std = assistive_gym.learn.evaluate_policy("FeedingSawyer-v1", "ppo", policy_path, n_episodes=100, seed=EVAL_SEED, verbose=False)
+            reward_mean, reward_std, success_mean, success_std = assistive_gym.learn.evaluate_policy("ScratchItchJaco-v1", "ppo", policy_path, n_episodes=100, seed=EVAL_SEED, verbose=False)
             gt_reward_means.append(reward_mean)
             success_means.append(success_mean)
 
