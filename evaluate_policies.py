@@ -34,19 +34,19 @@ def evaluate_policies(infile, outdir):
                 seed = 2
             else:
                 raise ValueError("Seed not specified.")
-            sconfig = "feeding/vanilla/40demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_000001weightdecay"
+            sconfig = "scratch_itch/vanilla/40demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_0001weightdecay"
             reward_model_path = "/home/jeremy/assistive-gym/trex/models/"+sconfig+"_seed"+str(seed)+".params"
-            reward_mean, reward_std, _, _ = assistive_gym.learn.evaluate_policy("FeedingLearnedRewardSawyer-v0", "ppo", policy_path, n_episodes=100, seed=EVAL_SEED, verbose=False, reward_net_path=reward_model_path)
+            reward_mean, reward_std, _, _ = assistive_gym.learn.evaluate_policy("ScratchItchLearnedRewardJaco-v0", "ppo", policy_path, n_episodes=100, seed=EVAL_SEED, verbose=False, reward_net_path=reward_model_path)
             slearned_reward_means.append(reward_mean)
 
-            mconfig = "feeding/vanilla/120demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_000001weightdecay"
+            mconfig = "scratch_itch/vanilla/120demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_0001weightdecay"
             reward_model_path = "/home/jeremy/assistive-gym/trex/models/"+mconfig+"_seed"+str(seed)+".params"
-            reward_mean, reward_std, _, _ = assistive_gym.learn.evaluate_policy("FeedingLearnedRewardSawyer-v0", "ppo", policy_path, n_episodes=100, seed=EVAL_SEED, verbose=False, reward_net_path=reward_model_path)
+            reward_mean, reward_std, _, _ = assistive_gym.learn.evaluate_policy("ScratchItchLearnedRewardJaco-v0", "ppo", policy_path, n_episodes=100, seed=EVAL_SEED, verbose=False, reward_net_path=reward_model_path)
             mlearned_reward_means.append(reward_mean)
 
-            lconfig = "feeding/vanilla/324demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_000001weightdecay"
+            lconfig = "scratch_itch/vanilla/324demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_0001weightdecay"
             reward_model_path = "/home/jeremy/assistive-gym/trex/models/"+lconfig+"_seed"+str(seed)+".params"
-            reward_mean, reward_std, _, _ = assistive_gym.learn.evaluate_policy("FeedingLearnedRewardSawyer-v0", "ppo", policy_path, n_episodes=100, seed=EVAL_SEED, verbose=False, reward_net_path=reward_model_path)
+            reward_mean, reward_std, _, _ = assistive_gym.learn.evaluate_policy("ScratchItchLearnedRewardJaco-v0", "ppo", policy_path, n_episodes=100, seed=EVAL_SEED, verbose=False, reward_net_path=reward_model_path)
             llearned_reward_means.append(reward_mean)
 
     gt_reward_means = np.asarray(gt_reward_means)
@@ -55,9 +55,9 @@ def evaluate_policies(infile, outdir):
     llearned_reward_means = np.asarray(llearned_reward_means)
     success_means = np.asarray(success_means)
     np.save(outdir + "/gtrewards.npy", gt_reward_means)
-    np.save(outdir + "/40demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_000001weightdecay_learnedrewards.npy", slearned_reward_means)
-    np.save(outdir + "/120demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_000001weightdecay_learedrewards.npy", mlearned_reward_means)
-    np.save(outdir + "/324demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_000001weightdecay_learnedrewards.npy", llearned_reward_means)
+    np.save(outdir + "/40demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_0001weightdecay_learnedrewards.npy", slearned_reward_means)
+    np.save(outdir + "/120demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_0001weightdecay_learedrewards.npy", mlearned_reward_means)
+    np.save(outdir + "/324demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_0001weightdecay_learnedrewards.npy", llearned_reward_means)
     np.save(outdir + "/success.npy", success_means)
 
 
