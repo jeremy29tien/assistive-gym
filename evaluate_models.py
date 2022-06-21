@@ -26,7 +26,7 @@ def evaluate_models(infile, test_data_dir, outdir):
             device = torch.device(determine_default_torch_device(not torch.cuda.is_available()))
             model.to(device)
 
-            acc = calc_accuracy(device, model_path, test_inputs, test_outputs)
+            acc = calc_accuracy(device, model, test_inputs, test_outputs)
             test_accuracies.append(acc)
 
     np.save(outdir + "/test_accuracies.npy", np.asarray(test_accuracies))
