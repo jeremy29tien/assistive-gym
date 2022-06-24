@@ -15,7 +15,8 @@ class ScratchItchLearnedRewardEnv(ScratchItchEnv):
         super(ScratchItchLearnedRewardEnv, self).__init__(robot=robot, human=human)
 
         # Reward Model Specifications
-        self.fully_observable = True
+        self.pure_fully_observable = True
+        self.fully_observable = False
         self.augmented = False
         self.state_action = False
         self.num_rawfeatures = 30  # ScratchItch has 30 raw features total
@@ -26,7 +27,7 @@ class ScratchItchLearnedRewardEnv(ScratchItchEnv):
         self.reward_net_path = reward_net_path
 
         self.device = torch.device(determine_default_torch_device(not torch.cuda.is_available()))
-        self.reward_net = Net("scratch_itch", hidden_dims=self.hidden_dims, augmented=self.augmented, fully_observable=self.fully_observable, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action, norm=self.normalize)
+        self.reward_net = Net("scratch_itch", hidden_dims=self.hidden_dims, augmented=self.augmented, pure_fully_observable=self.pure_fully_observable, fully_observable=self.fully_observable, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action, norm=self.normalize)
         print("device:", self.device)
         print("torch.cuda.is_available():", torch.cuda.is_available())
         self.reward_net.load_state_dict(torch.load(self.reward_net_path, map_location=torch.device('cpu')))
@@ -47,7 +48,9 @@ class ScratchItchLearnedRewardEnv(ScratchItchEnv):
         handpicked_features = np.array([distance, tool_force_at_target])
         fo_features = np.concatenate((prev_tool_pos_real, [robot_force_on_human, prev_tool_force]))
 
-        if self.fully_observable:
+        if self.pure_fully_observable:
+            input = np.concatenate((obs[0:3], obs[7:10], obs[29:30], action, fo_features))
+        elif self.fully_observable:
             input = np.concatenate((obs, action, fo_features))
         elif self.augmented and self.state_action:
             input = np.concatenate((obs, action, handpicked_features))
