@@ -111,9 +111,9 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
 
     if mixing_factor is not None:
         regex = re.compile('[%s]' % re.escape(string.punctuation))
-        config = "active_learning/" + env + "/" + str(num_al_iter) + "aliter_" + regex.sub('', str(mixing_factor)) + "mix_"
+        config = env + "/" + "active_learning/" + str(num_al_iter) + "aliter_" + regex.sub('', str(mixing_factor)) + "mix_"
     elif union_rollouts is not None:
-        config = "active_learning/" + env + "/" + str(num_al_iter) + "aliter_" + str(union_rollouts) + "union_"
+        config = env + "/" + "active_learning/" + str(num_al_iter) + "aliter_" + str(union_rollouts) + "union_"
     if retrain:
         if nn:
             if env == "feeding":
