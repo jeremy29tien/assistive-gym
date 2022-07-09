@@ -157,6 +157,7 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
                                                    num_epochs=100, patience=10, lr=0.00001, weight_decay=0.0001, pure_fully_observable=True,
                                                    al_data=(demos, demo_rewards), load_weights=(not retrain), return_weights=False)
             else:
+                # FIXME: not relevant
                 final_weights = trex.model.run(reward_model_path, seed=seed, num_comps=2000, delta_reward=2,
                                                num_epochs=100, patience=10, lr=0.01, l1_reg=0.01, augmented_full=True,
                                                al_data=(demos, demo_rewards), load_weights=(not retrain), return_weights=True)
