@@ -119,7 +119,7 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
             if env == "feeding":
                 pass
             elif env == "scratch_itch":
-                config = config + "retrain_40demos_hdim128-64_purefullyobservable_allpairs_100epochs_10patience_000001lr_00001weightdecay_seed" + str(seed)
+                config = config + "retrain_120demos_hdim128-64_purefullyobservable_allpairs_100epochs_10patience_000001lr_00001weightdecay_seed" + str(seed)
         else:
             # FIXME: not relevant
             config = config + "retrain_augmentedfull_linear_2000prefs_2deltareward_100epochs_10patience_001lr_001l1reg_seed" + str(
@@ -129,7 +129,7 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
             if env == "feeding":
                 pass
             elif env == "scratch_itch":
-                config = config + "40demos_hdim128-64_purefullyobservable_allpairs_100epochs_10patience_000001lr_00001weightdecay_seed" + str(seed)
+                config = config + "120demos_hdim128-64_purefullyobservable_allpairs_100epochs_10patience_000001lr_00001weightdecay_seed" + str(seed)
         else:
             # FIXME: not relevant
             config = config + "augmentedfull_linear_2000prefs_2deltareward_100epochs_10patience_001lr_001l1reg_seed" + str(
@@ -153,7 +153,7 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
                     pass
                 elif env == "scratch_itch":
                     final_weights = trex.model.run(reward_model_path, feeding=False, scratch_itch=True, seed=seed,
-                                                   hidden_dims=(128, 64), num_demos=40, all_pairs=True,
+                                                   hidden_dims=(128, 64), num_demos=120, all_pairs=True,
                                                    num_epochs=100, patience=10, lr=0.00001, weight_decay=0.0001, pure_fully_observable=True,
                                                    al_data=(demos, demo_rewards), load_weights=(not retrain), return_weights=False)
             else:
