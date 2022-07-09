@@ -180,7 +180,6 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
         elif union_rollouts is not None:
             print("unioning", union_rollouts, "rollouts...")
             num_new_rollouts = union_rollouts
-        # TODO: Correct the following line
         new_rollouts, new_rollout_rewards = get_rollouts(env, num_new_rollouts, checkpoint_path, seed, pure_fully_observable=True)
 
         # 4. Based on mixing factor, sample (without replacement) demonstrations from previous iteration accordingly
