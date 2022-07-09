@@ -135,11 +135,11 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
             config = config + "augmentedfull_linear_2000prefs_2deltareward_100epochs_10patience_001lr_001l1reg_seed" + str(
                 seed)
 
-    reward_model_path = "/home/jeremy/gym/trex/models/" + config + ".params"
-    reward_output_path = "/home/jeremy/gym/trex/reward_learning_outputs/" + config + ".txt"
+    reward_model_path = "/home/jeremy/assistive-gym/trex/models/" + config + ".params"
+    reward_output_path = "/home/jeremy/assistive-gym/trex/reward_learning_outputs/" + config + ".txt"
 
     policy_save_dir = "./trained_models_reward_learning/" + config
-    policy_eval_dir = "/home/jeremy/gym/trex/rl/eval/" + config
+    policy_eval_dir = "/home/jeremy/assistive-gym/trex/rl/eval/" + config
 
     rewards = []
     weights = []
@@ -216,7 +216,7 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=None)
-    parser.add_argument('--env', default='ScratchItchJaco-v0', help='Environment to train on (default: ScratchItchJaco-v0)')
+    parser.add_argument('--env', default='scratch_itch', help='')
     parser.add_argument('--seed', default=0, type=int, help="seed")
     parser.add_argument('--num_al_iter', default=0, type=int, help="number of active learning iterations (where 1 is equivalent to normal pref-based reward learning")
     parser.add_argument('--mix', default=None, type=float, help="hyperparameter for how much to mix in new rollouts, where 1 means the next iteration consists of ONLY new rollouts")
