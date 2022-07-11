@@ -75,5 +75,6 @@ if __name__ == "__main__":
     print(saliency_map)
     print(saliency_per_timestep)
     plt.imshow(saliency_map.reshape((40, 1)), cmap=plt.cm.hot)
+    plt.show()
 
 
