@@ -74,6 +74,6 @@ if __name__ == "__main__":
     saliency_map, saliency_per_timestep = compute_saliency_maps(X, model)
     print(saliency_map)
     print(saliency_per_timestep)
-    plt.imshow(saliency_map, cmap=plt.cm.hot)
+    plt.imshow(saliency_map.reshape((40, 1)), cmap=plt.cm.hot)
 
 
