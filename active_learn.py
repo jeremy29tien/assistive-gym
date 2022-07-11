@@ -73,9 +73,9 @@ def get_rollouts(env_name, num_rollouts, policy_path, seed, pure_fully_observabl
                 pure_obs = np.concatenate((obs[0:3], obs[7:10], obs[29:30]))
 
             if pure_fully_observable:
-                data = np.concatenate(pure_obs, action, fo_features)
+                data = np.concatenate((pure_obs, action, fo_features))
             elif fully_observable:
-                data = np.concatenate(obs, action, fo_features)
+                data = np.concatenate((obs, action, fo_features))
             else:
                 data = obs
 
