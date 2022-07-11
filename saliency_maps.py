@@ -47,10 +47,11 @@ def compute_saliency_maps(X, model):
 
     # dims will be (D, ) after maxing across T dimension.
     saliency = torch.max(torch.abs(g), dim=0)[0]  # torch.max() returns a tuple of (values, indices)
+    saliency_per_timestep = g
     ##############################################################################
     #                             END OF YOUR CODE                               #
     ##############################################################################
-    return saliency
+    return saliency, saliency_per_timestep
 
 
 def load_model(path):
@@ -69,6 +70,7 @@ if __name__ == "__main__":
     X = torch.from_numpy(X).float()
 
     model = load_model(args.model)
-    saliency_map = compute_saliency_maps(X, model)
+    saliency_map, saliency_per_timestep = compute_saliency_maps(X, model)
     print(saliency_map)
+    print(saliency_per_timestep)
 
