@@ -66,7 +66,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     X = np.load("trex/data/feeding/fully_observable/demos.npy")[0]
+    X = torch.from_numpy(X)
 
     model = load_model(args.model)
     saliency_map = compute_saliency_maps(X, model)
+    print(saliency_map)
 
