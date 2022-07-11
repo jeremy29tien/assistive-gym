@@ -1,6 +1,7 @@
 import argparse
 import torch
 import numpy as np
+import matplotlib.pyplot as plt
 from trex.model import Net
 
 
@@ -73,4 +74,6 @@ if __name__ == "__main__":
     saliency_map, saliency_per_timestep = compute_saliency_maps(X, model)
     print(saliency_map)
     print(saliency_per_timestep)
+    plt.imshow(saliency_map, cmap=plt.cm.hot)
+
 
