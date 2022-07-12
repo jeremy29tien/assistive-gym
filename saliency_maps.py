@@ -59,42 +59,67 @@ if __name__ == "__main__":
     parser.add_argument('--model', default='', help='Path to saved model file.')
     args = parser.parse_args()
 
-    demos = np.load("trex/data/feeding/fully_observable/demos.npy")
-    rewards = np.load("trex/data/feeding/fully_observable/demo_rewards.npy")
-    X = demos[0]
-    print("reward of X:", rewards[0])
+    demos = np.load("trex/data/feeding/fully_observable/policy_rollouts/324demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_000001weightdecay/demos.npy")
+    rewards = np.load("trex/data/feeding/fully_observable/policy_rollouts/324demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_000001weightdecay/demo_rewards.npy")
+    X = demos[-1]
+    print("reward of X:", rewards[-1])
     X = torch.from_numpy(X).float()
 
     model = load_model(args.model)
     saliency_map, saliency_per_timestep, grad_per_timestep = compute_saliency_maps(X, model)
 
+    column_labels = list(range(0, 40))
+
+    data = saliency_map.reshape((1, 40))
+    fig, ax = plt.subplots()
+    heatmap = ax.pcolor(data, cmap=plt.cm.hot)
+    # plt.imshow(saliency_map.reshape((1, 40)), cmap=plt.cm.hot)
+    ax.set_xticks(np.arange(data.shape[1]) + 0.5, minor=False)
+    ax.set_xticklabels(column_labels, minor=False)
+    ax.invert_yaxis()
     plt.title("Saliency (max across timesteps of absolute values)")
     plt.xlabel("feature")
-    plt.imshow(saliency_map.reshape((1, 40)), cmap=plt.cm.hot)
+    plt.colorbar(heatmap)
+    fig.set_size_inches(10, 2)
+    plt.savefig('saliency.png', dpi=100)
     plt.show()
 
+    data = saliency_per_timestep
     fig, ax = plt.subplots()
-    ax.imshow(saliency_per_timestep, cmap=plt.cm.hot)
-    # set aspect ratio to 1
-    ratio = 2.0
-    x_left, x_right = ax.get_xlim()
-    y_low, y_high = ax.get_ylim()
-    ax.set_aspect(abs((x_right - x_left) / (y_low - y_high)) * ratio)
+    heatmap = ax.pcolor(data, cmap=plt.cm.hot)
+    # ax.imshow(saliency_per_timestep, cmap=plt.cm.hot)
+    # # set aspect ratio to 1
+    # ratio = 2.0
+    # x_left, x_right = ax.get_xlim()
+    # y_low, y_high = ax.get_ylim()
+    # ax.set_aspect(abs((x_right - x_left) / (y_low - y_high)) * ratio)
+    ax.set_xticks(np.arange(data.shape[1]) + 0.5, minor=False)
+    ax.set_xticklabels(column_labels, minor=False)
+    ax.invert_yaxis()
     plt.title("Saliency per timestep (absolute values)")
     plt.ylabel("timestep")
     plt.xlabel("feature")
+    plt.colorbar(heatmap)
+    fig.set_size_inches(20, 10)
+    plt.savefig('saliency_per_timestep.png', dpi=100)
     plt.show()
 
+    data = grad_per_timestep
     fig, ax = plt.subplots()
-    ax.imshow(grad_per_timestep, cmap=plt.cm.hot)
-    # set aspect ratio to 1
-    ratio = 2.0
-    x_left, x_right = ax.get_xlim()
-    y_low, y_high = ax.get_ylim()
-    ax.set_aspect(abs((x_right - x_left) / (y_low - y_high)) * ratio)
+    heatmap = ax.pcolor(data, cmap=plt.cm.hot)
+    # ax.imshow(grad_per_timestep, cmap=plt.cm.hot)
+    # # set aspect ratio to 1
+    # ratio = 2.0
+    # x_left, x_right = ax.get_xlim()
+    # y_low, y_high = ax.get_ylim()
+    # ax.set_aspect(abs((x_right - x_left) / (y_low - y_high)) * ratio)
+    ax.set_xticks(np.arange(data.shape[1]) + 0.5, minor=False)
+    ax.set_xticklabels(column_labels, minor=False)
+    ax.invert_yaxis()
     plt.title("Gradient per timestep")
     plt.ylabel("timestep")
     plt.xlabel("feature")
+    plt.colorbar(heatmap)
+    fig.set_size_inches(20, 10)
+    plt.savefig('grad_per_timestep.png', dpi=100)
     plt.show()
-
-
