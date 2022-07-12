@@ -8,7 +8,8 @@ from .agents.furniture import Furniture
 class FeedingEnv(AssistiveEnv):
     def __init__(self, robot, human):
         super(FeedingEnv, self).__init__(robot=robot, human=human, task='feeding', obs_robot_len=(18 + len(robot.controllable_joint_indices) - (len(robot.wheel_joint_indices) if robot.mobile else 0)), obs_human_len=(19 + len(human.controllable_joint_indices)))
-        self.replaceItemUniqueId = None
+        self.rewardTextUniqueId = None
+        self.iterTextUniqueId = None
 
     def step(self, action):
         if self.human.controllable:
@@ -43,10 +44,15 @@ class FeedingEnv(AssistiveEnv):
         self.prev_spoon_pos_real = obs[0:3]
         done = self.iteration >= 200
 
-        if self.replaceItemUniqueId is None:
-            self.replaceItemUniqueId = p.addUserDebugText("reward: "+str(reward), [-3.0, 3.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0)
+        if self.rewardTextUniqueId is None:
+            self.rewardTextUniqueId = p.addUserDebugText("reward: "+str(reward), [-3.0, 3.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0)
         else:
-            self.replaceItemUniqueId = p.addUserDebugText("reward: "+str(reward), [-3.0, 3.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0, replaceItemUniqueId=self.replaceItemUniqueId)
+            self.rewardTextUniqueId = p.addUserDebugText("reward: "+str(reward), [-3.0, 3.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0, replaceItemUniqueId=self.rewardTextUniqueId)
+
+        if self.iterTextUniqueId is None:
+            self.iterTextUniqueId = p.addUserDebugText("iteration: "+str(self.iteration), [-3.0, 7.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0)
+        else:
+            self.iterTextUniqueId = p.addUserDebugText("iteration: "+str(self.iteration), [-3.0, 7.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0, replaceItemUniqueId=self.iterTextUniqueId)
         if not self.human.controllable:
             return obs, reward, done, info
         else:
