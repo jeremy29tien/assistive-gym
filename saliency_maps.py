@@ -59,7 +59,10 @@ if __name__ == "__main__":
     parser.add_argument('--model', default='', help='Path to saved model file.')
     args = parser.parse_args()
 
-    X = np.load("trex/data/feeding/fully_observable/demos.npy")[0]
+    demos = np.load("trex/data/feeding/fully_observable/demos.npy")
+    rewards = np.load("trex/data/feeding/fully_observable/demo_rewards.npy")
+    X = demos[0]
+    print("reward of X:", rewards[0])
     X = torch.from_numpy(X).float()
 
     model = load_model(args.model)
