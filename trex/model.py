@@ -394,11 +394,11 @@ def run(reward_model_path, seed, feeding=True, scratch_itch=False, num_comps=0, 
     # note that sorted_demos is now a python list, not a np array
     sorted_train_demos = np.array([x for _, x in sorted(zip(train_rewards, train_demos), key=lambda pair: pair[0])])
     sorted_train_rewards = np.array(sorted(train_rewards))
-    print("sorted_train_rewards:", sorted_train_rewards)
+    # print("sorted_train_rewards:", sorted_train_rewards)
 
     sorted_val_demos = np.array([x for _, x in sorted(zip(val_rewards, val_demos), key=lambda pair: pair[0])])
     sorted_val_rewards = np.array(sorted(val_rewards))
-    print("sorted_val_rewards:", sorted_val_rewards)
+    # print("sorted_val_rewards:", sorted_val_rewards)
 
     if test:
         # Sort test data as well
