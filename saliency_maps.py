@@ -48,6 +48,15 @@ def compute_saliency_maps(X, model):
     return saliency, saliency_per_timestep, grad_per_timestep
 
 
+# Computes measure(s) of spread over the course of the trajectory X for each feature.
+def compute_feature_spread(X):
+    print(X.shape)
+    var = np.var(X, axis=0)
+    std = np.std(X, axis=0)
+    range = np.max(X, axis=0) - np.min(X, axis=0)
+    return var, std, range
+
+
 def load_model(path):
     model = Net("feeding", hidden_dims=(128, 64), fully_observable=True)
     model.load_state_dict(torch.load(path, map_location=torch.device('cpu')))
@@ -63,16 +72,17 @@ if __name__ == "__main__":
     rewards = np.load("trex/data/feeding/fully_observable/policy_rollouts/324demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_000001weightdecay/demo_rewards.npy")
     X = demos[-1]
     print("reward of X:", rewards[-1])
-    X = torch.from_numpy(X).float()
+    X_torch = torch.from_numpy(X).float()
 
     model = load_model(args.model)
-    saliency_map, saliency_per_timestep, grad_per_timestep = compute_saliency_maps(X, model)
+    saliency_map, saliency_per_timestep, grad_per_timestep = compute_saliency_maps(X_torch, model)
+    feature_var, feature_std, feature_range = compute_feature_spread(X)
 
     column_labels = list(range(0, 40))
 
     data = saliency_map.reshape((1, 40))
     fig, ax = plt.subplots()
-    heatmap = ax.pcolor(data, cmap=plt.cm.hot)
+    heatmap = ax.pcolor(data, cmap=plt.cm.hot, vmin=0, vmax=25)
     # plt.imshow(saliency_map.reshape((1, 40)), cmap=plt.cm.hot)
     ax.set_xticks(np.arange(data.shape[1]) + 0.5, minor=False)
     ax.set_xticklabels(column_labels, minor=False)
@@ -80,13 +90,13 @@ if __name__ == "__main__":
     plt.title("Saliency (max across timesteps of absolute values)")
     plt.xlabel("feature")
     plt.colorbar(heatmap)
-    fig.set_size_inches(10, 2)
+    fig.set_size_inches(15, 2)
     plt.savefig('saliency.png', dpi=100)
     plt.show()
 
     data = saliency_per_timestep
     fig, ax = plt.subplots()
-    heatmap = ax.pcolor(data, cmap=plt.cm.hot)
+    heatmap = ax.pcolor(data, cmap=plt.cm.hot, vmin=0, vmax=25)
     # ax.imshow(saliency_per_timestep, cmap=plt.cm.hot)
     # # set aspect ratio to 1
     # ratio = 2.0
@@ -106,7 +116,7 @@ if __name__ == "__main__":
 
     data = grad_per_timestep
     fig, ax = plt.subplots()
-    heatmap = ax.pcolor(data, cmap=plt.cm.hot)
+    heatmap = ax.pcolor(data, cmap=plt.cm.hot, vmin=-10, vmax=25)
     # ax.imshow(grad_per_timestep, cmap=plt.cm.hot)
     # # set aspect ratio to 1
     # ratio = 2.0
@@ -123,3 +133,47 @@ if __name__ == "__main__":
     fig.set_size_inches(20, 10)
     plt.savefig('grad_per_timestep.png', dpi=100)
     plt.show()
+
+    data = feature_var.reshape((1, 40))
+    fig, ax = plt.subplots()
+    heatmap = ax.pcolor(data, cmap=plt.cm.hot, vmin=0, vmax=4)
+    # plt.imshow(saliency_map.reshape((1, 40)), cmap=plt.cm.hot)
+    ax.set_xticks(np.arange(data.shape[1]) + 0.5, minor=False)
+    ax.set_xticklabels(column_labels, minor=False)
+    ax.invert_yaxis()
+    plt.title("Feature Variances")
+    plt.xlabel("feature")
+    plt.colorbar(heatmap)
+    fig.set_size_inches(15, 2)
+    plt.savefig('variances.png', dpi=100)
+    plt.show()
+
+    data = feature_std.reshape((1, 40))
+    fig, ax = plt.subplots()
+    heatmap = ax.pcolor(data, cmap=plt.cm.hot, vmin=0, vmax=2)
+    # plt.imshow(saliency_map.reshape((1, 40)), cmap=plt.cm.hot)
+    ax.set_xticks(np.arange(data.shape[1]) + 0.5, minor=False)
+    ax.set_xticklabels(column_labels, minor=False)
+    ax.invert_yaxis()
+    plt.title("Feature Standard Deviations")
+    plt.xlabel("feature")
+    plt.colorbar(heatmap)
+    fig.set_size_inches(15, 2)
+    plt.savefig('stddevs.png', dpi=100)
+    plt.show()
+
+    data = feature_range.reshape((1, 40))
+    fig, ax = plt.subplots()
+    heatmap = ax.pcolor(data, cmap=plt.cm.hot, vmin=0, vmax=11)
+    # plt.imshow(saliency_map.reshape((1, 40)), cmap=plt.cm.hot)
+    ax.set_xticks(np.arange(data.shape[1]) + 0.5, minor=False)
+    ax.set_xticklabels(column_labels, minor=False)
+    ax.invert_yaxis()
+    plt.title("Feature Ranges")
+    plt.xlabel("feature")
+    plt.colorbar(heatmap)
+    fig.set_size_inches(15, 2)
+    plt.savefig('ranges.png', dpi=100)
+    plt.show()
+
+
