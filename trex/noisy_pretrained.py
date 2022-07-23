@@ -1,3 +1,7 @@
+# import sys
+# sys.path.append('/Users/jeremytien/Documents/BAIR Research/assistive-gym/')
+# print(sys.path)
+
 import assistive_gym
 import gym
 import pybullet as p
@@ -19,7 +23,7 @@ def make_env(env_name, seed=1001):
     return env
 
 
-def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, state_action, render):
+def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, pure_fully_observable, state_action, render):
     ray.init(num_cpus=multiprocessing.cpu_count(), ignore_reinit_error=True, log_to_driver=False)
 
     # Set up the environment
@@ -106,7 +110,9 @@ def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augm
                     privileged_features = np.array([distance, tool_force_at_target])
                     fo_features = np.concatenate((prev_tool_pos_real, [robot_force_on_human, prev_tool_force]))
 
-                if fully_observable:
+                if pure_fully_observable:
+                    data = np.concatenate((observation[7:10], observation[24:25], action, fo_features))
+                elif fully_observable:
                     data = np.concatenate((observation, action, fo_features))
                 elif augmented and state_action:
                     data = np.concatenate((observation, action, privileged_features))
@@ -199,6 +205,7 @@ if __name__ == "__main__":
     parser.add_argument('--state_action', dest='state_action', default=False, action='store_true', help="whether data consists of state-action pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--augmented', dest='augmented', default=False, action='store_true', help="whether data consists of states + linear features pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--fully_observable', dest='fully_observable', default=False, action='store_true', help="")
+    parser.add_argument('--pure_fully_observable', dest='pure_fully_observable', default=False, action='store_true', help="")
     parser.add_argument('--render', dest='render', default=False, action='store_true', help="whether to render rollouts")  # NOTE: type=bool doesn't work, value is still true.
     args = parser.parse_args()
 
@@ -211,6 +218,7 @@ if __name__ == "__main__":
     state_action = args.state_action
     augmented = args.augmented
     fully_observable = args.fully_observable
+    pure_fully_observable = args.pure_fully_observable
     render = args.render
 
     if env == "feeding":
@@ -218,4 +226,4 @@ if __name__ == "__main__":
     elif env == "scratchitch":
         ENV_NAME = "ScratchItchJaco-v1"
 
-    generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, state_action, render)
+    generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, pure_fully_observable, state_action, render)
