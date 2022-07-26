@@ -151,7 +151,7 @@ def make_env(env_name, coop=False, seed=1001, reward_net_path=None, indvar=None)
 
 def train(env_name, algo, evalonly_env_name='', timesteps_total=1000000, save_dir='./trained_models/', load_policy_path='', coop=False, seed=0, save_checkpoints=False, reward_net_path=None, evalonly_reward_net_path=None, indvar=None, extra_configs={}, tb=False):
     ray.init(num_cpus=multiprocessing.cpu_count(), ignore_reinit_error=True, log_to_driver=False)
-    env = make_env(env_name, coop, reward_net_path=reward_net_path, indvar=indvar)
+    env = make_env(env_name, coop, seed=seed, reward_net_path=reward_net_path, indvar=indvar)
     if reward_net_path is not None and indvar is not None:
         agent, checkpoint_path = load_policy(env, algo, env_name, load_policy_path, coop, seed, extra_configs={"env_config": {"reward_net_path": reward_net_path, "indvar": indvar}})
     elif reward_net_path is not None:
@@ -229,10 +229,12 @@ def render_policy(env, env_name, algo, policy_path, coop=False, colab=False, see
         write_apng(filename, frames, delay=100)
         return filename
 
-def evaluate_policy(env_name, algo, policy_path, n_episodes=100, coop=False, seed=0, verbose=False, reward_net_path=None, extra_configs={}):
+def evaluate_policy(env_name, algo, policy_path, n_episodes=100, coop=False, seed=0, verbose=False, reward_net_path=None, indvar=None, extra_configs={}):
     ray.init(num_cpus=multiprocessing.cpu_count(), ignore_reinit_error=True, log_to_driver=False)
-    env = make_env(env_name, coop, seed=seed, reward_net_path=reward_net_path)
-    if reward_net_path is not None:
+    env = make_env(env_name, coop, seed=seed, reward_net_path=reward_net_path, indvar=indvar)
+    if reward_net_path is not None and indvar is not None:
+        test_agent, _ = load_policy(env, algo, env_name, policy_path, coop, seed, extra_configs={"env_config": {"reward_net_path": reward_net_path, "indvar": indvar}})
+    elif reward_net_path is not None:
         test_agent, _ = load_policy(env, algo, env_name, policy_path, coop, seed, extra_configs={
             "env_config": {"reward_net_path": reward_net_path}})
     else:
@@ -337,7 +339,7 @@ if __name__ == '__main__':
     if args.render:
         render_policy(None, args.env, args.algo, checkpoint_path if checkpoint_path is not None else args.load_policy_path, coop=coop, colab=args.colab, seed=args.seed, n_episodes=args.render_episodes)
     if args.evaluate:
-        evaluate_policy(args.env, args.algo, checkpoint_path if checkpoint_path is not None else args.load_policy_path, n_episodes=args.eval_episodes, coop=coop, seed=args.seed, verbose=args.verbose, reward_net_path=args.reward_net_path)
+        evaluate_policy(args.env, args.algo, checkpoint_path if checkpoint_path is not None else args.load_policy_path, n_episodes=args.eval_episodes, coop=coop, seed=args.seed, verbose=args.verbose, reward_net_path=args.reward_net_path, indvar=tuple(args.indvar) if args.indvar != -1 else None)
 
     if args.tb:
         writer.close()
