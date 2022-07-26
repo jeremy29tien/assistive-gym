@@ -11,16 +11,11 @@ import importlib
 import multiprocessing, ray
 from matplotlib import pyplot as plt
 from assistive_gym.learn import load_policy
+from assistive_gym.learn import make_env
 import argparse
 
 # NOTE: Most of this is shamelessly copied from render_policy in learn.py.
 # Link: https://github.com/Healthcare-Robotics/assistive-gym/blob/fb799c377e1f144ff96044fb9096725f7f9cfc61/assistive_gym/learn.py#L96
-
-
-def make_env(env_name, seed=1001):
-    env = gym.make('assistive_gym:'+env_name)
-    env.seed(seed)
-    return env
 
 
 def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, pure_fully_observable, state_action, render):
@@ -58,6 +53,7 @@ def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augm
             reward_over_time = []
             total_reward = 0
             observation = env.reset()
+            print("Initial observation:", observation)
             info = None
             done = False
             while not done:
