@@ -58,7 +58,7 @@ def compute_feature_spread(X):
 
 
 def load_model(path):
-    model = Net("feeding", hidden_dims=(128, 64), fully_observable=True)
+    model = Net("feeding", hidden_dims=(128, 64), pure_fully_observable=True)
     model.load_state_dict(torch.load(path, map_location=torch.device('cpu')))
     return model
 
@@ -68,8 +68,8 @@ if __name__ == "__main__":
     parser.add_argument('--model', default='', help='Path to saved model file.')
     args = parser.parse_args()
 
-    demos = np.load("trex/data/feeding/fully_observable/policy_rollouts/324demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_000001weightdecay/demos.npy")
-    rewards = np.load("trex/data/feeding/fully_observable/policy_rollouts/324demos_hdim128-64_fullyobservable_allpairs_100epochs_10patience_0001lr_000001weightdecay/demo_rewards.npy")
+    demos = np.load("trex/data/feeding/pure_fully_observable/policy_rollouts/324demos_allpairs_hdim128-64_100epochs_10patience_0001lr_000001weightdecay/demos.npy")
+    rewards = np.load("trex/data/feeding/pure_fully_observable/policy_rollouts/324demos_allpairs_hdim128-64_100epochs_10patience_0001lr_000001weightdecay/demo_rewards.npy")
     X = demos[-1]
     print("reward of X:", rewards[-1])
     X_torch = torch.from_numpy(X).float()
@@ -78,12 +78,12 @@ if __name__ == "__main__":
     saliency_map, saliency_per_timestep, grad_per_timestep = compute_saliency_maps(X_torch, model)
     feature_var, feature_std, feature_range = compute_feature_spread(X)
 
-    column_labels = list(range(0, 40))
+    column_labels = list(range(0, 19))
 
-    data = saliency_map.reshape((1, 40))
+    data = saliency_map.reshape((1, 19))
     fig, ax = plt.subplots()
     heatmap = ax.pcolor(data, cmap=plt.cm.hot, vmin=0, vmax=25)
-    # plt.imshow(saliency_map.reshape((1, 40)), cmap=plt.cm.hot)
+    # plt.imshow(saliency_map.reshape((1, 19)), cmap=plt.cm.hot)
     ax.set_xticks(np.arange(data.shape[1]) + 0.5, minor=False)
     ax.set_xticklabels(column_labels, minor=False)
     ax.invert_yaxis()
@@ -134,10 +134,10 @@ if __name__ == "__main__":
     plt.savefig('grad_per_timestep.png', dpi=100)
     plt.show()
 
-    data = feature_var.reshape((1, 40))
+    data = feature_var.reshape((1, 19))
     fig, ax = plt.subplots()
     heatmap = ax.pcolor(data, cmap=plt.cm.hot, vmin=0, vmax=4)
-    # plt.imshow(saliency_map.reshape((1, 40)), cmap=plt.cm.hot)
+    # plt.imshow(saliency_map.reshape((1, 19)), cmap=plt.cm.hot)
     ax.set_xticks(np.arange(data.shape[1]) + 0.5, minor=False)
     ax.set_xticklabels(column_labels, minor=False)
     ax.invert_yaxis()
@@ -148,10 +148,10 @@ if __name__ == "__main__":
     plt.savefig('variances.png', dpi=100)
     plt.show()
 
-    data = feature_std.reshape((1, 40))
+    data = feature_std.reshape((1, 19))
     fig, ax = plt.subplots()
     heatmap = ax.pcolor(data, cmap=plt.cm.hot, vmin=0, vmax=2)
-    # plt.imshow(saliency_map.reshape((1, 40)), cmap=plt.cm.hot)
+    # plt.imshow(saliency_map.reshape((1, 19)), cmap=plt.cm.hot)
     ax.set_xticks(np.arange(data.shape[1]) + 0.5, minor=False)
     ax.set_xticklabels(column_labels, minor=False)
     ax.invert_yaxis()
@@ -162,10 +162,10 @@ if __name__ == "__main__":
     plt.savefig('stddevs.png', dpi=100)
     plt.show()
 
-    data = feature_range.reshape((1, 40))
+    data = feature_range.reshape((1, 19))
     fig, ax = plt.subplots()
     heatmap = ax.pcolor(data, cmap=plt.cm.hot, vmin=0, vmax=11)
-    # plt.imshow(saliency_map.reshape((1, 40)), cmap=plt.cm.hot)
+    # plt.imshow(saliency_map.reshape((1, 19)), cmap=plt.cm.hot)
     ax.set_xticks(np.arange(data.shape[1]) + 0.5, minor=False)
     ax.set_xticklabels(column_labels, minor=False)
     ax.invert_yaxis()
