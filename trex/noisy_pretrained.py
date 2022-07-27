@@ -20,6 +20,7 @@ import argparse
 
 def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, pure_fully_observable, state_action, render):
     ray.init(num_cpus=multiprocessing.cpu_count(), ignore_reinit_error=True, log_to_driver=False)
+    np.random.seed(seed)
 
     # Set up the environment
     env = make_env(ENV_NAME, seed=seed)  # fixed seed for reproducibility (1000 for training, 1001 for testing)
@@ -89,6 +90,7 @@ def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augm
                         robot_force_on_human = info['robot_force_on_human']
                     privileged_features = np.array([distance, foods_in_mouth, foods_on_floor])
                     fo_features = np.concatenate(([foods_in_mouth, foods_on_floor, foods_hit_human, sum_food_mouth_velocities], prev_spoon_pos_real, [robot_force_on_human]))
+                    pure_obs = np.concatenate((observation[7:10], observation[24:25]))
 
                 # ScratchItchJaco privileged features: end effector - target distance, total force at target
                 if ENV_NAME == "ScratchItchJaco-v1":
@@ -105,9 +107,10 @@ def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augm
                         prev_tool_force = info['prev_tool_force']
                     privileged_features = np.array([distance, tool_force_at_target])
                     fo_features = np.concatenate((prev_tool_pos_real, [robot_force_on_human, prev_tool_force]))
+                    pure_obs = np.concatenate((observation[0:3], observation[7:10], observation[29:30]))
 
                 if pure_fully_observable:
-                    data = np.concatenate((observation[7:10], observation[24:25], action, fo_features))
+                    data = np.concatenate((pure_obs, action, fo_features))
                 elif fully_observable:
                     data = np.concatenate((observation, action, fo_features))
                 elif augmented and state_action:
