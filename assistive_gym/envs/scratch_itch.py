@@ -50,9 +50,9 @@ class ScratchItchEnv(AssistiveEnv):
         else:
             self.rewardTextUniqueId = p.addUserDebugText("reward: "+str(reward), [0.0, 3.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0, replaceItemUniqueId=self.rewardTextUniqueId)
         if self.iterTextUniqueId is None:
-            self.iterTextUniqueId = p.addUserDebugText("iteration: "+str(reward), [0.0, 7.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0)
+            self.iterTextUniqueId = p.addUserDebugText("iteration: "+str(self.iteration), [0.0, 7.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0)
         else:
-            self.iterTextUniqueId = p.addUserDebugText("iteration: "+str(reward), [0.0, 7.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0, replaceItemUniqueId=self.iterTextUniqueId)
+            self.iterTextUniqueId = p.addUserDebugText("iteration: "+str(self.iteration), [0.0, 7.0, 1.0], textColorRGB=[0, 0, 1], textSize=2.0, replaceItemUniqueId=self.iterTextUniqueId)
 
         if not self.human.controllable:
             return obs, reward, done, info
