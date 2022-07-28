@@ -54,7 +54,7 @@ def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augm
             reward_over_time = []
             total_reward = 0
             observation = env.reset()
-            print("Initial observation:", observation)
+            # print("Initial observation:", observation)
             info = None
             done = False
             while not done:
