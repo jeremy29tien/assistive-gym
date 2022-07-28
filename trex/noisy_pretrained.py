@@ -100,6 +100,7 @@ def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augm
                         prev_tool_pos_real = np.zeros(3)
                         robot_force_on_human = 0
                         prev_tool_force = 0
+                        scratched = 0
                     else:
                         tool_force_at_target = info['tool_force_at_target']
                         prev_tool_pos_real = info['prev_tool_pos_real']
