@@ -15,7 +15,8 @@ class ScratchItchLearnedRewardEnv(ScratchItchEnv):
         super(ScratchItchLearnedRewardEnv, self).__init__(robot=robot, human=human)
 
         # Reward Model Specifications
-        self.pure_fully_observable = True
+        self.new_pure_fully_observable = True
+        self.pure_fully_observable = False
         self.fully_observable = False
         self.augmented = False
         self.state_action = False
@@ -44,11 +45,15 @@ class ScratchItchLearnedRewardEnv(ScratchItchEnv):
         prev_tool_pos_real = info['prev_tool_pos_real']
         robot_force_on_human = info['robot_force_on_human']
         prev_tool_force = info['prev_tool_force']
+        scratched = info['scratched']
 
         handpicked_features = np.array([distance, tool_force_at_target])
         fo_features = np.concatenate((prev_tool_pos_real, [robot_force_on_human, prev_tool_force]))
+        new_fo_features = np.concatenate((prev_tool_pos_real, [robot_force_on_human, prev_tool_force, scratched]))
 
-        if self.pure_fully_observable:
+        if self.new_pure_fully_observable:
+            input = np.concatenate((obs[0:3], obs[7:10], obs[29:30], action, new_fo_features))
+        elif self.pure_fully_observable:
             input = np.concatenate((obs[0:3], obs[7:10], obs[29:30], action, fo_features))
         elif self.fully_observable:
             input = np.concatenate((obs, action, fo_features))

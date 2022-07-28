@@ -18,7 +18,7 @@ import argparse
 # Link: https://github.com/Healthcare-Robotics/assistive-gym/blob/fb799c377e1f144ff96044fb9096725f7f9cfc61/assistive_gym/learn.py#L96
 
 
-def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, pure_fully_observable, state_action, render):
+def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, pure_fully_observable, new_pure_fully_observable, state_action, render):
     ray.init(num_cpus=multiprocessing.cpu_count(), ignore_reinit_error=True, log_to_driver=False)
     np.random.seed(seed)
 
@@ -105,11 +105,15 @@ def generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augm
                         prev_tool_pos_real = info['prev_tool_pos_real']
                         robot_force_on_human = info['robot_force_on_human']
                         prev_tool_force = info['prev_tool_force']
+                        scratched = info['scratched']
                     privileged_features = np.array([distance, tool_force_at_target])
                     fo_features = np.concatenate((prev_tool_pos_real, [robot_force_on_human, prev_tool_force]))
+                    new_fo_features = np.concatenate((prev_tool_pos_real, [robot_force_on_human, prev_tool_force, scratched]))
                     pure_obs = np.concatenate((observation[0:3], observation[7:10], observation[29:30]))
 
-                if pure_fully_observable:
+                if new_pure_fully_observable:
+                    data = np.concatenate((pure_obs, action, new_fo_features))
+                elif pure_fully_observable:
                     data = np.concatenate((pure_obs, action, fo_features))
                 elif fully_observable:
                     data = np.concatenate((observation, action, fo_features))
@@ -205,6 +209,7 @@ if __name__ == "__main__":
     parser.add_argument('--augmented', dest='augmented', default=False, action='store_true', help="whether data consists of states + linear features pairs rather that just states")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--fully_observable', dest='fully_observable', default=False, action='store_true', help="")
     parser.add_argument('--pure_fully_observable', dest='pure_fully_observable', default=False, action='store_true', help="")
+    parser.add_argument('--new_pure_fully_observable', dest='new_pure_fully_observable', default=False, action='store_true', help="")
     parser.add_argument('--render', dest='render', default=False, action='store_true', help="whether to render rollouts")  # NOTE: type=bool doesn't work, value is still true.
     args = parser.parse_args()
 
@@ -218,6 +223,7 @@ if __name__ == "__main__":
     augmented = args.augmented
     fully_observable = args.fully_observable
     pure_fully_observable = args.pure_fully_observable
+    new_pure_fully_observable = args.new_pure_fully_observable
     render = args.render
 
     if env == "feeding":
@@ -225,4 +231,4 @@ if __name__ == "__main__":
     elif env == "scratchitch":
         ENV_NAME = "ScratchItchJaco-v1"
 
-    generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, pure_fully_observable, state_action, render)
+    generate_rollout_data(policy_path, data_dir, seed, num_rollouts, noisy, augmented, fully_observable, pure_fully_observable, new_pure_fully_observable, state_action, render)

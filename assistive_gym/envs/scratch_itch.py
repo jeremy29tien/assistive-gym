@@ -40,7 +40,7 @@ class ScratchItchEnv(AssistiveEnv):
                 'action_robot_len': self.action_robot_len, 'action_human_len': self.action_human_len,
                 'obs_robot_len': self.obs_robot_len, 'obs_human_len': self.obs_human_len,
                 'tool_force_at_target': self.tool_force_at_target, 'prev_tool_pos_real': self.prev_tool_pos_real,
-                'robot_force_on_human': self.robot_force_on_human, 'prev_tool_force': self.prev_tool_force}
+                'robot_force_on_human': self.robot_force_on_human, 'prev_tool_force': self.prev_tool_force, 'scratched': reward_force_scratch / 5}
         self.prev_tool_pos_real = obs[0:3]
         self.prev_tool_force = obs[-1]
         done = self.iteration >= 200
