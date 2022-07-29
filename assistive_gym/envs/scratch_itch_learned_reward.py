@@ -28,7 +28,7 @@ class ScratchItchLearnedRewardEnv(ScratchItchEnv):
         self.reward_net_path = reward_net_path
 
         self.device = torch.device(determine_default_torch_device(not torch.cuda.is_available()))
-        self.reward_net = Net("scratch_itch", hidden_dims=self.hidden_dims, augmented=self.augmented, pure_fully_observable=self.pure_fully_observable, fully_observable=self.fully_observable, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action, norm=self.normalize)
+        self.reward_net = Net("scratch_itch", hidden_dims=self.hidden_dims, augmented=self.augmented, new_pure_fully_observable=self.new_pure_fully_observable, pure_fully_observable=self.pure_fully_observable, fully_observable=self.fully_observable, num_rawfeatures=self.num_rawfeatures, state_action=self.state_action, norm=self.normalize)
         print("device:", self.device)
         print("torch.cuda.is_available():", torch.cuda.is_available())
         self.reward_net.load_state_dict(torch.load(self.reward_net_path, map_location=torch.device('cpu')))
