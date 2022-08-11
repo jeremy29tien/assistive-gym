@@ -1,3 +1,4 @@
+from os.path import exists
 import trex.model
 import assistive_gym.learn
 import argparse
@@ -8,7 +9,7 @@ import sys
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
+from gpu_utils import determine_default_torch_device
 
 
 # Function similar to active_learn's get_rollouts to get rollouts from trained policy
@@ -239,7 +240,8 @@ def train(device, discriminator_network, optimizer, training_inputs, training_ou
             trigger_times = 0
             print('trigger times:', trigger_times)
             print("saving model weights...")
-            torch.save(discriminator_network.state_dict(), checkpoint_dir)
+            if checkpoint_dir:
+                torch.save(discriminator_network.state_dict(), checkpoint_dir)
             if return_weights:
                 print("Weights:", discriminator_network.state_dict())
                 final_weights = discriminator_network.state_dict()
@@ -291,7 +293,6 @@ def calc_accuracy(device, discriminator_network, training_inputs, training_outpu
 
 
 def get_logit(device, net, x):
-    rewards_from_obs = []
     with torch.no_grad():
         logit = net.forward(torch.from_numpy(x).float().to(device)).item()
     return logit
@@ -299,31 +300,112 @@ def get_logit(device, net, x):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=None)
+    parser.add_argument('--env', default='', help="")
     parser.add_argument('--seed', default=0, type=int, help="random seed for experiments")
     # Have an argument for the reward-learning training data file
+    parser.add_argument('--reward_learning_data_path', default='', help="")
     # Have an argument for the trained policy to pull rollouts from
+    parser.add_argument('--trained_policy_path', default='', help="")
     # Have an argument for how many trajectories / rollouts to pull from both data pools
+    parser.add_argument('--num_trajs', default=100, type=int, help="")
+    parser.add_argument('--fully_observable', dest='fully_observable', default=False, action='store_true', help="")
+    parser.add_argument('--pure_fully_observable', dest='pure_fully_observable', default=False, action='store_true', help="")
+    parser.add_argument('--load_weights', dest='load_weights', default=False, action='store_true', help="")
+    parser.add_argument('--discriminator_model_path', default='', help="")
+    parser.add_argument('--num_epochs', default=100, type=int, help="number of training epochs")
+    parser.add_argument('--hidden_dims', default=0, nargs='+', type=int, help="dimensions of hidden layers")
+    parser.add_argument('--lr', default=0.00005, type=float, help="learning rate")
+    parser.add_argument('--weight_decay', default=0.0, type=float, help="weight decay")
+    parser.add_argument('--l1_reg', default=0.0, type=float, help="l1 regularization")
+    parser.add_argument('--patience', default=100, type=int, help="number of iterations we wait before early stopping")
 
     args = parser.parse_args()
 
-
+    ## HYPERPARAMS ##
+    env_name = args.env
     seed = args.seed
+    reward_learning_data_path = args.reward_learning_data_path
+    trained_policy_path = args.trained_policy_path
+    num_trajs = args.num_trajs
+    fully_observable = args.fully_observable
+    pure_fully_observable = args.pure_fully_observable
+    load_weights = args.load_weights
+    discriminator_model_path = args.discriminator_model_path
+    hidden_dims = tuple(args.hidden_dims) if args.hidden_dims != 0 else tuple()
+    lr = args.lr
+    weight_decay = args.weight_decay
+    l1_reg = args.l1_reg
+    num_epochs = args.num_epochs  # num times through training data
+    patience = args.patience
+
     np.random.seed(seed)
+    torch.manual_seed(seed)
 
     # Load data used in reward-learning
+    reward_learning_trajs = np.load(reward_learning_data_path)
+    idx = np.round(np.linspace(0, reward_learning_trajs.shape[0] - 1, num_trajs)).astype(int)
+    reward_learning_trajs = reward_learning_trajs[idx]
 
     # Get rollouts from trained policy
+    policy_trajs = get_rollouts(env_name=env_name, num_rollouts=num_trajs, policy_path=trained_policy_path, seed=seed, pure_fully_observable=pure_fully_observable, fully_observable=fully_observable)
+
+    # Create validation set (disjoint set of trajectories)
+    idx = np.random.permutation(np.arange(reward_learning_trajs.shape[0]))
+    shuffled_reward_learning_trajs = reward_learning_trajs[idx]
+    train_val_split_i = int(reward_learning_trajs.shape[0] * 0.1)
+    val_reward_learning_trajs = shuffled_reward_learning_trajs[0:train_val_split_i]
+    train_reward_learning_trajs = shuffled_reward_learning_trajs[train_val_split_i:]
+
+    idx = np.random.permutation(np.arange(policy_trajs.shape[0]))
+    shuffled_policy_trajs = policy_trajs[idx]
+    train_val_split_i = int(policy_trajs.shape[0] * 0.1)
+    val_policy_trajs = shuffled_policy_trajs[0:train_val_split_i]
+    train_policy_trajs = shuffled_policy_trajs[train_val_split_i:]
 
     # Prepare discriminator training data
+    train_obs, train_labels = prepare_data(train_reward_learning_trajs, train_policy_trajs)
+    val_obs, val_labels = prepare_data(val_reward_learning_trajs, val_policy_trajs)
 
     # Train discriminator
+    device = torch.device(determine_default_torch_device(not torch.cuda.is_available()))
+    discriminator_model = Discriminator(env_name=env_name, hidden_dims=hidden_dims, pure_fully_observable=pure_fully_observable, fully_observable=fully_observable)
+
+    # Check if we already trained this model before. If so, load the saved weights.
+    if load_weights:
+        model_exists = exists(discriminator_model_path)
+        if model_exists:
+            print("Found existing model weights! Loading state dict...")
+            discriminator_model.load_state_dict(torch.load(discriminator_model_path))  # map_location=torch.device('cpu') may be necessary
+        else:
+            print("Could not find existing model weights. Training from scratch...")
+    else:
+        print("Training reward model from scratch...")
+
+    discriminator_model.to(device)
+    num_total_params = sum(p.numel() for p in discriminator_model.parameters())
+    num_trainable_params = sum(p.numel() for p in discriminator_model.parameters() if p.requires_grad)
+    print("Total number of parameters:", num_total_params)
+    print("Number of trainable paramters:", num_trainable_params)
+
+    import torch.optim as optim
+    optimizer = optim.Adam(discriminator_model.parameters(), lr=lr, weight_decay=weight_decay)
+    train(device, discriminator_model, optimizer, train_obs, train_labels, num_epochs, l1_reg,
+                          discriminator_model_path, val_obs, val_labels, patience)
 
     # Report training and validation accuracy
-
-    # Save model. In the future, load model if exists.
+    print("train accuracy:", calc_accuracy(device, discriminator_model, train_obs, train_labels))
+    print("validation accuracy:", calc_accuracy(device, discriminator_model, val_obs, val_labels))
 
     # Inference:
     # For the states visited during reward-learning, calculate the average return/logit. --> $D_{KL}(p(x) || q(x))$
+    reward_learning_obs = np.reshape(reward_learning_trajs, (reward_learning_trajs.shape[0] * reward_learning_trajs.shape[1], reward_learning_trajs.shape[2]))
+    # TODO: check that we are able to take the np.mean -- may need to convert tensor to numpy or vice versa
+    reward_learning_logits = get_logit(device, discriminator_model, reward_learning_obs)
+    dkl_pq = np.mean(reward_learning_logits)
 
     # For the states visited during the policy rollout, calculate the average return/logit and NEGATE. --> $D_{KL}(q(x) || p(x))$
-    pass
+    policy_obs = np.reshape(policy_trajs, (policy_trajs.shape[0] * policy_trajs.shape[1], policy_trajs.shape[2]))
+    policy_logits = get_logit(device, discriminator_model, policy_obs)
+    dkl_qp = np.mean(policy_logits) * -1
+
+
