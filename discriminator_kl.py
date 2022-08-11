@@ -408,4 +408,7 @@ if __name__ == '__main__':
     policy_logits = get_logit(device, discriminator_model, policy_obs)
     dkl_qp = np.mean(policy_logits) * -1
 
+    print("dkl (reward learning) || (policy rollouts):", dkl_pq)
+    print("dkl (policy rollouts) || (reward learning):", dkl_qp)
+
 
