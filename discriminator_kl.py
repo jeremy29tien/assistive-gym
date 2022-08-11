@@ -307,19 +307,16 @@ def calc_val_loss(device, discriminator_network, training_inputs, training_outpu
 
 
 def calc_accuracy(device, discriminator_network, training_inputs, training_outputs):
-    num_correct = 0.
     with torch.no_grad():
-        for i in range(len(training_inputs)):
-            obs = np.array(training_inputs[i])
-            label = training_outputs[i]
-            obs = torch.from_numpy(obs).float().to(device)
+        obs = np.array(training_inputs)
+        label = training_outputs
+        obs = torch.from_numpy(obs).float().to(device)
 
-            # Forward to get logits
-            outputs = discriminator_network.forward(obs)
-            _, pred_label = torch.max(outputs, 0)
-            if pred_label.item() == label:
-                num_correct += 1.
-    return num_correct / len(training_inputs)
+        # Forward to get logits
+        outputs = discriminator_network.forward(obs)
+        preds = outputs > 0
+
+    return (preds == label).sum().item() / len(label)
 
 
 def get_logit(device, net, x):
@@ -433,6 +430,7 @@ if __name__ == '__main__':
     reward_learning_obs = np.reshape(reward_learning_trajs, (reward_learning_trajs.shape[0] * reward_learning_trajs.shape[1], reward_learning_trajs.shape[2]))
     # TODO: check that we are able to take the np.mean -- may need to convert tensor to numpy or vice versa
     reward_learning_logits = get_logit(device, discriminator_model, reward_learning_obs)
+    print("reward_learning_logits:", reward_learning_logits)
     dkl_pq = np.mean(reward_learning_logits)
 
     # For the states visited during the policy rollout, calculate the average return/logit and NEGATE. --> $D_{KL}(q(x) || p(x))$
