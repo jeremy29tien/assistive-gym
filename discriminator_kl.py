@@ -187,8 +187,8 @@ class Discriminator(nn.Module):
 
 def train(device, discriminator_network, optimizer, training_inputs, training_outputs, num_epochs, l1_reg, checkpoint_dir, val_obs, val_labels, patience, return_weights=False):
     print("device:", device)
-    # Note that a sigmoid is implicitly applied in the CrossEntropyLoss
-    loss_criterion = nn.CrossEntropyLoss()
+    # Note that a sigmoid is implicitly applied in the BCEWithLogitsLoss
+    loss_criterion = nn.BCEWithLogitsLoss()
 
     trigger_times = 0
     prev_min_val_loss = 100
@@ -233,7 +233,7 @@ def train(device, discriminator_network, optimizer, training_inputs, training_ou
         optimizer.zero_grad()
 
         # forward + backward + optimize
-        outputs = discriminator_network.forward(training_obs)
+        outputs = torch.flatten(discriminator_network.forward(training_obs))
         print("outputs:", outputs.shape)
         print("training_labels:", training_labels.shape)
         # outputs = outputs.unsqueeze(0)
@@ -283,7 +283,7 @@ def train(device, discriminator_network, optimizer, training_inputs, training_ou
 
 # Calculates the cross-entropy losses over the entire validation set and returns the MEAN.
 def calc_val_loss(device, discriminator_network, training_inputs, training_outputs):
-    loss_criterion = nn.CrossEntropyLoss()
+    loss_criterion = nn.BCEWithLogitsLoss()
     losses = []
     with torch.no_grad():
         for i in range(len(training_inputs)):
