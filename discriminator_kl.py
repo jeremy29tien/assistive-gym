@@ -197,31 +197,58 @@ def train(device, discriminator_network, optimizer, training_inputs, training_ou
     for epoch in range(num_epochs):
         np.random.shuffle(training_data)
         training_obs, training_labels = zip(*training_data)
-        for i in range(len(training_labels)):
-            obs = np.array(training_obs[i])
-            label = np.array([training_labels[i]])
-            obs = torch.from_numpy(obs).float().to(device)
-            label = torch.from_numpy(label).to(device)
+        # for i in range(len(training_labels)):
+        #     obs = np.array(training_obs[i])
+        #     label = np.array([training_labels[i]])
+        #     obs = torch.from_numpy(obs).float().to(device)
+        #     label = torch.from_numpy(label).to(device)
+        #
+        #     # zero out gradient
+        #     optimizer.zero_grad()
+        #
+        #     # forward + backward + optimize
+        #     outputs = discriminator_network.forward(obs)
+        #     print("outputs:", outputs.shape)
+        #     print("label")
+        #     # outputs = outputs.unsqueeze(0)
+        #     # print("train outputs", outputs.shape)
+        #     # print("train label", label.shape)
+        #
+        #     # Calculate loss
+        #     cross_entropy_loss = loss_criterion(outputs, label)
+        #     l1_loss = l1_reg * torch.linalg.vector_norm(torch.cat([param.view(-1) for param in discriminator_network.parameters()]), 1)
+        #     loss = cross_entropy_loss + l1_loss
+        #
+        #     # Backpropagate
+        #     loss.backward()
+        #
+        #     # Take one optimizer step
+        #     optimizer.step()
 
-            # zero out gradient
-            optimizer.zero_grad()
+        training_obs = torch.from_numpy(training_obs).float().to(device)
+        training_labels = torch.from_numpy(training_labels).to(device)
 
-            # forward + backward + optimize
-            outputs = discriminator_network.forward(obs)
-            # outputs = outputs.unsqueeze(0)
-            # print("train outputs", outputs.shape)
-            # print("train label", label.shape)
+        # zero out gradient
+        optimizer.zero_grad()
 
-            # Calculate loss
-            cross_entropy_loss = loss_criterion(outputs, label)
-            l1_loss = l1_reg * torch.linalg.vector_norm(torch.cat([param.view(-1) for param in discriminator_network.parameters()]), 1)
-            loss = cross_entropy_loss + l1_loss
+        # forward + backward + optimize
+        outputs = discriminator_network.forward(training_obs)
+        print("outputs:", outputs.shape)
+        print("training_labels:", training_labels.shape)
+        # outputs = outputs.unsqueeze(0)
+        # print("train outputs", outputs.shape)
+        # print("train label", label.shape)
 
-            # Backpropagate
-            loss.backward()
+        # Calculate loss
+        cross_entropy_loss = loss_criterion(outputs, training_labels)
+        l1_loss = l1_reg * torch.linalg.vector_norm(torch.cat([param.view(-1) for param in discriminator_network.parameters()]), 1)
+        loss = cross_entropy_loss + l1_loss
 
-            # Take one optimizer step
-            optimizer.step()
+        # Backpropagate
+        loss.backward()
+
+        # Take one optimizer step
+        optimizer.step()
 
         val_loss = calc_val_loss(device, discriminator_network, val_obs, val_labels)
         val_acc = calc_accuracy(device, discriminator_network, val_obs, val_labels)
