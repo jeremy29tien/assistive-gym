@@ -235,7 +235,9 @@ def train(device, discriminator_network, optimizer, training_inputs, training_ou
         # forward + backward + optimize
         outputs = torch.flatten(discriminator_network.forward(training_obs))
         print("outputs:", outputs.shape)
+        print(outputs)
         print("training_labels:", training_labels.shape)
+        print(training_labels)
         # outputs = outputs.unsqueeze(0)
         # print("train outputs", outputs.shape)
         # print("train label", label.shape)
@@ -322,7 +324,7 @@ def calc_accuracy(device, discriminator_network, training_inputs, training_outpu
 
 def get_logit(device, net, x):
     with torch.no_grad():
-        logit = net.forward(torch.from_numpy(x).float().to(device)).item()
+        logit = net.forward(torch.from_numpy(x).float().to(device))
     return logit
 
 
