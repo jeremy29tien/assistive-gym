@@ -315,6 +315,10 @@ def calc_accuracy(device, discriminator_network, training_inputs, training_outpu
         # Forward to get logits
         outputs = discriminator_network.forward(obs)
         preds = (outputs > 0).detach().cpu().numpy()
+        print("preds:", preds)
+        print(preds == label)
+        print(np.sum(preds == label))
+        print(len(label))
 
     return np.sum(preds == label) / len(label)
 
@@ -322,7 +326,7 @@ def calc_accuracy(device, discriminator_network, training_inputs, training_outpu
 def get_logit(device, net, x):
     with torch.no_grad():
         logit = net.forward(torch.from_numpy(x).float().to(device))
-    return logit
+    return logit.detach().cpu().numpy().flatten()
 
 
 if __name__ == '__main__':
@@ -381,13 +385,13 @@ if __name__ == '__main__':
     # Create validation set (disjoint set of trajectories)
     idx = np.random.permutation(np.arange(reward_learning_trajs.shape[0]))
     shuffled_reward_learning_trajs = reward_learning_trajs[idx]
-    train_val_split_i = int(reward_learning_trajs.shape[0] * 0.1)
+    train_val_split_i = int(reward_learning_trajs.shape[0] * 0.5)
     val_reward_learning_trajs = shuffled_reward_learning_trajs[0:train_val_split_i]
     train_reward_learning_trajs = shuffled_reward_learning_trajs[train_val_split_i:]
 
     idx = np.random.permutation(np.arange(policy_trajs.shape[0]))
     shuffled_policy_trajs = policy_trajs[idx]
-    train_val_split_i = int(policy_trajs.shape[0] * 0.1)
+    train_val_split_i = int(policy_trajs.shape[0] * 0.5)
     val_policy_trajs = shuffled_policy_trajs[0:train_val_split_i]
     train_policy_trajs = shuffled_policy_trajs[train_val_split_i:]
 
