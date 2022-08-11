@@ -224,7 +224,8 @@ def train(device, discriminator_network, optimizer, training_inputs, training_ou
         #
         #     # Take one optimizer step
         #     optimizer.step()
-
+        training_obs = np.array(training_obs)
+        training_labels = np.array(training_labels)
         training_obs = torch.from_numpy(training_obs).float().to(device)
         training_labels = torch.from_numpy(training_labels).to(device)
 
