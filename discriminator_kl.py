@@ -342,13 +342,13 @@ if __name__ == '__main__':
     torch.manual_seed(seed)
 
     # Load data used in reward-learning
-    print("Pulling " + num_trajs + " trajectories from the reward learning training dataset...")
+    print("Pulling " + str(num_trajs) + " trajectories from the reward learning training dataset...")
     reward_learning_trajs = np.load(reward_learning_data_path)
     idx = np.round(np.linspace(0, reward_learning_trajs.shape[0] - 1, num_trajs)).astype(int)
     reward_learning_trajs = reward_learning_trajs[idx]
 
     # Get rollouts from trained policy
-    print("Getting " + num_trajs + " rollouts from the trained policy...")
+    print("Getting " + str(num_trajs) + " rollouts from the trained policy...")
     policy_trajs = get_rollouts(env_name=env_name, num_rollouts=num_trajs, policy_path=trained_policy_path, seed=seed, pure_fully_observable=pure_fully_observable, fully_observable=fully_observable)
 
     # Create validation set (disjoint set of trajectories)
