@@ -309,14 +309,14 @@ def calc_val_loss(device, discriminator_network, training_inputs, training_outpu
 def calc_accuracy(device, discriminator_network, training_inputs, training_outputs):
     with torch.no_grad():
         obs = np.array(training_inputs)
-        label = training_outputs
+        label = np.array(training_outputs)
         obs = torch.from_numpy(obs).float().to(device)
 
         # Forward to get logits
         outputs = discriminator_network.forward(obs)
-        preds = outputs > 0
+        preds = (outputs > 0).detach().numpy()
 
-    return (preds == label).sum().item() / len(label)
+    return np.sum(preds == label) / len(label)
 
 
 def get_logit(device, net, x):
