@@ -314,7 +314,7 @@ def calc_accuracy(device, discriminator_network, training_inputs, training_outpu
 
         # Forward to get logits
         outputs = discriminator_network.forward(obs)
-        preds = (outputs > 0).detach().cpu().numpy()
+        preds = (outputs > 0).detach().cpu().numpy().flatten()
         print("preds:", preds)
         print(preds == label)
         print(np.sum(preds == label))
