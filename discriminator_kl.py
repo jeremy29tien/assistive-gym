@@ -435,12 +435,12 @@ if __name__ == '__main__':
     # TODO: check that we are able to take the np.mean -- may need to convert tensor to numpy or vice versa
     reward_learning_logits = get_logit(device, discriminator_model, reward_learning_obs)
     # print("reward_learning_logits:", reward_learning_logits)
-    dkl_pq = np.mean(reward_learning_logits)
+    dkl_pq = np.mean(reward_learning_logits) * -1
 
     # For the states visited during the policy rollout, calculate the average return/logit and NEGATE. --> $D_{KL}(q(x) || p(x))$
     policy_obs = np.reshape(policy_trajs, (policy_trajs.shape[0] * policy_trajs.shape[1], policy_trajs.shape[2]))
     policy_logits = get_logit(device, discriminator_model, policy_obs)
-    dkl_qp = np.mean(policy_logits) * -1
+    dkl_qp = np.mean(policy_logits)
 
     print("dkl (reward learning) || (policy rollouts):", dkl_pq)
     print("dkl (policy rollouts) || (reward learning):", dkl_qp)
