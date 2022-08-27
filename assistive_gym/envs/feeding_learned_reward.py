@@ -15,12 +15,12 @@ class FeedingLearnedRewardEnv(FeedingEnv):
         super(FeedingLearnedRewardEnv, self).__init__(robot=robot, human=human)
 
         # Reward Model Specifications
-        self.pure_fully_observable = False
-        self.fully_observable = True
+        self.pure_fully_observable = True
+        self.fully_observable = False
         self.augmented = False
         self.state_action = False
         self.num_rawfeatures = 25  # Feeding has 25 raw features total
-        self.hidden_dims = (128, 64)
+        self.hidden_dims = (256, 256, 256)
         self.normalize = False
 
         print("reward_net_path:", reward_net_path)
