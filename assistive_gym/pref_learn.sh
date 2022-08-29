@@ -8,7 +8,7 @@ for seed in 0 1 2; do
 
   #Reward-learning
   echo "Reward learning..."
-  config="scratch_itch/vanilla/fully_observable/${var1}demos_allpairs_hdim256-256-256_100epochs_10patience_00001lr_001weightdecay"
+  config="scratch_itch/vanilla/${var1}demos_allpairs_hdim256-256-256_100epochs_10patience_00001lr_001weightdecay"
   reward_model_path="/home/jeremy/assistive-gym/trex/models/${config}_seed${seed}.params"
   reward_output_path="reward_learning_outputs/${config}_seed${seed}.txt"
 
