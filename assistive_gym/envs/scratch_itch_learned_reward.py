@@ -17,8 +17,8 @@ class ScratchItchLearnedRewardEnv(ScratchItchEnv):
         # Reward Model Specifications
         self.new_pure_fully_observable = False
         self.new_fully_observable = False
-        self.pure_fully_observable = True
-        self.fully_observable = False
+        self.pure_fully_observable = False
+        self.fully_observable = True
         self.augmented = False
         self.state_action = False
         self.num_rawfeatures = 30  # ScratchItch has 30 raw features total
