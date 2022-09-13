@@ -385,9 +385,9 @@ def run(reward_model_path, seed, feeding=True, scratch_itch=False, num_comps=0, 
                 demo_reward_per_timestep = np.load("data/scratchitch/raw/demo_reward_per_timestep.npy")
             elif feeding:
                 if state_action:
-                    demos = np.load("data/raw_data/demos_stateactions.npy")
+                    demos = np.load("data/raw_data/demos.npy")
                 else:
-                    demos = np.load("data/raw_data/demos_states.npy")
+                    raise Exception("Pure state-based reward not implemented.")
                 demo_rewards = np.load("data/raw_data/demo_rewards.npy")
                 demo_reward_per_timestep = np.load("data/raw_data/demo_reward_per_timestep.npy")
             else:
