@@ -59,6 +59,8 @@ class FeedingLearnedRewardEnv(FeedingEnv):
             input = np.concatenate((obs, action, handpicked_features))
         elif self.augmented:
             input = np.concatenate((obs[0:self.num_rawfeatures], handpicked_features))
+        elif self.state_action:
+            input = np.concatenate((obs, action))
         else:
             input = obs
 
