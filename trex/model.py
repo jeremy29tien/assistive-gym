@@ -89,7 +89,7 @@ class Net(nn.Module):
                 raise Exception("NOT IMPLEMENTED.")
             elif env == "scratch_itch":
                 input_dim = 20
-        if new_fully_observable:
+        elif new_fully_observable:
             if env == "feeding":
                 raise Exception("NOT IMPLEMENTED.")
             elif env == "scratch_itch":
