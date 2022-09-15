@@ -11,13 +11,13 @@ for seed in 0 1 2; do
   if [ ${var1} = "pure_fully_observable" ]
   then
       echo ${var1}
-      config="feeding/pure_fully_observable/324demos_allpairs_noisyprefs_hdim256-256-256_100epochs_10patience_00001lr_0000001weightdecay"
+      config="feeding/vanilla/pure_fully_observable/324demos_allpairs_noisyprefs_hdim256-256-256_100epochs_10patience_00001lr_0000001weightdecay"
   fi
 
   if [ ${var1} = "fully_observable" ]
   then
       echo ${var1}
-      config="feeding/324demos_allpairs_noisyprefs_hdim256-256-256_100epochs_10patience_00001lr_0000001weightdecay"
+      config="feeding/vanilla/324demos_allpairs_noisyprefs_hdim256-256-256_100epochs_10patience_00001lr_0000001weightdecay"
   fi
 
   reward_model_path="/home/jeremy/assistive-gym/trex/models/${config}_seed${seed}.params"
