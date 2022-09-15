@@ -17,7 +17,7 @@ from gpu_utils import determine_default_torch_device
 # if all_pairs=True, rather than generating num_comps pairwise comps with delta_rank ranking difference,
 # we simply generate all (num_demos choose 2) possible pairs from the dataset.
 # Note: demonstrations must be sorted by increasing reward.
-def create_training_data(sorted_demonstrations, sorted_rewards, num_comps=0, delta_rank=1, delta_reward=0, all_pairs=False):
+def create_training_data(sorted_demonstrations, sorted_rewards, num_comps=0, delta_rank=1, delta_reward=0, all_pairs=False, noisy_prefs=False):
     # collect training data
     max_traj_length = 0
     training_obs = []
@@ -30,11 +30,18 @@ def create_training_data(sorted_demonstrations, sorted_rewards, num_comps=0, del
                 traj_i = sorted_demonstrations[ti]
                 traj_j = sorted_demonstrations[tj]
 
-                # In other words, label = (traj_i < traj_j)
-                if ti > tj:
-                    label = 0  # 0 indicates that traj_i is better than traj_j
-                else:
-                    label = 1  # 1 indicates that traj_j is better than traj_i
+                if noisy_prefs:
+                    prob = np.exp(sorted_rewards[tj]) / (np.exp(sorted_rewards[ti]) + np.exp(sorted_rewards[tj]))
+                    if np.random.rand() > prob:
+                        label = 0
+                    else:
+                        label = 1
+                else:  # Preferences are perfect
+                    # In other words, label = (traj_i < traj_j)
+                    if ti > tj:
+                        label = 0  # 0 indicates that traj_i is better than traj_j
+                    else:
+                        label = 1  # 1 indicates that traj_j is better than traj_i
 
                 training_obs.append((traj_i, traj_j))
                 training_labels.append(label)
@@ -42,7 +49,6 @@ def create_training_data(sorted_demonstrations, sorted_rewards, num_comps=0, del
                 # We shouldn't need max_traj_length, since all our trajectories our fixed at length 200.
                 max_traj_length = max(max_traj_length, len(traj_i), len(traj_j))
     else:
-        # add full trajs
         for n in range(num_comps):
             ti = 0
             tj = 0
@@ -60,11 +66,18 @@ def create_training_data(sorted_demonstrations, sorted_rewards, num_comps=0, del
             traj_i = sorted_demonstrations[ti]
             traj_j = sorted_demonstrations[tj]
 
-            # In other words, label = (traj_i < traj_j)
-            if ti > tj:
-                label = 0  # 0 indicates that traj_i is better than traj_j
-            else:
-                label = 1  # 1 indicates that traj_j is better than traj_i
+            if noisy_prefs:
+                prob = np.exp(sorted_rewards[tj]) / (np.exp(sorted_rewards[ti]) + np.exp(sorted_rewards[tj]))
+                if np.random.rand() > prob:
+                    label = 0
+                else:
+                    label = 1
+            else:  # Preferences are perfect
+                # In other words, label = (traj_i < traj_j)
+                if ti > tj:
+                    label = 0  # 0 indicates that traj_i is better than traj_j
+                else:
+                    label = 1  # 1 indicates that traj_j is better than traj_i
 
             training_obs.append((traj_i, traj_j))
             training_labels.append(label)
@@ -293,7 +306,7 @@ def predict_traj_return(device, net, traj):
     return sum(predict_reward_sequence(device, net, traj))
 
 
-def run(reward_model_path, seed, feeding=True, scratch_itch=False, num_comps=0, num_demos=120, hidden_dims=tuple(), lr=0.00005, weight_decay=0.0, l1_reg=0.0,
+def run(reward_model_path, seed, feeding=True, scratch_itch=False, noisy_prefs=False, num_comps=0, num_demos=120, hidden_dims=tuple(), lr=0.00005, weight_decay=0.0, l1_reg=0.0,
         num_epochs=100, patience=100, delta_rank=1, delta_reward=0, all_pairs=False, augmented=False, fully_observable=False,
         pure_fully_observable=False, new_pure_fully_observable=False, new_fully_observable=False, num_rawfeatures=11, state_action=False, normalize_features=False, teleop=False, test=False,
         al_data=tuple(), load_weights=False, return_weights=False):
@@ -436,7 +449,7 @@ def run(reward_model_path, seed, feeding=True, scratch_itch=False, num_comps=0, 
     sorted_train_rewards = sorted_train_rewards[idx]
     # demo_reward_per_timestep = demo_reward_per_timestep[idx]  # Note: not used.
 
-    train_obs, train_labels = create_training_data(sorted_train_demos, sorted_train_rewards, num_comps=num_comps, delta_rank=delta_rank, delta_reward=delta_reward, all_pairs=all_pairs)
+    train_obs, train_labels = create_training_data(sorted_train_demos, sorted_train_rewards, noisy_prefs=noisy_prefs, num_comps=num_comps, delta_rank=delta_rank, delta_reward=delta_reward, all_pairs=all_pairs)
     val_obs, val_labels = create_training_data(sorted_val_demos, sorted_val_rewards, all_pairs=True)
 
     print("num train_obs", len(train_obs))
@@ -516,6 +529,8 @@ if __name__ == "__main__":
     parser.add_argument('--normalize_features', dest='normalize_features', default=False, action='store_true', help="whether to normalize features")  # NOTE: type=bool doesn't work, value is still true.
     # parser.add_argument('--active_learning', dest='active_learning', default=False, action='store_true', help="whether we use data generated by RL policy's rollouts")  # NOTE: type=bool doesn't work, value is still true.
     parser.add_argument('--teleop', dest='teleop', default=False, action='store_true', help="teleop")
+    parser.add_argument('--noisy_prefs', dest='noisy_prefs', default=False, action='store_true',
+                        help="whether preferences are noisily rational (with beta=1 in the Bradley-Terry model)")
     parser.add_argument('--test', dest='test', default=False, action='store_true', help="testing mode for raw observations")
     args = parser.parse_args()
 
@@ -552,10 +567,11 @@ if __name__ == "__main__":
     normalize_features = args.normalize_features
     # active_learning = args.active_learning
     teleop = args.teleop
+    noisy_prefs = args.noisy_prefs
     test = args.test
     #################
 
-    run(args.reward_model_path, seed, feeding=feeding, scratch_itch=scratch_itch, num_comps=num_comps, num_demos=num_demos,
+    run(args.reward_model_path, seed, feeding=feeding, scratch_itch=scratch_itch, noisy_prefs=noisy_prefs, num_comps=num_comps, num_demos=num_demos,
         hidden_dims=hidden_dims, lr=lr, weight_decay=weight_decay, l1_reg=l1_reg, num_epochs=num_epochs, patience=patience,
         delta_rank=delta_rank, delta_reward=delta_reward, all_pairs=all_pairs, augmented=augmented, fully_observable=fully_observable,
         pure_fully_observable=pure_fully_observable, new_fully_observable=new_fully_observable, new_pure_fully_observable=new_pure_fully_observable,
