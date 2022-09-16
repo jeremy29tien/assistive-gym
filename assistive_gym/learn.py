@@ -341,11 +341,11 @@ if __name__ == '__main__':
     checkpoint_path = None
 
     if args.train:
-        checkpoint_path = train(args.env, args.algo, timesteps_total=args.train_timesteps, save_dir=args.save_dir, load_policy_path=args.load_policy_path, coop=coop, seed=args.seed, save_checkpoints=args.save_checkpoints, reward_net_path=args.reward_net_path, indvar=tuple(args.indvar) if args.indvar != -1 else None, tb=args.tb)
+        checkpoint_path = train(args.env, args.algo, timesteps_total=args.train_timesteps, save_dir=args.save_dir, load_policy_path=args.load_policy_path, coop=coop, seed=args.seed, save_checkpoints=args.save_checkpoints, reward_net_path=args.reward_net_path, indvar=tuple(args.indvar) if args.indvar is not None else None, tb=args.tb)
     if args.render:
         render_policy(None, args.env, args.algo, checkpoint_path if checkpoint_path is not None else args.load_policy_path, coop=coop, colab=args.colab, seed=args.seed, n_episodes=args.render_episodes)
     if args.evaluate:
-        evaluate_policy(args.env, args.algo, checkpoint_path if checkpoint_path is not None else args.load_policy_path, n_episodes=args.eval_episodes, coop=coop, seed=args.seed, verbose=args.verbose, reward_net_path=args.reward_net_path, indvar=tuple(args.indvar) if args.indvar != -1 else None)
+        evaluate_policy(args.env, args.algo, checkpoint_path if checkpoint_path is not None else args.load_policy_path, n_episodes=args.eval_episodes, coop=coop, seed=args.seed, verbose=args.verbose, reward_net_path=args.reward_net_path, indvar=tuple(args.indvar) if args.indvar is not None else None)
 
     if args.tb:
         writer.close()
