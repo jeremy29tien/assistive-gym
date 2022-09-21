@@ -329,6 +329,93 @@ def get_logit(device, net, x):
     return logit.detach().cpu().numpy().flatten()
 
 
+def run(env_name, seed, reward_learning_data_path, trained_policy_path, num_trajs, fully_observable, pure_fully_observable,
+        load_weights, discriminator_model_path, num_epochs, hidden_dims, lr, weight_decay, l1_reg, patience):
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+
+    # Load data used in reward-learning
+    print("Pulling " + str(num_trajs) + " trajectories from the reward learning training dataset...")
+    reward_learning_trajs = np.load(reward_learning_data_path)
+    idx = np.round(np.linspace(0, reward_learning_trajs.shape[0] - 1, num_trajs)).astype(int)
+    reward_learning_trajs = reward_learning_trajs[idx]
+
+    # Get rollouts from trained policy
+    print("Getting " + str(num_trajs) + " rollouts from the trained policy...")
+    policy_trajs = get_rollouts(env_name=env_name, num_rollouts=num_trajs, policy_path=trained_policy_path, seed=seed,
+                                pure_fully_observable=pure_fully_observable, fully_observable=fully_observable)
+
+    # Create validation set (disjoint set of trajectories)
+    idx = np.random.permutation(np.arange(reward_learning_trajs.shape[0]))
+    shuffled_reward_learning_trajs = reward_learning_trajs[idx]
+    train_val_split_i = int(reward_learning_trajs.shape[0] * 0.5)
+    val_reward_learning_trajs = shuffled_reward_learning_trajs[0:train_val_split_i]
+    train_reward_learning_trajs = shuffled_reward_learning_trajs[train_val_split_i:]
+
+    idx = np.random.permutation(np.arange(policy_trajs.shape[0]))
+    shuffled_policy_trajs = policy_trajs[idx]
+    train_val_split_i = int(policy_trajs.shape[0] * 0.5)
+    val_policy_trajs = shuffled_policy_trajs[0:train_val_split_i]
+    train_policy_trajs = shuffled_policy_trajs[train_val_split_i:]
+
+    # Prepare discriminator training data
+    train_obs, train_labels = prepare_data(train_reward_learning_trajs, train_policy_trajs)
+    val_obs, val_labels = prepare_data(val_reward_learning_trajs, val_policy_trajs)
+
+    # Train discriminator
+    device = torch.device(determine_default_torch_device(not torch.cuda.is_available()))
+    discriminator_model = Discriminator(env_name=env_name, hidden_dims=hidden_dims,
+                                        pure_fully_observable=pure_fully_observable, fully_observable=fully_observable)
+
+    # Check if we already trained this model before. If so, load the saved weights.
+    if load_weights:
+        model_exists = exists(discriminator_model_path)
+        if model_exists:
+            print("Found existing model weights! Loading state dict...")
+            discriminator_model.load_state_dict(
+                torch.load(discriminator_model_path))  # map_location=torch.device('cpu') may be necessary
+        else:
+            print("Could not find existing model weights. Training from scratch...")
+    else:
+        print("Training reward model from scratch...")
+
+    discriminator_model.to(device)
+    num_total_params = sum(p.numel() for p in discriminator_model.parameters())
+    num_trainable_params = sum(p.numel() for p in discriminator_model.parameters() if p.requires_grad)
+    print("Total number of parameters:", num_total_params)
+    print("Number of trainable parameters:", num_trainable_params)
+
+    import torch.optim as optim
+    optimizer = optim.Adam(discriminator_model.parameters(), lr=lr, weight_decay=weight_decay)
+    train(device, discriminator_model, optimizer, train_obs, train_labels, num_epochs, l1_reg,
+          discriminator_model_path, val_obs, val_labels, patience)
+
+    # Report training and validation accuracy
+    train_acc = calc_accuracy(device, discriminator_model, train_obs, train_labels)
+    val_acc = calc_accuracy(device, discriminator_model, val_obs, val_labels)
+    print("train accuracy:", train_acc)
+    print("validation accuracy:", val_acc)
+
+    # Inference:
+    # For the states visited during reward-learning, calculate the average return/logit. --> $D_{KL}(p(x) || q(x))$
+    reward_learning_obs = np.reshape(reward_learning_trajs, (
+    reward_learning_trajs.shape[0] * reward_learning_trajs.shape[1], reward_learning_trajs.shape[2]))
+    # TODO: check that we are able to take the np.mean -- may need to convert tensor to numpy or vice versa
+    reward_learning_logits = get_logit(device, discriminator_model, reward_learning_obs)
+    # print("reward_learning_logits:", reward_learning_logits)
+    dkl_pq = np.mean(reward_learning_logits) * -1
+
+    # For the states visited during the policy rollout, calculate the average return/logit and NEGATE. --> $D_{KL}(q(x) || p(x))$
+    policy_obs = np.reshape(policy_trajs, (policy_trajs.shape[0] * policy_trajs.shape[1], policy_trajs.shape[2]))
+    policy_logits = get_logit(device, discriminator_model, policy_obs)
+    dkl_qp = np.mean(policy_logits)
+
+    print("dkl (reward learning) || (policy rollouts):", dkl_pq)
+    print("dkl (policy rollouts) || (reward learning):", dkl_qp)
+
+    return train_acc, val_acc, dkl_pq, dkl_qp
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=None)
     parser.add_argument('--env', default='', help="")
@@ -369,80 +456,5 @@ if __name__ == '__main__':
     num_epochs = args.num_epochs  # num times through training data
     patience = args.patience
 
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-
-    # Load data used in reward-learning
-    print("Pulling " + str(num_trajs) + " trajectories from the reward learning training dataset...")
-    reward_learning_trajs = np.load(reward_learning_data_path)
-    idx = np.round(np.linspace(0, reward_learning_trajs.shape[0] - 1, num_trajs)).astype(int)
-    reward_learning_trajs = reward_learning_trajs[idx]
-
-    # Get rollouts from trained policy
-    print("Getting " + str(num_trajs) + " rollouts from the trained policy...")
-    policy_trajs = get_rollouts(env_name=env_name, num_rollouts=num_trajs, policy_path=trained_policy_path, seed=seed, pure_fully_observable=pure_fully_observable, fully_observable=fully_observable)
-
-    # Create validation set (disjoint set of trajectories)
-    idx = np.random.permutation(np.arange(reward_learning_trajs.shape[0]))
-    shuffled_reward_learning_trajs = reward_learning_trajs[idx]
-    train_val_split_i = int(reward_learning_trajs.shape[0] * 0.5)
-    val_reward_learning_trajs = shuffled_reward_learning_trajs[0:train_val_split_i]
-    train_reward_learning_trajs = shuffled_reward_learning_trajs[train_val_split_i:]
-
-    idx = np.random.permutation(np.arange(policy_trajs.shape[0]))
-    shuffled_policy_trajs = policy_trajs[idx]
-    train_val_split_i = int(policy_trajs.shape[0] * 0.5)
-    val_policy_trajs = shuffled_policy_trajs[0:train_val_split_i]
-    train_policy_trajs = shuffled_policy_trajs[train_val_split_i:]
-
-    # Prepare discriminator training data
-    train_obs, train_labels = prepare_data(train_reward_learning_trajs, train_policy_trajs)
-    val_obs, val_labels = prepare_data(val_reward_learning_trajs, val_policy_trajs)
-
-    # Train discriminator
-    device = torch.device(determine_default_torch_device(not torch.cuda.is_available()))
-    discriminator_model = Discriminator(env_name=env_name, hidden_dims=hidden_dims, pure_fully_observable=pure_fully_observable, fully_observable=fully_observable)
-
-    # Check if we already trained this model before. If so, load the saved weights.
-    if load_weights:
-        model_exists = exists(discriminator_model_path)
-        if model_exists:
-            print("Found existing model weights! Loading state dict...")
-            discriminator_model.load_state_dict(torch.load(discriminator_model_path))  # map_location=torch.device('cpu') may be necessary
-        else:
-            print("Could not find existing model weights. Training from scratch...")
-    else:
-        print("Training reward model from scratch...")
-
-    discriminator_model.to(device)
-    num_total_params = sum(p.numel() for p in discriminator_model.parameters())
-    num_trainable_params = sum(p.numel() for p in discriminator_model.parameters() if p.requires_grad)
-    print("Total number of parameters:", num_total_params)
-    print("Number of trainable paramters:", num_trainable_params)
-
-    import torch.optim as optim
-    optimizer = optim.Adam(discriminator_model.parameters(), lr=lr, weight_decay=weight_decay)
-    train(device, discriminator_model, optimizer, train_obs, train_labels, num_epochs, l1_reg,
-                          discriminator_model_path, val_obs, val_labels, patience)
-
-    # Report training and validation accuracy
-    print("train accuracy:", calc_accuracy(device, discriminator_model, train_obs, train_labels))
-    print("validation accuracy:", calc_accuracy(device, discriminator_model, val_obs, val_labels))
-
-    # Inference:
-    # For the states visited during reward-learning, calculate the average return/logit. --> $D_{KL}(p(x) || q(x))$
-    reward_learning_obs = np.reshape(reward_learning_trajs, (reward_learning_trajs.shape[0] * reward_learning_trajs.shape[1], reward_learning_trajs.shape[2]))
-    # TODO: check that we are able to take the np.mean -- may need to convert tensor to numpy or vice versa
-    reward_learning_logits = get_logit(device, discriminator_model, reward_learning_obs)
-    # print("reward_learning_logits:", reward_learning_logits)
-    dkl_pq = np.mean(reward_learning_logits) * -1
-
-    # For the states visited during the policy rollout, calculate the average return/logit and NEGATE. --> $D_{KL}(q(x) || p(x))$
-    policy_obs = np.reshape(policy_trajs, (policy_trajs.shape[0] * policy_trajs.shape[1], policy_trajs.shape[2]))
-    policy_logits = get_logit(device, discriminator_model, policy_obs)
-    dkl_qp = np.mean(policy_logits)
-
-    print("dkl (reward learning) || (policy rollouts):", dkl_pq)
-    print("dkl (policy rollouts) || (reward learning):", dkl_qp)
-
-
+    run(env_name, seed, reward_learning_data_path, trained_policy_path, num_trajs, fully_observable, pure_fully_observable,
+        load_weights, discriminator_model_path, hidden_dims, lr, l1_reg, num_epochs, patience)
