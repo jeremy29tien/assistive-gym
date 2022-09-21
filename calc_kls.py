@@ -8,7 +8,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=None)
     parser.add_argument('--indvar_str', default='', help="")
     parser.add_argument('--indvar_num', default=0.0, type=float, help="")
+    parser.add_argument('--config', default='', help="")  # ex.: "feeding/vanilla/324demos_allpairs_hdim256-256-256_100epochs_10patience_00001lr_0000001weightdecay"
     args = parser.parse_args()
+
+    config = args.config
 
     results = dict()
     results['train_accs'] = []
@@ -21,7 +24,6 @@ if __name__ == '__main__':
         prefix = "/home/jeremy/assistive-gym/"
 
         reward_learning_data_path = prefix + "trex/data/feeding/fully_observable/demos.npy"
-        config = "feeding/vanilla/324demos_allpairs_hdim256-256-256_100epochs_10patience_00001lr_0000001weightdecay"
 
         trained_policy_path = prefix + "trained_models_reward_learning/" + config + "_seed" + str(seed) + "/ppo/FeedingLearnedRewardSawyer-v0/checkpoint_40/checkpoint-40"
         discriminator_model_path = prefix + "discriminator_kl_models/" + config + "_seed" + str(seed) + ".params"
