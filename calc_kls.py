@@ -33,13 +33,13 @@ if __name__ == '__main__':
                                                                   load_weights=True, discriminator_model_path=discriminator_model_path,
                                                                   num_epochs=100, hidden_dims=(128, 128, 128), lr=0.01,
                                                                   weight_decay=0.0001, l1_reg=0.0, patience=10)
-        results['train_accs'].append(train_acc)
-        results['val_accs'].append(val_acc)
-        results['dkl_pq'].append(dkl_pq)
-        results['dkl_qp'].append(dkl_qp)
-        results['symmetric_dkl'].append(dkl_pq+dkl_qp)
+        results['train_accs'].append(float(train_acc))
+        results['val_accs'].append(float(val_acc))
+        results['dkl_pq'].append(float(dkl_pq))
+        results['dkl_qp'].append(float(dkl_qp))
+        results['symmetric_dkl'].append(float(dkl_pq+dkl_qp))
 
-    results['avg_symmetric_dkl'] = np.mean(results['symmetric_dkl'])
+    results['avg_symmetric_dkl'] = float(np.mean(results['symmetric_dkl']))
 
     outfile = prefix+"discriminator_kl_outputs/"+config+"_results.json"
     with open(outfile, 'w') as f:

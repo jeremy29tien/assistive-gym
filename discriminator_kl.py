@@ -368,6 +368,7 @@ def run(env_name, seed, reward_learning_data_path, trained_policy_path, num_traj
                                         pure_fully_observable=pure_fully_observable, fully_observable=fully_observable)
 
     # Check if we already trained this model before. If so, load the saved weights.
+    model_exists = False
     if load_weights:
         model_exists = exists(discriminator_model_path)
         if model_exists:
@@ -378,17 +379,17 @@ def run(env_name, seed, reward_learning_data_path, trained_policy_path, num_traj
             print("Could not find existing model weights. Training from scratch...")
     else:
         print("Training reward model from scratch...")
+    if not model_exists:
+        discriminator_model.to(device)
+        num_total_params = sum(p.numel() for p in discriminator_model.parameters())
+        num_trainable_params = sum(p.numel() for p in discriminator_model.parameters() if p.requires_grad)
+        print("Total number of parameters:", num_total_params)
+        print("Number of trainable parameters:", num_trainable_params)
 
-    discriminator_model.to(device)
-    num_total_params = sum(p.numel() for p in discriminator_model.parameters())
-    num_trainable_params = sum(p.numel() for p in discriminator_model.parameters() if p.requires_grad)
-    print("Total number of parameters:", num_total_params)
-    print("Number of trainable parameters:", num_trainable_params)
-
-    import torch.optim as optim
-    optimizer = optim.Adam(discriminator_model.parameters(), lr=lr, weight_decay=weight_decay)
-    train(device, discriminator_model, optimizer, train_obs, train_labels, num_epochs, l1_reg,
-          discriminator_model_path, val_obs, val_labels, patience)
+        import torch.optim as optim
+        optimizer = optim.Adam(discriminator_model.parameters(), lr=lr, weight_decay=weight_decay)
+        train(device, discriminator_model, optimizer, train_obs, train_labels, num_epochs, l1_reg,
+              discriminator_model_path, val_obs, val_labels, patience)
 
     # Report training and validation accuracy
     train_acc = calc_accuracy(device, discriminator_model, train_obs, train_labels)
