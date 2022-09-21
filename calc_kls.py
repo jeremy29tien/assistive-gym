@@ -12,6 +12,12 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     config = args.config
+    fully_observable = False
+    pure_fully_observable = False
+    if "pure_fully_observable" in config:
+        pure_fully_observable = True
+    else:
+        fully_observable = True
 
     results = dict()
     results['train_accs'] = []
@@ -23,13 +29,16 @@ if __name__ == '__main__':
         env = "FeedingSawyer-v1"
         prefix = "/home/jeremy/assistive-gym/"
 
-        reward_learning_data_path = prefix + "trex/data/feeding/fully_observable/demos.npy"
+        if fully_observable:
+            reward_learning_data_path = prefix + "trex/data/feeding/fully_observable/demos.npy"
+        else:
+            reward_learning_data_path = prefix + "trex/data/feeding/pure_fully_observable/demos.npy"
 
         trained_policy_path = prefix + "trained_models_reward_learning/" + config + "_seed" + str(seed) + "/ppo/FeedingLearnedRewardSawyer-v0/checkpoint_40/checkpoint-40"
         discriminator_model_path = prefix + "discriminator_kl_models/" + config + "_seed" + str(seed) + ".params"
 
         train_acc, val_acc, dkl_pq, dkl_qp = discriminator_kl.run(env, seed, reward_learning_data_path, trained_policy_path,
-                                                                  num_trajs=50, fully_observable=True, pure_fully_observable=False,
+                                                                  num_trajs=50, fully_observable=fully_observable, pure_fully_observable=pure_fully_observable,
                                                                   load_weights=True, discriminator_model_path=discriminator_model_path,
                                                                   num_epochs=100, hidden_dims=(128, 128, 128), lr=0.01,
                                                                   weight_decay=0.0001, l1_reg=0.0, patience=10)
