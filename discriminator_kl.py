@@ -366,6 +366,7 @@ def run(env_name, seed, reward_learning_data_path, trained_policy_path, num_traj
     device = torch.device(determine_default_torch_device(not torch.cuda.is_available()))
     discriminator_model = Discriminator(env_name=env_name, hidden_dims=hidden_dims,
                                         pure_fully_observable=pure_fully_observable, fully_observable=fully_observable)
+    discriminator_model.to(device)
 
     # Check if we already trained this model before. If so, load the saved weights.
     model_exists = False
@@ -380,7 +381,6 @@ def run(env_name, seed, reward_learning_data_path, trained_policy_path, num_traj
     else:
         print("Training reward model from scratch...")
     if not model_exists:
-        discriminator_model.to(device)
         num_total_params = sum(p.numel() for p in discriminator_model.parameters())
         num_trainable_params = sum(p.numel() for p in discriminator_model.parameters() if p.requires_grad)
         print("Total number of parameters:", num_total_params)
