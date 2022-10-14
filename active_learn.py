@@ -9,12 +9,12 @@ import sys
 EVAL_SEED = 3
 
 
-def get_rollouts(env_name, num_rollouts, policy_path, seed, pure_fully_observable=False, fully_observable=False):
+def get_rollouts(env_name, num_rollouts, policy_path, seed, pure_fully_observable=False, fully_observable=False, state_action=False):
     ray.init(num_cpus=multiprocessing.cpu_count(), ignore_reinit_error=True, log_to_driver=False)
     # Set up the environment
-    env = assistive_gym.learn.make_env("ScratchItchJaco-v1", seed=seed)
+    env = assistive_gym.learn.make_env("FeedingSawyer-v1", seed=seed)
     # Load pretrained policy from file
-    test_agent, _ = assistive_gym.learn.load_policy(env, 'ppo', "ScratchItchJaco-v1", policy_path, seed=seed)
+    test_agent, _ = assistive_gym.learn.load_policy(env, 'ppo', "FeedingSawyer-v1", policy_path, seed=seed)
 
     new_rollouts = []
     new_rollout_rewards = []
@@ -76,6 +76,8 @@ def get_rollouts(env_name, num_rollouts, policy_path, seed, pure_fully_observabl
                 data = np.concatenate((pure_obs, action, fo_features))
             elif fully_observable:
                 data = np.concatenate((obs, action, fo_features))
+            elif state_action:
+                data = np.concatenate((obs, action))
             else:
                 data = obs
 
@@ -98,8 +100,8 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
     # Load demonstrations from file and initialize pool of demonstrations
     if nn:
         if env == "feeding":
-            demos = np.load("trex/data/feeding/pure_fully_observable/demos.npy")
-            demo_rewards = np.load("trex/data/feeding/pure_fully_observable/demo_rewards.npy")
+            demos = np.load("trex/data/raw_data/demos.npy")  # Currently, we are running a partially observable experiment
+            demo_rewards = np.load("trex/data/raw_data/demo_rewards.npy")
         elif env == "scratch_itch":
             demos = np.load("trex/data/scratchitch/pure_fully_observable/demos.npy")
             demo_rewards = np.load("trex/data/scratchitch/pure_fully_observable/demo_rewards.npy")
@@ -117,7 +119,7 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
     if retrain:
         if nn:
             if env == "feeding":
-                pass
+                config = config + "retrain_partiallyobservable_324demos_allpairs_hdim256-256-256_100epochs_10patience_0001lr_001weightdecay"
             elif env == "scratch_itch":
                 config = config + "retrain_120demos_hdim128-64_purefullyobservable_allpairs_100epochs_10patience_000001lr_00001weightdecay_seed" + str(seed)
         else:
@@ -127,7 +129,7 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
     else:
         if nn:
             if env == "feeding":
-                pass
+                config = config + "partiallyobservable_324demos_allpairs_hdim256-256-256_100epochs_10patience_0001lr_001weightdecay"
             elif env == "scratch_itch":
                 config = config + "120demos_hdim128-64_purefullyobservable_allpairs_100epochs_10patience_000001lr_00001weightdecay_seed" + str(seed)
         else:
@@ -150,7 +152,12 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
             # Use the al_data argument to input our pool of changing demonstrations
             if nn:
                 if env == "feeding":
-                    pass
+                    final_weights = trex.model.run(reward_model_path, feeding=True, scratch_itch=False, seed=seed,
+                                                   hidden_dims=(256, 256, 256), num_demos=324, all_pairs=True,
+                                                   num_epochs=100, patience=10, lr=0.001, weight_decay=0.01,
+                                                   state_action=True,
+                                                   al_data=(demos, demo_rewards), load_weights=(not retrain),
+                                                   return_weights=False)
                 elif env == "scratch_itch":
                     final_weights = trex.model.run(reward_model_path, feeding=False, scratch_itch=True, seed=seed,
                                                    hidden_dims=(128, 64), num_demos=120, all_pairs=True,
@@ -167,12 +174,12 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
 
         # 2. Run RL (using the learned reward)
         if retrain:
-            checkpoint_path = assistive_gym.learn.train("ScratchItchLearnedRewardJaco-v0", "ppo",
+            checkpoint_path = assistive_gym.learn.train("FeedingLearnedRewardSawyer-v0", "ppo",
                                                      timesteps_total=1000000, save_dir=policy_save_dir + "/" + str(i+1),
                                                      load_policy_path='', seed=seed,
                                                      reward_net_path=reward_model_path)
         else:
-            checkpoint_path = assistive_gym.learn.train("ScratchItchLearnedRewardJaco-v0", "ppo", timesteps_total=((i+1)*1000000), save_dir=policy_save_dir, load_policy_path=policy_save_dir, seed=seed, reward_net_path=reward_model_path)
+            checkpoint_path = assistive_gym.learn.train("FeedingLearnedRewardSawyer-v0", "ppo", timesteps_total=((i+1)*1000000), save_dir=policy_save_dir, load_policy_path=policy_save_dir, seed=seed, reward_net_path=reward_model_path)
 
         # 3. Load RL policy, generate rollouts (number depends on mixing factor), and rank according to GT reward
         if mixing_factor is not None:
@@ -181,7 +188,7 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
         elif union_rollouts is not None:
             print("unioning", union_rollouts, "rollouts...")
             num_new_rollouts = union_rollouts
-        new_rollouts, new_rollout_rewards = get_rollouts(env, num_new_rollouts, checkpoint_path, seed, pure_fully_observable=True)
+        new_rollouts, new_rollout_rewards = get_rollouts(env, num_new_rollouts, checkpoint_path, seed, state_action=True)
 
         # 4. Based on mixing factor, sample (without replacement) demonstrations from previous iteration accordingly
         if mixing_factor is not None:
@@ -200,7 +207,7 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
         # 5. Evaluate (latest) trained policy
         eval_path = policy_eval_dir + "/" + str(i+1) + ".txt"
         with open(eval_path, 'w') as sys.stdout:
-            mean_reward, std_reward, _, _ = assistive_gym.learn.evaluate_policy("ScratchItchJaco-v1", "ppo", checkpoint_path, n_episodes=100, seed=EVAL_SEED,
+            mean_reward, std_reward, _, _ = assistive_gym.learn.evaluate_policy("FeedingSawyer-v1", "ppo", checkpoint_path, n_episodes=100, seed=EVAL_SEED,
                                              verbose=True)
         sys.stdout = sys.__stdout__  # reset stdout
         rewards.append([mean_reward, std_reward])
