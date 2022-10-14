@@ -119,7 +119,7 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
     if retrain:
         if nn:
             if env == "feeding":
-                config = config + "retrain_partiallyobservable_324demos_allpairs_hdim256-256-256_100epochs_10patience_0001lr_001weightdecay"
+                config = config + "retrain_partiallyobservable_324demos_allpairs_hdim256-256-256_100epochs_10patience_0001lr_001weightdecay_seed" + str(seed)
             elif env == "scratch_itch":
                 config = config + "retrain_120demos_hdim128-64_purefullyobservable_allpairs_100epochs_10patience_000001lr_00001weightdecay_seed" + str(seed)
         else:
@@ -129,7 +129,7 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
     else:
         if nn:
             if env == "feeding":
-                config = config + "partiallyobservable_324demos_allpairs_hdim256-256-256_100epochs_10patience_0001lr_001weightdecay"
+                config = config + "partiallyobservable_324demos_allpairs_hdim256-256-256_100epochs_10patience_0001lr_001weightdecay_seed" + str(seed)
             elif env == "scratch_itch":
                 config = config + "120demos_hdim128-64_purefullyobservable_allpairs_100epochs_10patience_000001lr_00001weightdecay_seed" + str(seed)
         else:
