@@ -148,64 +148,63 @@ def run_active_learning(env, num_al_iter, mixing_factor, union_rollouts, retrain
     weights = []
     # For num_al_iter active learning iterations:
     for i in range(num_al_iter):
-        # # 1. Run reward learning
-        # with open(reward_output_path, 'a') as sys.stdout:
-        #     # Use the al_data argument to input our pool of changing demonstrations
-        #     if nn:
-        #         if env == "feeding":
-        #             final_weights = trex.model.run(reward_model_path, feeding=True, scratch_itch=False, seed=seed,
-        #                                            hidden_dims=(256, 256, 256), num_demos=324, all_pairs=True,
-        #                                            num_epochs=100, patience=10, lr=0.001, weight_decay=0.01,
-        #                                            state_action=True,
-        #                                            al_data=(demos, demo_rewards), load_weights=(not retrain),
-        #                                            return_weights=False)
-        #         elif env == "scratch_itch":
-        #             final_weights = trex.model.run(reward_model_path, feeding=False, scratch_itch=True, seed=seed,
-        #                                            hidden_dims=(128, 64), num_demos=120, all_pairs=True,
-        #                                            num_epochs=100, patience=10, lr=0.00001, weight_decay=0.0001, pure_fully_observable=True,
-        #                                            al_data=(demos, demo_rewards), load_weights=(not retrain), return_weights=False)
-        #     else:
-        #         # FIXME: not relevant
-        #         final_weights = trex.model.run(reward_model_path, seed=seed, num_comps=2000, delta_reward=2,
-        #                                        num_epochs=100, patience=10, lr=0.01, l1_reg=0.01, augmented_full=True,
-        #                                        al_data=(demos, demo_rewards), load_weights=(not retrain), return_weights=True)
-        # sys.stdout = sys.__stdout__  # reset stdout
-        # if not nn:
-        #     weights.append(final_weights['fcs.0.weight'].cpu().detach().numpy())
-        #
-        # # 2. Run RL (using the learned reward)
-        # if retrain:
-        #     checkpoint_path = assistive_gym.learn.train("FeedingLearnedRewardSawyer-v0", "ppo",
-        #                                              timesteps_total=1000000, save_dir=policy_save_dir + "/" + str(i+1),
-        #                                              load_policy_path='', seed=seed,
-        #                                              reward_net_path=reward_model_path)
-        # else:
-        #     checkpoint_path = assistive_gym.learn.train("FeedingLearnedRewardSawyer-v0", "ppo", timesteps_total=((i+1)*1000000), save_dir=policy_save_dir, load_policy_path=policy_save_dir, seed=seed, reward_net_path=reward_model_path)
-        #
-        # # 3. Load RL policy, generate rollouts (number depends on mixing factor), and rank according to GT reward
-        # if mixing_factor is not None:
-        #     print("using mixing factor of", mixing_factor, "...")
-        #     num_new_rollouts = round(num_demos * mixing_factor)
-        # elif union_rollouts is not None:
-        #     print("unioning", union_rollouts, "rollouts...")
-        #     num_new_rollouts = union_rollouts
-        # new_rollouts, new_rollout_rewards = get_rollouts(env, num_new_rollouts, checkpoint_path, seed, state_action=True)
-        #
-        # # 4. Based on mixing factor, sample (without replacement) demonstrations from previous iteration accordingly
-        # if mixing_factor is not None:
-        #     num_old_trajs = round(num_demos * (1 - mixing_factor))
-        #     old_traj_i = np.random.choice(num_demos, size=num_old_trajs, replace=False)
-        #     old_trajs = demos[old_traj_i]
-        #     old_traj_rewards = demo_rewards[old_traj_i]
-        # elif union_rollouts is not None:
-        #     old_trajs = demos
-        #     old_traj_rewards = demo_rewards
-        #
-        # # Update our pool of demonstrations
-        # demos = np.concatenate((old_trajs, new_rollouts), axis=0)
-        # demo_rewards = np.concatenate((old_traj_rewards, new_rollout_rewards), axis=0)
+        # 1. Run reward learning
+        with open(reward_output_path, 'a') as sys.stdout:
+            # Use the al_data argument to input our pool of changing demonstrations
+            if nn:
+                if env == "feeding":
+                    final_weights = trex.model.run(reward_model_path, feeding=True, scratch_itch=False, seed=seed,
+                                                   hidden_dims=(256, 256, 256), num_demos=324, all_pairs=True,
+                                                   num_epochs=100, patience=10, lr=0.001, weight_decay=0.01,
+                                                   state_action=True,
+                                                   al_data=(demos, demo_rewards), load_weights=(not retrain),
+                                                   return_weights=False)
+                elif env == "scratch_itch":
+                    final_weights = trex.model.run(reward_model_path, feeding=False, scratch_itch=True, seed=seed,
+                                                   hidden_dims=(128, 64), num_demos=120, all_pairs=True,
+                                                   num_epochs=100, patience=10, lr=0.00001, weight_decay=0.0001, pure_fully_observable=True,
+                                                   al_data=(demos, demo_rewards), load_weights=(not retrain), return_weights=False)
+            else:
+                # FIXME: not relevant
+                final_weights = trex.model.run(reward_model_path, seed=seed, num_comps=2000, delta_reward=2,
+                                               num_epochs=100, patience=10, lr=0.01, l1_reg=0.01, augmented_full=True,
+                                               al_data=(demos, demo_rewards), load_weights=(not retrain), return_weights=True)
+        sys.stdout = sys.__stdout__  # reset stdout
+        if not nn:
+            weights.append(final_weights['fcs.0.weight'].cpu().detach().numpy())
 
-        checkpoint_path = policy_save_dir + "/" + str(i+1) + "/ppo/FeedingLearnedRewardSawyer-v0/checkpoint_40/checkpoint-40"
+        # 2. Run RL (using the learned reward)
+        if retrain:
+            checkpoint_path = assistive_gym.learn.train("FeedingLearnedRewardSawyer-v0", "ppo",
+                                                     timesteps_total=1000000, save_dir=policy_save_dir + "/" + str(i+1),
+                                                     load_policy_path='', seed=seed,
+                                                     reward_net_path=reward_model_path)
+        else:
+            checkpoint_path = assistive_gym.learn.train("FeedingLearnedRewardSawyer-v0", "ppo", timesteps_total=((i+1)*1000000), save_dir=policy_save_dir, load_policy_path=policy_save_dir, seed=seed, reward_net_path=reward_model_path)
+
+        # 3. Load RL policy, generate rollouts (number depends on mixing factor), and rank according to GT reward
+        if mixing_factor is not None:
+            print("using mixing factor of", mixing_factor, "...")
+            num_new_rollouts = round(num_demos * mixing_factor)
+        elif union_rollouts is not None:
+            print("unioning", union_rollouts, "rollouts...")
+            num_new_rollouts = union_rollouts
+        new_rollouts, new_rollout_rewards = get_rollouts(env, num_new_rollouts, checkpoint_path, seed, state_action=True)
+
+        # 4. Based on mixing factor, sample (without replacement) demonstrations from previous iteration accordingly
+        if mixing_factor is not None:
+            num_old_trajs = round(num_demos * (1 - mixing_factor))
+            old_traj_i = np.random.choice(num_demos, size=num_old_trajs, replace=False)
+            old_trajs = demos[old_traj_i]
+            old_traj_rewards = demo_rewards[old_traj_i]
+        elif union_rollouts is not None:
+            old_trajs = demos
+            old_traj_rewards = demo_rewards
+
+        # Update our pool of demonstrations
+        demos = np.concatenate((old_trajs, new_rollouts), axis=0)
+        demo_rewards = np.concatenate((old_traj_rewards, new_rollout_rewards), axis=0)
+
         # 5. Evaluate (latest) trained policy
         eval_path = policy_eval_dir + "/" + str(i+1) + ".txt"
         with open(eval_path, 'w') as sys.stdout:
