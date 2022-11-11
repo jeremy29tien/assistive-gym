@@ -14,7 +14,10 @@ for seed in 0 1 2; do
   reward_output_path="reward_learning_outputs/${config}_seed${seed}.txt"
 
   cd trex/
-  python3 model.py --feeding --seed $seed --$var1 $var2 --fully_observable --hidden_dims 256 256 256 --num_demos 324 --all_pairs --num_epochs 100 --patience 10 --lr 0.0001 --weight_decay 0.000001 --reward_model_path $reward_model_path > $reward_output_path
+  if [ ![ ${seed} -eq 0 ] ]
+  then
+    python3 model.py --feeding --seed $seed --$var1 $var2 --fully_observable --hidden_dims 256 256 256 --num_demos 324 --all_pairs --num_epochs 100 --patience 10 --lr 0.0001 --weight_decay 0.000001 --reward_model_path $reward_model_path > $reward_output_path
+  fi
 
   #RL
   echo "Performing RL..."
