@@ -17,7 +17,7 @@ from gpu_utils import determine_default_torch_device
 # if all_pairs=True, rather than generating num_comps pairwise comps with delta_rank ranking difference,
 # we simply generate all (num_demos choose 2) possible pairs from the dataset.
 # Note: demonstrations must be sorted by increasing reward.
-def create_training_data(sorted_demonstrations, sorted_rewards, num_comps=0, delta_rank=1, delta_reward=0, all_pairs=False, noisy_prefs=False):
+def create_training_data(sorted_demonstrations, sorted_rewards, num_comps=0, delta_rank=1, delta_reward=0, skip_threshold=-np.inf, mistake_epsilon=0.0, all_pairs=False, noisy_prefs=False):
     # collect training data
     max_traj_length = 0
     training_obs = []
@@ -29,6 +29,9 @@ def create_training_data(sorted_demonstrations, sorted_rewards, num_comps=0, del
             for tj in range(ti+1, num_demos):
                 traj_i = sorted_demonstrations[ti]
                 traj_j = sorted_demonstrations[tj]
+
+                if max(sorted_rewards[tj], sorted_rewards[ti]) < skip_threshold:  # Skip if both are bad.
+                    continue
 
                 if noisy_prefs:
                     prob = np.exp(sorted_rewards[tj]) / (np.exp(sorted_rewards[ti]) + np.exp(sorted_rewards[tj]))
@@ -44,7 +47,10 @@ def create_training_data(sorted_demonstrations, sorted_rewards, num_comps=0, del
                         label = 1  # 1 indicates that traj_j is better than traj_i
 
                 training_obs.append((traj_i, traj_j))
-                training_labels.append(label)
+                if np.random.rand() < mistake_epsilon:  # If the teacher makes a mistake.
+                    training_labels.append(1-label)
+                else:
+                    training_labels.append(label)
 
                 # We shouldn't need max_traj_length, since all our trajectories our fixed at length 200.
                 max_traj_length = max(max_traj_length, len(traj_i), len(traj_j))
@@ -307,7 +313,7 @@ def predict_traj_return(device, net, traj):
 
 
 def run(reward_model_path, seed, feeding=True, scratch_itch=False, noisy_prefs=False, num_comps=0, num_demos=120, hidden_dims=tuple(), lr=0.00005, weight_decay=0.0, l1_reg=0.0,
-        num_epochs=100, patience=100, delta_rank=1, delta_reward=0, all_pairs=False, augmented=False, fully_observable=False,
+        num_epochs=100, patience=100, delta_rank=1, delta_reward=0, skip_threshold=-np.inf, mistake_epsilon=0.0, all_pairs=False, myopic=False, augmented=False, fully_observable=False,
         pure_fully_observable=False, new_pure_fully_observable=False, new_fully_observable=False, num_rawfeatures=11, state_action=False, normalize_features=False, teleop=False, test=False,
         al_data=tuple(), load_weights=False, return_weights=False):
     np.random.seed(seed)
@@ -340,6 +346,9 @@ def run(reward_model_path, seed, feeding=True, scratch_itch=False, noisy_prefs=F
                 demos = np.load("data/feeding/fully_observable/demos.npy")
                 demo_rewards = np.load("data/feeding/fully_observable/demo_rewards.npy")
                 demo_reward_per_timestep = np.load("data/feeding/fully_observable/demo_reward_per_timestep.npy")
+                if myopic:
+                    demo_rewards = np.load("data/feeding/fully_observable/myopic099_demo_rewards.npy")
+                    demo_reward_per_timestep = np.load("data/feeding/fully_observable/myopic099_demo_reward_per_timestep.npy")
             elif scratch_itch:
                 demos = np.load("data/scratchitch/fully_observable/demos.npy")
                 demo_rewards = np.load("data/scratchitch/fully_observable/demo_rewards.npy")
@@ -449,7 +458,7 @@ def run(reward_model_path, seed, feeding=True, scratch_itch=False, noisy_prefs=F
     sorted_train_rewards = sorted_train_rewards[idx]
     # demo_reward_per_timestep = demo_reward_per_timestep[idx]  # Note: not used.
 
-    train_obs, train_labels = create_training_data(sorted_train_demos, sorted_train_rewards, noisy_prefs=noisy_prefs, num_comps=num_comps, delta_rank=delta_rank, delta_reward=delta_reward, all_pairs=all_pairs)
+    train_obs, train_labels = create_training_data(sorted_train_demos, sorted_train_rewards, noisy_prefs=noisy_prefs, num_comps=num_comps, delta_rank=delta_rank, delta_reward=delta_reward, skip_threshold=skip_threshold, mistake_epsilon=mistake_epsilon, all_pairs=all_pairs)
     val_obs, val_labels = create_training_data(sorted_val_demos, sorted_val_rewards, all_pairs=True)
 
     print("num train_obs", len(train_obs))
@@ -532,6 +541,9 @@ if __name__ == "__main__":
     parser.add_argument('--noisy_prefs', dest='noisy_prefs', default=False, action='store_true',
                         help="whether preferences are noisily rational (with beta=1 in the Bradley-Terry model)")
     parser.add_argument('--test', dest='test', default=False, action='store_true', help="testing mode for raw observations")
+    parser.add_argument('--myopic', dest='myopic', default=False, action='store_true', help="whether teacher is myopic")
+    parser.add_argument('--skip_threshold', default=-np.inf, type=float, help="the threshold for skipping queries")
+    parser.add_argument('--mistake_epsilon', default=0.0, type=float, help="the probability for teacher mistakes")
     args = parser.parse_args()
 
     seed = args.seed
@@ -569,11 +581,14 @@ if __name__ == "__main__":
     teleop = args.teleop
     noisy_prefs = args.noisy_prefs
     test = args.test
+    myopic = args.myopic
+    skip_threshold = args.skip_threshold
+    mistake_epsilon = args.mistake_epsilon
     #################
 
     run(args.reward_model_path, seed, feeding=feeding, scratch_itch=scratch_itch, noisy_prefs=noisy_prefs, num_comps=num_comps, num_demos=num_demos,
         hidden_dims=hidden_dims, lr=lr, weight_decay=weight_decay, l1_reg=l1_reg, num_epochs=num_epochs, patience=patience,
-        delta_rank=delta_rank, delta_reward=delta_reward, all_pairs=all_pairs, augmented=augmented, fully_observable=fully_observable,
+        delta_rank=delta_rank, delta_reward=delta_reward, skip_threshold=skip_threshold, mistake_epsilon=mistake_epsilon, all_pairs=all_pairs, myopic=myopic, augmented=augmented, fully_observable=fully_observable,
         pure_fully_observable=pure_fully_observable, new_fully_observable=new_fully_observable, new_pure_fully_observable=new_pure_fully_observable,
         num_rawfeatures=num_rawfeatures, state_action=state_action, normalize_features=normalize_features, teleop=teleop, test=test)
 
