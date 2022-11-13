@@ -133,7 +133,7 @@ class Discriminator(nn.Module):
                 raise Exception("NOT IMPLEMENTED.")
             elif env_name == "ScratchItchJaco-v1":
                 input_dim = 20
-        if new_fully_observable:
+        elif new_fully_observable:
             if env_name == "FeedingSawyer-v1":
                 raise Exception("NOT IMPLEMENTED.")
             elif env_name == "ScratchItchJaco-v1":
