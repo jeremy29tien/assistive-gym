@@ -14,7 +14,7 @@ from gpu_utils import determine_default_torch_device
 
 # Function similar to active_learn's get_rollouts to get rollouts from trained policy
 # env_name: ScratchItchJaco-v1 or FeedingSawyer-v1
-def get_rollouts(env_name, num_rollouts, policy_path, seed, pure_fully_observable=False, fully_observable=False):
+def get_rollouts(env_name, num_rollouts, policy_path, seed, pure_fully_observable=False, fully_observable=False, new_pure_fully_observable=False, new_fully_observable=False):
     ray.init(num_cpus=multiprocessing.cpu_count(), ignore_reinit_error=True, log_to_driver=False)
     # Set up the environment
     env = assistive_gym.learn.make_env(env_name, seed=seed)
@@ -71,13 +71,20 @@ def get_rollouts(env_name, num_rollouts, policy_path, seed, pure_fully_observabl
                     prev_tool_pos_real = info['prev_tool_pos_real']
                     robot_force_on_human = info['robot_force_on_human']
                     prev_tool_force = info['prev_tool_force']
+                    scratched = info['scratched']
                 privileged_features = np.array([distance, tool_force_at_target])
                 fo_features = np.concatenate((prev_tool_pos_real, [robot_force_on_human, prev_tool_force]))
+                new_fo_features = np.concatenate(
+                    (prev_tool_pos_real, [robot_force_on_human, prev_tool_force, scratched]))
                 # Features from the raw observation that are causal:
                 # tool_pos_real, tool_pos_real - target_pos_real, and self.tool_force, respectively
                 pure_obs = np.concatenate((obs[0:3], obs[7:10], obs[29:30]))
 
-            if pure_fully_observable:
+            if new_pure_fully_observable:
+                data = np.concatenate((pure_obs, action, new_fo_features))
+            elif new_fully_observable:
+                data = np.concatenate((obs, action, new_fo_features))
+            elif pure_fully_observable:
                 data = np.concatenate((pure_obs, action, fo_features))
             elif fully_observable:
                 data = np.concatenate((obs, action, fo_features))
@@ -329,7 +336,7 @@ def get_logit(device, net, x):
     return logit.detach().cpu().numpy().flatten()
 
 
-def run(env_name, seed, reward_learning_data_path, trained_policy_path, num_trajs, fully_observable, pure_fully_observable,
+def run(env_name, seed, reward_learning_data_path, trained_policy_path, num_trajs, fully_observable, pure_fully_observable, new_fully_observable, new_pure_fully_observable,
         load_weights, discriminator_model_path, num_epochs, hidden_dims, lr, weight_decay, l1_reg, patience):
     np.random.seed(seed)
     torch.manual_seed(seed)
@@ -343,7 +350,8 @@ def run(env_name, seed, reward_learning_data_path, trained_policy_path, num_traj
     # Get rollouts from trained policy
     print("Getting " + str(num_trajs) + " rollouts from the trained policy...")
     policy_trajs = get_rollouts(env_name=env_name, num_rollouts=num_trajs, policy_path=trained_policy_path, seed=seed,
-                                pure_fully_observable=pure_fully_observable, fully_observable=fully_observable)
+                                pure_fully_observable=pure_fully_observable, fully_observable=fully_observable,
+                                new_pure_fully_observable=new_pure_fully_observable, new_fully_observable=new_fully_observable)
 
     # Create validation set (disjoint set of trajectories)
     idx = np.random.permutation(np.arange(reward_learning_trajs.shape[0]))
@@ -365,7 +373,8 @@ def run(env_name, seed, reward_learning_data_path, trained_policy_path, num_traj
     # Train discriminator
     device = torch.device(determine_default_torch_device(not torch.cuda.is_available()))
     discriminator_model = Discriminator(env_name=env_name, hidden_dims=hidden_dims,
-                                        pure_fully_observable=pure_fully_observable, fully_observable=fully_observable)
+                                        pure_fully_observable=pure_fully_observable, fully_observable=fully_observable,
+                                        new_pure_fully_observable=new_pure_fully_observable, new_fully_observable=new_fully_observable)
     discriminator_model.to(device)
 
     # Check if we already trained this model before. If so, load the saved weights.
