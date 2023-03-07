@@ -58,7 +58,6 @@ The locations of the demonstration data for each environment are:
         - `assistive-gym/trex/data/scratchitch/new_pure_fully_observable/demo_rewards.npy`
         - `assistive-gym/trex/data/scratchitch/new_pure_fully_observable/demo_reward_per_timestep.npy`
 
-
 To load the data into numpy arrays, one can simply run
 ```python
 demos = np.load("##[DEMOS.NPY PATH]##")
@@ -70,20 +69,21 @@ demo_reward_per_timestep = np.load("##[DEMO_REWARD_PER_TIMESTEP.NPY PATH]##")
 
 ## Reward Learning from Preferences
 We provide `trex/model.py`, a convenient script that loads the trajectory data, creates the pairwise preferences based on the ground truth reward, and performs reward learning on the pairwise preferences. 
-To perform reward learning for each of the benchmark environments, run the following in the `assistive-gym/` directory:
+To perform reward learning for each of the benchmark environments (and to replicate our **_Section 4: Evidence of Causal Confusion results_**), run the following in the `assistive-gym/` directory:  
 - Feeding
     ```bash
-    python3 trex/model.py --hidden_dims 128 64 --num_comps 2000 --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --seed 0 --reward_model_path ./reward_models/model.params
+    python3 trex/model.py --feeding --hidden_dims 128 64 --num_demos ${NUM_DEMOS} --seed 0 --fully_observable --all_pairs --num_epochs 100 --patience 10 --lr 0.001 --weight_decay 0.00001 --reward_model_path ./reward_models/model.params
     ```
 - Itch Scratching
     ```bash
-    python3 trex/model.py --scratch_itch --hidden_dims 128 64 --num_comps 2000 --num_epochs 100 --patience 10 --lr 0.01 --weight_decay 0.01 --seed $seed --reward_model_path ./reward_models/model.params
+    python3 trex/model.py --scratch_itch --hidden_dims 128 64 --num_demos ${NUM_DEMOS} --seed 0 --fully_observable --all_pairs --num_epochs 100 --patience 10 --lr 0.001 --weight_decay 0.00001 --reward_model_path ./reward_models/model.params
     ```
+where **${NUM_DEMOS}** is **40**, **120**, or **324** (which correspond to the **S**, **M**, and **L** dataset sizes, respectively). 
 The trained parameters of the reward network will be saved in `assistive-gym/reward_models/model.params`.
 
 
 ## Training the RL Policy
-Once the reward network is trained, we can perform reinforcement learning using the preference-learned reward. 
+Once the reward network is trained, we can perform reinforcement learning using the reward learned from preferences. 
 To train, run:
 - Feeding
     ```bash
@@ -113,3 +113,15 @@ And to render rollouts of the trained policy:
     ```bash
       python3 -m assistive_gym.learn --env "ScratchItchJaco-v1" --algo ppo --render --render-episodes 3 --seed 3 --load-policy-path ./trained_policies/ppo/ScratchItchLearnedRewardJaco-v0/checkpoint_000053/checkpoint-53
     ```
+## Citation
+If you use the benchmark data and/or scripts, please cite:
+```bibtex
+@inproceedings{tien2023causal,
+    title={Causal Confusion and Reward Misidentification in Preference-Based Reward Learning},
+    author={Jeremy Tien and Jerry Zhi-Yang He and Zackory Erickson and Anca Dragan and Daniel S. Brown},
+    booktitle={The Eleventh International Conference on Learning Representations },
+    year={2023},
+    url={https://openreview.net/forum?id=R0Xxvr_X3ZA}
+}
+```
+
