@@ -1,7 +1,7 @@
-# A Study of Causal Confusion in Preference-Based Reward Learning
-Jeremy Tien, Jerry Zhi-Yang He, Zackory Erickson, Anca D. Dragan, and Daniel Brown
+# Causal Confusion and Reward Misidentification in Preference-Based Reward Learning
+_Jeremy Tien, Jerry Zhi-Yang He, Zackory Erickson, Anca D. Dragan, and Daniel S. Brown_
 
-This repository contains the code and data for the **Feeding** and **Itch Scratching** preference learning benchmarks proposed in the paper. 
+This repository contains the code and data for the **Feeding** and **Itch Scratching** preference learning benchmark environments presented in [**"Causal Confusion and Reward Misidentification in Preference-Based Reward Learning"**](https://openreview.net/pdf?id=R0Xxvr_X3ZA) (**_ICLR 2023_**). 
 
 See the [project website](https://sites.google.com/view/causal-reward-confusion) for supplemental results and videos.
 ***
@@ -34,24 +34,31 @@ Namely, for each environment, we provide:
 
 The locations of the demonstration data for each environment are:
 - Feeding
-    - **Raw** Feature-space: 
-        - `assistive-gym/trex/data/raw_data/demos_states.npy`
-        - `assistive-gym/trex/data/raw_data/demo_rewards.npy`
-        - `assistive-gym/trex/data/raw_data/demo_reward_per_timestep.npy`
-    - **Augmented** Feature-space: 
-        - `assistive-gym/trex/data/augmented_features/demos.npy`
-        - `assistive-gym/trex/data/augmented_features/demos_rewards.npy`
-        - `assistive-gym/trex/data/augmented_features/demo_reward_per_timestep.npy`
+    - "**Full**" Feature-space (default observation features + add'l. features to make ground-truth reward, TRUE, fully-inferrable): 
+        - `assistive-gym/trex/data/feeding/fully_observable/demos.npy`
+        - `assistive-gym/trex/data/feeding/fully_observable/demo_rewards.npy`
+        - `assistive-gym/trex/data/feeding/fully_observable/demo_reward_per_timestep.npy`
+    - "**Pure**" Feature-space ("Full" but with distractor features that are not causal wrt. TRUE removed): 
+        - `assistive-gym/trex/data/feeding/pure_fully_observable/demos.npy`
+        - `assistive-gym/trex/data/feeding/pure_fully_observable/demos_rewards.npy`
 - Itch Scratching
-    - **Raw** Feature-space: 
-        - `assistive-gym/trex/data/raw_data/demos_states.npy`
-        - `assistive-gym/trex/data/raw_data/demo_rewards.npy`
-        - `assistive-gym/trex/data/raw_data/demo_reward_per_timestep.npy`
-    - **Augmented** Feature-space: 
-        - `assistive-gym/trex/data/scratchitch/augmented/demos.npy`
-        - `assistive-gym/trex/data/scratchitch/augmented/demos_rewards.npy`
-        - `assistive-gym/trex/data/scratchitch/augmented/demo_reward_per_timestep.npy`
-        
+    - "**Full**" Feature-space (default observation features + add'l. features to make ground-truth reward, TRUE, fully-inferrable): 
+        - `assistive-gym/trex/data/scratchitch/fully_observable/demos.npy`
+        - `assistive-gym/trex/data/scratchitch/fully_observable/demo_rewards.npy`
+        - `assistive-gym/trex/data/scratchitch/fully_observable/demo_reward_per_timestep.npy`
+    - "**Pure**" Feature-space ("Full" but with distractor features that are not causal wrt. TRUE removed): 
+        - `assistive-gym/trex/data/scratchitch/pure_fully_observable/demos.npy`
+        - `assistive-gym/trex/data/scratchitch/pure_fully_observable/demo_rewards.npy`
+    - "**Full**" Feature-space AND hand-crafted `scratch` feature: 
+        - `assistive-gym/trex/data/scratchitch/new_fully_observable/demos.npy`
+        - `assistive-gym/trex/data/scratchitch/new_fully_observable/demo_rewards.npy`
+        - `assistive-gym/trex/data/scratchitch/new_fully_observable/demo_reward_per_timestep.npy`
+    - "**Pure**" Feature-space AND hand-crafted `scratch` feature: 
+        - `assistive-gym/trex/data/scratchitch/new_pure_fully_observable/demos.npy`
+        - `assistive-gym/trex/data/scratchitch/new_pure_fully_observable/demo_rewards.npy`
+        - `assistive-gym/trex/data/scratchitch/new_pure_fully_observable/demo_reward_per_timestep.npy`
+
+
 To load the data into numpy arrays, one can simply run
 ```python
 demos = np.load("##[DEMOS.NPY PATH]##")
